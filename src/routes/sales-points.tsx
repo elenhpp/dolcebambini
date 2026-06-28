@@ -16,7 +16,7 @@ function Page() {
   return (
     <div className="mx-auto max-w-6xl px-5 lg:px-8 pt-12 pb-24">
       <header className="text-center max-w-3xl mx-auto mb-12 fade-up">
-        <div className="text-[11px] tracking-[0.35em] uppercase text-primary mb-3">{t(T.pages.sales.el && { el: T.pages.sales.el.sub, en: T.pages.sales.en.sub })}</div>
+        <div className="text-[11px] tracking-[0.35em] uppercase text-primary mb-3">{t({ el: T.pages.sales.el.sub, en: T.pages.sales.en.sub })}</div>
         <h1 className="font-display text-5xl md:text-6xl tracking-tight">{t({ el: T.pages.sales.el.title, en: T.pages.sales.en.title })}</h1>
         <p className="mt-5 text-foreground/70 leading-relaxed">{t(T.salesNote)}</p>
       </header>
