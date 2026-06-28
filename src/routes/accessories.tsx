@@ -5,8 +5,8 @@ import { PRODUCTS, T } from "@/lib/site-content";
 function Page() {
   return (
     <CategoryPage
-      title={{ el: T.pages.accessories.el.title, en: T.pages.accessories.en.title }}
-      sub={{ el: T.pages.accessories.el.sub, en: T.pages.accessories.en.sub }}
+      title={T.pages.accessories.title}
+      sub={T.pages.accessories.sub}
       products={PRODUCTS.accessories}
     />
   );

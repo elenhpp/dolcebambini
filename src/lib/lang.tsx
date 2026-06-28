@@ -1,7 +1,13 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
-import type { Lang } from "./site-content";
+import type { Lang, Tr } from "./site-content";
 
-type Ctx = { lang: Lang; setLang: (l: Lang) => void; t: <T>(o: { el: T; en: T }) => T };
+export const LANGS: Lang[] = ["el", "en", "it", "es", "pt"];
+
+type Ctx = {
+  lang: Lang;
+  setLang: (l: Lang) => void;
+  t: <T>(o: Tr<T>) => T;
+};
 const LangCtx = createContext<Ctx | null>(null);
 
 export function LangProvider({ children }: { children: ReactNode }) {
@@ -9,7 +15,7 @@ export function LangProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const stored = typeof window !== "undefined" ? (localStorage.getItem("db-lang") as Lang | null) : null;
-    if (stored === "el" || stored === "en") setLangState(stored);
+    if (stored && (LANGS as string[]).includes(stored)) setLangState(stored);
   }, []);
 
   const setLang = (l: Lang) => {
@@ -17,7 +23,10 @@ export function LangProvider({ children }: { children: ReactNode }) {
     if (typeof window !== "undefined") localStorage.setItem("db-lang", l);
   };
 
-  const t = <T,>(o: { el: T; en: T }) => o[lang];
+  const t = <T,>(o: Tr<T>): T => {
+    const v = (o as Partial<Record<Lang, T>>)[lang];
+    return (v !== undefined ? v : o.en) as T;
+  };
 
   return <LangCtx.Provider value={{ lang, setLang, t }}>{children}</LangCtx.Provider>;
 }

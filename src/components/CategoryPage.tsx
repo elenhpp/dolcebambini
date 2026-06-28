@@ -1,10 +1,10 @@
 import { ProductCard } from "./ProductCard";
-import type { Product } from "@/lib/site-content";
+import type { Product, Tr } from "@/lib/site-content";
 import { useLang } from "@/lib/lang";
 
 export function CategoryPage({
   title, sub, products,
-}: { title: { el: string; en: string }; sub: { el: string; en: string }; products: Product[] }) {
+}: { title: Tr<string>; sub: Tr<string>; products: Product[] }) {
   const { t } = useLang();
   return (
     <div className="mx-auto max-w-7xl px-5 lg:px-8 pt-12 pb-20">

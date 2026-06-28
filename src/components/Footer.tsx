@@ -20,7 +20,7 @@ export function Footer() {
             {NAV.map((n) => (
               <li key={n.key}>
                 <Link to={n.to} className="text-foreground/70 hover:text-primary transition-colors">
-                  {lang === "el" ? n.el : n.en}
+                  {n[lang]}
                 </Link>
               </li>
             ))}
@@ -30,7 +30,7 @@ export function Footer() {
         <div>
           <div className="text-xs tracking-[0.2em] uppercase text-foreground/70 mb-4">{t(T.footer.contact)}</div>
           <ul className="space-y-3 text-sm text-foreground/75">
-            <li className="flex items-start gap-2"><MapPin size={15} className="mt-0.5 text-primary shrink-0" />{lang === "el" ? CONTACT.address : CONTACT.addressEn}</li>
+            <li className="flex items-start gap-2"><MapPin size={15} className="mt-0.5 text-primary shrink-0" />{t(CONTACT.address)}</li>
             <li className="flex items-center gap-2"><Phone size={15} className="text-primary" /><a href={`tel:${CONTACT.phone.replace(/\s/g,"")}`}>{CONTACT.phone}</a></li>
             <li className="flex items-center gap-2"><Mail size={15} className="text-primary" /><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></li>
           </ul>
@@ -43,7 +43,7 @@ export function Footer() {
       <div className="border-t border-border/50">
         <div className="mx-auto max-w-7xl px-5 lg:px-8 py-5 text-xs text-muted-foreground flex flex-col md:flex-row justify-between gap-2">
           <span>© {new Date().getFullYear()} Dolce Bambini. {t(T.footer.rights)}</span>
-          <span>{lang === "el" ? "Σχεδίαση με αγάπη" : "Designed with love"}</span>
+          <span>{t(T.footer.designed)}</span>
         </div>
       </div>
     </footer>

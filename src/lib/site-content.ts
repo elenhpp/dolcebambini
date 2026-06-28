@@ -1,34 +1,49 @@
-export type Lang = "el" | "en";
+export type Lang = "el" | "en" | "it" | "es" | "pt";
 
-export const NAV = [
-  { key: "home", to: "/", el: "ΑΡΧΙΚΗ", en: "HOME" },
-  { key: "boys", to: "/boys", el: "ΑΓΟΡΙ", en: "BOYS" },
-  { key: "girls", to: "/girls", el: "ΚΟΡΙΤΣΙ", en: "GIRLS" },
-  { key: "silk", to: "/silk", el: "SILK COLLECTION", en: "SILK COLLECTION" },
-  { key: "accessories", to: "/accessories", el: "ΑΞΕΣΟΥΑΡ ΒΑΠΤΙΣΗΣ", en: "BAPTISM ACCESSORIES" },
-  { key: "communion", to: "/communion", el: "COMMUNION", en: "COMMUNION" },
-  { key: "sales", to: "/sales-points", el: "ΣΗΜΕΙΑ ΠΩΛΗΣΗΣ", en: "SALES POINTS" },
-  { key: "contact", to: "/contact", el: "ΕΠΙΚΟΙΝΩΝΙΑ", en: "CONTACT" },
+// A translatable string/value: must have `en` (used as fallback); other langs optional.
+export type Tr<T> = { en: T } & Partial<Record<Lang, T>>;
+
+export const NAV: ReadonlyArray<{ key: string; to: string } & Record<Lang, string>> = [
+  { key: "home",        to: "/",             el: "ΑΡΧΙΚΗ",            en: "HOME",                it: "HOME",                  es: "INICIO",                pt: "INÍCIO" },
+  { key: "boys",        to: "/boys",         el: "ΑΓΟΡΙ",             en: "BOYS",                it: "BAMBINO",               es: "NIÑO",                  pt: "MENINO" },
+  { key: "girls",       to: "/girls",        el: "ΚΟΡΙΤΣΙ",           en: "GIRLS",               it: "BAMBINA",               es: "NIÑA",                  pt: "MENINA" },
+  { key: "silk",        to: "/silk",         el: "SILK COLLECTION",   en: "SILK COLLECTION",     it: "SILK COLLECTION",       es: "SILK COLLECTION",       pt: "SILK COLLECTION" },
+  { key: "accessories", to: "/accessories",  el: "ΑΞΕΣΟΥΑΡ ΒΑΠΤΙΣΗΣ", en: "BAPTISM ACCESSORIES", it: "ACCESSORI BATTESIMO",   es: "ACCESORIOS DE BAUTIZO", pt: "ACESSÓRIOS DE BATISMO" },
+  { key: "communion",   to: "/communion",    el: "COMMUNION",         en: "COMMUNION",           it: "COMUNIONE",             es: "COMUNIÓN",              pt: "COMUNHÃO" },
+  { key: "sales",       to: "/sales-points", el: "ΣΗΜΕΙΑ ΠΩΛΗΣΗΣ",    en: "SALES POINTS",        it: "PUNTI VENDITA",         es: "PUNTOS DE VENTA",       pt: "PONTOS DE VENDA" },
+  { key: "contact",     to: "/contact",      el: "ΕΠΙΚΟΙΝΩΝΙΑ",       en: "CONTACT",             it: "CONTATTI",              es: "CONTACTO",              pt: "CONTATO" },
 ] as const;
 
+type ValueItem = { t: string; d: string };
+
 export const T = {
-  brand: { el: "Dolce Bambini", en: "Dolce Bambini" },
-  estd: { el: "Από το 1978", en: "Established 1978" },
+  brand: { el: "Dolce Bambini", en: "Dolce Bambini", it: "Dolce Bambini", es: "Dolce Bambini", pt: "Dolce Bambini" },
+  estd:  { el: "Από το 1978", en: "Established 1978", it: "Fondata nel 1978", es: "Desde 1978", pt: "Desde 1978" },
+
   heroTitle: {
     el: "Στιγμές που μένουν για πάντα",
     en: "Moments that last forever",
+    it: "Momenti che durano per sempre",
+    es: "Momentos que duran para siempre",
+    pt: "Momentos que duram para sempre",
   },
   heroSub: {
     el: "Χειροποίητα βαπτιστικά & ενδύματα κοινωνίας με ρομαντική κομψότητα — Collection 2026.",
     en: "Handcrafted baptism & communion garments with romantic elegance — Collection 2026.",
+    it: "Abiti da battesimo e comunione fatti a mano, con eleganza romantica — Collection 2026.",
+    es: "Prendas de bautizo y comunión hechas a mano con elegancia romántica — Collection 2026.",
+    pt: "Trajes de batismo e comunhão feitos à mão com elegância romântica — Collection 2026.",
   },
-  heroCtaBoys: { el: "Δείτε Αγόρι", en: "Shop Boys" },
-  heroCtaGirls: { el: "Δείτε Κορίτσι", en: "Shop Girls" },
+  heroCtaBoys:  { el: "Δείτε Αγόρι",   en: "Shop Boys",  it: "Scopri Bambino", es: "Ver Niño",  pt: "Ver Menino" },
+  heroCtaGirls: { el: "Δείτε Κορίτσι", en: "Shop Girls", it: "Scopri Bambina", es: "Ver Niña",  pt: "Ver Menina" },
 
-  storyTitle: { el: "Η Ιστορία μας", en: "Our Story" },
+  storyTitle: { el: "Η Ιστορία μας", en: "Our Story", it: "La nostra storia", es: "Nuestra historia", pt: "A nossa história" },
   storyBody: {
     el: "Η Dolce Bambini ιδρύθηκε το 1978 στη Μελβούρνη της Αυστραλίας. Με πάνω από 40 χρόνια εμπειρίας, σχεδιάζουμε και κατασκευάζουμε χειροποίητα βαπτιστικά ρούχα που συνδυάζουν παράδοση και σύγχρονη αισθητική.",
     en: "Founded in 1978 in Melbourne, Australia, Dolce Bambini brings over 40 years of experience designing and crafting handmade baptism garments that blend tradition with contemporary elegance.",
+    it: "Fondata nel 1978 a Melbourne, in Australia, Dolce Bambini vanta oltre 40 anni di esperienza nel disegnare e realizzare a mano abiti da battesimo che uniscono tradizione ed eleganza contemporanea.",
+    es: "Fundada en 1978 en Melbourne, Australia, Dolce Bambini cuenta con más de 40 años de experiencia diseñando y confeccionando a mano prendas de bautizo que unen tradición y elegancia contemporánea.",
+    pt: "Fundada em 1978 em Melbourne, Austrália, a Dolce Bambini traz mais de 40 anos de experiência a desenhar e confecionar à mão trajes de batismo que unem tradição e elegância contemporânea.",
   },
 
   values: {
@@ -37,64 +52,145 @@ export const T = {
       { t: "Μοναδικά Σχέδια", d: "Σύγχρονα σχέδια με ρομαντική, διαχρονική κομψότητα." },
       { t: "Νέες Συλλογές", d: "Συνεχώς ανανεωμένες συλλογές κάθε σεζόν." },
       { t: "Χειροποίητα", d: "Κάθε ένδυμα κατασκευάζεται χειροποίητα με αγάπη." },
-    ] as { t: string; d: string }[],
+    ] as ValueItem[],
     en: [
       { t: "Premium Quality", d: "Carefully selected fabrics and impeccable tailoring." },
       { t: "Unique Designs", d: "Modern silhouettes with timeless, romantic elegance." },
       { t: "New Collections", d: "Fresh collections released each season." },
       { t: "Handmade", d: "Every garment crafted by hand with love." },
-    ] as { t: string; d: string }[],
-  },
+    ] as ValueItem[],
+    it: [
+      { t: "Qualità Premium", d: "Tessuti selezionati con cura e sartoria impeccabile." },
+      { t: "Design Unico", d: "Silhouette moderne con un'eleganza romantica e senza tempo." },
+      { t: "Nuove Collezioni", d: "Collezioni rinnovate ad ogni stagione." },
+      { t: "Fatto a Mano", d: "Ogni capo realizzato a mano con amore." },
+    ] as ValueItem[],
+    es: [
+      { t: "Calidad Premium", d: "Tejidos seleccionados con cuidado y confección impecable." },
+      { t: "Diseños Únicos", d: "Siluetas modernas con elegancia romántica y atemporal." },
+      { t: "Nuevas Colecciones", d: "Colecciones renovadas en cada temporada." },
+      { t: "Hecho a Mano", d: "Cada prenda confeccionada a mano con amor." },
+    ] as ValueItem[],
+    pt: [
+      { t: "Qualidade Premium", d: "Tecidos cuidadosamente selecionados e confeção impecável." },
+      { t: "Design Único", d: "Silhuetas modernas com elegância romântica e atemporal." },
+      { t: "Novas Coleções", d: "Coleções renovadas a cada estação." },
+      { t: "Feito à Mão", d: "Cada peça feita à mão com amor." },
+    ] as ValueItem[],
+  } satisfies Record<Lang, ValueItem[]>,
 
-  sizeChart: { el: "Πίνακας Μεγεθών", en: "Size Chart" },
-  sizeChartCta: { el: "Κατεβάστε τον πίνακα", en: "Download size guide" },
+  sizeChart:    { el: "Πίνακας Μεγεθών", en: "Size Chart", it: "Tabella Taglie", es: "Tabla de Tallas", pt: "Tabela de Tamanhos" },
+  sizeChartCta: { el: "Κατεβάστε τον πίνακα", en: "Download size guide", it: "Scarica la guida taglie", es: "Descargar guía de tallas", pt: "Descarregar guia de tamanhos" },
   sizeChartBody: {
     el: "Δείτε αναλυτικά τα μεγέθη μας για να επιλέξετε το ιδανικό ένδυμα για το παιδί σας.",
     en: "View detailed measurements to choose the ideal garment for your child.",
+    it: "Consulta le misure dettagliate per scegliere il capo ideale per il tuo bambino.",
+    es: "Consulta las medidas detalladas para elegir la prenda ideal para tu hijo.",
+    pt: "Veja as medidas detalhadas para escolher a peça ideal para o seu filho.",
   },
 
-  viewDetails: { el: "Δείτε περισσότερα", en: "View details" },
-  code: { el: "Κωδικός", en: "Code" },
+  viewDetails: { el: "Δείτε περισσότερα", en: "View details", it: "Vedi dettagli", es: "Ver detalles", pt: "Ver detalhes" },
+  code:        { el: "Κωδικός", en: "Code", it: "Codice", es: "Código", pt: "Código" },
 
   pages: {
-    boys:        { el: { title: "Αγόρι", sub: "Collection 2026" }, en: { title: "Boys", sub: "Collection 2026" } },
-    girls:       { el: { title: "Κορίτσι", sub: "Collection 2026" }, en: { title: "Girls", sub: "Collection 2026" } },
-    silk:        { el: { title: "Silk Collection", sub: "Πολυτέλεια σε μετάξι" }, en: { title: "Silk Collection", sub: "Luxury in silk" } },
-    accessories: { el: { title: "Αξεσουάρ Βάπτισης", sub: "Σετ & συμπληρώματα" }, en: { title: "Baptism Accessories", sub: "Sets & complements" } },
-    communion:   { el: { title: "Communion", sub: "Συλλογή Πρώτης Κοινωνίας" }, en: { title: "Communion", sub: "First Communion collection" } },
-    sales:       { el: { title: "Σημεία Πώλησης", sub: "Βρείτε μας σε επιλεγμένα καταστήματα" }, en: { title: "Sales Points", sub: "Find us at select retailers" } },
-    contact:     { el: { title: "Επικοινωνία", sub: "Είμαστε εδώ για εσάς" }, en: { title: "Contact", sub: "We are here for you" } },
+    boys: {
+      title: { el: "Αγόρι", en: "Boys", it: "Bambino", es: "Niño", pt: "Menino" },
+      sub:   { el: "Collection 2026", en: "Collection 2026", it: "Collection 2026", es: "Collection 2026", pt: "Collection 2026" },
+    },
+    girls: {
+      title: { el: "Κορίτσι", en: "Girls", it: "Bambina", es: "Niña", pt: "Menina" },
+      sub:   { el: "Collection 2026", en: "Collection 2026", it: "Collection 2026", es: "Collection 2026", pt: "Collection 2026" },
+    },
+    silk: {
+      title: { el: "Silk Collection", en: "Silk Collection", it: "Silk Collection", es: "Silk Collection", pt: "Silk Collection" },
+      sub:   { el: "Πολυτέλεια σε μετάξι", en: "Luxury in silk", it: "Lusso in seta", es: "Lujo en seda", pt: "Luxo em seda" },
+    },
+    accessories: {
+      title: { el: "Αξεσουάρ Βάπτισης", en: "Baptism Accessories", it: "Accessori Battesimo", es: "Accesorios de Bautizo", pt: "Acessórios de Batismo" },
+      sub:   { el: "Σετ & συμπληρώματα", en: "Sets & complements", it: "Set e complementi", es: "Conjuntos y complementos", pt: "Conjuntos e complementos" },
+    },
+    communion: {
+      title: { el: "Communion", en: "Communion", it: "Comunione", es: "Comunión", pt: "Comunhão" },
+      sub:   { el: "Συλλογή Πρώτης Κοινωνίας", en: "First Communion collection", it: "Collezione Prima Comunione", es: "Colección Primera Comunión", pt: "Coleção Primeira Comunhão" },
+    },
+    sales: {
+      title: { el: "Σημεία Πώλησης", en: "Sales Points", it: "Punti Vendita", es: "Puntos de Venta", pt: "Pontos de Venda" },
+      sub:   { el: "Βρείτε μας σε επιλεγμένα καταστήματα", en: "Find us at select retailers", it: "Trovaci nei rivenditori selezionati", es: "Encuéntranos en tiendas selectas", pt: "Encontre-nos em lojas selecionadas" },
+    },
+    contact: {
+      title: { el: "Επικοινωνία", en: "Contact", it: "Contatti", es: "Contacto", pt: "Contato" },
+      sub:   { el: "Είμαστε εδώ για εσάς", en: "We are here for you", it: "Siamo qui per te", es: "Estamos aquí para ti", pt: "Estamos aqui para si" },
+    },
   },
 
   salesNote: {
     el: "Δείτε τα καταστήματα που διαθέτουν Dolce Bambini σε όλη την Ελλάδα.",
     en: "Discover the stores carrying Dolce Bambini across Greece.",
+    it: "Scopri i negozi che vendono Dolce Bambini in tutta la Grecia.",
+    es: "Descubre las tiendas que ofrecen Dolce Bambini en toda Grecia.",
+    pt: "Descubra as lojas que comercializam Dolce Bambini em toda a Grécia.",
   },
   salesPlaceholder: {
     el: "Σύντομα αναλυτική λίστα και χάρτης καταστημάτων.",
     en: "Detailed store list and map coming soon.",
+    it: "Elenco dettagliato dei negozi e mappa in arrivo.",
+    es: "Lista detallada de tiendas y mapa próximamente.",
+    pt: "Lista detalhada de lojas e mapa em breve.",
   },
 
   contactForm: {
-    name: { el: "Όνομα", en: "Name" },
-    email: { el: "Email", en: "Email" },
-    message: { el: "Μήνυμα", en: "Message" },
-    send: { el: "Αποστολή", en: "Send message" },
-    sent: { el: "Ευχαριστούμε! Θα επικοινωνήσουμε σύντομα.", en: "Thank you! We will be in touch soon." },
+    name:    { el: "Όνομα", en: "Name", it: "Nome", es: "Nombre", pt: "Nome" },
+    email:   { el: "Email", en: "Email", it: "Email", es: "Correo", pt: "Email" },
+    message: { el: "Μήνυμα", en: "Message", it: "Messaggio", es: "Mensaje", pt: "Mensagem" },
+    send:    { el: "Αποστολή", en: "Send message", it: "Invia messaggio", es: "Enviar mensaje", pt: "Enviar mensagem" },
+    sent:    {
+      el: "Ευχαριστούμε! Θα επικοινωνήσουμε σύντομα.",
+      en: "Thank you! We will be in touch soon.",
+      it: "Grazie! Ti contatteremo presto.",
+      es: "¡Gracias! Nos pondremos en contacto pronto.",
+      pt: "Obrigado! Entraremos em contacto em breve.",
+    },
   },
 
   footer: {
-    tagline: { el: "Χειροποίητη κομψότητα από το 1978.", en: "Handcrafted elegance since 1978." },
-    quickLinks: { el: "Πλοήγηση", en: "Navigation" },
-    contact: { el: "Επικοινωνία", en: "Contact" },
-    follow: { el: "Ακολουθήστε μας", en: "Follow us" },
-    rights: { el: "Με επιφύλαξη παντός δικαιώματος.", en: "All rights reserved." },
+    tagline: {
+      el: "Χειροποίητη κομψότητα από το 1978.",
+      en: "Handcrafted elegance since 1978.",
+      it: "Eleganza fatta a mano dal 1978.",
+      es: "Elegancia hecha a mano desde 1978.",
+      pt: "Elegância feita à mão desde 1978.",
+    },
+    quickLinks: { el: "Πλοήγηση", en: "Navigation", it: "Navigazione", es: "Navegación", pt: "Navegação" },
+    contact:    { el: "Επικοινωνία", en: "Contact", it: "Contatti", es: "Contacto", pt: "Contato" },
+    follow:     { el: "Ακολουθήστε μας", en: "Follow us", it: "Seguici", es: "Síguenos", pt: "Siga-nos" },
+    rights:     { el: "Με επιφύλαξη παντός δικαιώματος.", en: "All rights reserved.", it: "Tutti i diritti riservati.", es: "Todos los derechos reservados.", pt: "Todos os direitos reservados." },
+    designed:   { el: "Σχεδίαση με αγάπη", en: "Designed with love", it: "Disegnato con amore", es: "Diseñado con amor", pt: "Desenhado com amor" },
+  },
+
+  // Inline copy used across routes
+  copy: {
+    since1978:       { el: "Από το 1978", en: "Since 1978", it: "Dal 1978", es: "Desde 1978", pt: "Desde 1978" },
+    featuredPieces:  { el: "Επιλεγμένα κομμάτια", en: "Featured pieces", it: "Pezzi in evidenza", es: "Piezas destacadas", pt: "Peças em destaque" },
+    allGirls:        { el: "Όλα τα κορίτσια", en: "All girls", it: "Tutte le bambine", es: "Todas las niñas", pt: "Todas as meninas" },
+    allBoys:         { el: "Όλα τα αγόρια", en: "All boys", it: "Tutti i bambini", es: "Todos los niños", pt: "Todos os meninos" },
+    perfectSize:     { el: "Βρείτε το ιδανικό μέγεθος", en: "Find the perfect size", it: "Trova la taglia perfetta", es: "Encuentra la talla ideal", pt: "Encontre o tamanho ideal" },
+    getInTouch:      { el: "Στοιχεία Επικοινωνίας", en: "Get in Touch", it: "Contattaci", es: "Datos de Contacto", pt: "Entre em Contacto" },
+    googleMap:       { el: "Χάρτης Google", en: "Google Map", it: "Mappa Google", es: "Mapa de Google", pt: "Mapa do Google" },
+    flagshipStore:   { el: "Κεντρικό Κατάστημα", en: "Flagship Store", it: "Negozio Principale", es: "Tienda Insignia", pt: "Loja Principal" },
+    visitGlyfada:    { el: "Επισκεφθείτε μας στη Γλυφάδα.", en: "Visit us in Glyfada.", it: "Visitaci a Glyfada.", es: "Visítanos en Glyfada.", pt: "Visite-nos em Glyfada." },
+    map:             { el: "Χάρτης", en: "Map", it: "Mappa", es: "Mapa", pt: "Mapa" },
+    baptismalFallback: { el: "Βαπτιστικό", en: "Baptismal Outfit", it: "Completo da Battesimo", es: "Conjunto de Bautizo", pt: "Traje de Batismo" },
   },
 } as const;
 
 export const CONTACT = {
-  address: "Δωδεκανήσου 47, Γλυφάδα 165 62",
-  addressEn: "47 Dodekanisou St., Glyfada 165 62, Athens, Greece",
+  address: {
+    el: "Δωδεκανήσου 47, Γλυφάδα 165 62",
+    en: "47 Dodekanisou St., Glyfada 165 62, Athens, Greece",
+    it: "Via Dodekanisou 47, Glyfada 165 62, Atene, Grecia",
+    es: "Calle Dodekanisou 47, Glyfada 165 62, Atenas, Grecia",
+    pt: "Rua Dodekanisou 47, Glyfada 165 62, Atenas, Grécia",
+  },
   phone: "+30 210 96 03 035",
   email: "info@dolcebambini.gr",
 };
@@ -102,8 +198,8 @@ export const CONTACT = {
 export type Product = {
   code: string;
   image: string;
-  title?: { el: string; en: string };
-  desc?: { el: string; en: string };
+  title?: Tr<string>;
+  desc?: Tr<string>;
 };
 
 const IMG = "https://dolcebambini.gr/images";

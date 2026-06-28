@@ -1,12 +1,14 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { NAV, T } from "@/lib/site-content";
-import { useLang } from "@/lib/lang";
+import { NAV, T, type Lang } from "@/lib/site-content";
+import { useLang, LANGS } from "@/lib/lang";
 import { Menu, X } from "lucide-react";
 
 export function Header() {
   const { lang, setLang, t } = useLang();
   const [open, setOpen] = useState(false);
+
+  const navLabel = (n: (typeof NAV)[number]) => n[lang];
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/75 border-b border-border/60">
@@ -30,18 +32,18 @@ export function Header() {
                 activeProps={{ className: "text-primary" }}
                 activeOptions={{ exact: n.to === "/" }}
               >
-                {lang === "el" ? n.el : n.en}
+                {navLabel(n)}
               </Link>
             ))}
           </nav>
 
           <div className="flex items-center gap-3">
             <div className="hidden sm:flex items-center rounded-full border border-border/70 p-0.5 bg-card shadow-sm">
-              {(["el", "en"] as const).map((l) => (
+              {LANGS.map((l: Lang) => (
                 <button
                   key={l}
                   onClick={() => setLang(l)}
-                  className={`px-3 py-1 text-[11px] font-semibold tracking-widest rounded-full transition-all ${
+                  className={`px-2.5 py-1 text-[10px] font-semibold tracking-widest rounded-full transition-all ${
                     lang === l ? "bg-primary text-primary-foreground shadow" : "text-foreground/60 hover:text-foreground"
                   }`}
                 >
@@ -68,15 +70,15 @@ export function Header() {
                   activeProps={{ className: "text-primary bg-muted" }}
                   activeOptions={{ exact: n.to === "/" }}
                 >
-                  {lang === "el" ? n.el : n.en}
+                  {navLabel(n)}
                 </Link>
               ))}
-              <div className="flex items-center gap-2 mt-3 px-3">
-                {(["el", "en"] as const).map((l) => (
+              <div className="flex flex-wrap items-center gap-2 mt-3 px-3">
+                {LANGS.map((l: Lang) => (
                   <button
                     key={l}
                     onClick={() => setLang(l)}
-                    className={`px-4 py-1.5 text-xs font-semibold tracking-widest rounded-full border ${
+                    className={`px-3 py-1.5 text-xs font-semibold tracking-widest rounded-full border ${
                       lang === l ? "bg-primary text-primary-foreground border-primary" : "border-border text-foreground/70"
                     }`}
                   >

@@ -3,11 +3,11 @@ import { T } from "@/lib/site-content";
 import { useLang } from "@/lib/lang";
 
 export function ProductCard({ product, index = 0 }: { product: Product; index?: number }) {
-  const { lang, t } = useLang();
+  const { t } = useLang();
 
   const title = product.title
-    ? (lang === "el" ? product.title.el : product.title.en)
-    : `${lang === "el" ? "Βαπτιστικό" : "Baptismal Outfit"} ${product.code}`;
+    ? t(product.title)
+    : `${t(T.copy.baptismalFallback)} ${product.code}`;
 
   return (
     <div
@@ -32,7 +32,7 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
           <h3 className="font-display text-xl leading-tight text-foreground">{title}</h3>
           {product.desc && (
             <p className="mt-2 text-sm text-muted-foreground line-clamp-3">
-              {lang === "el" ? product.desc.el : product.desc.en}
+              {t(product.desc)}
             </p>
           )}
           <div className="mt-4 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.18em] uppercase text-primary">
