@@ -22,7 +22,7 @@ function Page() {
       </header>
 
       <div className="grid lg:grid-cols-[1fr_1fr] gap-7">
-        <div className="shimmer-loop rounded-3xl bg-card border border-border/60 soft-shadow p-8 fade-up">
+        <div className="rounded-3xl bg-card border border-border/60 soft-shadow p-8 fade-up">
           <h2 className="font-display text-3xl mb-3">{t(T.copy.flagshipStore)}</h2>
           <p className="text-sm text-foreground/70 mb-5">{t(T.copy.visitGlyfada)}</p>
           <ul className="space-y-3 text-sm">

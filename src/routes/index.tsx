@@ -27,7 +27,7 @@ function Home() {
         <div className="absolute -bottom-40 -right-20 w-[600px] h-[600px] rounded-full bg-sky/40 blur-3xl float-soft" style={{ animationDelay: "1.5s" }} />
         <div className="relative mx-auto max-w-7xl px-5 lg:px-8 pt-16 pb-24 lg:pt-24 lg:pb-32 grid lg:grid-cols-2 gap-12 items-center">
           <div className="fade-up">
-            <div className="inline-flex items-center gap-2 shimmer-loop rounded-full bg-card/80 backdrop-blur border border-border/60 px-4 py-1.5 text-[10px] tracking-[0.3em] uppercase text-foreground/75 soft-shadow">
+            <div className="inline-flex items-center gap-2 rounded-full bg-card/80 backdrop-blur border border-border/60 px-4 py-1.5 text-[10px] tracking-[0.3em] uppercase text-foreground/75 soft-shadow">
               <Sparkles size={12} className="text-primary" />
               {t(T.estd)} · Collection 2026
             </div>
@@ -38,23 +38,23 @@ function Home() {
               {t(T.heroSub)}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/girls" className="shimmer inline-flex items-center rounded-full bg-primary text-primary-foreground px-7 py-3 text-sm font-medium tracking-wide soft-shadow hover:scale-[1.02] transition-transform">
+              <Link to="/girls" className="inline-flex items-center rounded-full bg-primary text-primary-foreground px-7 py-3 text-sm font-medium tracking-wide soft-shadow hover:scale-[1.02] transition-transform">
                 {t(T.heroCtaGirls)}
               </Link>
-              <Link to="/boys" className="shimmer inline-flex items-center rounded-full bg-card border border-border px-7 py-3 text-sm font-medium tracking-wide soft-shadow hover:bg-muted transition-colors">
+              <Link to="/boys" className="inline-flex items-center rounded-full bg-card border border-border px-7 py-3 text-sm font-medium tracking-wide soft-shadow hover:bg-muted transition-colors">
                 {t(T.heroCtaBoys)}
               </Link>
             </div>
           </div>
 
           <div className="relative h-[480px] lg:h-[560px]">
-            <div className="absolute top-0 right-4 w-56 lg:w-64 aspect-[3/4] rounded-3xl overflow-hidden float-shadow shimmer-loop float-soft border-4 border-card">
+            <div className="absolute top-0 right-4 w-56 lg:w-64 aspect-[3/4] rounded-3xl overflow-hidden float-shadow float-soft border-4 border-card">
               <img src={PRODUCTS.girls[0].image} alt="Featured girls" className="w-full h-full object-cover" />
             </div>
-            <div className="absolute bottom-0 left-0 w-60 lg:w-72 aspect-[3/4] rounded-3xl overflow-hidden float-shadow shimmer-loop float-soft border-4 border-card" style={{ animationDelay: "2s" }}>
+            <div className="absolute bottom-0 left-0 w-60 lg:w-72 aspect-[3/4] rounded-3xl overflow-hidden float-shadow float-soft border-4 border-card" style={{ animationDelay: "2s" }}>
               <img src={PRODUCTS.boys[0].image} alt="Featured boys" className="w-full h-full object-cover" />
             </div>
-            <div className="absolute top-24 left-32 w-44 lg:w-52 aspect-[3/4] rounded-3xl overflow-hidden float-shadow shimmer-loop float-soft border-4 border-card" style={{ animationDelay: "1s" }}>
+            <div className="absolute top-24 left-32 w-44 lg:w-52 aspect-[3/4] rounded-3xl overflow-hidden float-shadow float-soft border-4 border-card" style={{ animationDelay: "1s" }}>
               <img src={PRODUCTS.silk[0].image} alt="Featured silk" className="w-full h-full object-cover" />
             </div>
           </div>
@@ -74,7 +74,7 @@ function Home() {
           {t(T.values).map((v, i) => {
             const Icon = icons[i];
             return (
-              <div key={v.t} className="shimmer group relative rounded-3xl bg-card border border-border/60 p-7 soft-shadow hover:-translate-y-1 transition-transform duration-500 fade-up" style={{ animationDelay: `${i * 90}ms` }}>
+              <div key={v.t} className="group relative rounded-3xl bg-card border border-border/60 p-7 soft-shadow hover:-translate-y-1 transition-transform duration-500 fade-up" style={{ animationDelay: `${i * 90}ms` }}>
                 <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary/20 to-sky/40 grid place-items-center text-primary mb-5">
                   <Icon size={22} />
                 </div>
@@ -107,7 +107,7 @@ function Home() {
 
       {/* SIZE CHART */}
       <section className="mx-auto max-w-7xl px-5 lg:px-8 pb-24">
-        <div className="shimmer-loop relative rounded-3xl bg-gradient-to-br from-blush/60 via-card to-sky/40 border border-border/60 p-10 lg:p-14 float-shadow grid lg:grid-cols-[1.5fr_1fr] gap-8 items-center overflow-hidden">
+        <div className="relative rounded-3xl bg-gradient-to-br from-blush/60 via-card to-sky/40 border border-border/60 p-10 lg:p-14 float-shadow grid lg:grid-cols-[1.5fr_1fr] gap-8 items-center overflow-hidden">
           <div>
             <div className="text-[11px] tracking-[0.35em] uppercase text-primary mb-3">{t(T.sizeChart)}</div>
             <h2 className="font-display text-4xl md:text-5xl tracking-tight">
@@ -119,7 +119,7 @@ function Home() {
             <a
               href="#"
               onClick={(e) => e.preventDefault()}
-              className="shimmer inline-flex items-center gap-2 rounded-full bg-foreground text-background px-6 py-3 text-sm font-medium tracking-wide soft-shadow hover:scale-[1.02] transition-transform"
+              className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-6 py-3 text-sm font-medium tracking-wide soft-shadow hover:scale-[1.02] transition-transform"
             >
               <Download size={16} /> {t(T.sizeChartCta)}
             </a>

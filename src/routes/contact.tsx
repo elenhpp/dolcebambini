@@ -26,7 +26,7 @@ function Page() {
       <div className="grid lg:grid-cols-[1.1fr_1fr] gap-7">
         <form
           onSubmit={(e) => { e.preventDefault(); setSent(true); }}
-          className="shimmer-loop rounded-3xl bg-card border border-border/60 soft-shadow p-8 lg:p-10 fade-up"
+          className="rounded-3xl bg-card border border-border/60 soft-shadow p-8 lg:p-10 fade-up"
         >
           <div className="grid gap-5">
             <Field label={t(T.contactForm.name)}>
@@ -40,7 +40,7 @@ function Page() {
             </Field>
             <button
               type="submit"
-              className="shimmer inline-flex items-center justify-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3 text-sm font-medium tracking-wide soft-shadow hover:scale-[1.01] transition-transform"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3 text-sm font-medium tracking-wide soft-shadow hover:scale-[1.01] transition-transform"
             >
               <Send size={15} /> {t(T.contactForm.send)}
             </button>
