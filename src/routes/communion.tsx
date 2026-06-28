@@ -5,8 +5,8 @@ import { PRODUCTS, T } from "@/lib/site-content";
 function Page() {
   return (
     <CategoryPage
-      title={{ el: T.pages.communion.el.title, en: T.pages.communion.en.title }}
-      sub={{ el: T.pages.communion.el.sub, en: T.pages.communion.en.sub }}
+      title={T.pages.communion.title}
+      sub={T.pages.communion.sub}
       products={PRODUCTS.communion}
     />
   );
