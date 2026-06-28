@@ -1,0 +1,93 @@
+import { Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { NAV, T } from "@/lib/site-content";
+import { useLang } from "@/lib/lang";
+import { Menu, X } from "lucide-react";
+
+export function Header() {
+  const { lang, setLang, t } = useLang();
+  const [open, setOpen] = useState(false);
+
+  return (
+    <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/75 border-b border-border/60">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          <Link to="/" className="group flex flex-col leading-none">
+            <span className="font-display text-2xl md:text-3xl tracking-tight text-foreground">
+              {t(T.brand)}
+            </span>
+            <span className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mt-0.5">
+              {t(T.estd)}
+            </span>
+          </Link>
+
+          <nav className="hidden lg:flex items-center gap-7">
+            {NAV.map((n) => (
+              <Link
+                key={n.key}
+                to={n.to}
+                className="text-[11px] tracking-[0.18em] font-medium text-foreground/75 hover:text-primary transition-colors"
+                activeProps={{ className: "text-primary" }}
+                activeOptions={{ exact: n.to === "/" }}
+              >
+                {lang === "el" ? n.el : n.en}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-3">
+            <div className="hidden sm:flex items-center rounded-full border border-border/70 p-0.5 bg-card shadow-sm">
+              {(["el", "en"] as const).map((l) => (
+                <button
+                  key={l}
+                  onClick={() => setLang(l)}
+                  className={`px-3 py-1 text-[11px] font-semibold tracking-widest rounded-full transition-all ${
+                    lang === l ? "bg-primary text-primary-foreground shadow" : "text-foreground/60 hover:text-foreground"
+                  }`}
+                >
+                  {l.toUpperCase()}
+                </button>
+              ))}
+            </div>
+
+            <button className="lg:hidden p-2 -mr-2" onClick={() => setOpen((o) => !o)} aria-label="Menu">
+              {open ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
+        </div>
+
+        {open && (
+          <div className="lg:hidden pb-6 fade-up">
+            <nav className="flex flex-col gap-1">
+              {NAV.map((n) => (
+                <Link
+                  key={n.key}
+                  to={n.to}
+                  onClick={() => setOpen(false)}
+                  className="px-3 py-3 text-sm tracking-[0.15em] text-foreground/80 rounded-lg hover:bg-muted"
+                  activeProps={{ className: "text-primary bg-muted" }}
+                  activeOptions={{ exact: n.to === "/" }}
+                >
+                  {lang === "el" ? n.el : n.en}
+                </Link>
+              ))}
+              <div className="flex items-center gap-2 mt-3 px-3">
+                {(["el", "en"] as const).map((l) => (
+                  <button
+                    key={l}
+                    onClick={() => setLang(l)}
+                    className={`px-4 py-1.5 text-xs font-semibold tracking-widest rounded-full border ${
+                      lang === l ? "bg-primary text-primary-foreground border-primary" : "border-border text-foreground/70"
+                    }`}
+                  >
+                    {l.toUpperCase()}
+                  </button>
+                ))}
+              </div>
+            </nav>
+          </div>
+        )}
+      </div>
+    </header>
+  );
+}
