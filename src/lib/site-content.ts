@@ -324,10 +324,19 @@ export const PRODUCTS: Record<string, Product[]> = {
     {
       code: "K46-7005",
       image: `${IMG}/Collection2026/SetVaptisis/K46-7005.jpg`,
-      title: { el: "Σετ Βάπτισης K46-7005", en: "Baptism Set K46-7005" },
+      title: {
+        el: "Σετ Βάπτισης K46-7005",
+        en: "Baptism Set K46-7005",
+        it: "Set Battesimo K46-7005",
+        es: "Conjunto de Bautizo K46-7005",
+        pt: "Conjunto de Batismo K46-7005",
+      },
       desc: {
         el: "Συντονισμένο σετ αξεσουάρ βάπτισης για μια ολοκληρωμένη παρουσία.",
         en: "Coordinated christening accessory set for a complete presentation.",
+        it: "Set coordinato di accessori da battesimo per una presentazione completa.",
+        es: "Conjunto coordinado de accesorios de bautizo para una presentación completa.",
+        pt: "Conjunto coordenado de acessórios de batismo para uma apresentação completa.",
       },
     },
     { code: "K45-7021", image: `${IMG}/Collection2026/SetVaptisis/K45-7021.jpg` },
