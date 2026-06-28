@@ -9,9 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as GirlsRouteImport } from './routes/girls'
 import { Route as BoysRouteImport } from './routes/boys'
 import { Route as IndexRouteImport } from './routes/index'
 
+const GirlsRoute = GirlsRouteImport.update({
+  id: '/girls',
+  path: '/girls',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BoysRoute = BoysRouteImport.update({
   id: '/boys',
   path: '/boys',
@@ -26,31 +32,42 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/boys': typeof BoysRoute
+  '/girls': typeof GirlsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/boys': typeof BoysRoute
+  '/girls': typeof GirlsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/boys': typeof BoysRoute
+  '/girls': typeof GirlsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/boys'
+  fullPaths: '/' | '/boys' | '/girls'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/boys'
-  id: '__root__' | '/' | '/boys'
+  to: '/' | '/boys' | '/girls'
+  id: '__root__' | '/' | '/boys' | '/girls'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BoysRoute: typeof BoysRoute
+  GirlsRoute: typeof GirlsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/girls': {
+      id: '/girls'
+      path: '/girls'
+      fullPath: '/girls'
+      preLoaderRoute: typeof GirlsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/boys': {
       id: '/boys'
       path: '/boys'
@@ -71,6 +88,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BoysRoute: BoysRoute,
+  GirlsRoute: GirlsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
