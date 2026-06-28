@@ -14,7 +14,7 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
       className="fade-up"
       style={{ animationDelay: `${Math.min(index * 60, 600)}ms` }}
     >
-      <div className="shimmer group relative rounded-3xl bg-card border border-border/60 soft-shadow overflow-hidden transition-transform duration-500 hover:-translate-y-1 hover:shadow-lg">
+      <div className="group relative rounded-3xl bg-card border border-border/60 soft-shadow overflow-hidden transition-transform duration-500 hover:-translate-y-1 hover:shadow-lg">
         <div className="relative aspect-[3/4] overflow-hidden bg-muted">
           <img
             src={product.image}
@@ -23,7 +23,7 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.06]"
             onError={(e) => { (e.currentTarget as HTMLImageElement).style.opacity = "0.4"; }}
           />
-          <div className="absolute top-3 left-3 z-[3] shimmer rounded-full bg-background/90 backdrop-blur px-3 py-1 text-[10px] tracking-[0.2em] uppercase text-foreground/80 border border-border/60">
+          <div className="absolute top-3 left-3 z-[3] rounded-full bg-background/90 backdrop-blur px-3 py-1 text-[10px] tracking-[0.2em] uppercase text-foreground/80 border border-border/60">
             {t(T.code)} {product.code}
           </div>
         </div>
