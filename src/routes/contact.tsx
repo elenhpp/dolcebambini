@@ -13,14 +13,14 @@ export const Route = createFileRoute("/contact")({
 });
 
 function Page() {
-  const { t, lang } = useLang();
+  const { t } = useLang();
   const [sent, setSent] = useState(false);
 
   return (
     <div className="mx-auto max-w-6xl px-5 lg:px-8 pt-12 pb-24">
       <header className="text-center max-w-3xl mx-auto mb-12 fade-up">
-        <div className="text-[11px] tracking-[0.35em] uppercase text-primary mb-3">{t({ el: T.pages.contact.el.sub, en: T.pages.contact.en.sub })}</div>
-        <h1 className="font-display text-5xl md:text-6xl tracking-tight">{t({ el: T.pages.contact.el.title, en: T.pages.contact.en.title })}</h1>
+        <div className="text-[11px] tracking-[0.35em] uppercase text-primary mb-3">{t(T.pages.contact.sub)}</div>
+        <h1 className="font-display text-5xl md:text-6xl tracking-tight">{t(T.pages.contact.title)}</h1>
       </header>
 
       <div className="grid lg:grid-cols-[1.1fr_1fr] gap-7">
@@ -50,15 +50,15 @@ function Page() {
 
         <div className="space-y-5 fade-up" style={{ animationDelay: "120ms" }}>
           <div className="rounded-3xl bg-gradient-to-br from-blush/50 via-card to-sky/40 border border-border/60 p-8 soft-shadow">
-            <h3 className="font-display text-2xl mb-5">{lang === "el" ? "Στοιχεία Επικοινωνίας" : "Get in Touch"}</h3>
+            <h3 className="font-display text-2xl mb-5">{t(T.copy.getInTouch)}</h3>
             <ul className="space-y-4 text-sm">
-              <li className="flex items-start gap-3"><MapPin size={16} className="mt-0.5 text-primary shrink-0" />{lang === "el" ? CONTACT.address : CONTACT.addressEn}</li>
+              <li className="flex items-start gap-3"><MapPin size={16} className="mt-0.5 text-primary shrink-0" />{t(CONTACT.address)}</li>
               <li className="flex items-center gap-3"><Phone size={16} className="text-primary" /><a href={`tel:${CONTACT.phone.replace(/\s/g,"")}`} className="hover:text-primary">{CONTACT.phone}</a></li>
               <li className="flex items-center gap-3"><Mail size={16} className="text-primary" /><a href={`mailto:${CONTACT.email}`} className="hover:text-primary">{CONTACT.email}</a></li>
             </ul>
           </div>
           <div className="rounded-3xl border border-dashed border-border bg-muted/40 h-56 grid place-items-center text-sm text-muted-foreground">
-            {lang === "el" ? "Χάρτης Google" : "Google Map"}
+            {t(T.copy.googleMap)}
           </div>
         </div>
       </div>

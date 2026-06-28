@@ -15,7 +15,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const { t, lang } = useLang();
+  const { t } = useLang();
   const featured = [...PRODUCTS.girls.slice(0, 2), ...PRODUCTS.boys.slice(0, 2)];
   const icons = [Award, Sparkles, Layers, Scissors];
 
@@ -63,7 +63,7 @@ function Home() {
 
       {/* STORY */}
       <section className="mx-auto max-w-5xl px-5 lg:px-8 py-24 text-center">
-        <div className="text-[11px] tracking-[0.35em] uppercase text-primary mb-4">{lang === "el" ? "Από το 1978" : "Since 1978"}</div>
+        <div className="text-[11px] tracking-[0.35em] uppercase text-primary mb-4">{t(T.copy.since1978)}</div>
         <h2 className="font-display text-4xl md:text-5xl tracking-tight">{t(T.storyTitle)}</h2>
         <p className="mt-6 text-lg text-foreground/70 leading-relaxed max-w-3xl mx-auto">{t(T.storyBody)}</p>
       </section>
@@ -92,12 +92,12 @@ function Home() {
           <div>
             <div className="text-[11px] tracking-[0.35em] uppercase text-primary mb-2">Collection 2026</div>
             <h2 className="font-display text-4xl md:text-5xl tracking-tight">
-              {lang === "el" ? "Επιλεγμένα κομμάτια" : "Featured pieces"}
+              {t(T.copy.featuredPieces)}
             </h2>
           </div>
           <div className="flex gap-3 text-sm">
-            <Link to="/girls" className="text-primary hover:underline">{lang === "el" ? "Όλα τα κορίτσια" : "All girls"} →</Link>
-            <Link to="/boys" className="text-primary hover:underline">{lang === "el" ? "Όλα τα αγόρια" : "All boys"} →</Link>
+            <Link to="/girls" className="text-primary hover:underline">{t(T.copy.allGirls)} →</Link>
+            <Link to="/boys" className="text-primary hover:underline">{t(T.copy.allBoys)} →</Link>
           </div>
         </div>
         <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-4">
@@ -111,7 +111,7 @@ function Home() {
           <div>
             <div className="text-[11px] tracking-[0.35em] uppercase text-primary mb-3">{t(T.sizeChart)}</div>
             <h2 className="font-display text-4xl md:text-5xl tracking-tight">
-              {lang === "el" ? "Βρείτε το ιδανικό μέγεθος" : "Find the perfect size"}
+              {t(T.copy.perfectSize)}
             </h2>
             <p className="mt-4 text-foreground/70 max-w-xl leading-relaxed">{t(T.sizeChartBody)}</p>
           </div>
