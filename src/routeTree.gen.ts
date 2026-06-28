@@ -9,10 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SilkRouteImport } from './routes/silk'
 import { Route as GirlsRouteImport } from './routes/girls'
 import { Route as BoysRouteImport } from './routes/boys'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SilkRoute = SilkRouteImport.update({
+  id: '/silk',
+  path: '/silk',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GirlsRoute = GirlsRouteImport.update({
   id: '/girls',
   path: '/girls',
@@ -33,34 +39,45 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/boys': typeof BoysRoute
   '/girls': typeof GirlsRoute
+  '/silk': typeof SilkRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/boys': typeof BoysRoute
   '/girls': typeof GirlsRoute
+  '/silk': typeof SilkRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/boys': typeof BoysRoute
   '/girls': typeof GirlsRoute
+  '/silk': typeof SilkRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/boys' | '/girls'
+  fullPaths: '/' | '/boys' | '/girls' | '/silk'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/boys' | '/girls'
-  id: '__root__' | '/' | '/boys' | '/girls'
+  to: '/' | '/boys' | '/girls' | '/silk'
+  id: '__root__' | '/' | '/boys' | '/girls' | '/silk'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BoysRoute: typeof BoysRoute
   GirlsRoute: typeof GirlsRoute
+  SilkRoute: typeof SilkRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/silk': {
+      id: '/silk'
+      path: '/silk'
+      fullPath: '/silk'
+      preLoaderRoute: typeof SilkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/girls': {
       id: '/girls'
       path: '/girls'
@@ -89,6 +106,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BoysRoute: BoysRoute,
   GirlsRoute: GirlsRoute,
+  SilkRoute: SilkRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
