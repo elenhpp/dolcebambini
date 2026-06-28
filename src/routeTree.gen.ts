@@ -9,8 +9,50 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SilkRouteImport } from './routes/silk'
+import { Route as SalesPointsRouteImport } from './routes/sales-points'
+import { Route as GirlsRouteImport } from './routes/girls'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CommunionRouteImport } from './routes/communion'
+import { Route as BoysRouteImport } from './routes/boys'
+import { Route as AccessoriesRouteImport } from './routes/accessories'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SilkRoute = SilkRouteImport.update({
+  id: '/silk',
+  path: '/silk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SalesPointsRoute = SalesPointsRouteImport.update({
+  id: '/sales-points',
+  path: '/sales-points',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GirlsRoute = GirlsRouteImport.update({
+  id: '/girls',
+  path: '/girls',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunionRoute = CommunionRouteImport.update({
+  id: '/communion',
+  path: '/communion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BoysRoute = BoysRouteImport.update({
+  id: '/boys',
+  path: '/boys',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccessoriesRoute = AccessoriesRouteImport.update({
+  id: '/accessories',
+  path: '/accessories',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +61,130 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/accessories': typeof AccessoriesRoute
+  '/boys': typeof BoysRoute
+  '/communion': typeof CommunionRoute
+  '/contact': typeof ContactRoute
+  '/girls': typeof GirlsRoute
+  '/sales-points': typeof SalesPointsRoute
+  '/silk': typeof SilkRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/accessories': typeof AccessoriesRoute
+  '/boys': typeof BoysRoute
+  '/communion': typeof CommunionRoute
+  '/contact': typeof ContactRoute
+  '/girls': typeof GirlsRoute
+  '/sales-points': typeof SalesPointsRoute
+  '/silk': typeof SilkRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/accessories': typeof AccessoriesRoute
+  '/boys': typeof BoysRoute
+  '/communion': typeof CommunionRoute
+  '/contact': typeof ContactRoute
+  '/girls': typeof GirlsRoute
+  '/sales-points': typeof SalesPointsRoute
+  '/silk': typeof SilkRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/accessories'
+    | '/boys'
+    | '/communion'
+    | '/contact'
+    | '/girls'
+    | '/sales-points'
+    | '/silk'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/accessories'
+    | '/boys'
+    | '/communion'
+    | '/contact'
+    | '/girls'
+    | '/sales-points'
+    | '/silk'
+  id:
+    | '__root__'
+    | '/'
+    | '/accessories'
+    | '/boys'
+    | '/communion'
+    | '/contact'
+    | '/girls'
+    | '/sales-points'
+    | '/silk'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AccessoriesRoute: typeof AccessoriesRoute
+  BoysRoute: typeof BoysRoute
+  CommunionRoute: typeof CommunionRoute
+  ContactRoute: typeof ContactRoute
+  GirlsRoute: typeof GirlsRoute
+  SalesPointsRoute: typeof SalesPointsRoute
+  SilkRoute: typeof SilkRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/silk': {
+      id: '/silk'
+      path: '/silk'
+      fullPath: '/silk'
+      preLoaderRoute: typeof SilkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sales-points': {
+      id: '/sales-points'
+      path: '/sales-points'
+      fullPath: '/sales-points'
+      preLoaderRoute: typeof SalesPointsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/girls': {
+      id: '/girls'
+      path: '/girls'
+      fullPath: '/girls'
+      preLoaderRoute: typeof GirlsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/communion': {
+      id: '/communion'
+      path: '/communion'
+      fullPath: '/communion'
+      preLoaderRoute: typeof CommunionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/boys': {
+      id: '/boys'
+      path: '/boys'
+      fullPath: '/boys'
+      preLoaderRoute: typeof BoysRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/accessories': {
+      id: '/accessories'
+      path: '/accessories'
+      fullPath: '/accessories'
+      preLoaderRoute: typeof AccessoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +197,14 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AccessoriesRoute: AccessoriesRoute,
+  BoysRoute: BoysRoute,
+  CommunionRoute: CommunionRoute,
+  ContactRoute: ContactRoute,
+  GirlsRoute: GirlsRoute,
+  SalesPointsRoute: SalesPointsRoute,
+  SilkRoute: SilkRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
