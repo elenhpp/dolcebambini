@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SilkRouteImport } from './routes/silk'
 import { Route as GirlsRouteImport } from './routes/girls'
 import { Route as BoysRouteImport } from './routes/boys'
+import { Route as AccessoriesRouteImport } from './routes/accessories'
 import { Route as IndexRouteImport } from './routes/index'
 
 const SilkRoute = SilkRouteImport.update({
@@ -29,6 +30,11 @@ const BoysRoute = BoysRouteImport.update({
   path: '/boys',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AccessoriesRoute = AccessoriesRouteImport.update({
+  id: '/accessories',
+  path: '/accessories',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -37,12 +43,14 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/accessories': typeof AccessoriesRoute
   '/boys': typeof BoysRoute
   '/girls': typeof GirlsRoute
   '/silk': typeof SilkRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/accessories': typeof AccessoriesRoute
   '/boys': typeof BoysRoute
   '/girls': typeof GirlsRoute
   '/silk': typeof SilkRoute
@@ -50,20 +58,22 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/accessories': typeof AccessoriesRoute
   '/boys': typeof BoysRoute
   '/girls': typeof GirlsRoute
   '/silk': typeof SilkRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/boys' | '/girls' | '/silk'
+  fullPaths: '/' | '/accessories' | '/boys' | '/girls' | '/silk'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/boys' | '/girls' | '/silk'
-  id: '__root__' | '/' | '/boys' | '/girls' | '/silk'
+  to: '/' | '/accessories' | '/boys' | '/girls' | '/silk'
+  id: '__root__' | '/' | '/accessories' | '/boys' | '/girls' | '/silk'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AccessoriesRoute: typeof AccessoriesRoute
   BoysRoute: typeof BoysRoute
   GirlsRoute: typeof GirlsRoute
   SilkRoute: typeof SilkRoute
@@ -92,6 +102,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BoysRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/accessories': {
+      id: '/accessories'
+      path: '/accessories'
+      fullPath: '/accessories'
+      preLoaderRoute: typeof AccessoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -104,6 +121,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AccessoriesRoute: AccessoriesRoute,
   BoysRoute: BoysRoute,
   GirlsRoute: GirlsRoute,
   SilkRoute: SilkRoute,
