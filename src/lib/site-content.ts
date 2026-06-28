@@ -299,10 +299,19 @@ export const PRODUCTS: Record<string, Product[]> = {
     {
       code: "G432-1",
       image: `${IMG}/silk_collection/G432-1/g4321-front.jpg`,
-      title: { el: "Φόρεμα G432-1", en: "Dress G432-1" },
+      title: {
+        el: "Φόρεμα G432-1",
+        en: "Dress G432-1",
+        it: "Abito G432-1",
+        es: "Vestido G432-1",
+        pt: "Vestido G432-1",
+      },
       desc: {
         el: "Μακρύ φόρεμα με κοντά μανίκια από υψηλής ποιότητας μετάξι. Δαντέλα με χάντρες και παγιέτες σε baroque/floral σχέδια στο τελείωμα. 100% βαμβακερή υποαλλεργική φόδρα. Διαθέσιμο σε ivory ή λευκό. Μήκος 85cm. Περιλαμβάνει σκουφάκι και παπουτσάκια.",
         en: "Long short-sleeved dress in premium silk. Lace trim with bead and sequin embellishments forming baroque/floral patterns at the hem. 100% cotton hypoallergenic lining. Available in ivory or white. 85cm length. Includes bonnet and shoes.",
+        it: "Abito lungo a maniche corte in seta pregiata. Bordo in pizzo con applicazioni di perline e paillettes a motivi barocchi/floreali sull'orlo. Fodera ipoallergenica in 100% cotone. Disponibile in avorio o bianco. Lunghezza 85 cm. Include cuffietta e scarpine.",
+        es: "Vestido largo de manga corta en seda de alta calidad. Encaje con cuentas y lentejuelas formando motivos barrocos/florales en el bajo. Forro hipoalergénico 100% algodón. Disponible en marfil o blanco. Largo 85 cm. Incluye gorrito y zapatitos.",
+        pt: "Vestido longo de manga curta em seda de alta qualidade. Renda com missangas e lantejoulas em padrões barrocos/florais na bainha. Forro hipoalergénico 100% algodão. Disponível em marfim ou branco. Comprimento 85 cm. Inclui touca e sapatinhos.",
       },
     },
     { code: "G521-1", image: `${IMG}/silk_collection/G521-1/g5211-front.jpg` },
