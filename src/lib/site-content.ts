@@ -348,10 +348,19 @@ export const PRODUCTS: Record<string, Product[]> = {
     {
       code: "570-1",
       image: `${IMG}/communion/570-1_01.jpg`,
-      title: { el: "Φόρεμα Κοινωνίας 570-1", en: "Communion Dress 570-1" },
+      title: {
+        el: "Φόρεμα Κοινωνίας 570-1",
+        en: "Communion Dress 570-1",
+        it: "Abito da Comunione 570-1",
+        es: "Vestido de Comunión 570-1",
+        pt: "Vestido de Comunhão 570-1",
+      },
       desc: {
         el: "Φόρεμα κοινωνίας από τη συλλογή Dolce Bambini, για μια αξέχαστη ημέρα.",
         en: "Communion dress from the Dolce Bambini collection, for an unforgettable day.",
+        it: "Abito da comunione della collezione Dolce Bambini, per un giorno indimenticabile.",
+        es: "Vestido de comunión de la colección Dolce Bambini, para un día inolvidable.",
+        pt: "Vestido de comunhão da coleção Dolce Bambini, para um dia inesquecível.",
       },
     },
     { code: "6002-1", image: `${IMG}/communion/6002-1_01.jpg` },
