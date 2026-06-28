@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SilkRouteImport } from './routes/silk'
 import { Route as GirlsRouteImport } from './routes/girls'
+import { Route as CommunionRouteImport } from './routes/communion'
 import { Route as BoysRouteImport } from './routes/boys'
 import { Route as AccessoriesRouteImport } from './routes/accessories'
 import { Route as IndexRouteImport } from './routes/index'
@@ -23,6 +24,11 @@ const SilkRoute = SilkRouteImport.update({
 const GirlsRoute = GirlsRouteImport.update({
   id: '/girls',
   path: '/girls',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunionRoute = CommunionRouteImport.update({
+  id: '/communion',
+  path: '/communion',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BoysRoute = BoysRouteImport.update({
@@ -45,6 +51,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/accessories': typeof AccessoriesRoute
   '/boys': typeof BoysRoute
+  '/communion': typeof CommunionRoute
   '/girls': typeof GirlsRoute
   '/silk': typeof SilkRoute
 }
@@ -52,6 +59,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/accessories': typeof AccessoriesRoute
   '/boys': typeof BoysRoute
+  '/communion': typeof CommunionRoute
   '/girls': typeof GirlsRoute
   '/silk': typeof SilkRoute
 }
@@ -60,21 +68,30 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/accessories': typeof AccessoriesRoute
   '/boys': typeof BoysRoute
+  '/communion': typeof CommunionRoute
   '/girls': typeof GirlsRoute
   '/silk': typeof SilkRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/accessories' | '/boys' | '/girls' | '/silk'
+  fullPaths: '/' | '/accessories' | '/boys' | '/communion' | '/girls' | '/silk'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/accessories' | '/boys' | '/girls' | '/silk'
-  id: '__root__' | '/' | '/accessories' | '/boys' | '/girls' | '/silk'
+  to: '/' | '/accessories' | '/boys' | '/communion' | '/girls' | '/silk'
+  id:
+    | '__root__'
+    | '/'
+    | '/accessories'
+    | '/boys'
+    | '/communion'
+    | '/girls'
+    | '/silk'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AccessoriesRoute: typeof AccessoriesRoute
   BoysRoute: typeof BoysRoute
+  CommunionRoute: typeof CommunionRoute
   GirlsRoute: typeof GirlsRoute
   SilkRoute: typeof SilkRoute
 }
@@ -93,6 +110,13 @@ declare module '@tanstack/react-router' {
       path: '/girls'
       fullPath: '/girls'
       preLoaderRoute: typeof GirlsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/communion': {
+      id: '/communion'
+      path: '/communion'
+      fullPath: '/communion'
+      preLoaderRoute: typeof CommunionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/boys': {
@@ -123,6 +147,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AccessoriesRoute: AccessoriesRoute,
   BoysRoute: BoysRoute,
+  CommunionRoute: CommunionRoute,
   GirlsRoute: GirlsRoute,
   SilkRoute: SilkRoute,
 }
