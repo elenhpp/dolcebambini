@@ -37,13 +37,13 @@ export const T = {
       { t: "Μοναδικά Σχέδια", d: "Σύγχρονα σχέδια με ρομαντική, διαχρονική κομψότητα." },
       { t: "Νέες Συλλογές", d: "Συνεχώς ανανεωμένες συλλογές κάθε σεζόν." },
       { t: "Χειροποίητα", d: "Κάθε ένδυμα κατασκευάζεται χειροποίητα με αγάπη." },
-    ],
+    ] as { t: string; d: string }[],
     en: [
       { t: "Premium Quality", d: "Carefully selected fabrics and impeccable tailoring." },
       { t: "Unique Designs", d: "Modern silhouettes with timeless, romantic elegance." },
       { t: "New Collections", d: "Fresh collections released each season." },
       { t: "Handmade", d: "Every garment crafted by hand with love." },
-    ],
+    ] as { t: string; d: string }[],
   },
 
   sizeChart: { el: "Πίνακας Μεγεθών", en: "Size Chart" },
