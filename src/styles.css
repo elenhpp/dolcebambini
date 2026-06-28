@@ -124,40 +124,4 @@
   background: var(--gradient-hero);
 }
 
-/* Premium shimmer: a single, smooth diagonal light sweep on hover.
-   Uses an ::after overlay constrained to the host's rounded box.
-   No infinite loop = no flashing. Runs once per hover-in. */
-@utility shimmer {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    pointer-events: none;
-    background: var(--gradient-shine);
-    background-size: 220% 100%;
-    background-repeat: no-repeat;
-    background-position: 200% 0;
-    mix-blend-mode: screen;
-    opacity: 0;
-    transition:
-      background-position 1100ms cubic-bezier(0.22, 1, 0.36, 1),
-      opacity 350ms ease-out;
-    border-radius: inherit;
-  }
-  &:hover::after,
-  &:focus-visible::after {
-    opacity: 1;
-    background-position: -120% 0;
-  }
-}
-
-
-@media (prefers-reduced-motion: reduce) {
-  .shimmer::after { transition: none; opacity: 0 !important; }
-}
 
