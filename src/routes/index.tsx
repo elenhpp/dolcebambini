@@ -3,7 +3,7 @@ import { useLang } from "@/lib/lang";
 import { T, PRODUCTS } from "@/lib/site-content";
 import { ProductCard } from "@/components/ProductCard";
 import { Sparkles, Scissors, Layers, Award, Download } from "lucide-react";
-import heroVideo from "@/assets/hero.mp4.asset.json";
+import { HeroSlideshow } from "@/components/HeroSlideshow";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -22,18 +22,9 @@ function Home() {
 
   return (
     <div>
-      {/* HERO VIDEO REEL */}
+      {/* HERO SLIDESHOW */}
       <section className="relative w-full overflow-hidden bg-foreground">
-        <video
-          src={heroVideo.url}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          className="w-full h-[46vh] md:h-[62vh] lg:h-[72vh] object-cover"
-        />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/70" />
+        <HeroSlideshow />
       </section>
 
       {/* HERO */}
