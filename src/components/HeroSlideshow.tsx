@@ -1,21 +1,23 @@
 import { useEffect, useState } from "react";
 import { usePrefersReducedMotion } from "@/hooks/use-reduced-motion";
-import img1 from "@/assets/hero-new/7017b-2.png.asset.json";
-import img2 from "@/assets/hero-new/9804-4.png.asset.json";
-import img3 from "@/assets/hero-new/9905.png.asset.json";
-import img4 from "@/assets/hero-new/C11-4.png.asset.json";
-import img5 from "@/assets/hero-new/7101-a-2.jpg.asset.json";
-import img6 from "@/assets/hero-new/7109.jpg.asset.json";
-import img7 from "@/assets/hero-new/7129.jpg.asset.json";
+import img1 from "@/assets/hero-v2/7003.png.asset.json";
+import img2 from "@/assets/hero-v2/7017b-3.png.asset.json";
+import img3 from "@/assets/hero-v2/9804-4-2.png.asset.json";
+import img4 from "@/assets/hero-v2/9905-2.png.asset.json";
+import img5 from "@/assets/hero-v2/C11-4-2.png.asset.json";
+import img6 from "@/assets/hero-v2/7101-a.png.asset.json";
+import img7 from "@/assets/hero-v2/7108-a.png.asset.json";
+import img8 from "@/assets/hero-v2/7109.png.asset.json";
 
 const BASE_SLIDES = [
-  { url: img1.url, alt: "Ivory bow flower girl dress from behind in blossom garden" },
-  { url: img2.url, alt: "Blush floral high-low tulle dress in flower path" },
-  { url: img3.url, alt: "Ivory bubble-hem dress with vintage pram" },
-  { url: img4.url, alt: "Pink sequin tulle dress by rose bench" },
-  { url: img5.url, alt: "Little gentleman with ivory vest and bow tie by tree" },
-  { url: img6.url, alt: "Little boy in grey vest blowing bubbles in garden" },
-  { url: img7.url, alt: "Little boy in blue linen shirt at greenhouse path" },
+  { url: img1.url, alt: "Flower girl in ivory satin dress by the lake with tulips" },
+  { url: img2.url, alt: "Ivory bow flower girl dress from behind in blossom garden" },
+  { url: img3.url, alt: "Blush floral high-low tulle dress in flower path" },
+  { url: img4.url, alt: "Ivory bubble-hem dress with vintage pram" },
+  { url: img5.url, alt: "Pink sequin tulle dress by rose bench" },
+  { url: img6.url, alt: "Little gentleman with ivory vest and bow tie by tree" },
+  { url: img7.url, alt: "Little boy with hat and vest exploring rose garden" },
+  { url: img8.url, alt: "Little boy in grey vest blowing bubbles in garden" },
 ];
 
 const INTERVAL_MS = 4200;
@@ -56,7 +58,7 @@ export function HeroSlideshow() {
           loading={i === 0 ? "eager" : "lazy"}
           fetchPriority={i === 0 ? "high" : "auto"}
           decoding={i === 0 ? "sync" : "async"}
-          className="absolute inset-0 w-full h-full object-contain"
+          className="absolute inset-0 w-full h-full object-cover"
           style={{
             opacity: i === index ? 1 : 0,
             transition: reduced ? "opacity 600ms linear" : "opacity 1600ms ease-in-out",
