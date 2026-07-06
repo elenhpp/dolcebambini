@@ -4,7 +4,7 @@ import { T, PRODUCTS } from "@/lib/site-content";
 import { ProductCard } from "@/components/ProductCard";
 import { Sparkles, Scissors, Layers, Award, Download } from "lucide-react";
 import { HeroSlideshow } from "@/components/HeroSlideshow";
-import heroPreload from "@/assets/hero-new/7017b-2.png.asset.json";
+import heroPreload from "@/assets/hero-v2/7003.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
