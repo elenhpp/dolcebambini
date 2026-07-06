@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { usePrefersReducedMotion } from "@/hooks/use-reduced-motion";
 import img1 from "@/assets/hero/hero-7017.png.asset.json";
 import img2 from "@/assets/hero/hero-7021.png.asset.json";
