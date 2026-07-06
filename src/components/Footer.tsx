@@ -42,8 +42,8 @@ export function Footer() {
             <li className="flex items-center gap-2"><Mail size={15} className="text-primary" /><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></li>
           </ul>
           <div className="mt-5 flex gap-3">
-            <a href="https://instagram.com" aria-label="Instagram" className="w-9 h-9 grid place-items-center rounded-full bg-card border border-border hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"><Instagram size={16} /></a>
-            <a href="https://facebook.com" aria-label="Facebook" className="w-9 h-9 grid place-items-center rounded-full bg-card border border-border hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"><Facebook size={16} /></a>
+            <a href="https://www.instagram.com/dolce.bambini.official/" aria-label="Instagram" className="w-9 h-9 grid place-items-center rounded-full bg-card border border-border hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"><Instagram size={16} /></a>
+            <a href="https://www.facebook.com/profile.php?id=100063765693096" aria-label="Facebook" className="w-9 h-9 grid place-items-center rounded-full bg-card border border-border hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"><Facebook size={16} /></a>
           </div>
         </div>
       </div>
