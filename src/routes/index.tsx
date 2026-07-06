@@ -3,6 +3,7 @@ import { useLang } from "@/lib/lang";
 import { T, PRODUCTS } from "@/lib/site-content";
 import { ProductCard } from "@/components/ProductCard";
 import { Sparkles, Scissors, Layers, Award, Download } from "lucide-react";
+import heroVideo from "@/assets/hero.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
