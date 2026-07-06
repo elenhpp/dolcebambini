@@ -13,6 +13,7 @@ import { Route as SilkRouteImport } from './routes/silk'
 import { Route as SalesPointsRouteImport } from './routes/sales-points'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as GirlsRouteImport } from './routes/girls'
+import { Route as GdprRouteImport } from './routes/gdpr'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CommunionRouteImport } from './routes/communion'
 import { Route as BoysRouteImport } from './routes/boys'
@@ -37,6 +38,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const GirlsRoute = GirlsRouteImport.update({
   id: '/girls',
   path: '/girls',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GdprRoute = GdprRouteImport.update({
+  id: '/gdpr',
+  path: '/gdpr',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -71,6 +77,7 @@ export interface FileRoutesByFullPath {
   '/boys': typeof BoysRoute
   '/communion': typeof CommunionRoute
   '/contact': typeof ContactRoute
+  '/gdpr': typeof GdprRoute
   '/girls': typeof GirlsRoute
   '/privacy': typeof PrivacyRoute
   '/sales-points': typeof SalesPointsRoute
@@ -82,6 +89,7 @@ export interface FileRoutesByTo {
   '/boys': typeof BoysRoute
   '/communion': typeof CommunionRoute
   '/contact': typeof ContactRoute
+  '/gdpr': typeof GdprRoute
   '/girls': typeof GirlsRoute
   '/privacy': typeof PrivacyRoute
   '/sales-points': typeof SalesPointsRoute
@@ -94,6 +102,7 @@ export interface FileRoutesById {
   '/boys': typeof BoysRoute
   '/communion': typeof CommunionRoute
   '/contact': typeof ContactRoute
+  '/gdpr': typeof GdprRoute
   '/girls': typeof GirlsRoute
   '/privacy': typeof PrivacyRoute
   '/sales-points': typeof SalesPointsRoute
@@ -107,6 +116,7 @@ export interface FileRouteTypes {
     | '/boys'
     | '/communion'
     | '/contact'
+    | '/gdpr'
     | '/girls'
     | '/privacy'
     | '/sales-points'
@@ -118,6 +128,7 @@ export interface FileRouteTypes {
     | '/boys'
     | '/communion'
     | '/contact'
+    | '/gdpr'
     | '/girls'
     | '/privacy'
     | '/sales-points'
@@ -129,6 +140,7 @@ export interface FileRouteTypes {
     | '/boys'
     | '/communion'
     | '/contact'
+    | '/gdpr'
     | '/girls'
     | '/privacy'
     | '/sales-points'
@@ -141,6 +153,7 @@ export interface RootRouteChildren {
   BoysRoute: typeof BoysRoute
   CommunionRoute: typeof CommunionRoute
   ContactRoute: typeof ContactRoute
+  GdprRoute: typeof GdprRoute
   GirlsRoute: typeof GirlsRoute
   PrivacyRoute: typeof PrivacyRoute
   SalesPointsRoute: typeof SalesPointsRoute
@@ -175,6 +188,13 @@ declare module '@tanstack/react-router' {
       path: '/girls'
       fullPath: '/girls'
       preLoaderRoute: typeof GirlsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gdpr': {
+      id: '/gdpr'
+      path: '/gdpr'
+      fullPath: '/gdpr'
+      preLoaderRoute: typeof GdprRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -221,6 +241,7 @@ const rootRouteChildren: RootRouteChildren = {
   BoysRoute: BoysRoute,
   CommunionRoute: CommunionRoute,
   ContactRoute: ContactRoute,
+  GdprRoute: GdprRoute,
   GirlsRoute: GirlsRoute,
   PrivacyRoute: PrivacyRoute,
   SalesPointsRoute: SalesPointsRoute,
