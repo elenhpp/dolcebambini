@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Tilt } from "@/components/Tilt";
+import { usePrefersReducedMotion } from "@/hooks/use-reduced-motion";
 import img1 from "@/assets/hero/hero-7017.png.asset.json";
 import img2 from "@/assets/hero/hero-7021.png.asset.json";
 import img3 from "@/assets/hero/hero-9905.png.asset.json";
@@ -33,13 +34,16 @@ export function HeroSlideshow() {
   // Shuffle once per mount so order changes each visit.
   const slides = useMemo(() => shuffle(BASE_SLIDES), []);
   const [index, setIndex] = useState(0);
+  const reduced = usePrefersReducedMotion();
 
   useEffect(() => {
+    // Slow the rotation and lengthen the fade when motion is reduced.
+    const interval = reduced ? 9000 : INTERVAL_MS;
     const id = window.setInterval(() => {
       setIndex((i) => (i + 1) % slides.length);
-    }, INTERVAL_MS);
+    }, interval);
     return () => window.clearInterval(id);
-  }, [slides.length]);
+  }, [slides.length, reduced]);
 
   return (
     <Tilt
@@ -55,11 +59,11 @@ export function HeroSlideshow() {
           alt={slide.alt}
           loading={i === 0 ? "eager" : "lazy"}
           data-tilt-inner
-          data-tilt-depth="24"
+          data-tilt-depth={reduced ? "0" : "24"}
           className="absolute inset-0 w-full h-full object-cover will-change-[opacity,transform]"
           style={{
             opacity: i === index ? 1 : 0,
-            transition: "opacity 1600ms ease-in-out",
+            transition: reduced ? "opacity 600ms linear" : "opacity 1600ms ease-in-out",
           }}
         />
       ))}
