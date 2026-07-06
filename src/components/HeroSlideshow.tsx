@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from "react";
-import { Tilt } from "@/components/Tilt";
 import { usePrefersReducedMotion } from "@/hooks/use-reduced-motion";
 import img1 from "@/assets/hero/hero-7017.png.asset.json";
 import img2 from "@/assets/hero/hero-7021.png.asset.json";
@@ -46,21 +45,14 @@ export function HeroSlideshow() {
   }, [slides.length, reduced]);
 
   return (
-    <Tilt
-      className="group relative w-full h-[46vh] md:h-[62vh] lg:h-[72vh] overflow-hidden bg-foreground"
-      max={5}
-      scale={1.01}
-      glare={false}
-    >
+    <div className="group relative w-full h-[46vh] md:h-[62vh] lg:h-[72vh] overflow-hidden bg-foreground">
       {slides.map((slide, i) => (
         <img
           key={slide.url}
           src={slide.url}
           alt={slide.alt}
           loading={i === 0 ? "eager" : "lazy"}
-          data-tilt-inner
-          data-tilt-depth={reduced ? "0" : "24"}
-          className="absolute inset-0 w-full h-full object-cover will-change-[opacity,transform]"
+          className="absolute inset-0 w-full h-full object-cover"
           style={{
             opacity: i === index ? 1 : 0,
             transition: reduced ? "opacity 600ms linear" : "opacity 1600ms ease-in-out",
@@ -68,6 +60,6 @@ export function HeroSlideshow() {
         />
       ))}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/70" />
-    </Tilt>
+    </div>
   );
 }
