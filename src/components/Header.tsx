@@ -28,8 +28,8 @@ export function Header() {
               <Link
                 key={n.key}
                 to={n.to}
-                className="text-[11px] tracking-[0.18em] font-medium text-foreground/75 hover:text-primary transition-colors"
-                activeProps={{ className: "text-primary" }}
+                className="text-[11px] tracking-[0.18em] font-medium text-foreground/75 hover:text-foreground transition-colors"
+                activeProps={{ className: "text-foreground underline decoration-primary decoration-2 underline-offset-[6px]" }}
                 activeOptions={{ exact: n.to === "/" }}
               >
                 {navLabel(n)}
@@ -44,7 +44,7 @@ export function Header() {
                   key={l}
                   onClick={() => setLang(l)}
                   className={`px-2.5 py-1 text-[10px] font-semibold tracking-widest rounded-full transition-all ${
-                    lang === l ? "bg-primary text-primary-foreground shadow" : "text-foreground/60 hover:text-foreground"
+                    lang === l ? "bg-primary text-primary-foreground shadow" : "text-foreground/85 hover:text-foreground"
                   }`}
                 >
                   {l.toUpperCase()}
@@ -67,7 +67,7 @@ export function Header() {
                   to={n.to}
                   onClick={() => setOpen(false)}
                   className="px-3 py-3 text-sm tracking-[0.15em] text-foreground/80 rounded-lg hover:bg-muted"
-                  activeProps={{ className: "text-primary bg-muted" }}
+                  activeProps={{ className: "text-foreground bg-muted font-semibold" }}
                   activeOptions={{ exact: n.to === "/" }}
                 >
                   {navLabel(n)}

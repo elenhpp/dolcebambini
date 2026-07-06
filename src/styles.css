@@ -53,7 +53,7 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.28 0.03 280);
 
-  --primary: oklch(0.78 0.09 18);                /* dusty pink */
+  --primary: oklch(0.54 0.14 18);                /* deep rose — AA contrast on cream */
   --primary-foreground: oklch(0.99 0.005 80);
   --secondary: oklch(0.94 0.03 230);             /* pale sky */
   --secondary-foreground: oklch(0.32 0.04 260);
