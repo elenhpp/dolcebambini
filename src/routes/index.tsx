@@ -13,7 +13,7 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Χειροποίητα βαπτιστικά ρούχα και ενδύματα κοινωνίας. Collection 2026 για αγόρι και κορίτσι, Silk Collection και αξεσουάρ βάπτισης." },
     ],
     links: [
-      { rel: "preload", as: "image", href: heroPreload.url, fetchpriority: "high" },
+      { rel: "preload", as: "image", href: heroPreload.url },
     ],
   }),
   component: Home,
