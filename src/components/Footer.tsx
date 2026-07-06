@@ -51,7 +51,7 @@ export function Footer() {
         <div className="mx-auto max-w-7xl px-5 lg:px-8 py-5 text-xs text-muted-foreground flex flex-col md:flex-row justify-between gap-2">
           <span>© {new Date().getFullYear()} Dolce Bambini. {t(T.footer.rights)}</span>
           <div className="flex items-center gap-4">
-            <Link to="/privacy" className="hover:text-primary transition-colors">{privacyLabel[lang] ?? privacyLabel.en}</Link>
+            <Link to="/gdpr" className="hover:text-primary transition-colors">{privacyLabel[lang] ?? privacyLabel.en}</Link>
             <span>{t(T.footer.designed)}</span>
           </div>
         </div>
