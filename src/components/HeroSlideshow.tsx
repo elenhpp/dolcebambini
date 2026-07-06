@@ -56,7 +56,7 @@ export function HeroSlideshow() {
           loading={i === 0 ? "eager" : "lazy"}
           fetchPriority={i === 0 ? "high" : "auto"}
           decoding={i === 0 ? "sync" : "async"}
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-contain"
           style={{
             opacity: i === index ? 1 : 0,
             transition: reduced ? "opacity 600ms linear" : "opacity 1600ms ease-in-out",
