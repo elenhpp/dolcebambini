@@ -22,6 +22,20 @@ function Home() {
 
   return (
     <div>
+      {/* HERO VIDEO REEL */}
+      <section className="relative w-full overflow-hidden bg-foreground">
+        <video
+          src={heroVideo.url}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          className="w-full h-[46vh] md:h-[62vh] lg:h-[72vh] object-cover"
+        />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/70" />
+      </section>
+
       {/* HERO */}
       <section className="relative overflow-hidden hero-gradient">
         <div className="absolute -top-32 -left-32 w-[520px] h-[520px] rounded-full bg-primary/15 blur-3xl float-soft" />
