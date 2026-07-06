@@ -49,7 +49,7 @@ export function HeroSlideshow() {
   }, [slides.length, reduced]);
 
   return (
-    <div className="group relative w-full h-[46vh] md:h-[62vh] lg:h-[72vh] overflow-hidden bg-foreground">
+    <div className="group relative w-full h-full md:h-[62vh] lg:h-[72vh] overflow-hidden bg-foreground">
       {slides.map((slide, i) => (
         <img
           key={slide.url}
