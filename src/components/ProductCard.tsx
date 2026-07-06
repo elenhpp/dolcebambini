@@ -16,7 +16,7 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
       style={{ animationDelay: `${Math.min(index * 60, 600)}ms` }}
     >
       <Tilt className="group h-full" max={8} scale={1.03}>
-        <div className="relative rounded-3xl bg-card border border-border/60 soft-shadow overflow-hidden">
+        <div className="shimmer relative rounded-3xl bg-card border border-border/60 soft-shadow overflow-hidden">
           <div className="relative aspect-[3/4] overflow-hidden bg-muted">
             <img
               src={product.image}
@@ -30,7 +30,7 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
             <div
               data-tilt-inner
               data-tilt-depth="26"
-              className="absolute top-3 left-3 z-[3] rounded-full bg-background/90 backdrop-blur px-3 py-1 text-[10px] tracking-[0.2em] uppercase text-foreground/80 border border-border/60"
+              className="shimmer absolute top-3 left-3 z-[3] rounded-full bg-background/90 backdrop-blur px-3 py-1 text-[10px] tracking-[0.2em] uppercase text-foreground/80 border border-border/60"
             >
               {t(T.code)} {product.code}
             </div>
