@@ -4,12 +4,16 @@ import { T, PRODUCTS } from "@/lib/site-content";
 import { ProductCard } from "@/components/ProductCard";
 import { Sparkles, Scissors, Layers, Award, Download } from "lucide-react";
 import { HeroSlideshow } from "@/components/HeroSlideshow";
+import heroPreload from "@/assets/hero/hero-7017.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Dolce Bambini — Χειροποίητα Βαπτιστικά | Collection 2026" },
       { name: "description", content: "Χειροποίητα βαπτιστικά ρούχα και ενδύματα κοινωνίας. Collection 2026 για αγόρι και κορίτσι, Silk Collection και αξεσουάρ βάπτισης." },
+    ],
+    links: [
+      { rel: "preload", as: "image", href: heroPreload.url, fetchpriority: "high" },
     ],
   }),
   component: Home,
