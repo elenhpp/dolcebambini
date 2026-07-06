@@ -78,7 +78,7 @@ export function Tilt({
         style={{ transformStyle: "preserve-3d" }}
       >
         {children}
-        {glare && (
+        {glare && !reduced && (
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
