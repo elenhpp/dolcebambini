@@ -67,7 +67,7 @@ export function Header() {
                   to={n.to}
                   onClick={() => setOpen(false)}
                   className="px-3 py-3 text-sm tracking-[0.15em] text-foreground/80 rounded-lg hover:bg-muted"
-                  activeProps={{ className: "text-primary bg-muted" }}
+                  activeProps={{ className: "text-foreground bg-muted font-semibold" }}
                   activeOptions={{ exact: n.to === "/" }}
                 >
                   {navLabel(n)}
