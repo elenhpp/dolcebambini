@@ -40,7 +40,7 @@ function Page() {
             </Field>
             <button
               type="submit"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3 text-sm font-medium tracking-wide soft-shadow hover:scale-[1.01] transition-transform"
+              className="shimmer inline-flex items-center justify-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3 text-sm font-medium tracking-wide soft-shadow hover:scale-[1.01] transition-transform"
             >
               <Send size={15} /> {t(T.contactForm.send)}
             </button>

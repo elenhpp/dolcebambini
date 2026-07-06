@@ -44,7 +44,7 @@ function Home() {
               {t(T.heroSub)}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/girls" className="inline-flex items-center rounded-full bg-primary text-primary-foreground px-7 py-3 text-sm font-medium tracking-wide soft-shadow hover:scale-[1.02] transition-transform">
+              <Link to="/girls" className="shimmer inline-flex items-center rounded-full bg-primary text-primary-foreground px-7 py-3 text-sm font-medium tracking-wide soft-shadow hover:scale-[1.02] transition-transform">
                 {t(T.heroCtaGirls)}
               </Link>
               <Link to="/boys" className="inline-flex items-center rounded-full bg-card border border-border px-7 py-3 text-sm font-medium tracking-wide soft-shadow hover:bg-muted transition-colors">
