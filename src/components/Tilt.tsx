@@ -1,4 +1,5 @@
 import { useRef, type ReactNode, type CSSProperties } from "react";
+import { usePrefersReducedMotion } from "@/hooks/use-reduced-motion";
 
 type TiltProps = {
   children: ReactNode;
@@ -27,8 +28,10 @@ export function Tilt({
   const wrapRef = useRef<HTMLDivElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number | null>(null);
+  const reduced = usePrefersReducedMotion();
 
   const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (reduced) return;
     const el = wrapRef.current;
     const inner = innerRef.current;
     if (!el || !inner) return;
@@ -75,7 +78,7 @@ export function Tilt({
         style={{ transformStyle: "preserve-3d" }}
       >
         {children}
-        {glare && (
+        {glare && !reduced && (
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
