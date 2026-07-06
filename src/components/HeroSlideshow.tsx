@@ -30,10 +30,14 @@ function shuffle<T>(arr: T[]): T[] {
 }
 
 export function HeroSlideshow() {
-  // Shuffle once per mount so order changes each visit.
-  const slides = useMemo(() => shuffle(BASE_SLIDES), []);
+  // Keep initial order stable for SSR/hydration parity, then shuffle on client.
+  const [slides, setSlides] = useState(BASE_SLIDES);
   const [index, setIndex] = useState(0);
   const reduced = usePrefersReducedMotion();
+
+  useEffect(() => {
+    setSlides(shuffle(BASE_SLIDES));
+  }, []);
 
   useEffect(() => {
     // Slow the rotation and lengthen the fade when motion is reduced.
@@ -52,6 +56,8 @@ export function HeroSlideshow() {
           src={slide.url}
           alt={slide.alt}
           loading={i === 0 ? "eager" : "lazy"}
+          fetchPriority={i === 0 ? "high" : "auto"}
+          decoding={i === 0 ? "sync" : "async"}
           className="absolute inset-0 w-full h-full object-cover"
           style={{
             opacity: i === index ? 1 : 0,
