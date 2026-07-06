@@ -28,8 +28,8 @@ export function Header() {
               <Link
                 key={n.key}
                 to={n.to}
-                className="text-[11px] tracking-[0.18em] font-medium text-foreground/75 hover:text-primary transition-colors"
-                activeProps={{ className: "text-primary" }}
+                className="text-[11px] tracking-[0.18em] font-medium text-foreground/75 hover:text-foreground transition-colors"
+                activeProps={{ className: "text-foreground underline decoration-primary decoration-2 underline-offset-[6px]" }}
                 activeOptions={{ exact: n.to === "/" }}
               >
                 {navLabel(n)}
