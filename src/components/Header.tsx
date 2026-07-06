@@ -3,6 +3,7 @@ import { useState } from "react";
 import { NAV, T, type Lang } from "@/lib/site-content";
 import { useLang, LANGS } from "@/lib/lang";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/dolce-logo.png.asset.json";
 
 export function Header() {
   const { lang, setLang, t } = useLang();
@@ -14,13 +15,12 @@ export function Header() {
     <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/75 border-b border-border/60">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link to="/" className="group flex flex-col leading-none">
-            <span className="font-display text-2xl md:text-3xl tracking-tight text-foreground">
-              {t(T.brand)}
-            </span>
-            <span className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mt-0.5">
-              {t(T.estd)}
-            </span>
+          <Link to="/" className="group flex items-center leading-none" aria-label={t(T.brand)}>
+            <img
+              src={logo.url}
+              alt={t(T.brand)}
+              className="h-12 md:h-14 w-auto object-contain"
+            />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-7">
