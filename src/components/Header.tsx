@@ -44,7 +44,7 @@ export function Header() {
                   key={l}
                   onClick={() => setLang(l)}
                   className={`px-2.5 py-1 text-[10px] font-semibold tracking-widest rounded-full transition-all ${
-                    lang === l ? "bg-primary text-primary-foreground shadow" : "text-foreground/60 hover:text-foreground"
+                    lang === l ? "bg-primary text-primary-foreground shadow" : "text-foreground/85 hover:text-foreground"
                   }`}
                 >
                   {l.toUpperCase()}
