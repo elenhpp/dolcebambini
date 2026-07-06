@@ -3,7 +3,7 @@ import { useState } from "react";
 import { NAV, T, type Lang } from "@/lib/site-content";
 import { useLang, LANGS } from "@/lib/lang";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/dolce-logo.png.asset.json";
+import logo from "@/assets/dolce-logo-new.png.asset.json";
 
 export function Header() {
   const { lang, setLang, t } = useLang();
