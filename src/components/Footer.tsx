@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { CONTACT, NAV, T } from "@/lib/site-content";
 import { useLang } from "@/lib/lang";
 import { Instagram, Facebook, Mail, Phone, MapPin } from "lucide-react";
-import logo from "@/assets/dolce-logo.png.asset.json";
+import logo from "@/assets/dolce-logo-new.png.asset.json";
 
 export function Footer() {
   const { lang, t } = useLang();
