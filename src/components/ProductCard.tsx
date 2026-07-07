@@ -1,12 +1,18 @@
 import type { Product } from "@/lib/site-content";
 import { T } from "@/lib/site-content";
 import { useLang } from "@/lib/lang";
+import { useOverrides, mergeTr } from "@/lib/product-overrides";
 
-export function ProductCard({ product, index = 0 }: { product: Product; index?: number }) {
+export function ProductCard({ product, index = 0, category }: { product: Product; index?: number; category?: string }) {
   const { t } = useLang();
+  const [overrides] = useOverrides();
+  const ov = category ? overrides[category]?.[product.code] : undefined;
 
-  const title = product.title
-    ? t(product.title)
+  const mergedTitle = mergeTr(product.title, ov?.title);
+  const mergedDesc = mergeTr(product.desc, ov?.desc);
+
+  const title = mergedTitle
+    ? t(mergedTitle)
     : `${t(T.copy.baptismalFallback)} ${product.code}`;
 
   return (
@@ -32,9 +38,9 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
 
         <div className="relative p-5">
           <h3 className="font-display text-xl leading-tight text-foreground">{title}</h3>
-          {product.desc && (
+          {mergedDesc && (
             <p className="mt-2 text-sm text-muted-foreground line-clamp-3">
-              {t(product.desc)}
+              {t(mergedDesc)}
             </p>
           )}
           <div className="mt-4 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.18em] uppercase text-primary">

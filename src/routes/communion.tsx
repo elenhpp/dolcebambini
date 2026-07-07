@@ -7,7 +7,7 @@ function Page() {
     <CategoryPage
       title={T.pages.communion.title}
       sub={T.pages.communion.sub}
-      products={PRODUCTS.communion}
+      products={PRODUCTS.communion} category="communion"
     />
   );
 }

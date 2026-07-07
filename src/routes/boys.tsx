@@ -7,7 +7,7 @@ function Page() {
     <CategoryPage
       title={T.pages.boys.title}
       sub={T.pages.boys.sub}
-      products={PRODUCTS.boys}
+      products={PRODUCTS.boys} category="boys"
     />
   );
 }
