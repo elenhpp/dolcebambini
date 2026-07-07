@@ -1,6 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
-import { PRODUCTS, type Lang } from "@/lib/site-content";
+import { PRODUCTS, type Lang, type Product } from "@/lib/site-content";
 import { supabase } from "@/integrations/supabase/client";
 import { ProductCard } from "@/components/ProductCard";
 import {
@@ -18,20 +18,19 @@ const EDIT_LANGS: Lang[] = ["el", "en"];
 type Status = "idle" | "saving" | "saved" | "error";
 
 function ProductEditor({
+  product,
   category,
-  code,
   serverTitle,
   serverDesc,
-  baseTitle,
-  baseDesc,
 }: {
+  product: Product;
   category: string;
-  code: string;
   serverTitle: FieldMap;
   serverDesc: FieldMap;
-  baseTitle: FieldMap;
-  baseDesc: FieldMap;
 }) {
+  const code = product.code;
+  const baseTitle = (product.title as FieldMap | undefined) ?? {};
+  const baseDesc = (product.desc as FieldMap | undefined) ?? {};
   const [title, setTitle] = useState<FieldMap>(serverTitle);
   const [desc, setDesc] = useState<FieldMap>(serverDesc);
   const [status, setStatus] = useState<Status>("idle");
@@ -63,9 +62,9 @@ function ProductEditor({
     return () => clearTimeout(handle);
   }, [title, desc, dirty, category, code]);
 
-  const mergedTitle = mergeTr({ en: baseTitle.en ?? "", ...baseTitle } as never, title);
-  const mergedDesc = mergeTr({ en: baseDesc.en ?? "", ...baseDesc } as never, desc);
-  const previewProduct = { code, image: "", title: mergedTitle, desc: mergedDesc };
+  const mergedTitle = mergeTr(product.title, title);
+  const mergedDesc = mergeTr(product.desc, desc);
+  const previewProduct: Product = { ...product, title: mergedTitle, desc: mergedDesc };
 
   const hasOverride =
     Object.values(title).some((v) => v && v.trim() !== "") ||
@@ -156,10 +155,7 @@ function ProductEditor({
             Live preview
           </div>
           <div className="max-w-xs">
-            <ProductCard
-              product={{ ...previewProduct, image: (previewProduct as never as { image: string }).image || "" }}
-              category={category}
-            />
+            <ProductCard product={previewProduct} category={category} />
           </div>
         </div>
       </div>
