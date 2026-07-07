@@ -17,6 +17,7 @@ import { Route as GdprRouteImport } from './routes/gdpr'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CommunionRouteImport } from './routes/communion'
 import { Route as BoysRouteImport } from './routes/boys'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AccessoriesRouteImport } from './routes/accessories'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -60,6 +61,11 @@ const BoysRoute = BoysRouteImport.update({
   path: '/boys',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AccessoriesRoute = AccessoriesRouteImport.update({
   id: '/accessories',
   path: '/accessories',
@@ -74,6 +80,7 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/accessories': typeof AccessoriesRoute
+  '/admin': typeof AdminRoute
   '/boys': typeof BoysRoute
   '/communion': typeof CommunionRoute
   '/contact': typeof ContactRoute
@@ -86,6 +93,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/accessories': typeof AccessoriesRoute
+  '/admin': typeof AdminRoute
   '/boys': typeof BoysRoute
   '/communion': typeof CommunionRoute
   '/contact': typeof ContactRoute
@@ -99,6 +107,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/accessories': typeof AccessoriesRoute
+  '/admin': typeof AdminRoute
   '/boys': typeof BoysRoute
   '/communion': typeof CommunionRoute
   '/contact': typeof ContactRoute
@@ -113,6 +122,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/accessories'
+    | '/admin'
     | '/boys'
     | '/communion'
     | '/contact'
@@ -125,6 +135,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/accessories'
+    | '/admin'
     | '/boys'
     | '/communion'
     | '/contact'
@@ -137,6 +148,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/accessories'
+    | '/admin'
     | '/boys'
     | '/communion'
     | '/contact'
@@ -150,6 +162,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AccessoriesRoute: typeof AccessoriesRoute
+  AdminRoute: typeof AdminRoute
   BoysRoute: typeof BoysRoute
   CommunionRoute: typeof CommunionRoute
   ContactRoute: typeof ContactRoute
@@ -218,6 +231,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BoysRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/accessories': {
       id: '/accessories'
       path: '/accessories'
@@ -238,6 +258,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AccessoriesRoute: AccessoriesRoute,
+  AdminRoute: AdminRoute,
   BoysRoute: BoysRoute,
   CommunionRoute: CommunionRoute,
   ContactRoute: ContactRoute,
