@@ -351,12 +351,10 @@ function AdminPage() {
           return (
             <ProductEditor
               key={p.code}
+              product={p}
               category={category}
-              code={p.code}
               serverTitle={ov?.title ?? {}}
               serverDesc={ov?.desc ?? {}}
-              baseTitle={(p.title as FieldMap) ?? {}}
-              baseDesc={(p.desc as FieldMap) ?? {}}
             />
           );
         })}
