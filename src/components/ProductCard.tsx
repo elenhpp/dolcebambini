@@ -20,7 +20,7 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
             src={product.image}
             alt={title}
             loading="lazy"
-            className="w-full h-full object-cover transition-transform duration-500"
+            className="w-full h-full object-cover"
             onError={(e) => { (e.currentTarget as HTMLImageElement).style.opacity = "0.4"; }}
           />
           <div
@@ -39,7 +39,7 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
           )}
           <div className="mt-4 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.18em] uppercase text-primary">
             {t(T.viewDetails)}
-            <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
+            <span aria-hidden>→</span>
           </div>
         </div>
       </div>
