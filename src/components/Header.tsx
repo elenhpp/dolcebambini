@@ -14,16 +14,16 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/75 border-b border-border/60">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-24 md:h-28">
           <Link to="/" className="group flex items-center leading-none" aria-label={t(T.brand)}>
             <img
               src={logo.url}
               alt={t(T.brand)}
-              className="h-12 md:h-14 w-auto object-contain"
+              className="h-[4.5rem] md:h-[5.25rem] w-auto object-contain"
             />
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-7">
+          <nav className="hidden md:flex items-center gap-7">
             {NAV.map((n) => (
               <Link
                 key={n.key}
@@ -52,14 +52,14 @@ export function Header() {
               ))}
             </div>
 
-            <button className="lg:hidden p-2 -mr-2" onClick={() => setOpen((o) => !o)} aria-label="Menu">
+            <button className="md:hidden p-2 -mr-2" onClick={() => setOpen((o) => !o)} aria-label="Menu">
               {open ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
 
         {open && (
-          <div className="lg:hidden pb-6 fade-up">
+          <div className="md:hidden pb-6 fade-up">
             <nav className="flex flex-col gap-1">
               {NAV.map((n) => (
                 <Link
