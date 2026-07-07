@@ -23,7 +23,7 @@ export function Footer() {
 
         <div>
           <div className="text-xs tracking-[0.2em] uppercase text-foreground/70 mb-4">{t(T.footer.quickLinks)}</div>
-          <ul className="space-y-2 text-sm">
+          <ul className="space-y-4 text-sm">
             {NAV.map((n) => (
               <li key={n.key}>
                 <Link to={n.to} className="text-foreground/70 hover:text-primary transition-colors">
