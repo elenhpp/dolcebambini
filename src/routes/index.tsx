@@ -5,6 +5,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { Sparkles, Scissors, Layers, Award, Download } from "lucide-react";
 import { HeroSlideshow } from "@/components/HeroSlideshow";
 import heroPreload from "@/assets/hero-v2/7003.png.asset.json";
+import sizeChartPdf from "@/assets/size-chart.pdf.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -124,8 +125,9 @@ function Home() {
           </div>
           <div className="flex lg:justify-end">
             <a
-              href="#"
-              onClick={(e) => e.preventDefault()}
+              href={sizeChartPdf.url}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-6 py-3 text-sm font-medium tracking-wide soft-shadow hover:scale-[1.02] transition-transform"
             >
               <Download size={16} /> {t(T.sizeChartCta)}
