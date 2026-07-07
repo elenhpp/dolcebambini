@@ -17,7 +17,7 @@ export function Footer() {
     <footer className="mt-32 border-t border-border/60 bg-gradient-to-b from-background to-muted/40">
       <div className="mx-auto max-w-7xl px-5 lg:px-8 py-16 grid gap-12 md:grid-cols-4">
         <div className="md:col-span-2">
-          <img src={logo.url} alt={t(T.brand)} className="h-28 md:h-36 w-auto object-contain -ml-1" />
+          <img src={logo.url} alt={t(T.brand)} className="h-40 md:h-52 w-auto object-contain -ml-1" />
           <p className="mt-5 text-sm text-muted-foreground max-w-sm leading-relaxed">{t(T.footer.tagline)}</p>
         </div>
 
