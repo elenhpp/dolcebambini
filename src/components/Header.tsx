@@ -19,11 +19,11 @@ export function Header() {
             <img
               src={logo.url}
               alt={t(T.brand)}
-              className="h-12 md:h-14 w-auto object-contain"
+              className="h-[4.5rem] md:h-[5.25rem] w-auto object-contain"
             />
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-7">
+          <nav className="hidden md:flex items-center gap-7">
             {NAV.map((n) => (
               <Link
                 key={n.key}
@@ -52,7 +52,7 @@ export function Header() {
               ))}
             </div>
 
-            <button className="lg:hidden p-2 -mr-2" onClick={() => setOpen((o) => !o)} aria-label="Menu">
+            <button className="md:hidden p-2 -mr-2" onClick={() => setOpen((o) => !o)} aria-label="Menu">
               {open ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
