@@ -5,6 +5,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { Sparkles, Scissors, Layers, Award, Download } from "lucide-react";
 import { HeroSlideshow } from "@/components/HeroSlideshow";
 import heroPreload from "@/assets/hero-v2/7003.png.asset.json";
+import sizeChartPdf from "@/assets/size-chart.pdf.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
