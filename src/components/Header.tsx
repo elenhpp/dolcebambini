@@ -19,6 +19,8 @@ export function Header() {
             <img
               src={logo.url}
               alt={t(T.brand)}
+              width={558}
+              height={204}
               className="h-[4.5rem] md:h-[5.25rem] w-auto object-contain"
             />
           </Link>
