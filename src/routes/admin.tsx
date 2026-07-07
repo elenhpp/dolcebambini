@@ -1,30 +1,287 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
-import { PRODUCTS, type Lang } from "@/lib/site-content";
-import { useLang } from "@/lib/lang";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { useEffect, useMemo, useState } from "react";
+import { PRODUCTS, type Lang, type Product } from "@/lib/site-content";
+import { supabase } from "@/integrations/supabase/client";
 import { ProductCard } from "@/components/ProductCard";
 import {
   useOverrides,
-  setProductField,
-  clearAllOverrides,
+  saveProductOverride,
+  deleteProductOverride,
   mergeTr,
+  type FieldMap,
 } from "@/lib/product-overrides";
 
 const CATEGORIES = ["boys", "girls", "silk", "accessories", "communion"] as const;
 type Cat = (typeof CATEGORIES)[number];
-
 const EDIT_LANGS: Lang[] = ["el", "en"];
 
-function AdminPage() {
-  const [category, setCategory] = useState<Cat>("boys");
-  const [overrides] = useOverrides();
-  const { t } = useLang();
-  const products = PRODUCTS[category] ?? [];
+type Status = "idle" | "saving" | "saved" | "error";
 
+function ProductEditor({
+  product,
+  category,
+  serverTitle,
+  serverDesc,
+}: {
+  product: Product;
+  category: string;
+  serverTitle: FieldMap;
+  serverDesc: FieldMap;
+}) {
+  const code = product.code;
+  const baseTitle = (product.title as FieldMap | undefined) ?? {};
+  const baseDesc = (product.desc as FieldMap | undefined) ?? {};
+  const [title, setTitle] = useState<FieldMap>(serverTitle);
+  const [desc, setDesc] = useState<FieldMap>(serverDesc);
+  const [status, setStatus] = useState<Status>("idle");
+  const [dirty, setDirty] = useState(false);
+
+  // resync when server updates via realtime while we're not editing
+  useEffect(() => {
+    if (!dirty) {
+      setTitle(serverTitle);
+      setDesc(serverDesc);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [JSON.stringify(serverTitle), JSON.stringify(serverDesc)]);
+
+  useEffect(() => {
+    if (!dirty) return;
+    const handle = setTimeout(async () => {
+      setStatus("saving");
+      try {
+        await saveProductOverride(category, code, title, desc);
+        setStatus("saved");
+        setDirty(false);
+        setTimeout(() => setStatus("idle"), 1200);
+      } catch (e) {
+        console.error(e);
+        setStatus("error");
+      }
+    }, 600);
+    return () => clearTimeout(handle);
+  }, [title, desc, dirty, category, code]);
+
+  const mergedTitle = mergeTr(product.title, title);
+  const mergedDesc = mergeTr(product.desc, desc);
+  const previewProduct: Product = { ...product, title: mergedTitle, desc: mergedDesc };
+
+  const hasOverride =
+    Object.values(title).some((v) => v && v.trim() !== "") ||
+    Object.values(desc).some((v) => v && v.trim() !== "");
+
+  return (
+    <section className="rounded-3xl border border-border/60 bg-card soft-shadow overflow-hidden">
+      <div className="grid gap-6 p-6 md:grid-cols-[1fr]">
+        <div className="flex items-center justify-between">
+          <div className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground">
+            Code {code}
+          </div>
+          <div className="flex items-center gap-3 text-xs">
+            <span
+              className={
+                status === "saving"
+                  ? "text-muted-foreground"
+                  : status === "saved"
+                    ? "text-primary"
+                    : status === "error"
+                      ? "text-red-500"
+                      : "text-muted-foreground/50"
+              }
+            >
+              {status === "saving" && "Saving…"}
+              {status === "saved" && "Saved ✓"}
+              {status === "error" && "Save failed"}
+            </span>
+            {hasOverride && (
+              <button
+                onClick={async () => {
+                  if (!confirm(`Reset ${code} to defaults?`)) return;
+                  await deleteProductOverride(category, code);
+                  setTitle({});
+                  setDesc({});
+                  setDirty(false);
+                }}
+                className="text-muted-foreground hover:text-foreground underline underline-offset-2"
+              >
+                Reset
+              </button>
+            )}
+          </div>
+        </div>
+
+        <div className="space-y-5">
+          {EDIT_LANGS.map((lang) => (
+            <div key={lang} className="space-y-2">
+              <div className="text-[11px] tracking-[0.25em] uppercase text-primary">
+                {lang.toUpperCase()}
+              </div>
+              <label className="block">
+                <span className="block text-xs font-medium text-muted-foreground mb-1">
+                  Title
+                </span>
+                <input
+                  type="text"
+                  value={title[lang] ?? ""}
+                  placeholder={baseTitle[lang] ?? ""}
+                  onChange={(e) => {
+                    setDirty(true);
+                    setTitle((prev) => ({ ...prev, [lang]: e.target.value }));
+                  }}
+                  className="w-full rounded-xl border border-border/70 bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none"
+                />
+              </label>
+              <label className="block">
+                <span className="block text-xs font-medium text-muted-foreground mb-1">
+                  Description
+                </span>
+                <textarea
+                  rows={4}
+                  value={desc[lang] ?? ""}
+                  placeholder={baseDesc[lang] ?? ""}
+                  onChange={(e) => {
+                    setDirty(true);
+                    setDesc((prev) => ({ ...prev, [lang]: e.target.value }));
+                  }}
+                  className="w-full rounded-xl border border-border/70 bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none resize-y"
+                />
+              </label>
+            </div>
+          ))}
+        </div>
+
+        <div className="rounded-2xl border border-dashed border-border/60 p-4">
+          <div className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-3">
+            Live preview
+          </div>
+          <div className="max-w-xs">
+            <ProductCard product={previewProduct} category={category} />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AdminPage() {
+  const navigate = useNavigate();
+  const overrides = useOverrides();
+  const [category, setCategory] = useState<Cat>("boys");
+  const [userId, setUserId] = useState<string | null>(null);
+  const [isAdmin, setIsAdmin] = useState<boolean | null>(null);
+  const [email, setEmail] = useState<string | null>(null);
+  const [claiming, setClaiming] = useState(false);
+  const [claimMsg, setClaimMsg] = useState<string | null>(null);
+
+  useEffect(() => {
+    let mounted = true;
+
+    const refresh = async (uid: string | null) => {
+      if (!uid) {
+        if (mounted) {
+          setIsAdmin(false);
+          setUserId(null);
+          setEmail(null);
+        }
+        return;
+      }
+      const { data } = await supabase
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", uid)
+        .eq("role", "admin")
+        .maybeSingle();
+      if (mounted) setIsAdmin(!!data);
+    };
+
+    supabase.auth.getSession().then(({ data }) => {
+      const uid = data.session?.user.id ?? null;
+      if (!mounted) return;
+      setUserId(uid);
+      setEmail(data.session?.user.email ?? null);
+      if (!uid) {
+        navigate({ to: "/auth" });
+      } else {
+        refresh(uid);
+      }
+    });
+
+    const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => {
+      const uid = session?.user.id ?? null;
+      setUserId(uid);
+      setEmail(session?.user.email ?? null);
+      if (!uid) navigate({ to: "/auth" });
+      else refresh(uid);
+    });
+
+    return () => {
+      mounted = false;
+      sub.subscription.unsubscribe();
+    };
+  }, [navigate]);
+
+  const claim = async () => {
+    setClaiming(true);
+    setClaimMsg(null);
+    try {
+      const { data, error } = await supabase.rpc("claim_admin");
+      if (error) throw error;
+      if (data) {
+        setIsAdmin(true);
+        setClaimMsg("You are now the admin.");
+      } else {
+        setClaimMsg("An admin already exists. Ask them to grant you access.");
+      }
+    } catch (e) {
+      setClaimMsg(e instanceof Error ? e.message : String(e));
+    } finally {
+      setClaiming(false);
+    }
+  };
+
+  const products = PRODUCTS[category] ?? [];
   const editedCount = useMemo(
     () => Object.keys(overrides[category] ?? {}).length,
     [overrides, category],
   );
+
+  if (userId === null) return null; // redirecting
+
+  if (isAdmin === false) {
+    return (
+      <div className="mx-auto max-w-lg px-5 pt-20 pb-20 text-center">
+        <div className="text-[11px] tracking-[0.35em] uppercase text-primary mb-3">Admin</div>
+        <h1 className="font-display text-3xl tracking-tight mb-3">Not an admin yet</h1>
+        <p className="text-sm text-muted-foreground mb-6">
+          Signed in as <span className="font-medium">{email}</span>. Only admins can edit
+          product content. If you are the site owner and no admin exists yet, claim it now.
+        </p>
+        <div className="flex justify-center gap-3">
+          <button
+            onClick={claim}
+            disabled={claiming}
+            className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold tracking-[0.18em] uppercase text-primary-foreground hover:opacity-90 disabled:opacity-60"
+          >
+            {claiming ? "…" : "Claim admin"}
+          </button>
+          <button
+            onClick={async () => {
+              await supabase.auth.signOut();
+              navigate({ to: "/auth" });
+            }}
+            className="rounded-full border border-border/70 px-5 py-2.5 text-xs font-semibold tracking-[0.18em] uppercase text-muted-foreground hover:text-foreground"
+          >
+            Sign out
+          </button>
+        </div>
+        {claimMsg && <p className="mt-6 text-sm text-muted-foreground">{claimMsg}</p>}
+      </div>
+    );
+  }
+
+  if (isAdmin === null) {
+    return <div className="mx-auto max-w-7xl px-5 pt-16 text-sm text-muted-foreground">Loading…</div>;
+  }
 
   return (
     <div className="mx-auto max-w-7xl px-5 lg:px-8 pt-10 pb-20">
@@ -35,8 +292,8 @@ function AdminPage() {
             Edit product content
           </h1>
           <p className="mt-2 text-sm text-muted-foreground max-w-2xl">
-            Changes are saved locally in your browser and applied instantly across the site.
-            Visit any category to see the update, or use the live preview below.
+            Changes save to Lovable Cloud and appear instantly for every visitor.
+            Signed in as <span className="font-medium">{email}</span>.
           </p>
         </div>
         <div className="flex items-center gap-3">
@@ -47,12 +304,13 @@ function AdminPage() {
             View {category} →
           </Link>
           <button
-            onClick={() => {
-              if (confirm("Reset ALL edits back to defaults?")) clearAllOverrides();
+            onClick={async () => {
+              await supabase.auth.signOut();
+              navigate({ to: "/auth" });
             }}
             className="rounded-full border border-border/70 px-4 py-2 text-xs font-semibold tracking-[0.18em] uppercase text-muted-foreground hover:text-foreground hover:border-foreground/40"
           >
-            Reset all
+            Sign out
           </button>
         </div>
       </header>
@@ -87,63 +345,17 @@ function AdminPage() {
         </div>
       )}
 
-      <div className="space-y-8">
+      <div className="space-y-6">
         {products.map((p) => {
           const ov = overrides[category]?.[p.code];
-          const mergedTitle = mergeTr(p.title, ov?.title);
-          const mergedDesc = mergeTr(p.desc, ov?.desc);
-          const previewProduct = { ...p, title: mergedTitle, desc: mergedDesc };
           return (
-            <section
+            <ProductEditor
               key={p.code}
-              className="rounded-3xl border border-border/60 bg-card soft-shadow overflow-hidden"
-            >
-              <div className="grid gap-6 p-6 md:grid-cols-[280px_1fr]">
-                <div>
-                  <div className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-2">
-                    Code {p.code}
-                  </div>
-                  <ProductCard product={previewProduct} category={category} />
-                </div>
-                <div className="space-y-5">
-                  {EDIT_LANGS.map((lang) => (
-                    <div key={lang} className="space-y-2">
-                      <div className="text-[11px] tracking-[0.25em] uppercase text-primary">
-                        {lang.toUpperCase()}
-                      </div>
-                      <label className="block">
-                        <span className="block text-xs font-medium text-muted-foreground mb-1">
-                          Title
-                        </span>
-                        <input
-                          type="text"
-                          defaultValue={mergedTitle?.[lang] ?? ""}
-                          placeholder={p.title?.[lang] ?? ""}
-                          onChange={(e) =>
-                            setProductField(category, p.code, "title", lang, e.target.value)
-                          }
-                          className="w-full rounded-xl border border-border/70 bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none"
-                        />
-                      </label>
-                      <label className="block">
-                        <span className="block text-xs font-medium text-muted-foreground mb-1">
-                          Description
-                        </span>
-                        <textarea
-                          rows={4}
-                          defaultValue={mergedDesc?.[lang] ?? ""}
-                          placeholder={p.desc?.[lang] ?? ""}
-                          onChange={(e) =>
-                            setProductField(category, p.code, "desc", lang, e.target.value)
-                          }
-                          className="w-full rounded-xl border border-border/70 bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none resize-y"
-                        />
-                      </label>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </section>
+              product={p}
+              category={category}
+              serverTitle={ov?.title ?? {}}
+              serverDesc={ov?.desc ?? {}}
+            />
           );
         })}
       </div>
