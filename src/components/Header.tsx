@@ -14,7 +14,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/75 border-b border-border/60">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-24 md:h-28">
           <Link to="/" className="group flex items-center leading-none" aria-label={t(T.brand)}>
             <img
               src={logo.url}
