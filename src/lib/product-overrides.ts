@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery, useQueryClient, type QueryClient } from "@tanstack/react-query";
 import type { Lang, Tr } from "./site-content";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -34,16 +34,13 @@ async function fetchOverrides(): Promise<OverridesMap> {
   return rowsToMap((data ?? []) as Row[]);
 }
 
-export function useOverrides() {
-  const qc = useQueryClient();
-  const q = useQuery({
-    queryKey: ["product_overrides"],
-    queryFn: fetchOverrides,
-    staleTime: 60_000,
-  });
+let realtimeSubscribers = 0;
+let realtimeChannel: ReturnType<typeof supabase.channel> | null = null;
 
-  useEffect(() => {
-    const channel = supabase
+function ensureRealtime(qc: QueryClient) {
+  realtimeSubscribers++;
+  if (!realtimeChannel) {
+    realtimeChannel = supabase
       .channel("product_overrides_changes")
       .on(
         "postgres_changes",
@@ -53,10 +50,26 @@ export function useOverrides() {
         },
       )
       .subscribe();
-    return () => {
-      supabase.removeChannel(channel);
-    };
-  }, [qc]);
+  }
+  return () => {
+    realtimeSubscribers--;
+    if (realtimeSubscribers <= 0 && realtimeChannel) {
+      supabase.removeChannel(realtimeChannel);
+      realtimeChannel = null;
+      realtimeSubscribers = 0;
+    }
+  };
+}
+
+export function useOverrides() {
+  const qc = useQueryClient();
+  const q = useQuery({
+    queryKey: ["product_overrides"],
+    queryFn: fetchOverrides,
+    staleTime: 60_000,
+  });
+
+  useEffect(() => ensureRealtime(qc), [qc]);
 
   return q.data ?? {};
 }
