@@ -5,7 +5,7 @@ import { useOverrides, mergeTr } from "@/lib/product-overrides";
 
 export function ProductCard({ product, index = 0, category }: { product: Product; index?: number; category?: string }) {
   const { t } = useLang();
-  const [overrides] = useOverrides();
+  const overrides = useOverrides();
   const ov = category ? overrides[category]?.[product.code] : undefined;
 
   const mergedTitle = mergeTr(product.title, ov?.title);
