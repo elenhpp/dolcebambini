@@ -59,7 +59,7 @@ export function Header() {
         </div>
 
         {open && (
-          <div className="lg:hidden pb-6 fade-up">
+          <div className="md:hidden pb-6 fade-up">
             <nav className="flex flex-col gap-1">
               {NAV.map((n) => (
                 <Link
