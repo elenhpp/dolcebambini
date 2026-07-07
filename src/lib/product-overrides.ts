@@ -1,82 +1,135 @@
 import { useEffect, useState } from "react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import type { Lang, Tr } from "./site-content";
+import { supabase } from "@/integrations/supabase/client";
 
-export type FieldOverride = Partial<Record<Lang, string>>;
-export type ProductOverride = { title?: FieldOverride; desc?: FieldOverride };
-export type Overrides = Record<string, Record<string, ProductOverride>>; // category -> code -> override
+export type FieldMap = Partial<Record<Lang, string>>;
+export type ProductOverride = { title: FieldMap; desc: FieldMap };
+export type OverridesMap = Record<string, Record<string, ProductOverride>>;
 
-const KEY = "db-product-overrides";
-const EVT = "db-product-overrides-changed";
+type Row = {
+  category: string;
+  code: string;
+  title: FieldMap | null;
+  description: FieldMap | null;
+};
 
-function read(): Overrides {
-  if (typeof window === "undefined") return {};
-  try {
-    return JSON.parse(localStorage.getItem(KEY) || "{}") as Overrides;
-  } catch {
-    return {};
+function rowsToMap(rows: Row[]): OverridesMap {
+  const map: OverridesMap = {};
+  for (const r of rows) {
+    if (!map[r.category]) map[r.category] = {};
+    map[r.category][r.code] = {
+      title: r.title ?? {},
+      desc: r.description ?? {},
+    };
   }
+  return map;
 }
 
-function write(next: Overrides) {
-  localStorage.setItem(KEY, JSON.stringify(next));
-  window.dispatchEvent(new CustomEvent(EVT));
+async function fetchOverrides(): Promise<OverridesMap> {
+  const { data, error } = await supabase
+    .from("product_overrides")
+    .select("category, code, title, description");
+  if (error) throw error;
+  return rowsToMap((data ?? []) as Row[]);
 }
 
-export function useOverrides(): [Overrides, (updater: (prev: Overrides) => Overrides) => void] {
-  const [state, setState] = useState<Overrides>({});
+export function useOverrides() {
+  const qc = useQueryClient();
+  const q = useQuery({
+    queryKey: ["product_overrides"],
+    queryFn: fetchOverrides,
+    staleTime: 60_000,
+  });
 
   useEffect(() => {
-    setState(read());
-    const handler = () => setState(read());
-    window.addEventListener(EVT, handler);
-    window.addEventListener("storage", handler);
+    const channel = supabase
+      .channel("product_overrides_changes")
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "product_overrides" },
+        () => {
+          qc.invalidateQueries({ queryKey: ["product_overrides"] });
+        },
+      )
+      .subscribe();
     return () => {
-      window.removeEventListener(EVT, handler);
-      window.removeEventListener("storage", handler);
+      supabase.removeChannel(channel);
     };
-  }, []);
+  }, [qc]);
 
-  const update = (updater: (prev: Overrides) => Overrides) => {
-    const next = updater(read());
-    write(next);
-    setState(next);
-  };
-
-  return [state, update];
+  return q.data ?? {};
 }
 
-export function setProductField(
+/** Upsert a single override row. Requires admin RLS. */
+export async function saveProductOverride(
   category: string,
   code: string,
-  field: "title" | "desc",
-  lang: Lang,
-  value: string,
-) {
-  const cur = read();
-  const cat = { ...(cur[category] || {}) };
-  const prod: ProductOverride = { ...(cat[code] || {}) };
-  const f: FieldOverride = { ...(prod[field] || {}) };
-  if (value.trim() === "") delete f[lang];
-  else f[lang] = value;
-  if (Object.keys(f).length === 0) delete prod[field];
-  else prod[field] = f;
-  if (Object.keys(prod).length === 0) delete cat[code];
-  else cat[code] = prod;
-  const next = { ...cur, [category]: cat };
-  if (Object.keys(cat).length === 0) delete next[category];
-  write(next);
+  title: FieldMap,
+  description: FieldMap,
+): Promise<void> {
+  const { error } = await supabase
+    .from("product_overrides")
+    .upsert(
+      { category, code, title, description },
+      { onConflict: "category,code" },
+    );
+  if (error) throw error;
 }
 
-export function clearAllOverrides() {
-  localStorage.removeItem(KEY);
-  window.dispatchEvent(new CustomEvent(EVT));
+export async function deleteProductOverride(category: string, code: string) {
+  const { error } = await supabase
+    .from("product_overrides")
+    .delete()
+    .eq("category", category)
+    .eq("code", code);
+  if (error) throw error;
 }
 
 export function mergeTr(
   base: Tr<string> | undefined,
-  override: FieldOverride | undefined,
+  override: FieldMap | undefined,
 ): Tr<string> | undefined {
-  if (!override || Object.keys(override).length === 0) return base;
-  if (!base) return { en: override.en ?? "", ...override } as Tr<string>;
-  return { ...base, ...override } as Tr<string>;
+  const hasOverride = override && Object.values(override).some((v) => v && v.trim() !== "");
+  if (!hasOverride) return base;
+  const cleaned: FieldMap = {};
+  for (const [k, v] of Object.entries(override!)) {
+    if (v && v.trim() !== "") cleaned[k as Lang] = v;
+  }
+  if (!base) return { en: cleaned.en ?? "", ...cleaned } as Tr<string>;
+  return { ...base, ...cleaned } as Tr<string>;
+}
+
+/** Small hook used by admin for local editing before flushing to the server. */
+export function useDebouncedSave(
+  category: string,
+  code: string,
+  initial: { title: FieldMap; desc: FieldMap },
+) {
+  const [state, setState] = useState(initial);
+  const [status, setStatus] = useState<"idle" | "saving" | "saved" | "error">("idle");
+
+  useEffect(() => {
+    setState(initial);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [category, code]);
+
+  useEffect(() => {
+    if (state === initial) return;
+    const handle = setTimeout(async () => {
+      setStatus("saving");
+      try {
+        await saveProductOverride(category, code, state.title, state.desc);
+        setStatus("saved");
+        setTimeout(() => setStatus("idle"), 1200);
+      } catch (e) {
+        console.error(e);
+        setStatus("error");
+      }
+    }, 600);
+    return () => clearTimeout(handle);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state]);
+
+  return { state, setState, status };
 }
