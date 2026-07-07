@@ -101,9 +101,6 @@ function Home() {
         <div className="flex flex-wrap items-end justify-between gap-4 mb-10">
           <div>
             <div className="text-[11px] tracking-[0.35em] uppercase text-primary mb-2">Collection 2026</div>
-            <h2 className="font-display text-4xl md:text-5xl tracking-tight">
-              {t(T.copy.featuredPieces)}
-            </h2>
           </div>
           <div className="flex gap-3 text-sm">
             <Link to="/girls" className="text-primary hover:underline">{t(T.copy.allGirls)} →</Link>
