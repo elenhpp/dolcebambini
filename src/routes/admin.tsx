@@ -22,17 +22,23 @@ function ProductEditor({
   category,
   serverTitle,
   serverDesc,
+  serverLongDesc,
+  serverImages,
 }: {
   product: Product;
   category: string;
   serverTitle: FieldMap;
   serverDesc: FieldMap;
+  serverLongDesc: FieldMap;
+  serverImages: string[];
 }) {
   const code = product.code;
   const baseTitle = (product.title as FieldMap | undefined) ?? {};
   const baseDesc = (product.desc as FieldMap | undefined) ?? {};
   const [title, setTitle] = useState<FieldMap>(serverTitle);
   const [desc, setDesc] = useState<FieldMap>(serverDesc);
+  const [longDesc, setLongDesc] = useState<FieldMap>(serverLongDesc);
+  const [images, setImages] = useState<string[]>(serverImages);
   const [status, setStatus] = useState<Status>("idle");
   const [dirty, setDirty] = useState(false);
 
@@ -41,16 +47,28 @@ function ProductEditor({
     if (!dirty) {
       setTitle(serverTitle);
       setDesc(serverDesc);
+      setLongDesc(serverLongDesc);
+      setImages(serverImages);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [JSON.stringify(serverTitle), JSON.stringify(serverDesc)]);
+  }, [
+    JSON.stringify(serverTitle),
+    JSON.stringify(serverDesc),
+    JSON.stringify(serverLongDesc),
+    JSON.stringify(serverImages),
+  ]);
 
   useEffect(() => {
     if (!dirty) return;
     const handle = setTimeout(async () => {
       setStatus("saving");
       try {
-        await saveProductOverride(category, code, title, desc);
+        await saveProductOverride(category, code, {
+          title,
+          description: desc,
+          long_description: longDesc,
+          images: images.filter((u) => u.trim() !== ""),
+        });
         setStatus("saved");
         setDirty(false);
         setTimeout(() => setStatus("idle"), 1200);
@@ -58,9 +76,9 @@ function ProductEditor({
         console.error(e);
         setStatus("error");
       }
-    }, 600);
+    }, 700);
     return () => clearTimeout(handle);
-  }, [title, desc, dirty, category, code]);
+  }, [title, desc, longDesc, images, dirty, category, code]);
 
   const mergedTitle = mergeTr(product.title, title);
   const mergedDesc = mergeTr(product.desc, desc);
@@ -68,7 +86,26 @@ function ProductEditor({
 
   const hasOverride =
     Object.values(title).some((v) => v && v.trim() !== "") ||
-    Object.values(desc).some((v) => v && v.trim() !== "");
+    Object.values(desc).some((v) => v && v.trim() !== "") ||
+    Object.values(longDesc).some((v) => v && v.trim() !== "") ||
+    images.filter((u) => u.trim() !== "").length > 0;
+
+  const updateImage = (idx: number, value: string) => {
+    setDirty(true);
+    setImages((prev) => {
+      const next = [...prev];
+      next[idx] = value;
+      return next;
+    });
+  };
+  const removeImage = (idx: number) => {
+    setDirty(true);
+    setImages((prev) => prev.filter((_, i) => i !== idx));
+  };
+  const addImage = () => {
+    setDirty(true);
+    setImages((prev) => [...prev, ""]);
+  };
 
   return (
     <section className="rounded-3xl border border-border/60 bg-card soft-shadow overflow-hidden">
@@ -100,6 +137,8 @@ function ProductEditor({
                   await deleteProductOverride(category, code);
                   setTitle({});
                   setDesc({});
+                  setLongDesc({});
+                  setImages([]);
                   setDirty(false);
                 }}
                 className="text-muted-foreground hover:text-foreground underline underline-offset-2"
@@ -133,10 +172,10 @@ function ProductEditor({
               </label>
               <label className="block">
                 <span className="block text-xs font-medium text-muted-foreground mb-1">
-                  Description
+                  Short description (card)
                 </span>
                 <textarea
-                  rows={4}
+                  rows={3}
                   value={desc[lang] ?? ""}
                   placeholder={baseDesc[lang] ?? ""}
                   onChange={(e) => {
@@ -146,13 +185,84 @@ function ProductEditor({
                   className="w-full rounded-xl border border-border/70 bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none resize-y"
                 />
               </label>
+              <label className="block">
+                <span className="block text-xs font-medium text-muted-foreground mb-1">
+                  Long description (detail page)
+                </span>
+                <textarea
+                  rows={6}
+                  value={longDesc[lang] ?? ""}
+                  placeholder="Full description shown on the product detail page…"
+                  onChange={(e) => {
+                    setDirty(true);
+                    setLongDesc((prev) => ({ ...prev, [lang]: e.target.value }));
+                  }}
+                  className="w-full rounded-xl border border-border/70 bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none resize-y"
+                />
+              </label>
             </div>
           ))}
         </div>
 
+        <div className="space-y-3">
+          <div className="text-[11px] tracking-[0.25em] uppercase text-primary">
+            Extra images
+          </div>
+          <p className="text-xs text-muted-foreground">
+            Paste image URLs (one per row). The main product image stays first automatically.
+          </p>
+          {images.length === 0 && (
+            <p className="text-xs text-muted-foreground/70 italic">No extra images yet.</p>
+          )}
+          <div className="space-y-2">
+            {images.map((url, idx) => (
+              <div key={idx} className="flex items-center gap-2">
+                {url.trim() !== "" && (
+                  <img
+                    src={url}
+                    alt=""
+                    className="h-10 w-10 rounded-md object-cover border border-border/60"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).style.opacity = "0.2";
+                    }}
+                  />
+                )}
+                <input
+                  type="url"
+                  value={url}
+                  placeholder="https://…"
+                  onChange={(e) => updateImage(idx, e.target.value)}
+                  className="flex-1 rounded-xl border border-border/70 bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none"
+                />
+                <button
+                  onClick={() => removeImage(idx)}
+                  className="text-xs text-muted-foreground hover:text-red-500 px-2"
+                  aria-label="Remove image"
+                >
+                  ✕
+                </button>
+              </div>
+            ))}
+          </div>
+          <button
+            onClick={addImage}
+            className="text-xs font-semibold tracking-[0.18em] uppercase text-primary hover:underline"
+          >
+            + Add image URL
+          </button>
+        </div>
+
         <div className="rounded-2xl border border-dashed border-border/60 p-4">
-          <div className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-3">
-            Live preview
+          <div className="flex items-center justify-between mb-3">
+            <div className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground">
+              Live preview
+            </div>
+            <Link
+              to={`/${category}/${code}` as string}
+              className="text-[10px] tracking-[0.2em] uppercase text-primary hover:underline"
+            >
+              View detail →
+            </Link>
           </div>
           <div className="max-w-xs">
             <ProductCard product={previewProduct} category={category} />
@@ -292,7 +402,7 @@ function AdminPage() {
             Edit product content
           </h1>
           <p className="mt-2 text-sm text-muted-foreground max-w-2xl">
-            Changes save to Lovable Cloud and appear instantly for every visitor.
+            Changes save automatically and appear instantly for every visitor.
             Signed in as <span className="font-medium">{email}</span>.
           </p>
         </div>
@@ -355,6 +465,8 @@ function AdminPage() {
               category={category}
               serverTitle={ov?.title ?? {}}
               serverDesc={ov?.desc ?? {}}
+              serverLongDesc={ov?.longDesc ?? {}}
+              serverImages={ov?.images ?? []}
             />
           );
         })}
