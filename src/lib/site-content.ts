@@ -658,7 +658,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7109",
-      image: "https://dolcebambini.gr/images/Collection2026/7109-a.jpg",
+      image: "dolcebambini/src/assets/images/7109-a.webp",
       title: {
         el: "Σύνολο 7109",
         en: "Ensemble 7109",
@@ -676,7 +676,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7108",
-      image: "https://dolcebambini.gr/images/Collection2026/7108-b.jpg",
+      image: "dolcebambini/src/assets/images/7108-b.webp",
       title: {
         el: "Σύνολο 7108",
         en: "Ensemble 7108",
@@ -694,7 +694,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7107",
-      image: "https://dolcebambini.gr/images/Collection2026/7107-a.jpg",
+      image: "dolcebambini/src/assets/images/7107-a.webp",
       title: {
         el: "Σύνολο 7107",
         en: "Ensemble 7107",
@@ -712,7 +712,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7106",
-      image: "https://dolcebambini.gr/images/Collection2026/7106-a.jpg",
+      image: "dolcebambini/src/assets/images/7106-a.webp",
       title: {
         el: "Σύνολο 7106",
         en: "Ensemble 7106",
@@ -730,7 +730,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7105",
-      image: "https://dolcebambini.gr/images/Collection2026/7105.jpg",
+      image: "dolcebambini/src/assets/images/7105.webp",
       title: {
         el: "Σύνολο 7105",
         en: "Ensemble 7105",
@@ -748,7 +748,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7104",
-      image: "https://dolcebambini.gr/images/Collection2026/7104.jpg",
+      image: "dolcebambini/src/assets/images/7104.webp",
       title: {
         el: "Σύνολο 7104",
         en: "Ensemble 7104",
@@ -766,7 +766,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7103",
-      image: "https://dolcebambini.gr/images/Collection2026/7103.jpg",
+      image: "dolcebambini/src/assets/images/7103.webp",
       title: {
         el: "Σύνολο 7103",
         en: "Ensemble 7103",
@@ -784,7 +784,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7102",
-      image: "https://dolcebambini.gr/images/Collection2026/7102-b.jpg",
+      image: "dolcebambini/src/assets/images/7102-b.webp",
       title: {
         el: "Σύνολο 7102",
         en: "Ensemble 7102",
@@ -802,7 +802,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7101",
-      image: "https://dolcebambini.gr/images/Collection2026/7101.jpg",
+      image: "dolcebambini/src/assets/images/7101.webp",
       title: {
         el: "Σύνολο 7101",
         en: "Ensemble 7101",
