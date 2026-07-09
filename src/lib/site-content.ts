@@ -3,6 +3,24 @@ export type Lang = "el" | "en" | "it" | "es" | "pt";
 // A translatable string/value: must have `en` (used as fallback); other langs optional.
 export type Tr<T> = { en: T } & Partial<Record<Lang, T>>;
 
+// Resolve local "src/assets/images/*.webp" strings to real bundled URLs.
+const LOCAL_IMAGES = import.meta.glob("../assets/images/*", {
+  eager: true,
+  query: "?url",
+  import: "default",
+}) as Record<string, string>;
+
+export function resolveImage(src: string): string {
+  if (!src) return src;
+  if (/^(https?:|data:|blob:|\/)/.test(src)) return src;
+  const key = src.startsWith("src/assets/images/")
+    ? "../assets/images/" + src.slice("src/assets/images/".length)
+    : null;
+  if (key && LOCAL_IMAGES[key]) return LOCAL_IMAGES[key];
+  return src;
+}
+
+
 export const NAV: ReadonlyArray<{ key: string; to: string } & Record<Lang, string>> = [
   { key: "home",        to: "/",             el: "ΑΡΧΙΚΗ",            en: "HOME",                it: "HOME",                  es: "INICIO",                pt: "INÍCIO" },
   { key: "boys",        to: "/boys",         el: "ΑΓΟΡΙ",             en: "BOYS",                it: "BAMBINO",               es: "NIÑO",                  pt: "MENINO" },

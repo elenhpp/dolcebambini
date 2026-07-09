@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { PRODUCTS, T, type Product } from "@/lib/site-content";
+import { PRODUCTS, T, resolveImage, type Product } from "@/lib/site-content";
 import { useLang } from "@/lib/lang";
 import { useOverrides, mergeTr } from "@/lib/product-overrides";
 
@@ -19,10 +19,11 @@ export function ProductDetail({ category, code }: { category: string; code: stri
   const mergedLongDesc = mergeTr(undefined, ov?.longDesc);
 
   const gallery = useMemo(() => {
-    const extras = (ov?.images ?? []).filter((u) => u && u.trim() !== "");
-    const base = product?.image ? [product.image] : [];
+    const extras = (ov?.images ?? []).filter((u) => u && u.trim() !== "").map(resolveImage);
+    const base = product?.image ? [resolveImage(product.image)] : [];
     return [...base, ...extras];
   }, [product?.image, ov?.images]);
+
 
   const [active, setActive] = useState(0);
 
@@ -40,7 +41,7 @@ export function ProductDetail({ category, code }: { category: string; code: stri
   const title = mergedTitle ? t(mergedTitle) : `${t(T.copy.baptismalFallback)} ${product.code}`;
   const shortDesc = mergedDesc ? t(mergedDesc) : "";
   const longDesc = mergedLongDesc ? t(mergedLongDesc) : "";
-  const mainImage = gallery[active] ?? product.image;
+  const mainImage = gallery[active] ?? resolveImage(product.image);
 
   return (
     <div className="mx-auto max-w-6xl px-5 lg:px-8 pt-8 pb-20">
