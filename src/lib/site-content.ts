@@ -20,23 +20,54 @@ export function resolveImage(src: string): string {
   return src;
 }
 
-
 export const NAV: ReadonlyArray<{ key: string; to: string } & Record<Lang, string>> = [
-  { key: "home",        to: "/",             el: "ΑΡΧΙΚΗ",            en: "HOME",                it: "HOME",                  es: "INICIO",                pt: "INÍCIO" },
-  { key: "boys",        to: "/boys",         el: "ΑΓΟΡΙ",             en: "BOYS",                it: "BAMBINO",               es: "NIÑO",                  pt: "MENINO" },
-  { key: "girls",       to: "/girls",        el: "ΚΟΡΙΤΣΙ",           en: "GIRLS",               it: "BAMBINA",               es: "NIÑA",                  pt: "MENINA" },
-  { key: "silk",        to: "/silk",         el: "SILK COLLECTION",   en: "SILK COLLECTION",     it: "SILK COLLECTION",       es: "SILK COLLECTION",       pt: "SILK COLLECTION" },
-  { key: "accessories", to: "/accessories",  el: "ΑΞΕΣΟΥΑΡ ΒΑΠΤΙΣΗΣ", en: "BAPTISM ACCESSORIES", it: "ACCESSORI BATTESIMO",   es: "ACCESORIOS DE BAUTIZO", pt: "ACESSÓRIOS DE BATISMO" },
-  { key: "communion",   to: "/communion",    el: "COMMUNION",         en: "COMMUNION",           it: "COMUNIONE",             es: "COMUNIÓN",              pt: "COMUNHÃO" },
-  { key: "sales",       to: "/sales-points", el: "ΣΗΜΕΙΑ ΠΩΛΗΣΗΣ",    en: "SALES POINTS",        it: "PUNTI VENDITA",         es: "PUNTOS DE VENTA",       pt: "PONTOS DE VENDA" },
-  { key: "contact",     to: "/contact",      el: "ΕΠΙΚΟΙΝΩΝΙΑ",       en: "CONTACT",             it: "CONTATTI",              es: "CONTACTO",              pt: "CONTATO" },
+  { key: "home", to: "/", el: "ΑΡΧΙΚΗ", en: "HOME", it: "HOME", es: "INICIO", pt: "INÍCIO" },
+  { key: "boys", to: "/boys", el: "ΑΓΟΡΙ", en: "BOYS", it: "BAMBINO", es: "NIÑO", pt: "MENINO" },
+  { key: "girls", to: "/girls", el: "ΚΟΡΙΤΣΙ", en: "GIRLS", it: "BAMBINA", es: "NIÑA", pt: "MENINA" },
+  {
+    key: "silk",
+    to: "/silk",
+    el: "SILK COLLECTION",
+    en: "SILK COLLECTION",
+    it: "SILK COLLECTION",
+    es: "SILK COLLECTION",
+    pt: "SILK COLLECTION",
+  },
+  {
+    key: "accessories",
+    to: "/accessories",
+    el: "ΑΞΕΣΟΥΑΡ ΒΑΠΤΙΣΗΣ",
+    en: "BAPTISM ACCESSORIES",
+    it: "ACCESSORI BATTESIMO",
+    es: "ACCESORIOS DE BAUTIZO",
+    pt: "ACESSÓRIOS DE BATISMO",
+  },
+  {
+    key: "communion",
+    to: "/communion",
+    el: "COMMUNION",
+    en: "COMMUNION",
+    it: "COMUNIONE",
+    es: "COMUNIÓN",
+    pt: "COMUNHÃO",
+  },
+  {
+    key: "sales",
+    to: "/sales-points",
+    el: "ΣΗΜΕΙΑ ΠΩΛΗΣΗΣ",
+    en: "SALES POINTS",
+    it: "PUNTI VENDITA",
+    es: "PUNTOS DE VENTA",
+    pt: "PONTOS DE VENDA",
+  },
+  { key: "contact", to: "/contact", el: "ΕΠΙΚΟΙΝΩΝΙΑ", en: "CONTACT", it: "CONTATTI", es: "CONTACTO", pt: "CONTATO" },
 ] as const;
 
 type ValueItem = { t: string; d: string };
 
 export const T = {
   brand: { el: "Dolce Bambini", en: "Dolce Bambini", it: "Dolce Bambini", es: "Dolce Bambini", pt: "Dolce Bambini" },
-  estd:  { el: "Από το 1978", en: "Established 1978", it: "Fondata nel 1978", es: "Desde 1978", pt: "Desde 1978" },
+  estd: { el: "Από το 1978", en: "Established 1978", it: "Fondata nel 1978", es: "Desde 1978", pt: "Desde 1978" },
 
   heroTitle: {
     el: "Στιγμές που μένουν για πάντα",
@@ -52,10 +83,16 @@ export const T = {
     es: "Prendas de bautizo y comunión hechas a mano con elegancia romántica — Collection 2026.",
     pt: "Trajes de batismo e comunhão feitos à mão com elegância romântica — Collection 2026.",
   },
-  heroCtaBoys:  { el: "Δείτε Αγόρι",   en: "Shop Boys",  it: "Scopri Bambino", es: "Ver Niño",  pt: "Ver Menino" },
-  heroCtaGirls: { el: "Δείτε Κορίτσι", en: "Shop Girls", it: "Scopri Bambina", es: "Ver Niña",  pt: "Ver Menina" },
+  heroCtaBoys: { el: "Δείτε Αγόρι", en: "Shop Boys", it: "Scopri Bambino", es: "Ver Niño", pt: "Ver Menino" },
+  heroCtaGirls: { el: "Δείτε Κορίτσι", en: "Shop Girls", it: "Scopri Bambina", es: "Ver Niña", pt: "Ver Menina" },
 
-  storyTitle: { el: "Η Ιστορία μας", en: "Our Story", it: "La nostra storia", es: "Nuestra historia", pt: "A nossa história" },
+  storyTitle: {
+    el: "Η Ιστορία μας",
+    en: "Our Story",
+    it: "La nostra storia",
+    es: "Nuestra historia",
+    pt: "A nossa história",
+  },
   storyBody: {
     el: "Η Dolce Bambini ιδρύθηκε το 1978 στη Μελβούρνη της Αυστραλίας. Με πάνω από 40 χρόνια εμπειρίας, σχεδιάζουμε και κατασκευάζουμε χειροποίητα βαπτιστικά ρούχα που συνδυάζουν παράδοση και σύγχρονη αισθητική.",
     en: "Founded in 1978 in Melbourne, Australia, Dolce Bambini brings over 40 years of experience designing and crafting handmade baptism garments that blend tradition with contemporary elegance.",
@@ -97,8 +134,20 @@ export const T = {
     ] as ValueItem[],
   } satisfies Record<Lang, ValueItem[]>,
 
-  sizeChart:    { el: "Πίνακας Μεγεθών", en: "Size Chart", it: "Tabella Taglie", es: "Tabla de Tallas", pt: "Tabela de Tamanhos" },
-  sizeChartCta: { el: "Κατεβάστε τον πίνακα", en: "Download size guide", it: "Scarica la guida taglie", es: "Descargar guía de tallas", pt: "Descarregar guia de tamanhos" },
+  sizeChart: {
+    el: "Πίνακας Μεγεθών",
+    en: "Size Chart",
+    it: "Tabella Taglie",
+    es: "Tabla de Tallas",
+    pt: "Tabela de Tamanhos",
+  },
+  sizeChartCta: {
+    el: "Κατεβάστε τον πίνακα",
+    en: "Download size guide",
+    it: "Scarica la guida taglie",
+    es: "Descargar guía de tallas",
+    pt: "Descarregar guia de tamanhos",
+  },
   sizeChartBody: {
     el: "Δείτε αναλυτικά τα μεγέθη μας για να επιλέξετε το ιδανικό ένδυμα για το παιδί σας.",
     en: "View detailed measurements to choose the ideal garment for your child.",
@@ -107,37 +156,103 @@ export const T = {
     pt: "Veja as medidas detalhadas para escolher a peça ideal para o seu filho.",
   },
 
-  viewDetails: { el: "Δείτε περισσότερα", en: "View details", it: "Vedi dettagli", es: "Ver detalles", pt: "Ver detalhes" },
-  code:        { el: "Κωδικός", en: "Code", it: "Codice", es: "Código", pt: "Código" },
+  viewDetails: {
+    el: "Δείτε περισσότερα",
+    en: "View details",
+    it: "Vedi dettagli",
+    es: "Ver detalles",
+    pt: "Ver detalhes",
+  },
+  code: { el: "Κωδικός", en: "Code", it: "Codice", es: "Código", pt: "Código" },
 
   pages: {
     boys: {
       title: { el: "Αγόρι", en: "Boys", it: "Bambino", es: "Niño", pt: "Menino" },
-      sub:   { el: "Collection 2026", en: "Collection 2026", it: "Collection 2026", es: "Collection 2026", pt: "Collection 2026" },
+      sub: {
+        el: "Collection 2026",
+        en: "Collection 2026",
+        it: "Collection 2026",
+        es: "Collection 2026",
+        pt: "Collection 2026",
+      },
     },
     girls: {
       title: { el: "Κορίτσι", en: "Girls", it: "Bambina", es: "Niña", pt: "Menina" },
-      sub:   { el: "Collection 2026", en: "Collection 2026", it: "Collection 2026", es: "Collection 2026", pt: "Collection 2026" },
+      sub: {
+        el: "Collection 2026",
+        en: "Collection 2026",
+        it: "Collection 2026",
+        es: "Collection 2026",
+        pt: "Collection 2026",
+      },
     },
     silk: {
-      title: { el: "Silk Collection", en: "Silk Collection", it: "Silk Collection", es: "Silk Collection", pt: "Silk Collection" },
-      sub:   { el: "Πολυτέλεια σε μετάξι", en: "Luxury in silk", it: "Lusso in seta", es: "Lujo en seda", pt: "Luxo em seda" },
+      title: {
+        el: "Silk Collection",
+        en: "Silk Collection",
+        it: "Silk Collection",
+        es: "Silk Collection",
+        pt: "Silk Collection",
+      },
+      sub: {
+        el: "Πολυτέλεια σε μετάξι",
+        en: "Luxury in silk",
+        it: "Lusso in seta",
+        es: "Lujo en seda",
+        pt: "Luxo em seda",
+      },
     },
     accessories: {
-      title: { el: "Αξεσουάρ Βάπτισης", en: "Baptism Accessories", it: "Accessori Battesimo", es: "Accesorios de Bautizo", pt: "Acessórios de Batismo" },
-      sub:   { el: "Σετ & συμπληρώματα", en: "Sets & complements", it: "Set e complementi", es: "Conjuntos y complementos", pt: "Conjuntos e complementos" },
+      title: {
+        el: "Αξεσουάρ Βάπτισης",
+        en: "Baptism Accessories",
+        it: "Accessori Battesimo",
+        es: "Accesorios de Bautizo",
+        pt: "Acessórios de Batismo",
+      },
+      sub: {
+        el: "Σετ & συμπληρώματα",
+        en: "Sets & complements",
+        it: "Set e complementi",
+        es: "Conjuntos y complementos",
+        pt: "Conjuntos e complementos",
+      },
     },
     communion: {
       title: { el: "Communion", en: "Communion", it: "Comunione", es: "Comunión", pt: "Comunhão" },
-      sub:   { el: "Συλλογή Πρώτης Κοινωνίας", en: "First Communion collection", it: "Collezione Prima Comunione", es: "Colección Primera Comunión", pt: "Coleção Primeira Comunhão" },
+      sub: {
+        el: "Συλλογή Πρώτης Κοινωνίας",
+        en: "First Communion collection",
+        it: "Collezione Prima Comunione",
+        es: "Colección Primera Comunión",
+        pt: "Coleção Primeira Comunhão",
+      },
     },
     sales: {
-      title: { el: "Σημεία Πώλησης", en: "Sales Points", it: "Punti Vendita", es: "Puntos de Venta", pt: "Pontos de Venda" },
-      sub:   { el: "Βρείτε μας σε επιλεγμένα καταστήματα", en: "Find us at select retailers", it: "Trovaci nei rivenditori selezionati", es: "Encuéntranos en tiendas selectas", pt: "Encontre-nos em lojas selecionadas" },
+      title: {
+        el: "Σημεία Πώλησης",
+        en: "Sales Points",
+        it: "Punti Vendita",
+        es: "Puntos de Venta",
+        pt: "Pontos de Venda",
+      },
+      sub: {
+        el: "Βρείτε μας σε επιλεγμένα καταστήματα",
+        en: "Find us at select retailers",
+        it: "Trovaci nei rivenditori selezionati",
+        es: "Encuéntranos en tiendas selectas",
+        pt: "Encontre-nos em lojas selecionadas",
+      },
     },
     contact: {
       title: { el: "Επικοινωνία", en: "Contact", it: "Contatti", es: "Contacto", pt: "Contato" },
-      sub:   { el: "Είμαστε εδώ για εσάς", en: "We are here for you", it: "Siamo qui per te", es: "Estamos aquí para ti", pt: "Estamos aqui para si" },
+      sub: {
+        el: "Είμαστε εδώ για εσάς",
+        en: "We are here for you",
+        it: "Siamo qui per te",
+        es: "Estamos aquí para ti",
+        pt: "Estamos aqui para si",
+      },
     },
   },
 
@@ -157,11 +272,11 @@ export const T = {
   },
 
   contactForm: {
-    name:    { el: "Όνομα", en: "Name", it: "Nome", es: "Nombre", pt: "Nome" },
-    email:   { el: "Email", en: "Email", it: "Email", es: "Correo", pt: "Email" },
+    name: { el: "Όνομα", en: "Name", it: "Nome", es: "Nombre", pt: "Nome" },
+    email: { el: "Email", en: "Email", it: "Email", es: "Correo", pt: "Email" },
     message: { el: "Μήνυμα", en: "Message", it: "Messaggio", es: "Mensaje", pt: "Mensagem" },
-    send:    { el: "Αποστολή", en: "Send message", it: "Invia messaggio", es: "Enviar mensaje", pt: "Enviar mensagem" },
-    sent:    {
+    send: { el: "Αποστολή", en: "Send message", it: "Invia messaggio", es: "Enviar mensaje", pt: "Enviar mensagem" },
+    sent: {
       el: "Ευχαριστούμε! Θα επικοινωνήσουμε σύντομα.",
       en: "Thank you! We will be in touch soon.",
       it: "Grazie! Ti contatteremo presto.",
@@ -179,25 +294,91 @@ export const T = {
       pt: "Elegância feita à mão desde 1978.",
     },
     quickLinks: { el: "Πλοήγηση", en: "Navigation", it: "Navigazione", es: "Navegación", pt: "Navegação" },
-    contact:    { el: "Επικοινωνία", en: "Contact", it: "Contatti", es: "Contacto", pt: "Contato" },
-    follow:     { el: "Ακολουθήστε μας", en: "Follow us", it: "Seguici", es: "Síguenos", pt: "Siga-nos" },
-    rights:     { el: "Με επιφύλαξη παντός δικαιώματος.", en: "All rights reserved.", it: "Tutti i diritti riservati.", es: "Todos los derechos reservados.", pt: "Todos os direitos reservados." },
-    designed:   { el: "Σχεδίαση με αγάπη", en: "Designed with love", it: "Disegnato con amore", es: "Diseñado con amor", pt: "Desenhado com amor" },
+    contact: { el: "Επικοινωνία", en: "Contact", it: "Contatti", es: "Contacto", pt: "Contato" },
+    follow: { el: "Ακολουθήστε μας", en: "Follow us", it: "Seguici", es: "Síguenos", pt: "Siga-nos" },
+    rights: {
+      el: "Με επιφύλαξη παντός δικαιώματος.",
+      en: "All rights reserved.",
+      it: "Tutti i diritti riservati.",
+      es: "Todos los derechos reservados.",
+      pt: "Todos os direitos reservados.",
+    },
+    designed: {
+      el: "Σχεδίαση με αγάπη",
+      en: "Designed with love",
+      it: "Disegnato con amore",
+      es: "Diseñado con amor",
+      pt: "Desenhado com amor",
+    },
   },
 
   // Inline copy used across routes
   copy: {
-    since1978:       { el: "Από το 1978", en: "Since 1978", it: "Dal 1978", es: "Desde 1978", pt: "Desde 1978" },
-    featuredPieces:  { el: "Επιλεγμένα κομμάτια", en: "Featured pieces", it: "Pezzi in evidenza", es: "Piezas destacadas", pt: "Peças em destaque" },
-    allGirls:        { el: "Όλα τα κορίτσια", en: "All girls", it: "Tutte le bambine", es: "Todas las niñas", pt: "Todas as meninas" },
-    allBoys:         { el: "Όλα τα αγόρια", en: "All boys", it: "Tutti i bambini", es: "Todos los niños", pt: "Todos os meninos" },
-    perfectSize:     { el: "Βρείτε το ιδανικό μέγεθος", en: "Find the perfect size", it: "Trova la taglia perfetta", es: "Encuentra la talla ideal", pt: "Encontre o tamanho ideal" },
-    getInTouch:      { el: "Στοιχεία Επικοινωνίας", en: "Get in Touch", it: "Contattaci", es: "Datos de Contacto", pt: "Entre em Contacto" },
-    googleMap:       { el: "Χάρτης Google", en: "Google Map", it: "Mappa Google", es: "Mapa de Google", pt: "Mapa do Google" },
-    flagshipStore:   { el: "Κεντρικό Κατάστημα", en: "Flagship Store", it: "Negozio Principale", es: "Tienda Insignia", pt: "Loja Principal" },
-    visitGlyfada:    { el: "Επισκεφθείτε μας στη Γλυφάδα.", en: "Visit us in Glyfada.", it: "Visitaci a Glyfada.", es: "Visítanos en Glyfada.", pt: "Visite-nos em Glyfada." },
-    map:             { el: "Χάρτης", en: "Map", it: "Mappa", es: "Mapa", pt: "Mapa" },
-    baptismalFallback: { el: "Βαπτιστικό", en: "Baptismal Outfit", it: "Completo da Battesimo", es: "Conjunto de Bautizo", pt: "Traje de Batismo" },
+    since1978: { el: "Από το 1978", en: "Since 1978", it: "Dal 1978", es: "Desde 1978", pt: "Desde 1978" },
+    featuredPieces: {
+      el: "Επιλεγμένα κομμάτια",
+      en: "Featured pieces",
+      it: "Pezzi in evidenza",
+      es: "Piezas destacadas",
+      pt: "Peças em destaque",
+    },
+    allGirls: {
+      el: "Όλα τα κορίτσια",
+      en: "All girls",
+      it: "Tutte le bambine",
+      es: "Todas las niñas",
+      pt: "Todas as meninas",
+    },
+    allBoys: {
+      el: "Όλα τα αγόρια",
+      en: "All boys",
+      it: "Tutti i bambini",
+      es: "Todos los niños",
+      pt: "Todos os meninos",
+    },
+    perfectSize: {
+      el: "Βρείτε το ιδανικό μέγεθος",
+      en: "Find the perfect size",
+      it: "Trova la taglia perfetta",
+      es: "Encuentra la talla ideal",
+      pt: "Encontre o tamanho ideal",
+    },
+    getInTouch: {
+      el: "Στοιχεία Επικοινωνίας",
+      en: "Get in Touch",
+      it: "Contattaci",
+      es: "Datos de Contacto",
+      pt: "Entre em Contacto",
+    },
+    googleMap: {
+      el: "Χάρτης Google",
+      en: "Google Map",
+      it: "Mappa Google",
+      es: "Mapa de Google",
+      pt: "Mapa do Google",
+    },
+    flagshipStore: {
+      el: "Κεντρικό Κατάστημα",
+      en: "Flagship Store",
+      it: "Negozio Principale",
+      es: "Tienda Insignia",
+      pt: "Loja Principal",
+    },
+    visitGlyfada: {
+      el: "Επισκεφθείτε μας στη Γλυφάδα.",
+      en: "Visit us in Glyfada.",
+      it: "Visitaci a Glyfada.",
+      es: "Visítanos en Glyfada.",
+      pt: "Visite-nos em Glyfada.",
+    },
+    map: { el: "Χάρτης", en: "Map", it: "Mappa", es: "Mapa", pt: "Mapa" },
+    baptismalFallback: {
+      el: "Βαπτιστικό",
+      en: "Baptismal Outfit",
+      it: "Completo da Battesimo",
+      es: "Conjunto de Bautizo",
+      pt: "Traje de Batismo",
+    },
   },
 } as const;
 
@@ -226,7 +407,7 @@ export const PRODUCTS: Record<string, Product[]> = {
   boys: [
     {
       code: "7135",
-      image: "https://dolcebambini.gr/images/Collection2026/7135.jpg",
+      image: "src/assets/images/7135.webp",
       title: {
         el: "Βαπτιστικό Σύνολο 7135",
         en: "Baptismal Ensemble 7135",
@@ -244,7 +425,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7134",
-      image: "https://dolcebambini.gr/images/Collection2026/7134.jpg",
+      image: "src/assets/images/7134.webp",
       title: {
         el: "Σύνολο 7134",
         en: "Ensemble 7134",
@@ -262,7 +443,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7133",
-      image: "https://dolcebambini.gr/images/Collection2026/7133-a.jpg",
+      image: "src/assets/images/7133-a.webp",
       title: {
         el: "Σύνολο 7133",
         en: "Ensemble 7133",
@@ -280,7 +461,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7132",
-      image: "https://dolcebambini.gr/images/Collection2026/7132.jpg",
+      image: "src/assets/images/7132.webp",
       title: {
         el: "Σύνολο 7132",
         en: "Ensemble 7132",
@@ -298,7 +479,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7131",
-      image: "https://dolcebambini.gr/images/Collection2026/7131-a.jpg",
+      image: "src/assets/images/7131-a.webp",
       title: {
         el: "Σύνολο 7131",
         en: "Ensemble 7131",
@@ -316,7 +497,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7130",
-      image: "https://dolcebambini.gr/images/Collection2026/7130.jpg",
+      image: "src/assets/images/7130.webp",
       title: {
         el: "Βαπτιστικό σύνολο με vintage επιρροές",
         en: "Baptismal ensemble with vintage influences",
@@ -334,7 +515,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7129",
-      image: "https://dolcebambini.gr/images/Collection2026/7129-a.jpg",
+      image: "src/assets/images/7129-a.webp",
       title: {
         el: "Σύνολο 7129",
         en: "Ensemble 7129",
@@ -352,7 +533,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7128",
-      image: "https://dolcebambini.gr/images/Collection2026/7128-a.jpg",
+      image: "src/assets/images/7128-a.webp",
       title: {
         el: "Σύνολο 7128",
         en: "Ensemble 7128",
@@ -370,7 +551,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7127",
-      image: "https://dolcebambini.gr/images/Collection2026/7127.jpg",
+      image: "src/assets/images/7127.webp",
       title: {
         el: "Σύνολο 7127",
         en: "Ensemble 7127",
@@ -388,7 +569,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7126",
-      image: "https://dolcebambini.gr/images/Collection2026/7126-a.jpg",
+      image: "src/assets/images/7126-a.webp",
       title: {
         el: "Σύνολο 7126",
         en: "Ensemble 7126",
@@ -406,7 +587,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7125",
-      image: "https://dolcebambini.gr/images/Collection2026/7125.jpg",
+      image: "src/assets/images/7125.webp",
       title: {
         el: "Σύνολο 7125",
         en: "Ensemble 7125",
@@ -424,7 +605,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7124",
-      image: "https://dolcebambini.gr/images/Collection2026/7124-a.jpg",
+      image: "src/assets/images/7124-a.webp",
       title: {
         el: "Σύνολο 7124",
         en: "Ensemble 7124",
@@ -442,7 +623,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7123",
-      image: "https://dolcebambini.gr/images/Collection2026/7123-a.jpg",
+      image: "src/assets/images/7123-a.webp",
       title: {
         el: "Σύνολο 7123",
         en: "Ensemble 7123",
@@ -460,7 +641,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7122",
-      image: "https://dolcebambini.gr/images/Collection2026/7122-a.jpg",
+      image: "src/assets/images/7122-a.webp",
       title: {
         el: "Σύνολο 7122",
         en: "Ensemble 7122",
@@ -478,7 +659,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7121",
-      image: "https://dolcebambini.gr/images/Collection2026/7121.jpg",
+      image: "src/assets/images/7121.webp",
       title: {
         el: "Σύνολο 7121",
         en: "Ensemble 7121",
@@ -496,7 +677,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7120",
-      image: "https://dolcebambini.gr/images/Collection2026/7120outfit-1.jpg",
+      image: "src/assets/images/7120outfit-1.webp",
       title: {
         el: "Σύνολο 7120",
         en: "Ensemble 7120",
@@ -514,7 +695,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7119",
-      image: "https://dolcebambini.gr/images/Collection2026/7119-b.jpg",
+      image: "src/assets/images/7119-b.webp",
       title: {
         el: "Σύνολο 7119",
         en: "Ensemble 7119",
@@ -532,7 +713,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7118",
-      image: "https://dolcebambini.gr/images/Collection2026/7118.jpg",
+      image: "src/assets/images/7118.webp",
       title: {
         el: "Σύνολο 7118",
         en: "Ensemble 7118",
@@ -550,7 +731,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7117",
-      image: "https://dolcebambini.gr/images/Collection2026/7117.jpg",
+      image: "src/assets/images/7117.webp",
       title: {
         el: "Σύνολο 7117",
         en: "Ensemble 7117",
@@ -568,7 +749,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7116",
-      image: "https://dolcebambini.gr/images/Collection2026/7116-a.jpg",
+      image: "src/assets/images/7116-a.webp",
       title: {
         el: "Σύνολο 7116",
         en: "Ensemble 7116",
@@ -586,7 +767,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7115",
-      image: "https://dolcebambini.gr/images/Collection2026/7115-a.jpg",
+      image: "src/assets/images/7115-a.webp",
       title: {
         el: "Σύνολο 7115",
         en: "Ensemble 7115",
@@ -604,7 +785,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7114",
-      image: "https://dolcebambini.gr/images/Collection2026/7114-a.jpg",
+      image: "src/assets/images/7114-a.webp",
       title: {
         el: "Σύνολο 7114",
         en: "Ensemble 7114",
@@ -622,7 +803,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7112",
-      image: "https://dolcebambini.gr/images/Collection2026/7112.jpg",
+      image: "src/assets/images/7112.webp",
       title: {
         el: "Σύνολο 7112",
         en: "Ensemble 7112",
@@ -640,7 +821,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7111",
-      image: "https://dolcebambini.gr/images/Collection2026/7111.jpg",
+      image: "src/assets/images/7111.webp",
       title: {
         el: "Σύνολο 7111",
         en: "Ensemble 7111",
@@ -658,7 +839,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7110",
-      image: "https://dolcebambini.gr/images/Collection2026/7110-a.jpg",
+      image: "src/assets/images/7110.webp",
       title: {
         el: "Σύνολο 7110",
         en: "Ensemble 7110",
