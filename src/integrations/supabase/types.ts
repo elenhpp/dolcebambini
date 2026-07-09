@@ -19,6 +19,8 @@ export type Database = {
           category: string
           code: string
           description: Json
+          images: Json
+          long_description: Json
           title: Json
           updated_at: string
           updated_by: string | null
@@ -27,6 +29,8 @@ export type Database = {
           category: string
           code: string
           description?: Json
+          images?: Json
+          long_description?: Json
           title?: Json
           updated_at?: string
           updated_by?: string | null
@@ -35,6 +39,8 @@ export type Database = {
           category?: string
           code?: string
           description?: Json
+          images?: Json
+          long_description?: Json
           title?: Json
           updated_at?: string
           updated_by?: string | null

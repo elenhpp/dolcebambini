@@ -4,7 +4,12 @@ import type { Lang, Tr } from "./site-content";
 import { supabase } from "@/integrations/supabase/client";
 
 export type FieldMap = Partial<Record<Lang, string>>;
-export type ProductOverride = { title: FieldMap; desc: FieldMap };
+export type ProductOverride = {
+  title: FieldMap;
+  desc: FieldMap;
+  longDesc: FieldMap;
+  images: string[];
+};
 export type OverridesMap = Record<string, Record<string, ProductOverride>>;
 
 type Row = {
@@ -12,6 +17,8 @@ type Row = {
   code: string;
   title: FieldMap | null;
   description: FieldMap | null;
+  long_description: FieldMap | null;
+  images: string[] | null;
 };
 
 function rowsToMap(rows: Row[]): OverridesMap {
@@ -21,6 +28,8 @@ function rowsToMap(rows: Row[]): OverridesMap {
     map[r.category][r.code] = {
       title: r.title ?? {},
       desc: r.description ?? {},
+      longDesc: r.long_description ?? {},
+      images: Array.isArray(r.images) ? r.images : [],
     };
   }
   return map;
@@ -29,7 +38,7 @@ function rowsToMap(rows: Row[]): OverridesMap {
 async function fetchOverrides(): Promise<OverridesMap> {
   const { data, error } = await supabase
     .from("product_overrides")
-    .select("category, code, title, description");
+    .select("category, code, title, description, long_description, images");
   if (error) throw error;
   return rowsToMap((data ?? []) as Row[]);
 }
@@ -78,13 +87,17 @@ export function useOverrides() {
 export async function saveProductOverride(
   category: string,
   code: string,
-  title: FieldMap,
-  description: FieldMap,
+  fields: {
+    title: FieldMap;
+    description: FieldMap;
+    long_description: FieldMap;
+    images: string[];
+  },
 ): Promise<void> {
   const { error } = await supabase
     .from("product_overrides")
     .upsert(
-      { category, code, title, description },
+      { category, code, ...fields },
       { onConflict: "category,code" },
     );
   if (error) throw error;
@@ -117,7 +130,7 @@ export function mergeTr(
 export function useDebouncedSave(
   category: string,
   code: string,
-  initial: { title: FieldMap; desc: FieldMap },
+  initial: { title: FieldMap; desc: FieldMap; longDesc: FieldMap; images: string[] },
 ) {
   const [state, setState] = useState(initial);
   const [status, setStatus] = useState<"idle" | "saving" | "saved" | "error">("idle");
@@ -132,7 +145,12 @@ export function useDebouncedSave(
     const handle = setTimeout(async () => {
       setStatus("saving");
       try {
-        await saveProductOverride(category, code, state.title, state.desc);
+        await saveProductOverride(category, code, {
+          title: state.title,
+          description: state.desc,
+          long_description: state.longDesc,
+          images: state.images,
+        });
         setStatus("saved");
         setTimeout(() => setStatus("idle"), 1200);
       } catch (e) {
