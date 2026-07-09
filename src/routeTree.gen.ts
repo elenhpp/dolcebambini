@@ -21,6 +21,8 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AccessoriesRouteImport } from './routes/accessories'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as GirlsIndexRouteImport } from './routes/girls.index'
+import { Route as BoysIndexRouteImport } from './routes/boys.index'
 import { Route as GirlsCodeRouteImport } from './routes/girls.$code'
 import { Route as BoysCodeRouteImport } from './routes/boys.$code'
 
@@ -84,6 +86,16 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GirlsIndexRoute = GirlsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => GirlsRoute,
+} as any)
+const BoysIndexRoute = BoysIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => BoysRoute,
+} as any)
 const GirlsCodeRoute = GirlsCodeRouteImport.update({
   id: '/$code',
   path: '/$code',
@@ -110,22 +122,24 @@ export interface FileRoutesByFullPath {
   '/silk': typeof SilkRoute
   '/boys/$code': typeof BoysCodeRoute
   '/girls/$code': typeof GirlsCodeRoute
+  '/boys/': typeof BoysIndexRoute
+  '/girls/': typeof GirlsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/accessories': typeof AccessoriesRoute
   '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
-  '/boys': typeof BoysRouteWithChildren
   '/communion': typeof CommunionRoute
   '/contact': typeof ContactRoute
   '/gdpr': typeof GdprRoute
-  '/girls': typeof GirlsRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/sales-points': typeof SalesPointsRoute
   '/silk': typeof SilkRoute
   '/boys/$code': typeof BoysCodeRoute
   '/girls/$code': typeof GirlsCodeRoute
+  '/boys': typeof BoysIndexRoute
+  '/girls': typeof GirlsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -143,6 +157,8 @@ export interface FileRoutesById {
   '/silk': typeof SilkRoute
   '/boys/$code': typeof BoysCodeRoute
   '/girls/$code': typeof GirlsCodeRoute
+  '/boys/': typeof BoysIndexRoute
+  '/girls/': typeof GirlsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -161,22 +177,24 @@ export interface FileRouteTypes {
     | '/silk'
     | '/boys/$code'
     | '/girls/$code'
+    | '/boys/'
+    | '/girls/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/accessories'
     | '/admin'
     | '/auth'
-    | '/boys'
     | '/communion'
     | '/contact'
     | '/gdpr'
-    | '/girls'
     | '/privacy'
     | '/sales-points'
     | '/silk'
     | '/boys/$code'
     | '/girls/$code'
+    | '/boys'
+    | '/girls'
   id:
     | '__root__'
     | '/'
@@ -193,6 +211,8 @@ export interface FileRouteTypes {
     | '/silk'
     | '/boys/$code'
     | '/girls/$code'
+    | '/boys/'
+    | '/girls/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -296,6 +316,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/girls/': {
+      id: '/girls/'
+      path: '/'
+      fullPath: '/girls/'
+      preLoaderRoute: typeof GirlsIndexRouteImport
+      parentRoute: typeof GirlsRoute
+    }
+    '/boys/': {
+      id: '/boys/'
+      path: '/'
+      fullPath: '/boys/'
+      preLoaderRoute: typeof BoysIndexRouteImport
+      parentRoute: typeof BoysRoute
+    }
     '/girls/$code': {
       id: '/girls/$code'
       path: '/$code'
@@ -315,20 +349,24 @@ declare module '@tanstack/react-router' {
 
 interface BoysRouteChildren {
   BoysCodeRoute: typeof BoysCodeRoute
+  BoysIndexRoute: typeof BoysIndexRoute
 }
 
 const BoysRouteChildren: BoysRouteChildren = {
   BoysCodeRoute: BoysCodeRoute,
+  BoysIndexRoute: BoysIndexRoute,
 }
 
 const BoysRouteWithChildren = BoysRoute._addFileChildren(BoysRouteChildren)
 
 interface GirlsRouteChildren {
   GirlsCodeRoute: typeof GirlsCodeRoute
+  GirlsIndexRoute: typeof GirlsIndexRoute
 }
 
 const GirlsRouteChildren: GirlsRouteChildren = {
   GirlsCodeRoute: GirlsCodeRoute,
+  GirlsIndexRoute: GirlsIndexRoute,
 }
 
 const GirlsRouteWithChildren = GirlsRoute._addFileChildren(GirlsRouteChildren)
