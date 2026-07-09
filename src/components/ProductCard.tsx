@@ -25,7 +25,7 @@ export function ProductCard({ product, index = 0, category }: { product: Product
     <div className="shimmer relative rounded-3xl bg-card border border-border/60 soft-shadow overflow-hidden h-full">
       <div className="relative aspect-[3/4] overflow-hidden bg-muted">
         <img
-          src={product.image}
+          src={resolveImage(product.image)}
           alt={title}
           loading="lazy"
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
