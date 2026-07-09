@@ -1,5 +1,6 @@
 import type { Product } from "@/lib/site-content";
-import { T } from "@/lib/site-content";
+import { T, resolveImage } from "@/lib/site-content";
+
 import { useLang } from "@/lib/lang";
 import { useOverrides, mergeTr } from "@/lib/product-overrides";
 import { Link } from "@tanstack/react-router";
