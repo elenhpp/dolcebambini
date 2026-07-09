@@ -41,7 +41,7 @@ export function ProductDetail({ category, code }: { category: string; code: stri
   const title = mergedTitle ? t(mergedTitle) : `${t(T.copy.baptismalFallback)} ${product.code}`;
   const shortDesc = mergedDesc ? t(mergedDesc) : "";
   const longDesc = mergedLongDesc ? t(mergedLongDesc) : "";
-  const mainImage = gallery[active] ?? product.image;
+  const mainImage = gallery[active] ?? resolveImage(product.image);
 
   return (
     <div className="mx-auto max-w-6xl px-5 lg:px-8 pt-8 pb-20">
