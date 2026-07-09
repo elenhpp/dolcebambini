@@ -19,10 +19,11 @@ export function ProductDetail({ category, code }: { category: string; code: stri
   const mergedLongDesc = mergeTr(undefined, ov?.longDesc);
 
   const gallery = useMemo(() => {
-    const extras = (ov?.images ?? []).filter((u) => u && u.trim() !== "");
-    const base = product?.image ? [product.image] : [];
+    const extras = (ov?.images ?? []).filter((u) => u && u.trim() !== "").map(resolveImage);
+    const base = product?.image ? [resolveImage(product.image)] : [];
     return [...base, ...extras];
   }, [product?.image, ov?.images]);
+
 
   const [active, setActive] = useState(0);
 
