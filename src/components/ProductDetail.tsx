@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { PRODUCTS, T, type Product } from "@/lib/site-content";
+import { PRODUCTS, T, resolveImage, type Product } from "@/lib/site-content";
 import { useLang } from "@/lib/lang";
 import { useOverrides, mergeTr } from "@/lib/product-overrides";
 
