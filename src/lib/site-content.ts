@@ -1201,7 +1201,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "8529",
-      image: "https://dolcebambini.gr/images/collection-2022-boy/8529-Left-(2)-front.jpg",
+      image: "src/assets/images/8529.webp",
       title: {
         el: "Σύνολο 8529",
         en: "Ensemble 8529",
