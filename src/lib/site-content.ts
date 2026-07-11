@@ -2336,24 +2336,6 @@ export const PRODUCTS: Record<string, Product[]> = {
       },
     },
     {
-      code: "9761-1",
-      image: "https://dolcebambini.gr/images/9761-18.jpg",
-      title: {
-        el: "Φόρεμα 9761-1",
-        en: "Dress 9761-1",
-        it: "Abito 9761-1",
-        es: "Vestido 9761-1",
-        pt: "Vestido 9761-1",
-      },
-      desc: {
-        el: "Ρομαντικό ασύμμετρο φόρεμα από τρισδιάστατη δαντέλα με μανίκι. Στο φόρεμα υπάρχει ένα κέντημα από μικρές και μεγάλες πέρλες πάνω σε εκρού σάπιο μήλο λουλούδια. Το εσωτερικό του είναι επενδυμένο με φόδρα 100% βαμβακερή.",
-        en: "Romantic asymmetric dress in three-dimensional lace with sleeves. On the dress there is embroidery of small and large pearls over ecru dusty-rose flowers. Its interior is lined with 100% cotton.",
-        it: "Romantico abito asimmetrico in pizzo tridimensionale con maniche. Sull'abito è presente un ricamo di piccole e grandi perle su fiori ecru-rosa antico. Il suo interno è foderato in 100% cotone.",
-        es: "Romántico vestido asimétrico de encaje tridimensional con mangas. En el vestido hay un bordado de perlas pequeñas y grandes sobre flores en ecru rosa palo. Su interior está forrado con 100% algodón.",
-        pt: "Romântico vestido assimétrico em renda tridimensional com mangas. No vestido há um bordado de pérolas pequenas e grandes sobre flores em ecru rosa-velho. O seu interior é forrado a 100% algodão.",
-      },
-    },
-    {
       code: "9775-1",
       image: "https://dolcebambini.gr/images/9775-1_1.jpg",
       title: {
