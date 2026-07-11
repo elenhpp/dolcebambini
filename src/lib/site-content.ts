@@ -1017,10 +1017,10 @@ export const PRODUCTS: Record<string, Product[]> = {
         pt: "Conjunto de batismo premium com elegância natural e carácter atemporal. A camisa é em algodão fino com textura suave e elevada respirabilidade. O colete apresenta uma trama waffle em algodão em relevo que confere carácter luxuoso e caimento firme. A calça é em mistura resistente de algodão e linho. Os suspensórios completam o conjunto funcional e esteticamente.",
       },
     },
-    { code: "8825", image: "https://dolcebambini.gr/images/8825-1.jpg" },
+    { code: "8825", image: "src/assets/images/8825.webp" },
     {
       code: "8818",
-      image: "https://dolcebambini.gr/images/8818-1.jpg",
+      image: "src/assets/images/8818.webp",
       title: {
         el: "Διαχρονικό Στυλ — Σετ για Μικρούς Κύριους",
         en: "Timeless Style — Set for Little Gentlemen",
@@ -1038,7 +1038,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "8816",
-      image: "https://dolcebambini.gr/images/8816-1.jpg",
+      image: "src/assets/images/8816.webp",
       title: {
         el: "Κομψότητα & Φυσική Αρμονία — Σετ για Μικρούς Τζέντλεμεν",
         en: "Elegance & Natural Harmony — Set for Little Gentlemen",
@@ -1056,7 +1056,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "8812",
-      image: "https://dolcebambini.gr/images/8812-2.jpg",
+      image: "src/assets/images/8812.webp",
       title: {
         el: "Σύνολο 8812",
         en: "Ensemble 8812",
@@ -1074,7 +1074,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "8808",
-      image: "https://dolcebambini.gr/images/8808-1.jpg",
+      image: "src/assets/images/8808.webp",
       title: {
         el: "Σύνολο 8808",
         en: "Ensemble 8808",
@@ -1092,7 +1092,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "8807",
-      image: "https://dolcebambini.gr/images/8807-2.jpg",
+      image: "src/assets/images/8807.webp",
       title: {
         el: "Σύνολο 8807",
         en: "Ensemble 8807",
@@ -1110,7 +1110,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "8806",
-      image: "https://dolcebambini.gr/images/8806-1.jpg",
+      image: "src/assets/images/8806.webp",
       title: {
         el: "Σύνολο 8806",
         en: "Ensemble 8806",
@@ -1128,7 +1128,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "8805",
-      image: "https://dolcebambini.gr/images/8805-0.jpg",
+      image: "src/assets/images/8805.webp",
       title: {
         el: "Gentle Elegance — Κομψό Βαπτιστικό Σετ",
         en: "Gentle Elegance — Elegant Baptism Set",
@@ -1146,7 +1146,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "8802",
-      image: "https://dolcebambini.gr/images/8802_1_11zon.jpg",
+      image: "src/assets/images/8802.webp",
       title: {
         el: "Timeless Charm — Κομψό Βαπτιστικό Σετ",
         en: "Timeless Charm — Elegant Baptism Set",
@@ -1164,7 +1164,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "8801",
-      image: "https://dolcebambini.gr/images/8801-1.jpg",
+      image: "src/assets/images/8801.webp",
       title: {
         el: "Κομψό Βαπτιστικό Σετ για Διαχρονική Εμφάνιση",
         en: "Elegant Baptism Set for a Timeless Look",
@@ -1180,10 +1180,10 @@ export const PRODUCTS: Record<string, Product[]> = {
         pt: "Camisa branca em algodão com laço azul para um contraste elegante. Colete azul-claro em algodão com textura fina e botões elegantes para uma aparência distinta. Calça azul-escuro em algodão para um estilo sofisticado e cuidado.",
       },
     },
-    { code: "8758", image: "https://dolcebambini.gr/images/8758-2.jpg" },
+    { code: "8758", image: "src/assets/images/8758.webp" },
     {
       code: "8757",
-      image: "https://dolcebambini.gr/images/8757-1.jpg",
+      image: "src/assets/images/8757.webp",
       title: {
         el: "Little Prince — Ιβουάρ Σετ",
         en: "Little Prince — Ivory Set",
@@ -1219,7 +1219,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "8002",
-      image: "https://dolcebambini.gr/images/collection-2023/8002_01.jpg",
+      image: "src/assets/images/8002.webp",
       title: {
         el: "Σύνολο 8002",
         en: "Ensemble 8002",
@@ -1237,7 +1237,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "8619",
-      image: "https://dolcebambini.gr/images/collection-2023/8619_01.jpg",
+      image: "src/assets/images/8619.webp",
       title: {
         el: "Σύνολο 8619",
         en: "Ensemble 8619",
@@ -1255,7 +1255,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "8617",
-      image: "https://dolcebambini.gr/images/collection-2023/8617_01.jpg",
+      image: "src/assets/images/8617.webp",
       title: {
         el: "Σύνολο 8617",
         en: "Ensemble 8617",
@@ -1273,7 +1273,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "8615",
-      image: "https://dolcebambini.gr/images/collection-2023/8615_01.jpg",
+      image: "src/assets/images/8615.webp",
       title: {
         el: "Σύνολο 8615",
         en: "Ensemble 8615",
@@ -1291,7 +1291,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "8608",
-      image: "https://dolcebambini.gr/images/collection-2023/8608_01.jpg",
+      image: "src/assets/images/8608.webp",
       title: {
         el: "Σύνολο 8608",
         en: "Ensemble 8608",
@@ -1309,7 +1309,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "8607",
-      image: "https://dolcebambini.gr/images/collection-2023/8607_01.jpg",
+      image: "src/assets/images/8607.webp",
       title: {
         el: "Σύνολο 8607",
         en: "Ensemble 8607",
@@ -1327,7 +1327,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "8728",
-      image: "https://dolcebambini.gr/images/8728.jpg",
+      image: "src/assets/images/8728.webp",
       title: {
         el: "Σύνολο 8728",
         en: "Ensemble 8728",
@@ -1345,7 +1345,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "8726",
-      image: "https://dolcebambini.gr/images/8726_1.jpg",
+      image: "src/assets/images/8726.webp",
       title: {
         el: "Σύνολο 8726",
         en: "Ensemble 8726",
@@ -1363,7 +1363,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "8725",
-      image: "https://dolcebambini.gr/images/8725.jpg",
+      image: "src/assets/images/8725.webp",
       title: {
         el: "Σύνολο 8725",
         en: "Ensemble 8725",
@@ -1381,7 +1381,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "8717",
-      image: "https://dolcebambini.gr/images/8717_1.jpg",
+      image: "src/assets/images/8717.webp",
       title: {
         el: "Σύνολο 8717",
         en: "Ensemble 8717",
@@ -1399,7 +1399,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "8715",
-      image: "https://dolcebambini.gr/images/8715_1.jpg",
+      image: "src/assets/images/8715.webp",
       title: {
         el: "Σύνολο 8715",
         en: "Ensemble 8715",
@@ -1417,7 +1417,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "8701",
-      image: "https://dolcebambini.gr/images/8701.jpg",
+      image: "src/assets/images/8701.webp",
       title: {
         el: "Σύνολο 8701",
         en: "Ensemble 8701",
