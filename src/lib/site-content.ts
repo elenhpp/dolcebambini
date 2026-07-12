@@ -2085,7 +2085,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "9785-1",
-      image: "https://dolcebambini.gr/images/9785-1-2.jpg",
+      image: "src/assets/images/9785-1.webp",
       title: {
         el: "Εκθαμβωτικό Ιβουάρ Φόρεμα 9785-1",
         en: "Dazzling Ivory Dress 9785-1",
@@ -2103,7 +2103,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "9804-1",
-      image: "https://dolcebambini.gr/images/9804-1-5.jpg",
+      image: "src/assets/images/9804-1.webp",
       title: {
         el: "Φόρεμα Υψηλής Ραπτικής 9804-1",
         en: "Haute Couture Dress 9804-1",
@@ -2121,7 +2121,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "9805-1",
-      image: "https://dolcebambini.gr/images/9805-1-6.jpg",
+      image: "src/assets/images/9805-1.webp",
       title: {
         el: "Βαπτιστικό Φόρεμα Υψηλής Ραπτικής 9805-1",
         en: "Haute Couture Baptism Dress 9805-1",
@@ -2139,7 +2139,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "9855-1",
-      image: "https://dolcebambini.gr/images/9855-1.jpg",
+      image: "src/assets/images/9855-1.webp",
       title: {
         el: "Φόρεμα 9855-1",
         en: "Dress 9855-1",
@@ -2157,7 +2157,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "9856-1",
-      image: "https://dolcebambini.gr/images/9856-1-5.jpg",
+      image: "src/assets/images/9856-1.webp",
       title: {
         el: "Φόρεμα 9856-1",
         en: "Dress 9856-1",
@@ -2175,7 +2175,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "9856-8",
-      image: "https://dolcebambini.gr/images/9856-8-9.jpg",
+      image: "src/assets/images/9856-8.webp",
       title: {
         el: "Βαπτιστικό Φόρεμα 9856-8",
         en: "Baptism Dress 9856-8",
@@ -2193,7 +2193,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "9850-1",
-      image: "https://dolcebambini.gr/images/9850-1-1.jpg",
+      image: "src/assets/images/9850-1.webp",
       title: {
         el: "Φόρεμα 9850-1",
         en: "Dress 9850-1",
@@ -2211,7 +2211,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "9858-1",
-      image: "https://dolcebambini.gr/images/9858-1-6.jpg",
+      image: "src/assets/images/9858-1.webp",
       title: {
         el: "Βαπτιστικό Φόρεμα 9858-1 — Πριγκιπική Λάμψη",
         en: "Baptism Dress 9858-1 — Princess Sparkle",
@@ -2229,7 +2229,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "9703-1",
-      image: "https://dolcebambini.gr/images/collection-2023/9703-1_01.jpg",
+      image: "src/assets/images/9703-1.webp",
       title: {
         el: "Φόρεμα 9703-1",
         en: "Dress 9703-1",
@@ -2247,7 +2247,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "9703-8",
-      image: "https://dolcebambini.gr/images/collection-2023/9703-8_01.jpg",
+      image: "src/assets/images/9703-8.webp",
       title: {
         el: "Φόρεμα 9703-8",
         en: "Dress 9703-8",
@@ -2265,7 +2265,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "9721-1",
-      image: "https://dolcebambini.gr/images/collection-2023/9721-1_01.jpg",
+      image: "src/assets/images/9721-1.webp",
       title: {
         el: "Φόρεμα 9721-1",
         en: "Dress 9721-1",
@@ -2283,7 +2283,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "9723-1",
-      image: "https://dolcebambini.gr/images/collection-2023/9723-1_01.jpg",
+      image: "src/assets/images/9723-1.webp",
       title: {
         el: "Φόρεμα 9723-1",
         en: "Dress 9723-1",
@@ -2301,7 +2301,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "9758-1",
-      image: "https://dolcebambini.gr/images/9758-1_3.jpg",
+      image: "src/assets/images/9758-1.webp",
       title: {
         el: "Φόρεμα 9758-1",
         en: "Dress 9758-1",
@@ -2319,7 +2319,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "9758-8",
-      image: "https://dolcebambini.gr/images/9758-8_1.jpg",
+      image: "src/assets/images/9758-8.webp",
       title: {
         el: "Φόρεμα 9758-8",
         en: "Dress 9758-8",
@@ -2337,7 +2337,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "9775-1",
-      image: "https://dolcebambini.gr/images/9775-1_1.jpg",
+      image: "src/assets/images/9775-1.webp",
       title: {
         el: "Φόρεμα 9775-1",
         en: "Dress 9775-1",
@@ -2355,7 +2355,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "9775-8",
-      image: "https://dolcebambini.gr/images/9775-8_1.jpg",
+      image: "src/assets/images/9775-8.webp",
       title: {
         el: "Φόρεμα 9775-8",
         en: "Dress 9775-8",
@@ -2373,7 +2373,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "9776-1",
-      image: "https://dolcebambini.gr/images/9776-1_1.jpg",
+      image: "src/assets/images/9776-1.webp",
       title: {
         el: "Φόρεμα 9776-1",
         en: "Dress 9776-1",
@@ -2391,7 +2391,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "9776-8",
-      image: "https://dolcebambini.gr/images/9776-8_1.jpg",
+      image: "src/assets/images/9776-8.webp",
       title: {
         el: "Φόρεμα 9776-8",
         en: "Dress 9776-8",
@@ -2409,7 +2409,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "544-1",
-      image: "https://dolcebambini.gr/images/classic-collection-girl/544-1/544-1-front.jpg",
+      image: "src/assets/images/544-1.webp",
       title: {
         el: "Φόρεμα 544-1",
         en: "Dress 544-1",
@@ -2427,7 +2427,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "6025-8",
-      image: "https://dolcebambini.gr/images/classic-collection-girl/6025-8/6025-8-1-front.jpg",
+      image: "src/assets/images/6025-8.webp",
       title: {
         el: "Φόρεμα 6025-8",
         en: "Dress 6025-8",
@@ -2445,7 +2445,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "6057-1",
-      image: "https://dolcebambini.gr/images/collection-2022-girl/6057-1-(1)-front.jpg",
+      image: "src/assets/images/6057-1.webp",
       title: {
         el: "Φόρεμα 6057-1",
         en: "Dress 6057-1",
@@ -2463,7 +2463,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "6059-1",
-      image: "https://dolcebambini.gr/images/collection-2022-girl/6059-1-(1)-front.jpg",
+      image: "src/assets/images/6059-1.webp",
       title: {
         el: "Φόρεμα 6059-1",
         en: "Dress 6059-1",
@@ -2481,7 +2481,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "9610-1",
-      image: "https://dolcebambini.gr/images/collection-2022-girl/9610-1-(1)-front.jpg",
+      image: "src/assets/images/9610-1.webp",
       title: {
         el: "Φόρεμα 9610-1",
         en: "Dress 9610-1",
@@ -2499,7 +2499,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "9620-1",
-      image: "https://dolcebambini.gr/images/collection-2022-girl/9620-1-(1)-front.jpg",
+      image: "src/assets/images/9620-1.webp",
       title: {
         el: "Φόρεμα 9620-1",
         en: "Dress 9620-1",
