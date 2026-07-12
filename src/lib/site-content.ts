@@ -1689,7 +1689,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "7027-5",
-      image: "src/assets/images/7027-5b.webp",
+      image: "src/assets/images/7027-5.webp",
       title: {
         el: "Φόρεμα 7027-5",
         en: "Dress 7027-5",
