@@ -2734,7 +2734,7 @@ export const PRODUCTS: Record<string, Product[]> = {
   accessories: [
     {
       code: "K46-7005",
-      image: `${IMG}/Collection2026/SetVaptisis/K46-7005.jpg`,
+      image: "src/assets/images/K46-7005.webp",
       title: {
         el: "Σετ K46-7005",
         en: "Set K46-7005",
@@ -2745,7 +2745,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "K45-7021",
-      image: `${IMG}/Collection2026/SetVaptisis/K45-7021.jpg`,
+      image: "src/assets/images/K45-7005.webp",
       title: {
         el: "Σετ K45-7021",
         en: "Set K45-7021",
@@ -2756,7 +2756,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "K44-7012",
-      image: `${IMG}/Collection2026/SetVaptisis/K44-7012_set_vaptisis.jpg`,
+      image: "src/assets/images/K44-7012set.webp",
       title: {
         el: "Σετ K44-7012",
         en: "Set K44-7012",
@@ -2767,7 +2767,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "K42-7002",
-      image: `${IMG}/Collection2026/SetVaptisis/K42-7002.jpg`,
+      image: "K42-7002",
       title: {
         el: "Σετ K42-7002",
         en: "Set K42-7002",
@@ -2778,7 +2778,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "K41-9761",
-      image: `${IMG}/Collection2026/SetVaptisis/K41-9761N.jpg`,
+      image: "K41-9761N",
       title: {
         el: "Σετ K41-9761",
         en: "Set K41-9761",
@@ -2789,7 +2789,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "K40-9896-4",
-      image: `${IMG}/Collection2026/SetVaptisis/K40-9896-4_set.jpg`,
+      image: "K40-9896-4set",
       title: {
         el: "Σετ K40-9896-4",
         en: "Set K40-9896-4",
@@ -2800,7 +2800,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "A46-7110",
-      image: `${IMG}/Collection2026/SetVaptisis/A46-7110_candle.jpg`,
+      image: "src/assets/images/A46-7110set_.webp",
       title: {
         el: "Σετ A46-7110",
         en: "Set A46-7110",
@@ -2811,7 +2811,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "A44-7125",
-      image: `${IMG}/Collection2026/SetVaptisis/A44-7125.jpg`,
+      image: "src/assets/images/A44-7125.webp",
       title: {
         el: "Σετ A44-7125",
         en: "Set A44-7125",
@@ -2822,7 +2822,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "A43-7108",
-      image: `${IMG}/Collection2026/SetVaptisis/A43-7108_set.jpg`,
+      image: "src/assets/images/A43-7108 set.webp",
       title: {
         el: "Σετ A43-7108",
         en: "Set A43-7108",
@@ -2833,7 +2833,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "A42-7114",
-      image: `${IMG}/Collection2026/SetVaptisis/A42-7114_set.jpg`,
+      image: "src/assets/images/A42-7114 set.webp",
       title: {
         el: "Σετ A42-7114",
         en: "Set A42-7114",
@@ -2844,7 +2844,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "A41-7124",
-      image: `${IMG}/Collection2026/SetVaptisis/A41-7124-2.jpg`,
+      image: "src/assets/images/A41-7124-2.webp",
       title: {
         el: "Σετ A41-7124",
         en: "Set A41-7124",
@@ -2855,7 +2855,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "A40-7105",
-      image: `${IMG}/Collection2026/SetVaptisis/A40-7105_SET.jpg`,
+      image: "src/assets/images/A40-7105 SET.webp",
       title: {
         el: "Σετ A40-7105",
         en: "Set A40-7105",
@@ -2866,7 +2866,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "K33-Set",
-      image: `${IMG}/K33-1-9840.jpg`,
+      image: "src/assets/images/K33-1(9840).webp",
       title: {
         el: "Σετ K33-Set",
         en: "Set K33-Set",
@@ -2877,7 +2877,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "K32-Set",
-      image: `${IMG}/K32-1-9855.jpg`,
+      image: "src/assets/images/K32-1(9855).webp",
       title: {
         el: "Σετ K32-Set",
         en: "Set K32-Set",
@@ -2888,7 +2888,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "K31-Set",
-      image: `${IMG}/K31-1-9856.jpg`,
+      image: "src/assets/images/K31-1(9856).webp",
       title: {
         el: "Σετ K31-Set",
         en: "Set K31-Set",
@@ -2899,7 +2899,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "K30-Set",
-      image: `${IMG}/9850-Set/K30-7-9850.jpg`,
+      image: "src/assets/images/K30-6(9850).webp",
       title: {
         el: "Σετ K30-Set",
         en: "Set K30-Set",
@@ -2910,7 +2910,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "K27-Set",
-      image: `${IMG}/K271.jpg`,
+      image: "src/assets/images/K27(1).webp",
       title: {
         el: "Σετ K27-Set",
         en: "Set K27-Set",
@@ -2921,7 +2921,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "K26-Set",
-      image: `${IMG}/K26-1-9805.jpg`,
+      image: "src/assets/images/K26-1(9805).webp",
       title: {
         el: "Σετ K26-Set",
         en: "Set K26-Set",
@@ -2932,7 +2932,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "K23-Set",
-      image: `${IMG}/K23-1-9785.jpg`,
+      image: "src/assets/images/K23-1(9785).webp",
       title: {
         el: "Σετ K23-Set",
         en: "Set K23-Set",
@@ -2943,7 +2943,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "K22-Set",
-      image: `${IMG}/K22-1-9804.jpg`,
+      image: "src/assets/images/K22-1(9804).webp",
       title: {
         el: "Σετ K22-Set",
         en: "Set K22-Set",
@@ -2954,7 +2954,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "A33-Set",
-      image: `${IMG}/A33-1-8823.jpg`,
+      image: "src/assets/images/A33-1(8823).webp",
       title: {
         el: "Σετ A33-Set",
         en: "Set A33-Set",
@@ -2965,7 +2965,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "A31-Set",
-      image: `${IMG}/A31-1-8805.jpg`,
+      image: "src/assets/images/A31-1(8805).webp",
       title: {
         el: "Σετ A31-Set",
         en: "Set A31-Set",
@@ -2976,7 +2976,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "A30-Set",
-      image: `${IMG}/A30-1-8810.jpg`,
+      image: "src/assets/images/A30-1(8810).webp",
       title: {
         el: "Σετ A30-Set",
         en: "Set A30-Set",
@@ -2987,7 +2987,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "A24-Set",
-      image: `${IMG}/A24-1-8762.jpg`,
+      image: "src/assets/images/A24-1(8762).webp",
       title: {
         el: "Σετ A24-Set",
         en: "Set A24-Set",
@@ -2998,7 +2998,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "A23-Set",
-      image: `${IMG}/A23-1-8808.jpg`,
+      image: "src/assets/images/A23-1(8808).webp",
       title: {
         el: "Σετ A23-Set",
         en: "Set A23-Set",
@@ -3009,7 +3009,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "A22-Set",
-      image: `${IMG}/8806-Set/A22-5-8806.jpg`,
+      image: "src/assets/images/A22-5(8806).webp",
       title: {
         el: "Σετ A22-Set",
         en: "Set A22-Set",
@@ -3020,7 +3020,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "B9-8529",
-      image: `${IMG}/8529-Set.jpg`,
+      image: "src/assets/images/B9(1).webp",
       title: {
         el: "Σετ B9-8529",
         en: "Set B9-8529",
@@ -3031,7 +3031,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "K5",
-      image: `${IMG}/accessories/K5-2.jpg`,
+      image: "src/assets/images/K5-2.webp",
       title: {
         el: "Σετ K5",
         en: "Set K5",
@@ -3042,7 +3042,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "K3",
-      image: `${IMG}/accessories/K3-3.jpg`,
+      image: "src/assets/images/K3-3.webp",
       title: {
         el: "Σετ K3",
         en: "Set K3",
@@ -3053,7 +3053,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "K1-9753",
-      image: `${IMG}/accessories/K1-1.jpg`,
+      image: "src/assets/images/K1-1.webp",
       title: {
         el: "Σετ K1-9753",
         en: "Set K1-9753",
@@ -3064,7 +3064,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "B3",
-      image: `${IMG}/accessories/B3-1.jpg`,
+      image: "src/assets/images/B3-1.webp",
       title: {
         el: "Σετ B3",
         en: "Set B3",
@@ -3075,7 +3075,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "K6-9777-1",
-      image: `${IMG}/9777-Set.jpg`,
+      image: "src/assets/images/K6-9777-Set.webp",
       title: {
         el: "Σετ K6-9777-1",
         en: "Set K6-9777-1",
@@ -3085,19 +3085,8 @@ export const PRODUCTS: Record<string, Product[]> = {
       },
     },
     {
-      code: "K8-9776-1",
-      image: `${IMG}/9776-1-Set.jpg`,
-      title: {
-        el: "Σετ K8-9776-1",
-        en: "Set K8-9776-1",
-        it: "Set K8-9776-1",
-        es: "Conjunto K8-9776-1",
-        pt: "Conjunto K8-9776-1",
-      },
-    },
-    {
       code: "K8-9775-8",
-      image: `${IMG}/9775-8-Set.jpg`,
+      image: "src/assets/images/K8-9775-8-Set.webp",
       title: {
         el: "Σετ K8-9775-8",
         en: "Set K8-9775-8",
@@ -3108,7 +3097,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "K5-9758-8",
-      image: `${IMG}/9758-8-Set.jpg`,
+      image: "src/assets/images/K5-9758-8.webp",
       title: {
         el: "Σετ K5-9758-8",
         en: "Set K5-9758-8",
@@ -3119,7 +3108,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "B10-8710",
-      image: `${IMG}/8710-Set.jpg`,
+      image: "src/assets/images/B-10(1).webp",
       title: {
         el: "Σετ B10-8710",
         en: "Set B10-8710",
@@ -3130,7 +3119,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "B2-8619",
-      image: `${IMG}/8619-Set.jpg`,
+      image: "src/assets/images/B2- 8619.webp",
       title: {
         el: "Σετ B2-8619",
         en: "Set B2-8619",
@@ -3141,7 +3130,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "A21-Set",
-      image: `${IMG}/A21-1-8801.jpg`,
+      image: "src/assets/images/A21-1(8801).webp",
       title: {
         el: "Σετ A21-Set",
         en: "Set A21-Set",
