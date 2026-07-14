@@ -2727,7 +2727,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "K45-7021",
-      image: "src/assets/images/K45-7005.webp",
+      image: "src/assets/images/K45-7021.webp",
       title: {
         el: "Σετ K45-7021",
         en: "Set K45-7021",
@@ -2749,7 +2749,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "K42-7002",
-      image: "K42-7002",
+      image: "src/assets/images/K42-7002.webp",
       title: {
         el: "Σετ K42-7002",
         en: "Set K42-7002",
@@ -2760,7 +2760,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "K41-9761",
-      image: "K41-9761N",
+      image: "src/assets/images/K41-9761N.webp",
       title: {
         el: "Σετ K41-9761",
         en: "Set K41-9761",
@@ -2771,7 +2771,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "K40-9896-4",
-      image: "K40-9896-4set",
+      image: "src/assets/images/K40-9896-4set.webp",
       title: {
         el: "Σετ K40-9896-4",
         en: "Set K40-9896-4",
@@ -2782,7 +2782,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "A46-7110",
-      image: "src/assets/images/A46-7110set_.webp",
+      image: "src/assets/images/A46-7110 set_.webp",
       title: {
         el: "Σετ A46-7110",
         en: "Set A46-7110",
