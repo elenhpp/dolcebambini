@@ -1183,7 +1183,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "8529",
-      image: "src/assets/images/8529.webp",
+      image: "src/assets/images/8529.jpg",
       title: {
         el: "Σύνολο 8529",
         en: "Ensemble 8529",
@@ -1327,7 +1327,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "8726",
-      image: "src/assets/images/8726.webp",
+      image: "src/assets/images/8726 .webp",
       title: {
         el: "Σύνολο 8726",
         en: "Ensemble 8726",
