@@ -1201,7 +1201,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "8002",
-      image: "src/assets/images/8002.webp",
+      image: "src/assets/images/8002.jpg",
       title: {
         el: "Σύνολο 8002",
         en: "Ensemble 8002",
@@ -1219,7 +1219,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "8619",
-      image: "src/assets/images/8619.webp",
+      image: "src/assets/images/8619.jpg",
       title: {
         el: "Σύνολο 8619",
         en: "Ensemble 8619",
@@ -1237,7 +1237,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "8617",
-      image: "src/assets/images/8617.webp",
+      image: "src/assets/images/8617.jpg",
       title: {
         el: "Σύνολο 8617",
         en: "Ensemble 8617",
@@ -1255,7 +1255,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "8615",
-      image: "src/assets/images/8615.webp",
+      image: "src/assets/images/8615.jpg",
       title: {
         el: "Σύνολο 8615",
         en: "Ensemble 8615",
@@ -1273,7 +1273,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "8608",
-      image: "src/assets/images/8608.webp",
+      image: "src/assets/images/8608.jpg",
       title: {
         el: "Σύνολο 8608",
         en: "Ensemble 8608",
@@ -1291,7 +1291,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "8607",
-      image: "src/assets/images/8607.webp",
+      image: "src/assets/images/8607.jpg",
       title: {
         el: "Σύνολο 8607",
         en: "Ensemble 8607",
