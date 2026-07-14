@@ -1127,24 +1127,6 @@ export const PRODUCTS: Record<string, Product[]> = {
       },
     },
     {
-      code: "8805",
-      image: "src/assets/images/8805.webp",
-      title: {
-        el: "Gentle Elegance — Κομψό Βαπτιστικό Σετ",
-        en: "Gentle Elegance — Elegant Baptism Set",
-        it: "Gentle Elegance — Elegante Set Battesimo",
-        es: "Gentle Elegance — Elegante Conjunto de Bautizo",
-        pt: "Gentle Elegance — Elegante Conjunto de Batismo",
-      },
-      desc: {
-        el: "Λινό λευκό πουκάμισο για απόλυτη αίσθηση άνεσης και δροσιάς. Ανοιχτό πράσινο βαμβακερό γιλέκο με υφασμάτινα κουμπιά, για έναν κομψό και μοντέρνο συνδυασμό. Εκρού παντελόνι βαμβακερό με υφασμάτινες τιράντες για ένα διαχρονικό vintage look.",
-        en: "White linen shirt for an utterly comfortable, fresh feel. Light-green cotton waistcoat with fabric-covered buttons for an elegant, modern pairing. Ecru cotton trousers with fabric suspenders for a timeless vintage look.",
-        it: "Camicia bianca in lino per una sensazione di assoluto comfort e freschezza. Gilet in cotone verde chiaro con bottoni rivestiti in tessuto, per un abbinamento elegante e moderno. Pantaloni écru in cotone con bretelle in tessuto per un look vintage senza tempo.",
-        es: "Camisa blanca de lino para una sensación de absoluta comodidad y frescor. Chaleco de algodón verde claro con botones forrados de tela, para una combinación elegante y moderna. Pantalón ecru de algodón con tirantes de tela para un look vintage atemporal.",
-        pt: "Camisa branca em linho para uma sensação de absoluto conforto e frescura. Colete em algodão verde-claro com botões forrados a tecido, para uma combinação elegante e moderna. Calça ecru em algodão com suspensórios em tecido para um look vintage atemporal.",
-      },
-    },
-    {
       code: "8802",
       image: "src/assets/images/8802.webp",
       title: {
