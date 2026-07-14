@@ -2211,7 +2211,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "9703-1",
-      image: "src/assets/images/9703-1.webp",
+      image: "src/assets/images/9703-1.jpg",
       title: {
         el: "Φόρεμα 9703-1",
         en: "Dress 9703-1",
@@ -2229,7 +2229,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "9703-8",
-      image: "src/assets/images/9703-8.webp",
+      image: "src/assets/images/9703-8.jpg",
       title: {
         el: "Φόρεμα 9703-8",
         en: "Dress 9703-8",
@@ -2247,7 +2247,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "9721-1",
-      image: "src/assets/images/9721-1.webp",
+      image: "src/assets/images/9721-1.jpg",
       title: {
         el: "Φόρεμα 9721-1",
         en: "Dress 9721-1",
@@ -2265,7 +2265,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "9723-1",
-      image: "src/assets/images/9723-1.webp",
+      image: "src/assets/images/9723-1.jpg",
       title: {
         el: "Φόρεμα 9723-1",
         en: "Dress 9723-1",
@@ -2391,7 +2391,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "544-1",
-      image: "src/assets/images/544-1.webp",
+      image: "src/assets/images/544-1.jpg",
       title: {
         el: "Φόρεμα 544-1",
         en: "Dress 544-1",
@@ -2409,7 +2409,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "6025-8",
-      image: "src/assets/images/6025-8.webp",
+      image: "src/assets/images/6025-8.jpg",
       title: {
         el: "Φόρεμα 6025-8",
         en: "Dress 6025-8",
@@ -2427,7 +2427,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "6057-1",
-      image: "src/assets/images/6057-1.webp",
+      image: "src/assets/images/6057-1.jpg",
       title: {
         el: "Φόρεμα 6057-1",
         en: "Dress 6057-1",
@@ -2445,7 +2445,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "6059-1",
-      image: "src/assets/images/6059-1.webp",
+      image: "src/assets/images/6059-1.jpg",
       title: {
         el: "Φόρεμα 6059-1",
         en: "Dress 6059-1",
@@ -2463,7 +2463,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "9610-1",
-      image: "src/assets/images/9610-1.webp",
+      image: "src/assets/images/9610-1.jpg",
       title: {
         el: "Φόρεμα 9610-1",
         en: "Dress 9610-1",
@@ -2481,7 +2481,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "9620-1",
-      image: "src/assets/images/9620-1.webp",
+      image: "src/assets/images/9620-1.jpg",
       title: {
         el: "Φόρεμα 9620-1",
         en: "Dress 9620-1",
