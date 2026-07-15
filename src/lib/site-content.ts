@@ -409,10 +409,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7135",
       image: "src/assets/images/7135.webp",
       title: {
-        el: "Βαπτιστικό Σύνολο 7135",
-        en: "Baptismal Ensemble 7135",
-        it: "Completo Battesimo 7135",
-        es: "Conjunto de Bautizo 7135",
+        el: "Κουστούμι 7135",
+        en: "Suit 7135",
+        it: "Completo 7135",
+        es: "Traje 7135",
         pt: "Conjunto de Batismo 7135",
       },
       desc: {
@@ -427,10 +427,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7134",
       image: "src/assets/images/7134.webp",
       title: {
-        el: "Σύνολο 7134",
-        en: "Ensemble 7134",
+        el: "Κουστούμι 7134",
+        en: "Suit 7134",
         it: "Completo 7134",
-        es: "Conjunto 7134",
+        es: "Traje 7134",
         pt: "Conjunto 7134",
       },
       desc: {
@@ -445,10 +445,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7133",
       image: "src/assets/images/7133-a.webp",
       title: {
-        el: "Σύνολο 7133",
-        en: "Ensemble 7133",
+        el: "Κουστούμι 7133",
+        en: "Suit 7133",
         it: "Completo 7133",
-        es: "Conjunto 7133",
+        es: "Traje 7133",
         pt: "Conjunto 7133",
       },
       desc: {
@@ -463,10 +463,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7132",
       image: "src/assets/images/7132.webp",
       title: {
-        el: "Σύνολο 7132",
-        en: "Ensemble 7132",
+        el: "Κουστούμι 7132",
+        en: "Suit 7132",
         it: "Completo 7132",
-        es: "Conjunto 7132",
+        es: "Traje 7132",
         pt: "Conjunto 7132",
       },
       desc: {
@@ -481,10 +481,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7131",
       image: "src/assets/images/7131-a.webp",
       title: {
-        el: "Σύνολο 7131",
-        en: "Ensemble 7131",
+        el: "Κουστούμι 7131",
+        en: "Suit 7131",
         it: "Completo 7131",
-        es: "Conjunto 7131",
+        es: "Traje 7131",
         pt: "Conjunto 7131",
       },
       desc: {
@@ -499,10 +499,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7130",
       image: "src/assets/images/7130.webp",
       title: {
-        el: "Βαπτιστικό σύνολο με vintage επιρροές",
-        en: "Baptismal ensemble with vintage influences",
-        it: "Completo da battesimo con influenze vintage",
-        es: "Conjunto de bautizo con influencias vintage",
+        el: "Κουστούμι 7130",
+        en: "Suit 7130",
+        it: "Completo 7130",
+        es: "Traje 7130",
         pt: "Conjunto de batismo com influências vintage",
       },
       desc: {
@@ -517,10 +517,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7129",
       image: "src/assets/images/7129-a.webp",
       title: {
-        el: "Σύνολο 7129",
-        en: "Ensemble 7129",
+        el: "Κουστούμι 7129",
+        en: "Suit 7129",
         it: "Completo 7129",
-        es: "Conjunto 7129",
+        es: "Traje 7129",
         pt: "Conjunto 7129",
       },
       desc: {
@@ -535,10 +535,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7128",
       image: "src/assets/images/7128-a.webp",
       title: {
-        el: "Σύνολο 7128",
-        en: "Ensemble 7128",
+        el: "Κουστούμι 7128",
+        en: "Suit 7128",
         it: "Completo 7128",
-        es: "Conjunto 7128",
+        es: "Traje 7128",
         pt: "Conjunto 7128",
       },
       desc: {
@@ -553,10 +553,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7127",
       image: "src/assets/images/7127.webp",
       title: {
-        el: "Σύνολο 7127",
-        en: "Ensemble 7127",
+        el: "Κουστούμι 7127",
+        en: "Suit 7127",
         it: "Completo 7127",
-        es: "Conjunto 7127",
+        es: "Traje 7127",
         pt: "Conjunto 7127",
       },
       desc: {
@@ -571,10 +571,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7126",
       image: "src/assets/images/7126-a.webp",
       title: {
-        el: "Σύνολο 7126",
-        en: "Ensemble 7126",
+        el: "Κουστούμι 7126",
+        en: "Suit 7126",
         it: "Completo 7126",
-        es: "Conjunto 7126",
+        es: "Traje 7126",
         pt: "Conjunto 7126",
       },
       desc: {
@@ -589,10 +589,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7125",
       image: "src/assets/images/7125.webp",
       title: {
-        el: "Σύνολο 7125",
-        en: "Ensemble 7125",
+        el: "Κουστούμι 7125",
+        en: "Suit 7125",
         it: "Completo 7125",
-        es: "Conjunto 7125",
+        es: "Traje 7125",
         pt: "Conjunto 7125",
       },
       desc: {
@@ -607,10 +607,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7124",
       image: "src/assets/images/7124-a.webp",
       title: {
-        el: "Σύνολο 7124",
-        en: "Ensemble 7124",
+        el: "Κουστούμι 7124",
+        en: "Suit 7124",
         it: "Completo 7124",
-        es: "Conjunto 7124",
+        es: "Traje 7124",
         pt: "Conjunto 7124",
       },
       desc: {
@@ -625,10 +625,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7123",
       image: "src/assets/images/7123-a.webp",
       title: {
-        el: "Σύνολο 7123",
-        en: "Ensemble 7123",
+        el: "Κουστούμι 7123",
+        en: "Suit 7123",
         it: "Completo 7123",
-        es: "Conjunto 7123",
+        es: "Traje 7123",
         pt: "Conjunto 7123",
       },
       desc: {
@@ -643,10 +643,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7122",
       image: "src/assets/images/7122-a.webp",
       title: {
-        el: "Σύνολο 7122",
-        en: "Ensemble 7122",
+        el: "Κουστούμι 7122",
+        en: "Suit 7122",
         it: "Completo 7122",
-        es: "Conjunto 7122",
+        es: "Traje 7122",
         pt: "Conjunto 7122",
       },
       desc: {
@@ -661,10 +661,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7121",
       image: "src/assets/images/7121.webp",
       title: {
-        el: "Σύνολο 7121",
-        en: "Ensemble 7121",
+        el: "Κουστούμι 7121",
+        en: "Suit 7121",
         it: "Completo 7121",
-        es: "Conjunto 7121",
+        es: "Traje 7121",
         pt: "Conjunto 7121",
       },
       desc: {
@@ -679,10 +679,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7120",
       image: "src/assets/images/7120outfit-1.webp",
       title: {
-        el: "Σύνολο 7120",
-        en: "Ensemble 7120",
+        el: "Κουστούμι 7120",
+        en: "Suit 7120",
         it: "Completo 7120",
-        es: "Conjunto 7120",
+        es: "Traje 7120",
         pt: "Conjunto 7120",
       },
       desc: {
@@ -697,10 +697,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7119",
       image: "src/assets/images/7119-b.webp",
       title: {
-        el: "Σύνολο 7119",
-        en: "Ensemble 7119",
+        el: "Κουστούμι 7119",
+        en: "Suit 7119",
         it: "Completo 7119",
-        es: "Conjunto 7119",
+        es: "Traje 7119",
         pt: "Conjunto 7119",
       },
       desc: {
@@ -715,10 +715,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7118",
       image: "src/assets/images/7118.webp",
       title: {
-        el: "Σύνολο 7118",
-        en: "Ensemble 7118",
+        el: "Κουστούμι 7118",
+        en: "Suit 7118",
         it: "Completo 7118",
-        es: "Conjunto 7118",
+        es: "Traje 7118",
         pt: "Conjunto 7118",
       },
       desc: {
@@ -733,10 +733,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7117",
       image: "src/assets/images/7117.webp",
       title: {
-        el: "Σύνολο 7117",
-        en: "Ensemble 7117",
+        el: "Κουστούμι 7117",
+        en: "Suit 7117",
         it: "Completo 7117",
-        es: "Conjunto 7117",
+        es: "Traje 7117",
         pt: "Conjunto 7117",
       },
       desc: {
@@ -751,10 +751,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7116",
       image: "src/assets/images/7116-a.webp",
       title: {
-        el: "Σύνολο 7116",
-        en: "Ensemble 7116",
+        el: "Κουστούμι 7116",
+        en: "Suit 7116",
         it: "Completo 7116",
-        es: "Conjunto 7116",
+        es: "Traje 7116",
         pt: "Conjunto 7116",
       },
       desc: {
@@ -769,10 +769,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7115",
       image: "src/assets/images/7115-a.webp",
       title: {
-        el: "Σύνολο 7115",
-        en: "Ensemble 7115",
+        el: "Κουστούμι 7115",
+        en: "Suit 7115",
         it: "Completo 7115",
-        es: "Conjunto 7115",
+        es: "Traje 7115",
         pt: "Conjunto 7115",
       },
       desc: {
@@ -787,10 +787,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7114",
       image: "src/assets/images/7114-a.webp",
       title: {
-        el: "Σύνολο 7114",
-        en: "Ensemble 7114",
+        el: "Κουστούμι 7114",
+        en: "Suit 7114",
         it: "Completo 7114",
-        es: "Conjunto 7114",
+        es: "Traje 7114",
         pt: "Conjunto 7114",
       },
       desc: {
@@ -805,10 +805,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7112",
       image: "src/assets/images/7112.webp",
       title: {
-        el: "Σύνολο 7112",
-        en: "Ensemble 7112",
+        el: "Κουστούμι 7112",
+        en: "Suit 7112",
         it: "Completo 7112",
-        es: "Conjunto 7112",
+        es: "Traje 7112",
         pt: "Conjunto 7112",
       },
       desc: {
@@ -823,10 +823,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7111",
       image: "src/assets/images/7111.webp",
       title: {
-        el: "Σύνολο 7111",
-        en: "Ensemble 7111",
+        el: "Κουστούμι 7111",
+        en: "Suit 7111",
         it: "Completo 7111",
-        es: "Conjunto 7111",
+        es: "Traje 7111",
         pt: "Conjunto 7111",
       },
       desc: {
@@ -841,10 +841,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7110",
       image: "src/assets/images/7110.webp",
       title: {
-        el: "Σύνολο 7110",
-        en: "Ensemble 7110",
+        el: "Κουστούμι 7110",
+        en: "Suit 7110",
         it: "Completo 7110",
-        es: "Conjunto 7110",
+        es: "Traje 7110",
         pt: "Conjunto 7110",
       },
       desc: {
@@ -859,10 +859,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7109",
       image: "src/assets/images/7109-a.webp",
       title: {
-        el: "Σύνολο 7109",
-        en: "Ensemble 7109",
+        el: "Κουστούμι 7109",
+        en: "Suit 7109",
         it: "Completo 7109",
-        es: "Conjunto 7109",
+        es: "Traje 7109",
         pt: "Conjunto 7109",
       },
       desc: {
@@ -877,10 +877,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7108",
       image: "src/assets/images/7108-b.webp",
       title: {
-        el: "Σύνολο 7108",
-        en: "Ensemble 7108",
+        el: "Κουστούμι 7108",
+        en: "Suit 7108",
         it: "Completo 7108",
-        es: "Conjunto 7108",
+        es: "Traje 7108",
         pt: "Conjunto 7108",
       },
       desc: {
@@ -895,10 +895,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7107",
       image: "src/assets/images/7107-a.webp",
       title: {
-        el: "Σύνολο 7107",
-        en: "Ensemble 7107",
+        el: "Κουστούμι 7107",
+        en: "Suit 7107",
         it: "Completo 7107",
-        es: "Conjunto 7107",
+        es: "Traje 7107",
         pt: "Conjunto 7107",
       },
       desc: {
@@ -913,10 +913,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7106",
       image: "src/assets/images/7106-a.webp",
       title: {
-        el: "Σύνολο 7106",
-        en: "Ensemble 7106",
+        el: "Κουστούμι 7106",
+        en: "Suit 7106",
         it: "Completo 7106",
-        es: "Conjunto 7106",
+        es: "Traje 7106",
         pt: "Conjunto 7106",
       },
       desc: {
@@ -931,10 +931,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7105",
       image: "src/assets/images/7105.webp",
       title: {
-        el: "Σύνολο 7105",
-        en: "Ensemble 7105",
+        el: "Κουστούμι 7105",
+        en: "Suit 7105",
         it: "Completo 7105",
-        es: "Conjunto 7105",
+        es: "Traje 7105",
         pt: "Conjunto 7105",
       },
       desc: {
@@ -949,10 +949,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7104",
       image: "src/assets/images/7104.webp",
       title: {
-        el: "Σύνολο 7104",
-        en: "Ensemble 7104",
+        el: "Κουστούμι 7104",
+        en: "Suit 7104",
         it: "Completo 7104",
-        es: "Conjunto 7104",
+        es: "Traje 7104",
         pt: "Conjunto 7104",
       },
       desc: {
@@ -967,10 +967,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7103",
       image: "src/assets/images/7103.webp",
       title: {
-        el: "Σύνολο 7103",
-        en: "Ensemble 7103",
+        el: "Κουστούμι 7103",
+        en: "Suit 7103",
         it: "Completo 7103",
-        es: "Conjunto 7103",
+        es: "Traje 7103",
         pt: "Conjunto 7103",
       },
       desc: {
@@ -985,10 +985,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7102",
       image: "src/assets/images/7102-b.webp",
       title: {
-        el: "Σύνολο 7102",
-        en: "Ensemble 7102",
+        el: "Κουστούμι 7102",
+        en: "Suit 7102",
         it: "Completo 7102",
-        es: "Conjunto 7102",
+        es: "Traje 7102",
         pt: "Conjunto 7102",
       },
       desc: {
@@ -1003,10 +1003,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "7101",
       image: "src/assets/images/7101.webp",
       title: {
-        el: "Σύνολο 7101",
-        en: "Ensemble 7101",
+        el: "Κουστούμι 7101",
+        en: "Suit 7101",
         it: "Completo 7101",
-        es: "Conjunto 7101",
+        es: "Traje 7101",
         pt: "Conjunto 7101",
       },
       desc: {
@@ -1022,10 +1022,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "8818",
       image: "src/assets/images/8818.webp",
       title: {
-        el: "Διαχρονικό Στυλ — Σετ για Μικρούς Κύριους",
-        en: "Timeless Style — Set for Little Gentlemen",
-        it: "Stile Senza Tempo — Set per Piccoli Gentiluomini",
-        es: "Estilo Atemporal — Conjunto para Pequeños Caballeros",
+        el: "Κουστούμι 8818",
+        en: "Suit 8818",
+        it: "Completo 8818",
+        es: "Traje 8818",
         pt: "Estilo Atemporal — Conjunto para Pequenos Cavalheiros",
       },
       desc: {
@@ -1040,10 +1040,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "8816",
       image: "src/assets/images/8816.webp",
       title: {
-        el: "Κομψότητα & Φυσική Αρμονία — Σετ για Μικρούς Τζέντλεμεν",
-        en: "Elegance & Natural Harmony — Set for Little Gentlemen",
-        it: "Eleganza & Armonia Naturale — Set per Piccoli Gentiluomini",
-        es: "Elegancia y Armonía Natural — Conjunto para Pequeños Caballeros",
+        el: "Κουστούμι 8816",
+        en: "Suit 8816",
+        it: "Completo 8816",
+        es: "Traje 8816",
         pt: "Elegância e Harmonia Natural — Conjunto para Pequenos Cavalheiros",
       },
       desc: {
@@ -1058,10 +1058,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "8812",
       image: "src/assets/images/8812.webp",
       title: {
-        el: "Σύνολο 8812",
-        en: "Ensemble 8812",
+        el: "Κουστούμι 8812",
+        en: "Suit 8812",
         it: "Completo 8812",
-        es: "Conjunto 8812",
+        es: "Traje 8812",
         pt: "Conjunto 8812",
       },
       desc: {
@@ -1076,10 +1076,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "8808",
       image: "src/assets/images/8808.webp",
       title: {
-        el: "Σύνολο 8808",
-        en: "Ensemble 8808",
+        el: "Κουστούμι 8808",
+        en: "Suit 8808",
         it: "Completo 8808",
-        es: "Conjunto 8808",
+        es: "Traje 8808",
         pt: "Conjunto 8808",
       },
       desc: {
@@ -1094,10 +1094,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "8807",
       image: "src/assets/images/8807.webp",
       title: {
-        el: "Σύνολο 8807",
-        en: "Ensemble 8807",
+        el: "Κουστούμι 8807",
+        en: "Suit 8807",
         it: "Completo 8807",
-        es: "Conjunto 8807",
+        es: "Traje 8807",
         pt: "Conjunto 8807",
       },
       desc: {
@@ -1112,10 +1112,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "8806",
       image: "src/assets/images/8806.webp",
       title: {
-        el: "Σύνολο 8806",
-        en: "Ensemble 8806",
+        el: "Κουστούμι 8806",
+        en: "Suit 8806",
         it: "Completo 8806",
-        es: "Conjunto 8806",
+        es: "Traje 8806",
         pt: "Conjunto 8806",
       },
       desc: {
@@ -1130,10 +1130,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "8802",
       image: "src/assets/images/8802.webp",
       title: {
-        el: "Timeless Charm — Κομψό Βαπτιστικό Σετ",
-        en: "Timeless Charm — Elegant Baptism Set",
-        it: "Timeless Charm — Elegante Set Battesimo",
-        es: "Timeless Charm — Elegante Conjunto de Bautizo",
+        el: "Κουστούμι 8802",
+        en: "Suit 8802",
+        it: "Completo 8802",
+        es: "Traje 8802",
         pt: "Timeless Charm — Elegante Conjunto de Batismo",
       },
       desc: {
@@ -1148,10 +1148,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "8801",
       image: "src/assets/images/8801.webp",
       title: {
-        el: "Κομψό Βαπτιστικό Σετ για Διαχρονική Εμφάνιση",
-        en: "Elegant Baptism Set for a Timeless Look",
-        it: "Elegante Set Battesimo per un Look Senza Tempo",
-        es: "Elegante Conjunto de Bautizo para un Look Atemporal",
+        el: "Κουστούμι 8801",
+        en: "Suit 8801",
+        it: "Completo 8801",
+        es: "Traje 8801",
         pt: "Elegante Conjunto de Batismo para um Visual Atemporal",
       },
       desc: {
@@ -1167,10 +1167,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "8757",
       image: "src/assets/images/8757.webp",
       title: {
-        el: "Little Prince — Ιβουάρ Σετ",
-        en: "Little Prince — Ivory Set",
-        it: "Little Prince — Set Avorio",
-        es: "Little Prince — Conjunto Marfil",
+        el: "Κουστούμι 8757",
+        en: "Suit 8757",
+        it: "Completo 8757",
+        es: "Traje 8757",
         pt: "Little Prince — Conjunto Marfim",
       },
       desc: {
@@ -1185,10 +1185,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "8529",
       image: "src/assets/images/8529.jpg",
       title: {
-        el: "Σύνολο 8529",
-        en: "Ensemble 8529",
+        el: "Κουστούμι 8529",
+        en: "Suit 8529",
         it: "Completo 8529",
-        es: "Conjunto 8529",
+        es: "Traje 8529",
         pt: "Conjunto 8529",
       },
       desc: {
@@ -1203,10 +1203,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "8002",
       image: "src/assets/images/8002.jpg",
       title: {
-        el: "Σύνολο 8002",
-        en: "Ensemble 8002",
+        el: "Κουστούμι 8002",
+        en: "Suit 8002",
         it: "Completo 8002",
-        es: "Conjunto 8002",
+        es: "Traje 8002",
         pt: "Conjunto 8002",
       },
       desc: {
@@ -1221,10 +1221,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "8619",
       image: "src/assets/images/8619.jpg",
       title: {
-        el: "Σύνολο 8619",
-        en: "Ensemble 8619",
+        el: "Κουστούμι 8619",
+        en: "Suit 8619",
         it: "Completo 8619",
-        es: "Conjunto 8619",
+        es: "Traje 8619",
         pt: "Conjunto 8619",
       },
       desc: {
@@ -1239,10 +1239,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "8617",
       image: "src/assets/images/8617.jpg",
       title: {
-        el: "Σύνολο 8617",
-        en: "Ensemble 8617",
+        el: "Κουστούμι 8617",
+        en: "Suit 8617",
         it: "Completo 8617",
-        es: "Conjunto 8617",
+        es: "Traje 8617",
         pt: "Conjunto 8617",
       },
       desc: {
@@ -1257,10 +1257,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "8615",
       image: "src/assets/images/8615.jpg",
       title: {
-        el: "Σύνολο 8615",
-        en: "Ensemble 8615",
+        el: "Κουστούμι 8615",
+        en: "Suit 8615",
         it: "Completo 8615",
-        es: "Conjunto 8615",
+        es: "Traje 8615",
         pt: "Conjunto 8615",
       },
       desc: {
@@ -1275,10 +1275,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "8608",
       image: "src/assets/images/8608.jpg",
       title: {
-        el: "Σύνολο 8608",
-        en: "Ensemble 8608",
+        el: "Κουστούμι 8608",
+        en: "Suit 8608",
         it: "Completo 8608",
-        es: "Conjunto 8608",
+        es: "Traje 8608",
         pt: "Conjunto 8608",
       },
       desc: {
@@ -1293,10 +1293,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "8607",
       image: "src/assets/images/8607.jpg",
       title: {
-        el: "Σύνολο 8607",
-        en: "Ensemble 8607",
+        el: "Κουστούμι 8607",
+        en: "Suit 8607",
         it: "Completo 8607",
-        es: "Conjunto 8607",
+        es: "Traje 8607",
         pt: "Conjunto 8607",
       },
       desc: {
@@ -1311,10 +1311,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "8728",
       image: "src/assets/images/8728.webp",
       title: {
-        el: "Σύνολο 8728",
-        en: "Ensemble 8728",
+        el: "Κουστούμι 8728",
+        en: "Suit 8728",
         it: "Completo 8728",
-        es: "Conjunto 8728",
+        es: "Traje 8728",
         pt: "Conjunto 8728",
       },
       desc: {
@@ -1329,10 +1329,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "8726",
       image: "src/assets/images/8726 .webp",
       title: {
-        el: "Σύνολο 8726",
-        en: "Ensemble 8726",
+        el: "Κουστούμι 8726",
+        en: "Suit 8726",
         it: "Completo 8726",
-        es: "Conjunto 8726",
+        es: "Traje 8726",
         pt: "Conjunto 8726",
       },
       desc: {
@@ -1347,10 +1347,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "8725",
       image: "src/assets/images/8725.webp",
       title: {
-        el: "Σύνολο 8725",
-        en: "Ensemble 8725",
+        el: "Κουστούμι 8725",
+        en: "Suit 8725",
         it: "Completo 8725",
-        es: "Conjunto 8725",
+        es: "Traje 8725",
         pt: "Conjunto 8725",
       },
       desc: {
@@ -1365,10 +1365,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "8717",
       image: "src/assets/images/8717.webp",
       title: {
-        el: "Σύνολο 8717",
-        en: "Ensemble 8717",
+        el: "Κουστούμι 8717",
+        en: "Suit 8717",
         it: "Completo 8717",
-        es: "Conjunto 8717",
+        es: "Traje 8717",
         pt: "Conjunto 8717",
       },
       desc: {
@@ -1383,10 +1383,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "8715",
       image: "src/assets/images/8715.webp",
       title: {
-        el: "Σύνολο 8715",
-        en: "Ensemble 8715",
+        el: "Κουστούμι 8715",
+        en: "Suit 8715",
         it: "Completo 8715",
-        es: "Conjunto 8715",
+        es: "Traje 8715",
         pt: "Conjunto 8715",
       },
       desc: {
@@ -1401,10 +1401,10 @@ export const PRODUCTS: Record<string, Product[]> = {
       code: "8701",
       image: "src/assets/images/8701.webp",
       title: {
-        el: "Σύνολο 8701",
-        en: "Ensemble 8701",
+        el: "Κουστούμι 8701",
+        en: "Suit 8701",
         it: "Completo 8701",
-        es: "Conjunto 8701",
+        es: "Traje 8701",
         pt: "Conjunto 8701",
       },
       desc: {
