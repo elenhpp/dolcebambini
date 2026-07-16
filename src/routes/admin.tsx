@@ -41,6 +41,8 @@ function ProductEditor({
   const [images, setImages] = useState<string[]>(serverImages);
   const [status, setStatus] = useState<Status>("idle");
   const [dirty, setDirty] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
 
   // resync when server updates via realtime while we're not editing
   useEffect(() => {
@@ -105,6 +107,40 @@ function ProductEditor({
   const addImage = () => {
     setDirty(true);
     setImages((prev) => [...prev, ""]);
+  };
+
+  const uploadFiles = async (files: FileList | null) => {
+    if (!files || files.length === 0) return;
+    setUploadError(null);
+    setUploading(true);
+    try {
+      const newUrls: string[] = [];
+      for (const file of Array.from(files)) {
+        const ext = file.name.split(".").pop() || "jpg";
+        const safeBase = file.name
+          .replace(/\.[^.]+$/, "")
+          .replace(/[^a-zA-Z0-9-_]+/g, "-")
+          .slice(0, 40);
+        const path = `${category}/${code}/${Date.now()}-${Math.random().toString(36).slice(2, 8)}-${safeBase}.${ext}`;
+        const { error: upErr } = await supabase.storage
+          .from("product-images")
+          .upload(path, file, { cacheControl: "31536000", upsert: false });
+        if (upErr) throw upErr;
+        // Bucket is private; generate a very long-lived signed URL (10 years)
+        const { data: signed, error: signErr } = await supabase.storage
+          .from("product-images")
+          .createSignedUrl(path, 60 * 60 * 24 * 365 * 10);
+        if (signErr || !signed?.signedUrl) throw signErr ?? new Error("Could not sign URL");
+        newUrls.push(signed.signedUrl);
+      }
+      setDirty(true);
+      setImages((prev) => [...prev, ...newUrls]);
+    } catch (e) {
+      console.error(e);
+      setUploadError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setUploading(false);
+    }
   };
 
   return (
@@ -209,7 +245,7 @@ function ProductEditor({
             Extra images
           </div>
           <p className="text-xs text-muted-foreground">
-            Paste image URLs (one per row). The main product image stays first automatically.
+            Upload photos from your computer, or paste image URLs. The main product image stays first automatically.
           </p>
           {images.length === 0 && (
             <p className="text-xs text-muted-foreground/70 italic">No extra images yet.</p>
@@ -244,12 +280,31 @@ function ProductEditor({
               </div>
             ))}
           </div>
-          <button
-            onClick={addImage}
-            className="text-xs font-semibold tracking-[0.18em] uppercase text-primary hover:underline"
-          >
-            + Add image URL
-          </button>
+          <div className="flex flex-wrap items-center gap-3">
+            <label className="inline-flex items-center gap-2 cursor-pointer rounded-full bg-primary px-4 py-2 text-xs font-semibold tracking-[0.18em] uppercase text-primary-foreground hover:opacity-90 disabled:opacity-60">
+              {uploading ? "Uploading…" : "+ Upload photos"}
+              <input
+                type="file"
+                accept="image/*"
+                multiple
+                disabled={uploading}
+                className="hidden"
+                onChange={(e) => {
+                  void uploadFiles(e.target.files);
+                  e.target.value = "";
+                }}
+              />
+            </label>
+            <button
+              onClick={addImage}
+              className="text-xs font-semibold tracking-[0.18em] uppercase text-primary hover:underline"
+            >
+              + Add image URL
+            </button>
+            {uploadError && (
+              <span className="text-xs text-red-500">{uploadError}</span>
+            )}
+          </div>
         </div>
 
         <div className="rounded-2xl border border-dashed border-border/60 p-4">
