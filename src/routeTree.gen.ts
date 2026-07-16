@@ -23,8 +23,11 @@ import { Route as AccessoriesRouteImport } from './routes/accessories'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as GirlsIndexRouteImport } from './routes/girls.index'
 import { Route as BoysIndexRouteImport } from './routes/boys.index'
+import { Route as SilkCodeRouteImport } from './routes/silk.$code'
 import { Route as GirlsCodeRouteImport } from './routes/girls.$code'
+import { Route as CommunionCodeRouteImport } from './routes/communion.$code'
 import { Route as BoysCodeRouteImport } from './routes/boys.$code'
+import { Route as AccessoriesCodeRouteImport } from './routes/accessories.$code'
 
 const SilkRoute = SilkRouteImport.update({
   id: '/silk',
@@ -96,67 +99,91 @@ const BoysIndexRoute = BoysIndexRouteImport.update({
   path: '/',
   getParentRoute: () => BoysRoute,
 } as any)
+const SilkCodeRoute = SilkCodeRouteImport.update({
+  id: '/$code',
+  path: '/$code',
+  getParentRoute: () => SilkRoute,
+} as any)
 const GirlsCodeRoute = GirlsCodeRouteImport.update({
   id: '/$code',
   path: '/$code',
   getParentRoute: () => GirlsRoute,
+} as any)
+const CommunionCodeRoute = CommunionCodeRouteImport.update({
+  id: '/$code',
+  path: '/$code',
+  getParentRoute: () => CommunionRoute,
 } as any)
 const BoysCodeRoute = BoysCodeRouteImport.update({
   id: '/$code',
   path: '/$code',
   getParentRoute: () => BoysRoute,
 } as any)
+const AccessoriesCodeRoute = AccessoriesCodeRouteImport.update({
+  id: '/$code',
+  path: '/$code',
+  getParentRoute: () => AccessoriesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/accessories': typeof AccessoriesRoute
+  '/accessories': typeof AccessoriesRouteWithChildren
   '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
   '/boys': typeof BoysRouteWithChildren
-  '/communion': typeof CommunionRoute
+  '/communion': typeof CommunionRouteWithChildren
   '/contact': typeof ContactRoute
   '/gdpr': typeof GdprRoute
   '/girls': typeof GirlsRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/sales-points': typeof SalesPointsRoute
-  '/silk': typeof SilkRoute
+  '/silk': typeof SilkRouteWithChildren
+  '/accessories/$code': typeof AccessoriesCodeRoute
   '/boys/$code': typeof BoysCodeRoute
+  '/communion/$code': typeof CommunionCodeRoute
   '/girls/$code': typeof GirlsCodeRoute
+  '/silk/$code': typeof SilkCodeRoute
   '/boys/': typeof BoysIndexRoute
   '/girls/': typeof GirlsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/accessories': typeof AccessoriesRoute
+  '/accessories': typeof AccessoriesRouteWithChildren
   '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
-  '/communion': typeof CommunionRoute
+  '/communion': typeof CommunionRouteWithChildren
   '/contact': typeof ContactRoute
   '/gdpr': typeof GdprRoute
   '/privacy': typeof PrivacyRoute
   '/sales-points': typeof SalesPointsRoute
-  '/silk': typeof SilkRoute
+  '/silk': typeof SilkRouteWithChildren
+  '/accessories/$code': typeof AccessoriesCodeRoute
   '/boys/$code': typeof BoysCodeRoute
+  '/communion/$code': typeof CommunionCodeRoute
   '/girls/$code': typeof GirlsCodeRoute
+  '/silk/$code': typeof SilkCodeRoute
   '/boys': typeof BoysIndexRoute
   '/girls': typeof GirlsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/accessories': typeof AccessoriesRoute
+  '/accessories': typeof AccessoriesRouteWithChildren
   '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
   '/boys': typeof BoysRouteWithChildren
-  '/communion': typeof CommunionRoute
+  '/communion': typeof CommunionRouteWithChildren
   '/contact': typeof ContactRoute
   '/gdpr': typeof GdprRoute
   '/girls': typeof GirlsRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/sales-points': typeof SalesPointsRoute
-  '/silk': typeof SilkRoute
+  '/silk': typeof SilkRouteWithChildren
+  '/accessories/$code': typeof AccessoriesCodeRoute
   '/boys/$code': typeof BoysCodeRoute
+  '/communion/$code': typeof CommunionCodeRoute
   '/girls/$code': typeof GirlsCodeRoute
+  '/silk/$code': typeof SilkCodeRoute
   '/boys/': typeof BoysIndexRoute
   '/girls/': typeof GirlsIndexRoute
 }
@@ -175,8 +202,11 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/sales-points'
     | '/silk'
+    | '/accessories/$code'
     | '/boys/$code'
+    | '/communion/$code'
     | '/girls/$code'
+    | '/silk/$code'
     | '/boys/'
     | '/girls/'
   fileRoutesByTo: FileRoutesByTo
@@ -191,8 +221,11 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/sales-points'
     | '/silk'
+    | '/accessories/$code'
     | '/boys/$code'
+    | '/communion/$code'
     | '/girls/$code'
+    | '/silk/$code'
     | '/boys'
     | '/girls'
   id:
@@ -209,25 +242,28 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/sales-points'
     | '/silk'
+    | '/accessories/$code'
     | '/boys/$code'
+    | '/communion/$code'
     | '/girls/$code'
+    | '/silk/$code'
     | '/boys/'
     | '/girls/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AccessoriesRoute: typeof AccessoriesRoute
+  AccessoriesRoute: typeof AccessoriesRouteWithChildren
   AdminRoute: typeof AdminRoute
   AuthRoute: typeof AuthRoute
   BoysRoute: typeof BoysRouteWithChildren
-  CommunionRoute: typeof CommunionRoute
+  CommunionRoute: typeof CommunionRouteWithChildren
   ContactRoute: typeof ContactRoute
   GdprRoute: typeof GdprRoute
   GirlsRoute: typeof GirlsRouteWithChildren
   PrivacyRoute: typeof PrivacyRoute
   SalesPointsRoute: typeof SalesPointsRoute
-  SilkRoute: typeof SilkRoute
+  SilkRoute: typeof SilkRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -330,12 +366,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BoysIndexRouteImport
       parentRoute: typeof BoysRoute
     }
+    '/silk/$code': {
+      id: '/silk/$code'
+      path: '/$code'
+      fullPath: '/silk/$code'
+      preLoaderRoute: typeof SilkCodeRouteImport
+      parentRoute: typeof SilkRoute
+    }
     '/girls/$code': {
       id: '/girls/$code'
       path: '/$code'
       fullPath: '/girls/$code'
       preLoaderRoute: typeof GirlsCodeRouteImport
       parentRoute: typeof GirlsRoute
+    }
+    '/communion/$code': {
+      id: '/communion/$code'
+      path: '/$code'
+      fullPath: '/communion/$code'
+      preLoaderRoute: typeof CommunionCodeRouteImport
+      parentRoute: typeof CommunionRoute
     }
     '/boys/$code': {
       id: '/boys/$code'
@@ -344,8 +394,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BoysCodeRouteImport
       parentRoute: typeof BoysRoute
     }
+    '/accessories/$code': {
+      id: '/accessories/$code'
+      path: '/$code'
+      fullPath: '/accessories/$code'
+      preLoaderRoute: typeof AccessoriesCodeRouteImport
+      parentRoute: typeof AccessoriesRoute
+    }
   }
 }
+
+interface AccessoriesRouteChildren {
+  AccessoriesCodeRoute: typeof AccessoriesCodeRoute
+}
+
+const AccessoriesRouteChildren: AccessoriesRouteChildren = {
+  AccessoriesCodeRoute: AccessoriesCodeRoute,
+}
+
+const AccessoriesRouteWithChildren = AccessoriesRoute._addFileChildren(
+  AccessoriesRouteChildren,
+)
 
 interface BoysRouteChildren {
   BoysCodeRoute: typeof BoysCodeRoute
@@ -359,6 +428,18 @@ const BoysRouteChildren: BoysRouteChildren = {
 
 const BoysRouteWithChildren = BoysRoute._addFileChildren(BoysRouteChildren)
 
+interface CommunionRouteChildren {
+  CommunionCodeRoute: typeof CommunionCodeRoute
+}
+
+const CommunionRouteChildren: CommunionRouteChildren = {
+  CommunionCodeRoute: CommunionCodeRoute,
+}
+
+const CommunionRouteWithChildren = CommunionRoute._addFileChildren(
+  CommunionRouteChildren,
+)
+
 interface GirlsRouteChildren {
   GirlsCodeRoute: typeof GirlsCodeRoute
   GirlsIndexRoute: typeof GirlsIndexRoute
@@ -371,30 +452,30 @@ const GirlsRouteChildren: GirlsRouteChildren = {
 
 const GirlsRouteWithChildren = GirlsRoute._addFileChildren(GirlsRouteChildren)
 
+interface SilkRouteChildren {
+  SilkCodeRoute: typeof SilkCodeRoute
+}
+
+const SilkRouteChildren: SilkRouteChildren = {
+  SilkCodeRoute: SilkCodeRoute,
+}
+
+const SilkRouteWithChildren = SilkRoute._addFileChildren(SilkRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AccessoriesRoute: AccessoriesRoute,
+  AccessoriesRoute: AccessoriesRouteWithChildren,
   AdminRoute: AdminRoute,
   AuthRoute: AuthRoute,
   BoysRoute: BoysRouteWithChildren,
-  CommunionRoute: CommunionRoute,
+  CommunionRoute: CommunionRouteWithChildren,
   ContactRoute: ContactRoute,
   GdprRoute: GdprRoute,
   GirlsRoute: GirlsRouteWithChildren,
   PrivacyRoute: PrivacyRoute,
   SalesPointsRoute: SalesPointsRoute,
-  SilkRoute: SilkRoute,
+  SilkRoute: SilkRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
