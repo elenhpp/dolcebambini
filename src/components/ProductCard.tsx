@@ -5,7 +5,7 @@ import { useLang } from "@/lib/lang";
 import { useOverrides, mergeTr } from "@/lib/product-overrides";
 import { Link } from "@tanstack/react-router";
 
-const DETAIL_CATEGORIES = new Set(["boys", "girls"]);
+const DETAIL_CATEGORIES = new Set(["boys", "girls", "accessories", "silk", "communion"]);
 
 export function ProductCard({ product, index = 0, category }: { product: Product; index?: number; category?: string }) {
   const { t } = useLang();
