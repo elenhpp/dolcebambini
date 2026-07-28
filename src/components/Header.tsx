@@ -17,7 +17,7 @@ export function Header() {
         <div className="flex items-center justify-between h-24 md:h-28">
           <Link to="/" className="group shrink-0 flex items-center leading-none" aria-label={t(T.brand)}>
             <img
-              src={logo.url}
+              src={logo}
               alt={t(T.brand)}
               className="h-[4.5rem] md:h-[5.25rem] w-auto object-contain"
             />
