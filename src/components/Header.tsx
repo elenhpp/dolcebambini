@@ -3,7 +3,7 @@ import { useState } from "react";
 import { NAV, T, type Lang } from "@/lib/site-content";
 import { useLang, LANGS } from "@/lib/lang";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/dolce-logo-transparent.png.asset.json";
+import logo from "@/assets/dolcebambinilogo.png";
 
 export function Header() {
   const { lang, setLang, t } = useLang();
@@ -43,9 +43,8 @@ export function Header() {
                 <button
                   key={l}
                   onClick={() => setLang(l)}
-                  className={`px-2.5 py-1 text-[10px] font-semibold tracking-widest rounded-full transition-all ${
-                    lang === l ? "bg-primary text-primary-foreground shadow" : "text-foreground/85 hover:text-foreground"
-                  }`}
+                  className={`px-2.5 py-1 text-[10px] font-semibold tracking-widest rounded-full transition-all ${lang === l ? "bg-primary text-primary-foreground shadow" : "text-foreground/85 hover:text-foreground"
+                    }`}
                 >
                   {l.toUpperCase()}
                 </button>
@@ -78,9 +77,8 @@ export function Header() {
                   <button
                     key={l}
                     onClick={() => setLang(l)}
-                    className={`px-3 py-1.5 text-xs font-semibold tracking-widest rounded-full border ${
-                      lang === l ? "bg-primary text-primary-foreground border-primary" : "border-border text-foreground/70"
-                    }`}
+                    className={`px-3 py-1.5 text-xs font-semibold tracking-widest rounded-full border ${lang === l ? "bg-primary text-primary-foreground border-primary" : "border-border text-foreground/70"
+                      }`}
                   >
                     {l.toUpperCase()}
                   </button>
