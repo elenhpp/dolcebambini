@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { CONTACT, NAV, T } from "@/lib/site-content";
 import { useLang } from "@/lib/lang";
 import { Instagram, Facebook, Mail, Phone, MapPin } from "lucide-react";
-import logo from "@/assets/dolce-logo-transparent.png.asset.json";
+import logo from "@/assets/dolcebambinilogo.png";
 
 export function Footer() {
   const { lang, t } = useLang();
@@ -17,7 +17,7 @@ export function Footer() {
     <footer className="mt-32 border-t border-border/60 bg-gradient-to-b from-background to-muted/40">
       <div className="mx-auto max-w-7xl px-5 lg:px-8 py-16 grid gap-12 md:grid-cols-4">
         <div className="md:col-span-2">
-          <img src={logo.url} alt={t(T.brand)} className="h-28 md:h-36 w-auto object-contain -ml-1" />
+          <img src={logo} alt={t(T.brand)} className="h-28 md:h-36 w-auto object-contain -ml-1" />
           <p className="mt-5 text-sm text-muted-foreground max-w-sm leading-relaxed">{t(T.footer.tagline)}</p>
         </div>
 
@@ -38,7 +38,7 @@ export function Footer() {
           <div className="text-xs tracking-[0.2em] uppercase text-foreground/70 mb-4">{t(T.footer.contact)}</div>
           <ul className="space-y-3 text-sm text-foreground/75">
             <li className="flex items-start gap-2"><MapPin size={15} className="mt-0.5 text-primary shrink-0" />{t(CONTACT.address)}</li>
-            <li className="flex items-center gap-2"><Phone size={15} className="text-primary" /><a href={`tel:${CONTACT.phone.replace(/\s/g,"")}`}>{CONTACT.phone}</a></li>
+            <li className="flex items-center gap-2"><Phone size={15} className="text-primary" /><a href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}>{CONTACT.phone}</a></li>
             <li className="flex items-center gap-2"><Mail size={15} className="text-primary" /><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></li>
           </ul>
           <div className="mt-5 flex gap-3">
