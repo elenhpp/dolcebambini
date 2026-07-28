@@ -1,6 +1,8 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "@tanstack/react-router";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { PRODUCTS, T, resolveImage, type Product } from "@/lib/site-content";
+import { galleryFor } from "@/lib/product-gallery";
 import { useLang } from "@/lib/lang";
 import { useOverrides, mergeTr } from "@/lib/product-overrides";
 
@@ -18,14 +20,32 @@ export function ProductDetail({ category, code }: { category: string; code: stri
   const mergedDesc = mergeTr(product?.desc, ov?.desc);
   const mergedLongDesc = mergeTr(undefined, ov?.longDesc);
 
+  // Every shot of this product, plus any extra images an admin has attached.
   const gallery = useMemo(() => {
+    let base = galleryFor(category, code);
+    if (!base.length && product?.image) base = [resolveImage(product.image)];
     const extras = (ov?.images ?? []).filter((u) => u && u.trim() !== "").map(resolveImage);
-    const base = product?.image ? [resolveImage(product.image)] : [];
-    return [...base, ...extras];
-  }, [product?.image, ov?.images]);
-
+    return [...new Set([...base, ...extras])];
+  }, [category, code, product?.image, ov?.images]);
 
   const [active, setActive] = useState(0);
+
+  // A different product means a different gallery — start from its first photo.
+  useEffect(() => setActive(0), [category, code]);
+
+  const count = gallery.length;
+  const step = (delta: number) => setActive((i) => (i + delta + count) % count);
+
+  useEffect(() => {
+    if (count < 2) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") step(-1);
+      if (e.key === "ArrowRight") step(1);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [count]);
 
   if (!product) {
     return (
@@ -56,30 +76,58 @@ export function ProductDetail({ category, code }: { category: string; code: stri
 
       <div className="grid gap-10 md:grid-cols-2">
         <div className="space-y-4">
-          <div className="relative aspect-[3/4] overflow-hidden rounded-3xl bg-muted border border-border/60 soft-shadow">
+          <div className="group relative aspect-[3/4] overflow-hidden rounded-3xl bg-muted border border-border/60 soft-shadow">
             <img
+              key={mainImage}
               src={mainImage}
-              alt={title}
+              alt={`${title} — ${t(T.copy.photo)} ${active + 1}/${count}`}
               className="w-full h-full object-cover"
               onError={(e) => {
                 (e.currentTarget as HTMLImageElement).style.opacity = "0.4";
               }}
             />
+
+            {count > 1 && (
+              <>
+                <button
+                  type="button"
+                  onClick={() => step(-1)}
+                  aria-label={t(T.copy.prevPhoto)}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 grid place-items-center h-10 w-10 rounded-full bg-background/85 backdrop-blur border border-border/60 text-foreground/80 opacity-0 group-hover:opacity-100 focus-visible:opacity-100 hover:bg-background transition"
+                >
+                  <ChevronLeft size={18} />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => step(1)}
+                  aria-label={t(T.copy.nextPhoto)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 grid place-items-center h-10 w-10 rounded-full bg-background/85 backdrop-blur border border-border/60 text-foreground/80 opacity-0 group-hover:opacity-100 focus-visible:opacity-100 hover:bg-background transition"
+                >
+                  <ChevronRight size={18} />
+                </button>
+                <div className="absolute bottom-3 right-3 rounded-full bg-background/85 backdrop-blur px-3 py-1 text-[10px] tracking-[0.2em] uppercase text-foreground/80 border border-border/60">
+                  {active + 1} / {count}
+                </div>
+              </>
+            )}
           </div>
-          {gallery.length > 1 && (
+
+          {count > 1 && (
             <div className="grid grid-cols-5 gap-2">
               {gallery.map((src, i) => (
                 <button
-                  key={i}
+                  key={src}
+                  type="button"
                   onClick={() => setActive(i)}
+                  aria-current={active === i}
                   className={`relative aspect-square overflow-hidden rounded-xl border transition ${
                     active === i
                       ? "border-primary ring-2 ring-primary/30"
                       : "border-border/60 hover:border-foreground/40"
                   }`}
-                  aria-label={`Photo ${i + 1}`}
+                  aria-label={`${t(T.copy.photo)} ${i + 1}`}
                 >
-                  <img src={src} alt="" className="w-full h-full object-cover" />
+                  <img src={src} alt="" loading="lazy" className="w-full h-full object-cover" />
                 </button>
               ))}
             </div>

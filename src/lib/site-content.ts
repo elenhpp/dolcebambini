@@ -315,6 +315,21 @@ export const T = {
   // Inline copy used across routes
   copy: {
     since1978: { el: "Από το 1978", en: "Since 1978", it: "Dal 1978", es: "Desde 1978", pt: "Desde 1978" },
+    photo: { el: "Φωτογραφία", en: "Photo", it: "Foto", es: "Foto", pt: "Foto" },
+    prevPhoto: {
+      el: "Προηγούμενη φωτογραφία",
+      en: "Previous photo",
+      it: "Foto precedente",
+      es: "Foto anterior",
+      pt: "Foto anterior",
+    },
+    nextPhoto: {
+      el: "Επόμενη φωτογραφία",
+      en: "Next photo",
+      it: "Foto successiva",
+      es: "Foto siguiente",
+      pt: "Foto seguinte",
+    },
     featuredPieces: {
       el: "Επιλεγμένα κομμάτια",
       en: "Featured pieces",
