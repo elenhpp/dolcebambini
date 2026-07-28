@@ -1,0 +1,22 @@
+# This is a TanStack Start (SSR) app, not a static site. The build produces:
+#   dist/                              -> static assets, published by Netlify
+#   .netlify/functions-internal/server -> the SSR handler that renders every page
+#
+# Without the catch-all redirect below, Netlify only ever serves dist/, which has
+# no index.html, so every URL falls through to Netlify's default 404 page.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  # Nitro defaults to the Cloudflare Workers target; Netlify needs its own preset.
+  NITRO_PRESET = "netlify"
+  NODE_VERSION = "22"
+
+# Send anything that isn't a real file in dist/ to the SSR function.
+# force is left off so static assets keep being served directly.
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/server"
+  status = 200
