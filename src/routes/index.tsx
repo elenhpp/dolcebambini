@@ -3,8 +3,7 @@ import { useLang } from "@/lib/lang";
 import { T, PRODUCTS } from "@/lib/site-content";
 import { ProductCard } from "@/components/ProductCard";
 import { Sparkles, Scissors, Layers, Award, Download } from "lucide-react";
-import { HeroSlideshow } from "@/components/HeroSlideshow";
-import heroPreload from "@/assets/hero-v2/7003.png.asset.json";
+import { HeroSlideshow, HERO_SLIDES } from "@/components/HeroSlideshow";
 import sizeChartPdf from "@/assets/size-chart.pdf.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -13,9 +12,7 @@ export const Route = createFileRoute("/")({
       { title: "Dolce Bambini — Χειροποίητα Βαπτιστικά | Collection 2026" },
       { name: "description", content: "Χειροποίητα βαπτιστικά ρούχα και ενδύματα κοινωνίας. Collection 2026 για αγόρι και κορίτσι, Silk Collection και αξεσουάρ βάπτισης." },
     ],
-    links: [
-      { rel: "preload", as: "image", href: heroPreload.url },
-    ],
+    links: HERO_SLIDES[0] ? [{ rel: "preload", as: "image", href: HERO_SLIDES[0] }] : [],
   }),
   component: Home,
 });
