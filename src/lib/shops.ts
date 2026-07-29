@@ -513,6 +513,24 @@ export const SHOPS: Shop[] = [
     lat: 40.31069,
     lng: 23.06322,
   },
+  {
+    name: "Fairytale Events Korinthos",
+    address: "Ερμού 49Β",
+    area: "Κόρινθος",
+    phone: "6948446793",
+    region: "mainland",
+    lat: 37.93903,
+    lng: 22.94833,
+  },
+  {
+    name: "Izel Baby Boutique",
+    address: "Μιχελιδάκη 19",
+    area: "Ηράκλειο Κρήτης",
+    phone: "6936126386",
+    region: "crete",
+    lat: 35.33908,
+    lng: 25.1313,
+  },
 ];
 
 /** Display order for the grouped list below the map. */
