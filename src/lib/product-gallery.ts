@@ -1,5 +1,5 @@
 import { PRODUCTS, resolveImage } from "./site-content";
-import { SILK_VARIANTS, COMMUNION_VARIANTS } from "./remote-gallery";
+import { SILK_VARIANTS } from "./remote-gallery";
 
 // Every bundled product photo. Products only carry a single `image`, but the
 // folder holds the other shots of the same item (back views, accessories, set
@@ -17,6 +17,15 @@ const LOCAL_FILES = Object.keys(LOCAL)
   .map((k) => k.slice(PREFIX.length))
   .filter((f) => IMG_EXT.test(f))
   .sort((a, b) => a.localeCompare(b, "en"));
+
+/**
+ * Communion photos are delivered as "<code> (<shot>)[a].webp" — one numbered
+ * group per dress. The suffixed "a" files are alternate crops of the same shot.
+ */
+const COMMUNION_FILE = /^(C\d+) ?\((\d+)\)(a?)\.webp$/i;
+
+/** Those files belong to a communion dress, so keep them out of the token index. */
+const INDEXED_FILES = LOCAL_FILES.filter((f) => !COMMUNION_FILE.test(f));
 
 const stem = (f: string) => f.replace(IMG_EXT, "");
 
@@ -94,7 +103,7 @@ function buildLocalIndex(): Record<string, Record<string, string[]>> {
         a.codeLen - b.codeLen,
     );
 
-    for (const file of LOCAL_FILES) {
+    for (const file of INDEXED_FILES) {
       const fileToks = toks(stem(file));
       const hit = keys.find((k) => isPrefix(fileToks, k.toks));
       if (hit) byCode[hit.code].push(file);
@@ -112,11 +121,23 @@ function remoteGallery(category: string, code: string, image: string): string[] 
     const base = image.replace(/-front\.jpg$/, "");
     return (SILK_VARIANTS[code] ?? []).map((v) => `${base}-${v}.jpg`);
   }
-  if (category === "communion") {
-    const base = image.replace(/_01\.jpg$/, "");
-    return (COMMUNION_VARIANTS[code] ?? []).map((v) => `${base}_${v}.jpg`);
-  }
   return [];
+}
+
+/**
+ * Communion shots, in shot order — "C20 (2)" before "C20 (10)", each shot
+ * followed by its "a" crop. Matched by filename rather than through the token
+ * index so codes like "C11" cannot pick up the unrelated girls dress "C11-4".
+ */
+function communionGallery(code: string): string[] {
+  const wanted = code.toUpperCase();
+  return LOCAL_FILES.flatMap((file) => {
+    const m = COMMUNION_FILE.exec(file);
+    if (m?.[1].toUpperCase() !== wanted) return [];
+    return [{ file, shot: Number(m[2]), crop: m[3] }];
+  })
+    .sort((a, b) => a.shot - b.shot || a.crop.localeCompare(b.crop))
+    .map((s) => PREFIX + s.file);
 }
 
 /**
@@ -131,6 +152,8 @@ export function galleryFor(category: string, code: string): string[] {
   let extras: string[];
   if (remote.length) {
     extras = remote;
+  } else if (category === "communion") {
+    extras = communionGallery(code);
   } else {
     localIndex ??= buildLocalIndex();
     extras = (localIndex[category]?.[code] ?? []).map((f) => PREFIX + f);

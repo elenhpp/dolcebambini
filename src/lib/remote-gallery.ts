@@ -1,14 +1,13 @@
-// GENERATED — remote gallery manifest for the silk & communion collections.
+// GENERATED — remote gallery manifest for the silk collection.
 //
-// Those two categories are served from dolcebambini.gr rather than bundled locally,
-// so the extra shots cannot be discovered from the filesystem. Missing files there
-// answer 200 with an HTML 404 page, so they can't be probed from the browser either.
+// That category is served from dolcebambini.gr rather than bundled locally, so the
+// extra shots cannot be discovered from the filesystem. Missing files there answer
+// 200 with an HTML 404 page, so they can't be probed from the browser either.
 // This list was verified by content-type against the live site.
 //
-// To refresh after photos are added upstream, re-probe each product:
-//   silk:      <dir>/<slug>-front.jpg  and  <slug>-<n>.jpg
-//   communion: <code>_<nn>.jpg
-// and keep only URLs whose response content-type starts with "image/".
+// To refresh after photos are added upstream, re-probe each product at
+// <dir>/<slug>-front.jpg and <slug>-<n>.jpg, keeping only URLs whose response
+// content-type starts with "image/".
 
 /** Suffixes for `<slug>-<suffix>.jpg` under each silk product folder. */
 export const SILK_VARIANTS: Record<string, string[]> = {
@@ -25,24 +24,4 @@ export const SILK_VARIANTS: Record<string, string[]> = {
   "G565-1": ["front", "1", "2", "3"],
   "G569-1": ["front", "1", "2", "3", "4"],
   "G567-1": ["front", "1", "2"],
-};
-
-/** Zero-padded indices for `<code>_<nn>.jpg` in the communion folder. */
-export const COMMUNION_VARIANTS: Record<string, string[]> = {
-  "5889": ["01", "02", "03", "04", "05"],
-  "570-1": ["01", "02", "03", "04", "05", "06"],
-  "6002-1": ["01", "02", "03", "04", "05"],
-  "6004-1": ["01", "02", "03", "04", "05", "06"],
-  "6005-1": ["01", "02", "03", "04", "05", "06"],
-  "6020-1": ["01", "02", "03", "04", "05"],
-  "6057-1": ["01", "02", "03", "04"],
-  "6059-1": ["01", "02", "03"],
-  "9601-1": ["01", "02", "03", "04"],
-  "9610-8": ["01", "02", "03", "04"],
-  "9703-1": ["01", "02", "03", "04"],
-  "C01-1": ["01", "02", "03", "04"],
-  "C02-1": ["01", "02", "03", "04"],
-  "C04-1": ["01", "02", "03", "04"],
-  "C05-1": ["01", "06", "07", "08", "09", "10", "11"],
-  "C07-1": ["01", "02", "03", "04"],
 };
