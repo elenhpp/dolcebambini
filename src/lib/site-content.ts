@@ -3259,7 +3259,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "C12",
-      image: "src/assets/images/C12 (1).webp",
+      image: "src/assets/images/C12 (2).webp",
       title: {
         el: "Φόρεμα Κοινωνίας C12",
         en: "Communion Dress C12",
@@ -3292,7 +3292,7 @@ export const PRODUCTS: Record<string, Product[]> = {
     },
     {
       code: "C18",
-      image: "src/assets/images/C18 (1).webp",
+      image: "src/assets/images/C18 (2).webp",
       title: {
         el: "Φόρεμα Κοινωνίας C18",
         en: "Communion Dress C18",
