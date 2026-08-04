@@ -531,6 +531,33 @@ export const SHOPS: Shop[] = [
     lat: 35.33908,
     lng: 25.1313,
   },
+  {
+    name: "Γάμος - Αφοι Τσίγκρα ΟΕ",
+    address: "Λεωφόρος Λίνδου 211",
+    area: "Ρόδος",
+    phone: "2241075512",
+    region: "dodecanese",
+    lat: 36.41672,
+    lng: 28.21188,
+  },
+  {
+    name: "Λευκό Όνειρο - Καναλλάκι",
+    address: "Κύπρου 12",
+    area: "Καναλάκι Πρέβεζας",
+    phone: "2684022712",
+    region: "mainland",
+    lat: 39.23321,
+    lng: 20.60038,
+  },
+  {
+    name: "EaR",
+    address: "Καμαριανών Μαρτύρων 4, Γάζι",
+    area: "Ηράκλειο Κρήτης",
+    phone: "6955969053",
+    region: "crete",
+    lat: 35.32576,
+    lng: 25.06638,
+  },
 ];
 
 /** Display order for the grouped list below the map. */
