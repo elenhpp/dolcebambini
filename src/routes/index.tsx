@@ -3,8 +3,10 @@ import { useLang } from "@/lib/lang";
 import { T, PRODUCTS } from "@/lib/site-content";
 import { ProductCard } from "@/components/ProductCard";
 import { Sparkles, Scissors, Layers, Award, Download } from "lucide-react";
-import { HeroSlideshow, HERO_SLIDES } from "@/components/HeroSlideshow";
 import sizeChartPdf from "@/assets/size-chart.pdf.asset.json";
+import featuredGirls from "@/assets/images/C11-4.webp";
+import featuredBoys from "@/assets/images/7101.webp";
+import featuredSilk from "@/assets/images/C6 (2).webp";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -12,7 +14,7 @@ export const Route = createFileRoute("/")({
       { title: "Dolce Bambini — Χειροποίητα Βαπτιστικά | Collection 2026" },
       { name: "description", content: "Χειροποίητα βαπτιστικά ρούχα και ενδύματα κοινωνίας. Collection 2026 για αγόρι και κορίτσι, Silk Collection και αξεσουάρ βάπτισης." },
     ],
-    links: HERO_SLIDES[0] ? [{ rel: "preload", as: "image", href: HERO_SLIDES[0] }] : [],
+    links: [],
   }),
   component: Home,
 });
@@ -24,11 +26,6 @@ function Home() {
 
   return (
     <div>
-      {/* HERO SLIDESHOW */}
-      <section className="relative w-full overflow-hidden bg-foreground">
-        <HeroSlideshow />
-      </section>
-
       {/* HERO */}
       <section className="relative overflow-hidden hero-gradient">
         <div className="absolute -top-32 -left-32 w-[520px] h-[520px] rounded-full bg-primary/15 blur-3xl float-soft" />
@@ -57,13 +54,13 @@ function Home() {
 
           <div className="relative h-[480px] lg:h-[560px]">
             <div className="absolute top-0 right-4 w-56 lg:w-64 aspect-[3/4] rounded-3xl overflow-hidden float-shadow float-soft border-4 border-card">
-              <img src={"src/assets/images/C11-4.webp"} alt="Featured girls" className="w-full h-full object-cover" />
+              <img src={featuredGirls} alt="Featured girls" className="w-full h-full object-cover" />
             </div>
             <div className="absolute bottom-0 left-0 w-60 lg:w-72 aspect-[3/4] rounded-3xl overflow-hidden float-shadow float-soft border-4 border-card" style={{ animationDelay: "2s" }}>
-              <img src={"src/assets/images/7101.webp"} alt="Featured boys" className="w-full h-full object-cover" />
+              <img src={featuredBoys} alt="Featured boys" className="w-full h-full object-cover" />
             </div>
             <div className="absolute top-24 left-32 w-44 lg:w-52 aspect-[3/4] rounded-3xl overflow-hidden float-shadow float-soft border-4 border-card" style={{ animationDelay: "1s" }}>
-              <img src={"src/assets/images/C6 (2).webp"} alt="Featured silk" className="w-full h-full object-cover" />
+              <img src={featuredSilk} alt="Featured silk" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
