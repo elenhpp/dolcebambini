@@ -57,7 +57,7 @@ function Home() {
 
           <div className="relative h-[480px] lg:h-[560px]">
             <div className="absolute top-0 right-4 w-56 lg:w-64 aspect-[3/4] rounded-3xl overflow-hidden float-shadow float-soft border-4 border-card">
-              <img src={"assets/images/C11-4.webp} alt="Featured girls" className="w-full h-full object-cover" />
+              <img src={"assets/images/C11-4.webp"} alt="Featured girls" className="w-full h-full object-cover" />
             </div>
             <div className="absolute bottom-0 left-0 w-60 lg:w-72 aspect-[3/4] rounded-3xl overflow-hidden float-shadow float-soft border-4 border-card" style={{ animationDelay: "2s" }}>
               <img src={"assets/images/7101.webp"} alt="Featured boys" className="w-full h-full object-cover" />
