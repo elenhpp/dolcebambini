@@ -52,15 +52,15 @@ function Home() {
             </div>
           </div>
 
-          <div className="relative h-[480px] lg:h-[560px]">
-            <div className="absolute top-0 right-4 w-56 lg:w-64 aspect-[3/4] rounded-3xl overflow-hidden float-shadow float-soft border-4 border-card">
-              <img src={featuredGirls} alt="Featured girls" className="w-full h-full object-cover" />
+          <div className="flex min-w-0 items-center justify-between gap-3 px-1 sm:gap-5 lg:gap-8">
+            <div className="min-w-0 flex-1 aspect-[3/4] rounded-3xl overflow-hidden bg-card float-shadow float-soft border-4 border-card">
+              <img src={featuredGirls} alt="Featured girls" className="w-full h-full object-contain" />
             </div>
-            <div className="absolute bottom-0 left-0 w-60 lg:w-72 aspect-[3/4] rounded-3xl overflow-hidden float-shadow float-soft border-4 border-card" style={{ animationDelay: "2s" }}>
-              <img src={featuredBoys} alt="Featured boys" className="w-full h-full object-cover" />
+            <div className="min-w-0 flex-1 aspect-[3/4] rounded-3xl overflow-hidden bg-card float-shadow float-soft border-4 border-card" style={{ animationDelay: "1s" }}>
+              <img src={featuredSilk} alt="Featured silk" className="w-full h-full object-contain" />
             </div>
-            <div className="absolute top-24 left-32 w-44 lg:w-52 aspect-[3/4] rounded-3xl overflow-hidden float-shadow float-soft border-4 border-card" style={{ animationDelay: "1s" }}>
-              <img src={featuredSilk} alt="Featured silk" className="w-full h-full object-cover" />
+            <div className="min-w-0 flex-1 aspect-[3/4] rounded-3xl overflow-hidden bg-card float-shadow float-soft border-4 border-card" style={{ animationDelay: "2s" }}>
+              <img src={featuredBoys} alt="Featured boys" className="w-full h-full object-contain" />
             </div>
           </div>
         </div>
