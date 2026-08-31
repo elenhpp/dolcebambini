@@ -54,13 +54,43 @@ function Home() {
 
           <div className="relative h-[480px] lg:h-[560px]">
             <div className="absolute top-0 right-0 w-52 lg:w-60 aspect-[3/4] rounded-3xl overflow-hidden float-shadow float-soft border-4 border-card">
-              <img src={featuredGirls} alt="Featured girls" className="w-full h-full object-cover" />
+              <img
+                src={featuredGirls}
+                alt="Featured girls"
+                loading="eager"
+                fetchPriority="high"
+                decoding="sync"
+                width={600}
+                height={800}
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="absolute bottom-0 left-0 w-56 lg:w-64 aspect-[3/4] rounded-3xl overflow-hidden float-shadow float-soft border-4 border-card" style={{ animationDelay: "2s" }}>
-              <img src={featuredBoys} alt="Featured boys" className="w-full h-full object-cover" />
+              <img
+                src={featuredBoys}
+                alt="Featured boys"
+                loading="eager"
+                fetchPriority="high"
+                decoding="sync"
+                width={600}
+                height={800}
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="absolute top-24 left-1/2 -translate-x-1/2 w-44 lg:w-48 aspect-[3/4] rounded-3xl overflow-hidden float-shadow float-soft border-4 border-card" style={{ animationDelay: "1s" }}>
-              <img src={featuredSilk} alt="Featured silk" className="w-full h-full object-cover" />
+              <img
+                src={featuredSilk}
+                alt="Featured silk"
+                loading="eager"
+                fetchPriority="high"
+                decoding="sync"
+                width={600}
+                height={800}
+                sizes="(max-width: 768px) 100vw, 25vw"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>
