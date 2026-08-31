@@ -1,50 +1,26 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import { MapPin, Phone, Plus, Minus, RotateCcw, Search } from "lucide-react";
-import { GREECE_PATH, MAP_WIDTH, MAP_HEIGHT, projectPoint } from "@/lib/greece-map";
+import { useMemo, useRef, useState } from "react";
+import { MapPin, Phone, Search } from "lucide-react";
+import { GoogleMap, Marker, InfoWindow, useJsApiLoader } from "@react-google-maps/api";
 import { SHOPS, REGION_ORDER, type Region, type Shop } from "@/lib/shops";
 import { T } from "@/lib/site-content";
 import { useLang } from "@/lib/lang";
 
-type Box = { x: number; y: number; w: number; h: number };
-const FULL: Box = { x: 0, y: 0, w: MAP_WIDTH, h: MAP_HEIGHT };
-const MIN_W = MAP_WIDTH / 24;
-
-const clamp = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, v));
-
-/** Frame a set of shops with a margin, keeping the viewBox aspect ratio. */
-function boxFor(shops: Shop[]): Box {
-  if (!shops.length) return FULL;
-  const pts = shops.map((s) => projectPoint(s.lat, s.lng));
-  const xs = pts.map((p) => p.x);
-  const ys = pts.map((p) => p.y);
-  const pad = 60;
-  let w = Math.max(...xs) - Math.min(...xs) + pad * 2;
-  let h = Math.max(...ys) - Math.min(...ys) + pad * 2;
-  // match the full map's aspect so nothing looks stretched
-  const aspect = MAP_WIDTH / MAP_HEIGHT;
-  if (w / h > aspect) h = w / aspect;
-  else w = h * aspect;
-  w = clamp(w, MIN_W, MAP_WIDTH);
-  h = w / aspect;
-  const cx = (Math.min(...xs) + Math.max(...xs)) / 2;
-  const cy = (Math.min(...ys) + Math.max(...ys)) / 2;
-  return {
-    x: clamp(cx - w / 2, 0, Math.max(0, MAP_WIDTH - w)),
-    y: clamp(cy - h / 2, 0, Math.max(0, MAP_HEIGHT - h)),
-    w,
-    h,
-  };
-}
+const GREECE_CENTER = { lat: 39.074, lng: 21.824 };
+const DEFAULT_ZOOM = 7;
 
 export function ShopsMap() {
   const { t } = useLang();
-  const [view, setView] = useState<Box>(FULL);
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY || "",
+  });
+
   const [selected, setSelected] = useState<string | null>(null);
   const [region, setRegion] = useState<Region | "all">("all");
   const [query, setQuery] = useState("");
-  const svgRef = useRef<SVGSVGElement | null>(null);
+  const [mapZoom, setMapZoom] = useState(DEFAULT_ZOOM);
+  const [mapCenter, setMapCenter] = useState(GREECE_CENTER);
   const listRef = useRef<HTMLDivElement | null>(null);
-  const drag = useRef<{ x: number; y: number; box: Box } | null>(null);
+  const mapRef = useRef<google.maps.Map | null>(null);
 
   const shops = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -58,90 +34,30 @@ export function ShopsMap() {
     );
   }, [region, query]);
 
-  // Refocus the map whenever the visible set changes.
-  useEffect(() => {
-    setView(region === "all" && !query.trim() ? FULL : boxFor(shops));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [region, query]);
-
-  const zoom = (factor: number, cx?: number, cy?: number) => {
-    setView((v) => {
-      const w = clamp(v.w * factor, MIN_W, MAP_WIDTH);
-      const h = w / (MAP_WIDTH / MAP_HEIGHT);
-      const ax = cx ?? v.x + v.w / 2;
-      const ay = cy ?? v.y + v.h / 2;
-      // keep the anchor point under the cursor
-      const nx = ax - ((ax - v.x) * w) / v.w;
-      const ny = ay - ((ay - v.y) * h) / v.h;
-      return {
-        w,
-        h,
-        x: clamp(nx, Math.min(0, MAP_WIDTH - w), Math.max(0, MAP_WIDTH - w)),
-        y: clamp(ny, Math.min(0, MAP_HEIGHT - h), Math.max(0, MAP_HEIGHT - h)),
-      };
-    });
-  };
-
-  // Non-passive so the page doesn't scroll while zooming the map.
-  useEffect(() => {
-    const el = svgRef.current;
-    if (!el) return;
-    const onWheel = (e: WheelEvent) => {
-      e.preventDefault();
-      const r = el.getBoundingClientRect();
-      setView((v) => {
-        const factor = e.deltaY > 0 ? 1.15 : 1 / 1.15;
-        const w = clamp(v.w * factor, MIN_W, MAP_WIDTH);
-        const h = w / (MAP_WIDTH / MAP_HEIGHT);
-        const ax = v.x + ((e.clientX - r.left) / r.width) * v.w;
-        const ay = v.y + ((e.clientY - r.top) / r.height) * v.h;
-        const nx = ax - ((ax - v.x) * w) / v.w;
-        const ny = ay - ((ay - v.y) * h) / v.h;
-        return {
-          w,
-          h,
-          x: clamp(nx, Math.min(0, MAP_WIDTH - w), Math.max(0, MAP_WIDTH - w)),
-          y: clamp(ny, Math.min(0, MAP_HEIGHT - h), Math.max(0, MAP_HEIGHT - h)),
-        };
-      });
-    };
-    el.addEventListener("wheel", onWheel, { passive: false });
-    return () => el.removeEventListener("wheel", onWheel);
-  }, []);
-
-  const onPointerDown = (e: React.PointerEvent<SVGSVGElement>) => {
-    drag.current = { x: e.clientX, y: e.clientY, box: view };
-    e.currentTarget.setPointerCapture(e.pointerId);
-  };
-  const onPointerMove = (e: React.PointerEvent<SVGSVGElement>) => {
-    const d = drag.current;
-    if (!d || !svgRef.current) return;
-    const r = svgRef.current.getBoundingClientRect();
-    const dx = ((e.clientX - d.x) / r.width) * d.box.w;
-    const dy = ((e.clientY - d.y) / r.height) * d.box.h;
-    setView({
-      ...d.box,
-      x: clamp(d.box.x - dx, Math.min(0, MAP_WIDTH - d.box.w), Math.max(0, MAP_WIDTH - d.box.w)),
-      y: clamp(d.box.y - dy, Math.min(0, MAP_HEIGHT - d.box.h), Math.max(0, MAP_HEIGHT - d.box.h)),
-    });
-  };
-  const endDrag = () => {
-    drag.current = null;
-  };
-
   const pick = (shop: Shop) => {
-    setSelected(shop.name + shop.area);
+    const id = shop.name + shop.area;
+    setSelected(id);
+    setMapCenter({ lat: shop.lat, lng: shop.lng });
+    setMapZoom(15);
     listRef.current
-      ?.querySelector(`[data-shop="${CSS.escape(shop.name + shop.area)}"]`)
+      ?.querySelector(`[data-shop="${CSS.escape(id)}"]`)
       ?.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
-  // Pin radius in user units, so pins keep a constant on-screen size while zooming.
-  const pinR = (view.w / MAP_WIDTH) * 7;
   const grouped = REGION_ORDER.map((r) => ({
     region: r,
     items: shops.filter((s) => s.region === r),
   })).filter((g) => g.items.length);
+
+  if (!isLoaded) {
+    return (
+      <div className="space-y-6">
+        <div className="rounded-3xl border border-border/60 bg-card h-96 flex items-center justify-center text-muted-foreground">
+          Loading map...
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
@@ -171,13 +87,16 @@ export function ShopsMap() {
             <button
               key={r}
               type="button"
-              onClick={() => setRegion(r)}
+              onClick={() => {
+                setRegion(r);
+                setMapCenter(GREECE_CENTER);
+                setMapZoom(DEFAULT_ZOOM);
+              }}
               aria-pressed={active}
-              className={`rounded-full border px-3.5 py-1.5 text-xs tracking-wide transition ${
-                active
-                  ? "border-primary bg-primary text-primary-foreground"
-                  : "border-border/60 bg-card hover:border-foreground/40"
-              }`}
+              className={`rounded-full border px-3.5 py-1.5 text-xs tracking-wide transition ${active
+                ? "border-primary bg-primary text-primary-foreground"
+                : "border-border/60 bg-card hover:border-foreground/40"
+                }`}
             >
               {r === "all" ? t(T.copy.allRegions) : t(T.regions[r])}{" "}
               <span className={active ? "opacity-80" : "text-muted-foreground"}>{count}</span>
@@ -187,65 +106,72 @@ export function ShopsMap() {
       </div>
 
       <div className="relative rounded-3xl border border-border/60 bg-sky/20 soft-shadow overflow-hidden">
-        <svg
-          ref={svgRef}
-          viewBox={`${view.x} ${view.y} ${view.w} ${view.h}`}
-          className="w-full h-auto touch-none cursor-grab active:cursor-grabbing select-none"
-          style={{ aspectRatio: `${MAP_WIDTH} / ${MAP_HEIGHT}` }}
-          onPointerDown={onPointerDown}
-          onPointerMove={onPointerMove}
-          onPointerUp={endDrag}
-          onPointerLeave={endDrag}
-          role="img"
-          aria-label={`${SHOPS.length} ${t(T.copy.shopsFound)}`}
+        <GoogleMap
+          mapContainerStyle={{
+            width: "100%",
+            height: "400px",
+          }}
+          center={mapCenter}
+          zoom={mapZoom}
+          onLoad={(map) => {
+            mapRef.current = map;
+          }}
+          options={{
+            restriction: {
+              latLngBounds: {
+                north: 46.5,
+                south: 36.5,
+                east: 29.5,
+                west: 19,
+              },
+              strictBounds: false,
+            },
+          }}
         >
-          <path
-            d={GREECE_PATH}
-            className="fill-background stroke-border"
-            strokeWidth={view.w / MAP_WIDTH}
-          />
-          {shops.map((s) => {
-            const { x, y } = projectPoint(s.lat, s.lng);
-            const isSel = selected === s.name + s.area;
+          {shops.map((shop) => {
+            const id = shop.name + shop.area;
+            const isSel = selected === id;
             return (
-              <g
-                key={s.name + s.area}
-                onPointerDown={(e) => e.stopPropagation()}
-                onClick={() => pick(s)}
+              <Marker
+                key={id}
+                position={{ lat: shop.lat, lng: shop.lng }}
+                onClick={() => pick(shop)}
+                title={`${shop.name} — ${shop.area}`}
+                icon={{
+                  path: google.maps.SymbolPath.CIRCLE,
+                  scale: isSel ? 10 : 7,
+                  fillColor: isSel ? "#000000" : "#3b82f6",
+                  fillOpacity: 1,
+                  strokeColor: "#ffffff",
+                  strokeWeight: 2.5,
+                }}
               >
-                <circle
-                  cx={x}
-                  cy={y}
-                  r={isSel ? pinR * 1.6 : pinR}
-                  className={isSel ? "fill-foreground" : "fill-primary"}
-                  stroke="white"
-                  strokeWidth={pinR * 0.35}
-                  style={{ cursor: "pointer" }}
-                />
-                <title>{`${s.name} — ${s.area}`}</title>
-              </g>
+                {isSel && (
+                  <InfoWindow onCloseClick={() => setSelected(null)}>
+                    <div className="max-w-xs">
+                      <div className="font-semibold text-sm">{shop.name}</div>
+                      <div className="text-xs text-gray-600 mt-1">
+                        <div className="flex gap-2 mb-1">
+                          <MapPin size={12} className="shrink-0 mt-0.5" />
+                          <span>{[shop.address, shop.area].filter(Boolean).join(", ")}</span>
+                        </div>
+                        {shop.phone && (
+                          <a
+                            href={`tel:${shop.phone}`}
+                            className="flex gap-2 text-blue-600 hover:underline"
+                          >
+                            <Phone size={12} className="shrink-0 mt-0.5" />
+                            {shop.phone}
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  </InfoWindow>
+                )}
+              </Marker>
             );
           })}
-        </svg>
-
-        <div className="absolute top-3 right-3 flex flex-col gap-1.5">
-          {[
-            { label: t(T.copy.zoomIn), icon: Plus, run: () => zoom(1 / 1.4) },
-            { label: t(T.copy.zoomOut), icon: Minus, run: () => zoom(1.4) },
-            { label: t(T.copy.resetMap), icon: RotateCcw, run: () => setView(FULL) },
-          ].map(({ label, icon: Icon, run }) => (
-            <button
-              key={label}
-              type="button"
-              onClick={run}
-              aria-label={label}
-              title={label}
-              className="grid place-items-center h-9 w-9 rounded-full bg-background/90 backdrop-blur border border-border/60 text-foreground/80 hover:bg-background transition"
-            >
-              <Icon size={16} />
-            </button>
-          ))}
-        </div>
+        </GoogleMap>
       </div>
 
       <p className="text-xs text-muted-foreground text-center">{t(T.copy.mapHint)}</p>
@@ -268,15 +194,11 @@ export function ShopsMap() {
                     key={id}
                     type="button"
                     data-shop={id}
-                    onClick={() => {
-                      setSelected(id);
-                      setView(boxFor([s]));
-                    }}
-                    className={`text-left rounded-2xl border bg-card p-4 transition ${
-                      isSel
+                    onClick={() => pick(s)}
+                    className={`text-left rounded-2xl border bg-card p-4 transition ${isSel
                         ? "border-primary ring-2 ring-primary/25"
                         : "border-border/60 hover:border-foreground/30"
-                    }`}
+                      }`}
                   >
                     <div className="font-medium leading-snug">{s.name}</div>
                     <div className="mt-2 space-y-1 text-sm text-muted-foreground">
