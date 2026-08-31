@@ -139,23 +139,43 @@ function Home() {
 
       {/* SIZE CHART */}
       <section className="mx-auto max-w-7xl px-5 lg:px-8 pb-24">
-        <div className="relative rounded-3xl bg-gradient-to-br from-blush/60 via-card to-sky/40 border border-border/60 p-10 lg:p-14 float-shadow grid lg:grid-cols-[1.5fr_1fr] gap-8 items-center overflow-hidden">
-          <div>
-            <div className="text-[11px] tracking-[0.35em] uppercase text-primary mb-3">{t(T.sizeChart)}</div>
-            <h2 className="font-display text-4xl md:text-5xl tracking-tight">
-              {t(T.copy.perfectSize)}
-            </h2>
-            <p className="mt-4 text-foreground/70 max-w-xl leading-relaxed">{t(T.sizeChartBody)}</p>
-          </div>
-          <div className="flex lg:justify-end">
-            <a
-              href={sizeChartPdf.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-6 py-3 text-sm font-medium tracking-wide soft-shadow hover:scale-[1.02] transition-transform"
-            >
-              <Download size={16} /> {t(T.sizeChartCta)}
-            </a>
+        <div className="relative rounded-3xl bg-gradient-to-br from-blush/60 via-card to-sky/40 border border-border/60 p-6 lg:p-8 float-shadow overflow-hidden">
+          <div className="grid gap-8 lg:grid-cols-[1.1fr_1.4fr] lg:items-center">
+            <div>
+              <div className="text-[11px] tracking-[0.35em] uppercase text-primary mb-3">{t(T.sizeChart)}</div>
+              <h2 className="font-display text-4xl md:text-5xl tracking-tight">
+                {t(T.copy.perfectSize)}
+              </h2>
+              <p className="mt-4 text-foreground/70 max-w-xl leading-relaxed">{t(T.sizeChartBody)}</p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a
+                  href={sizeChartPdf.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download
+                  className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-6 py-3 text-sm font-medium tracking-wide soft-shadow hover:scale-[1.02] transition-transform"
+                >
+                  <Download size={16} /> {t(T.sizeChartCta)}
+                </a>
+                <a
+                  href={sizeChartPdf.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center rounded-full border border-border bg-card px-6 py-3 text-sm font-medium tracking-wide soft-shadow hover:bg-muted transition-colors"
+                >
+                  Open full PDF
+                </a>
+              </div>
+            </div>
+
+            <div className="overflow-hidden rounded-2xl border border-border/70 bg-white/70 shadow-sm">
+              <iframe
+                src={sizeChartPdf.url}
+                title={t(T.sizeChart)}
+                className="h-[420px] w-full bg-white"
+                loading="lazy"
+              />
+            </div>
           </div>
         </div>
       </section>
