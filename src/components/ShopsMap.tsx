@@ -137,7 +137,7 @@ export function ShopsMap() {
               },
               {
                 elementType: "labels.text.fill",
-                stylers: [{ color: "#a64969" }],
+                stylers: [{ color: "#7d6b74" }],
               },
               {
                 elementType: "labels.text.stroke",
@@ -146,37 +146,37 @@ export function ShopsMap() {
               {
                 featureType: "administrative",
                 elementType: "geometry.stroke",
-                stylers: [{ color: "#f0f4fa" }, { weight: 0.5 }],
+                stylers: [{ color: "#f5f5f0" }, { weight: 0.5 }],
               },
               {
                 featureType: "administrative.land_parcel",
                 elementType: "labels.text.fill",
-                stylers: [{ color: "#d4c26e" }],
+                stylers: [{ color: "#9d8b92" }],
               },
               {
                 featureType: "landscape.natural",
                 elementType: "geometry",
-                stylers: [{ color: "#f5ddd9" }],
+                stylers: [{ color: "#faf8f5" }],
               },
               {
                 featureType: "poi",
                 elementType: "geometry",
-                stylers: [{ color: "#f0f4fa" }],
+                stylers: [{ color: "#f5f5f0" }],
               },
               {
                 featureType: "poi",
                 elementType: "labels.text.fill",
-                stylers: [{ color: "#a64969" }],
+                stylers: [{ color: "#7d6b74" }],
               },
               {
                 featureType: "poi.park",
                 elementType: "geometry",
-                stylers: [{ color: "#f0f4fa" }],
+                stylers: [{ color: "#f5f5f0" }],
               },
               {
                 featureType: "poi.park",
                 elementType: "labels.text.fill",
-                stylers: [{ color: "#d4c26e" }],
+                stylers: [{ color: "#9d8b92" }],
               },
               {
                 featureType: "road",
@@ -186,12 +186,12 @@ export function ShopsMap() {
               {
                 featureType: "road",
                 elementType: "geometry.stroke",
-                stylers: [{ color: "#f5ddd9" }],
+                stylers: [{ color: "#f0ebe8" }],
               },
               {
                 featureType: "road.arterial",
                 elementType: "labels.text.fill",
-                stylers: [{ color: "#a64969" }],
+                stylers: [{ color: "#7d6b74" }],
               },
               {
                 featureType: "road.highway",
@@ -201,37 +201,37 @@ export function ShopsMap() {
               {
                 featureType: "road.highway",
                 elementType: "geometry.stroke",
-                stylers: [{ color: "#d4c26e" }],
+                stylers: [{ color: "#e8dfd9" }],
               },
               {
                 featureType: "road.highway",
                 elementType: "labels.text.fill",
-                stylers: [{ color: "#a64969" }],
+                stylers: [{ color: "#7d6b74" }],
               },
               {
                 featureType: "road.local",
                 elementType: "labels.text.fill",
-                stylers: [{ color: "#a64969" }],
+                stylers: [{ color: "#9d8b92" }],
               },
               {
                 featureType: "transit.line",
                 elementType: "geometry",
-                stylers: [{ color: "#f0f4fa" }],
+                stylers: [{ color: "#f5f5f0" }],
               },
               {
                 featureType: "transit.station",
                 elementType: "geometry",
-                stylers: [{ color: "#f5ddd9" }],
+                stylers: [{ color: "#faf8f5" }],
               },
               {
                 featureType: "water",
                 elementType: "geometry",
-                stylers: [{ color: "#f0f4fa" }],
+                stylers: [{ color: "#f5f5f0" }],
               },
               {
                 featureType: "water",
                 elementType: "labels.text.fill",
-                stylers: [{ color: "#a64969" }],
+                stylers: [{ color: "#7d6b74" }],
               },
             ],
             disableDefaultUI: false,
@@ -253,7 +253,7 @@ export function ShopsMap() {
                 icon={{
                   path: google.maps.SymbolPath.CIRCLE,
                   scale: isSel ? 10 : 7,
-                  fillColor: isSel ? "#d4c26e" : "#a64969",
+                  fillColor: isSel ? "#a64969" : "#c97d95",
                   fillOpacity: 1,
                   strokeColor: "#ffffff",
                   strokeWeight: 2.5,
