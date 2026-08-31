@@ -3,8 +3,9 @@ import { useLang } from "@/lib/lang";
 import { T, PRODUCTS } from "@/lib/site-content";
 import { ProductCard } from "@/components/ProductCard";
 import { Sparkles, Scissors, Layers, Award, Download } from "lucide-react";
-import sizeChartPdf from "@/assets/size-chart.pdf.asset.json";
 import featuredGirls from "@/assets/images/C11-4.webp";
+
+const sizeChartPdfUrl = "/size-chart.pdf";
 import featuredBoys from "@/assets/images/7101.webp";
 import featuredSilk from "@/assets/images/C6 (2).webp";
 
@@ -149,7 +150,7 @@ function Home() {
               <p className="mt-4 text-foreground/70 max-w-xl leading-relaxed">{t(T.sizeChartBody)}</p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <a
-                  href={sizeChartPdf.url}
+                  href={sizeChartPdfUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   download
@@ -158,7 +159,7 @@ function Home() {
                   <Download size={16} /> {t(T.sizeChartCta)}
                 </a>
                 <a
-                  href={sizeChartPdf.url}
+                  href={sizeChartPdfUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center rounded-full border border-border bg-card px-6 py-3 text-sm font-medium tracking-wide soft-shadow hover:bg-muted transition-colors"
@@ -170,7 +171,7 @@ function Home() {
 
             <div className="overflow-hidden rounded-2xl border border-border/70 bg-white/70 shadow-sm">
               <iframe
-                src={sizeChartPdf.url}
+                src={sizeChartPdfUrl}
                 title={t(T.sizeChart)}
                 className="h-[420px] w-full bg-white"
                 loading="lazy"
