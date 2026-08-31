@@ -156,7 +156,7 @@ export function ShopsMap() {
               {
                 featureType: "landscape.natural",
                 elementType: "geometry",
-                stylers: [{ color: "#faf8f5" }],
+                stylers: [{ color: "#ede5e2" }],
               },
               {
                 featureType: "poi",
