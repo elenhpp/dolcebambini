@@ -24,6 +24,7 @@ export const NAV: ReadonlyArray<{ key: string; to: string } & Record<Lang, strin
   { key: "home", to: "/", el: "ΑΡΧΙΚΗ", en: "HOME", it: "HOME", es: "INICIO", pt: "INÍCIO" },
   { key: "boys", to: "/boys", el: "ΑΓΟΡΙ", en: "BOYS", it: "BAMBINO", es: "NIÑO", pt: "MENINO" },
   { key: "girls", to: "/girls", el: "ΚΟΡΙΤΣΙ", en: "GIRLS", it: "BAMBINA", es: "NIÑA", pt: "MENINA" },
+  { key: "winter", to: "/winter", el: "WINTER", en: "WINTER", it: "WINTER", es: "WINTER", pt: "WINTER" },
   {
     key: "silk",
     to: "/silk",
@@ -178,6 +179,42 @@ export const T = {
     },
     girls: {
       title: { el: "Κορίτσι", en: "Girls", it: "Bambina", es: "Niña", pt: "Menina" },
+      sub: {
+        el: "Collection 2026",
+        en: "Collection 2026",
+        it: "Collection 2026",
+        es: "Collection 2026",
+        pt: "Collection 2026",
+      },
+    },
+    winter: {
+      title: {
+        el: "Winter Collection",
+        en: "Winter Collection",
+        it: "Winter Collection",
+        es: "Winter Collection",
+        pt: "Winter Collection",
+      },
+      sub: {
+        el: "Επιλέξτε Αγόρι ή Κορίτσι",
+        en: "Choose Boy or Girl",
+        it: "Scegli Bambino o Bambina",
+        es: "Elige Niño o Niña",
+        pt: "Escolha Menino ou Menina",
+      },
+    },
+    winterBoys: {
+      title: { el: "Winter — Αγόρι", en: "Winter — Boy", it: "Winter — Bambino", es: "Winter — Niño", pt: "Winter — Menino" },
+      sub: {
+        el: "Collection 2026",
+        en: "Collection 2026",
+        it: "Collection 2026",
+        es: "Collection 2026",
+        pt: "Collection 2026",
+      },
+    },
+    winterGirls: {
+      title: { el: "Winter — Κορίτσι", en: "Winter — Girl", it: "Winter — Bambina", es: "Winter — Niña", pt: "Winter — Menina" },
       sub: {
         el: "Collection 2026",
         en: "Collection 2026",
@@ -3564,6 +3601,181 @@ export const PRODUCTS: Record<string, Product[]> = {
         it: "Un incantevole abito da Prima Comunione con un corpetto in pregiato pizzo da sposa impreziosito da splendide applicazioni floreali tridimensionali. La soffice gonna in tulle crea una romantica silhouette da principessa, mentre i dettagli floreali proseguono elegantemente sul retro, completati da un grande fiocco in raso. Un modello fiabesco che racchiude eleganza, romanticismo e raffinatezza senza tempo.",
         es: "Un encantador vestido de Primera Comunión con un cuerpo confeccionado en encaje nupcial premium adornado con exquisitas aplicaciones florales tridimensionales. La suave falda de tul crea una ligera silueta de princesa llena de movimiento, mientras que los detalles florales continúan elegantemente en la espalda y culminan con un gran lazo de satén. Un diseño mágico que refleja romanticismo, elegancia y belleza atemporal.",
         pt: "Um encantador vestido de Primeira Comunhão com um corpete em renda nupcial premium adornado com requintadas aplicações florais tridimensionais. A suave saia de tule cria uma leve silhueta de princesa com um movimento gracioso, enquanto os detalhes florais continuam elegantemente nas costas, terminando num grande laço em cetim. Um modelo verdadeiramente mágico que combina romantismo, elegância e beleza intemporal.",
+      },
+    },
+  ],
+  winterBoys: [
+    {
+      code: "3001set",
+      image: "src/assets/images/3001set(1).webp",
+      title: { el: "Σετ 3001", en: "Set 3001", it: "Set 3001", es: "Conjunto 3001", pt: "Conjunto 3001" },
+      desc: {
+        el: "Γιλέκο, πουκάμισο και παντελόνι με τιράντες, με ασορτί μπουφάν σε γκρι-μπλε απόχρωση.",
+        en: "Vest, shirt and suspender trousers, with a coordinating dove-blue jacket.",
+      },
+    },
+    {
+      code: "3006set",
+      image: "src/assets/images/3006set(1).webp",
+      title: { el: "Σετ 3006", en: "Set 3006", it: "Set 3006", es: "Conjunto 3006", pt: "Conjunto 3006" },
+      desc: {
+        el: "Γιλέκο, πουκάμισο και παντελόνι με τιράντες, με ασορτί μπουφάν σε μπλε απόχρωση.",
+        en: "Vest, shirt and suspender trousers, with a coordinating steel-blue jacket.",
+      },
+    },
+    {
+      code: "3011set",
+      image: "src/assets/images/3011set(1).webp",
+      title: { el: "Σετ 3011", en: "Set 3011", it: "Set 3011", es: "Conjunto 3011", pt: "Conjunto 3011" },
+      desc: {
+        el: "Γιλέκο, πουκάμισο και παντελόνι με τιράντες, με ασορτί μπουφάν σε μπλε απόχρωση.",
+        en: "Vest, shirt and suspender trousers, with a coordinating blue jacket.",
+      },
+    },
+    {
+      code: "3015set",
+      image: "src/assets/images/3015set(1).webp",
+      title: { el: "Σετ 3015", en: "Set 3015", it: "Set 3015", es: "Conjunto 3015", pt: "Conjunto 3015" },
+      desc: {
+        el: "Γιλέκο, πουκάμισο και παντελόνι με τιράντες, με ασορτί καπαρντίνα σε πράσινη απόχρωση.",
+        en: "Vest, shirt and suspender trousers, with a coordinating sage-green duffle coat.",
+      },
+    },
+    {
+      code: "3070",
+      image: "src/assets/images/3070(1).webp",
+      title: { el: "Σετ 3070", en: "Set 3070", it: "Set 3070", es: "Conjunto 3070", pt: "Conjunto 3070" },
+      desc: {
+        el: "Γιλέκο και πουκάμισο με φιογκάκι, με ασορτί παλτό σε καμηλό απόχρωση.",
+        en: "Vest and shirt with bow tie, with a coordinating camel peacoat.",
+      },
+    },
+    {
+      code: "3072",
+      image: "src/assets/images/3072(1).webp",
+      title: { el: "Σετ 3072", en: "Set 3072", it: "Set 3072", es: "Conjunto 3072", pt: "Conjunto 3072" },
+      desc: {
+        el: "Γιλέκο, πουκάμισο και παντελόνι με τιράντες, με ασορτί καπαρντίνα σε μπλε απόχρωση.",
+        en: "Vest, shirt and suspender trousers, with a coordinating navy duffle coat.",
+      },
+    },
+    {
+      code: "3074",
+      image: "src/assets/images/3074(1).webp",
+      title: { el: "Σετ 3074", en: "Set 3074", it: "Set 3074", es: "Conjunto 3074", pt: "Conjunto 3074" },
+      desc: {
+        el: "Γιλέκο, πουκάμισο και παντελόνι με τιράντες, με ασορτί παλτό σε μελανζέ απόχρωση.",
+        en: "Vest, shirt and suspender trousers, with a coordinating heather tweed peacoat.",
+      },
+    },
+    {
+      code: "3080",
+      image: "src/assets/images/3080(1).webp",
+      title: { el: "Σετ 3080", en: "Set 3080", it: "Set 3080", es: "Conjunto 3080", pt: "Conjunto 3080" },
+      desc: {
+        el: "Γιλέκο, πουκάμισο και παντελόνι με τιράντες, με ασορτί καπαρντίνα σε πετρόλ απόχρωση.",
+        en: "Vest, shirt and suspender trousers, with a coordinating petrol-blue duffle coat.",
+      },
+    },
+    {
+      code: "3084",
+      image: "src/assets/images/3084(1).webp",
+      title: { el: "Σετ 3084", en: "Set 3084", it: "Set 3084", es: "Conjunto 3084", pt: "Conjunto 3084" },
+      desc: {
+        el: "Γιλέκο, πουκάμισο και παντελόνι με τιράντες, με ασορτί καπαρντίνα σε μπλε απόχρωση.",
+        en: "Vest, shirt and suspender trousers, with a coordinating navy duffle coat.",
+      },
+    },
+    {
+      code: "8507-3",
+      image: "src/assets/images/8507-3.webp",
+      title: { el: "Καπαρντίνα 8507-3", en: "Duffle Coat 8507-3", it: "Montgomery 8507-3", es: "Trenca 8507-3", pt: "Casaco 8507-3" },
+      desc: {
+        el: "Μάλλινη καπαρντίνα σε μπλε απόχρωση, με κουκούλα και ξύλινα κουμπιά.",
+        en: "Wool duffle coat in navy, with a hood and toggle buttons.",
+      },
+    },
+    {
+      code: "8510W",
+      image: "src/assets/images/8510W.webp",
+      title: { el: "Σετ 8510W", en: "Set 8510W", it: "Set 8510W", es: "Conjunto 8510W", pt: "Conjunto 8510W" },
+      desc: {
+        el: "Γιλέκο, πουκάμισο και παντελόνι με τιράντες, με ασορτί καπαρντίνα σε καφέ απόχρωση.",
+        en: "Vest, shirt and suspender trousers, with a coordinating brown duffle coat.",
+      },
+    },
+    {
+      code: "8529W",
+      image: "src/assets/images/8529W.webp",
+      title: { el: "Σετ 8529W", en: "Set 8529W", it: "Set 8529W", es: "Conjunto 8529W", pt: "Conjunto 8529W" },
+      desc: {
+        el: "Γιλέκο, πουκάμισο και παντελόνι με τιράντες, με ασορτί καπαρντίνα σε μπλε απόχρωση.",
+        en: "Vest, shirt and suspender trousers, with a coordinating navy duffle coat.",
+      },
+    },
+    {
+      code: "8541W-4",
+      image: "src/assets/images/8541W-4.webp",
+      title: { el: "Καπαρντίνα 8541W", en: "Duffle Coat 8541W", it: "Montgomery 8541W", es: "Trenca 8541W", pt: "Casaco 8541W" },
+      desc: {
+        el: "Μάλλινη καπαρντίνα σε καμηλό απόχρωση, με κουκούλα και ξύλινα κουμπιά.",
+        en: "Wool duffle coat in camel, with a hood and toggle buttons.",
+      },
+    },
+  ],
+  winterGirls: [
+    {
+      code: "11-401",
+      image: "src/assets/images/11-401.webp",
+      title: { el: "Παλτό 11-401", en: "Coat 11-401", it: "Cappotto 11-401", es: "Abrigo 11-401", pt: "Casaco 11-401" },
+      desc: {
+        el: "Παλτό σε λευκή απόχρωση, με μεγάλο γιακά και κουμπιά.",
+        en: "Swing coat in white, with an oversized collar and button front.",
+      },
+    },
+    {
+      code: "11-414",
+      image: "src/assets/images/11-414.webp",
+      title: { el: "Παλτό 11-414", en: "Coat 11-414", it: "Cappotto 11-414", es: "Abrigo 11-414", pt: "Casaco 11-414" },
+      desc: {
+        el: "Παλτό σε γκρι-μπεζ απόχρωση, με στρογγυλό γιακά και κουμπιά.",
+        en: "Swing coat in dove grey, with a round collar and button front.",
+      },
+    },
+    {
+      code: "11-416",
+      image: "src/assets/images/11-416.webp",
+      title: { el: "Παλτό 11-416", en: "Coat 11-416", it: "Cappotto 11-416", es: "Abrigo 11-416", pt: "Casaco 11-416" },
+      desc: {
+        el: "Παλτό από απαλό γούνινο ύφασμα σε λευκή απόχρωση, με κουκούλα.",
+        en: "Soft faux-fur coat in white, with a hood.",
+      },
+    },
+    {
+      code: "6057-1",
+      image: "src/assets/images/6057-1(1).webp",
+      title: { el: "Φόρεμα 6057-1", en: "Dress 6057-1", it: "Abito 6057-1", es: "Vestido 6057-1", pt: "Vestido 6057-1" },
+      desc: {
+        el: "Φόρεμα με μπούστο κεντημένο με πέρλες και σατέν φούστα, ολοκληρωμένο με φιόγκο στην πλάτη.",
+        en: "Beaded pearl-embroidered bodice with a satin skirt, finished with a back bow.",
+      },
+    },
+    {
+      code: "6059-1",
+      image: "src/assets/images/6059-1(1).webp",
+      title: { el: "Φόρεμα 6059-1", en: "Dress 6059-1", it: "Abito 6059-1", es: "Vestido 6059-1", pt: "Vestido 6059-1" },
+      desc: {
+        el: "Δαντελένιο φόρεμα με φούστα από τούλι και λουλούδι στη μέση.",
+        en: "Lace dress with a tulle skirt and a flower detail at the waist.",
+      },
+    },
+    {
+      code: "9702-1",
+      image: "src/assets/images/9702-1.webp",
+      title: { el: "Φόρεμα 9702-1", en: "Dress 9702-1", it: "Abito 9702-1", es: "Vestido 9702-1", pt: "Vestido 9702-1" },
+      desc: {
+        el: "Φόρεμα με παγιέτες δαντέλα, τριαντάφυλλο στη μέση και ασύμμετρη φούστα από τούλι.",
+        en: "Sequin lace dress with a rose flower at the waist and a high-low tulle skirt.",
       },
     },
   ],

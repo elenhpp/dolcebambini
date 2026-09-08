@@ -11,7 +11,7 @@ import {
   type FieldMap,
 } from "@/lib/product-overrides";
 
-const CATEGORIES = ["boys", "girls", "silk", "accessories", "communion"] as const;
+const CATEGORIES = ["boys", "girls", "silk", "accessories", "communion", "winterBoys", "winterGirls"] as const;
 type Cat = (typeof CATEGORIES)[number];
 const EDIT_LANGS: Lang[] = ["el", "en"];
 

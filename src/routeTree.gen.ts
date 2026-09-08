@@ -21,6 +21,9 @@ import { Route as GirlsRouteImport } from './routes/girls'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as SalesPointsRouteImport } from './routes/sales-points'
 import { Route as SilkRouteImport } from './routes/silk'
+import { Route as WinterRouteImport } from './routes/winter'
+import { Route as WinterBoysRouteImport } from './routes/winterBoys'
+import { Route as WinterGirlsRouteImport } from './routes/winterGirls'
 import { Route as AccessoriesIndexRouteImport } from './routes/accessories.index'
 import { Route as AccessoriesCodeRouteImport } from './routes/accessories.$code'
 import { Route as BoysIndexRouteImport } from './routes/boys.index'
@@ -31,6 +34,10 @@ import { Route as GirlsIndexRouteImport } from './routes/girls.index'
 import { Route as GirlsCodeRouteImport } from './routes/girls.$code'
 import { Route as SilkIndexRouteImport } from './routes/silk.index'
 import { Route as SilkCodeRouteImport } from './routes/silk.$code'
+import { Route as WinterBoysIndexRouteImport } from './routes/winterBoys.index'
+import { Route as WinterBoysCodeRouteImport } from './routes/winterBoys.$code'
+import { Route as WinterGirlsIndexRouteImport } from './routes/winterGirls.index'
+import { Route as WinterGirlsCodeRouteImport } from './routes/winterGirls.$code'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -92,6 +99,21 @@ const SilkRoute = SilkRouteImport.update({
   path: '/silk',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WinterRoute = WinterRouteImport.update({
+  id: '/winter',
+  path: '/winter',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WinterBoysRoute = WinterBoysRouteImport.update({
+  id: '/winterBoys',
+  path: '/winterBoys',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WinterGirlsRoute = WinterGirlsRouteImport.update({
+  id: '/winterGirls',
+  path: '/winterGirls',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AccessoriesIndexRoute = AccessoriesIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -142,6 +164,26 @@ const SilkCodeRoute = SilkCodeRouteImport.update({
   path: '/$code',
   getParentRoute: () => SilkRoute,
 } as any)
+const WinterBoysIndexRoute = WinterBoysIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => WinterBoysRoute,
+} as any)
+const WinterBoysCodeRoute = WinterBoysCodeRouteImport.update({
+  id: '/$code',
+  path: '/$code',
+  getParentRoute: () => WinterBoysRoute,
+} as any)
+const WinterGirlsIndexRoute = WinterGirlsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => WinterGirlsRoute,
+} as any)
+const WinterGirlsCodeRoute = WinterGirlsCodeRouteImport.update({
+  id: '/$code',
+  path: '/$code',
+  getParentRoute: () => WinterGirlsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -156,16 +198,23 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/sales-points': typeof SalesPointsRoute
   '/silk': typeof SilkRouteWithChildren
+  '/winter': typeof WinterRoute
+  '/winterBoys': typeof WinterBoysRouteWithChildren
+  '/winterGirls': typeof WinterGirlsRouteWithChildren
   '/accessories/$code': typeof AccessoriesCodeRoute
   '/boys/$code': typeof BoysCodeRoute
   '/communion/$code': typeof CommunionCodeRoute
   '/girls/$code': typeof GirlsCodeRoute
   '/silk/$code': typeof SilkCodeRoute
+  '/winterBoys/$code': typeof WinterBoysCodeRoute
+  '/winterGirls/$code': typeof WinterGirlsCodeRoute
   '/accessories/': typeof AccessoriesIndexRoute
   '/boys/': typeof BoysIndexRoute
   '/communion/': typeof CommunionIndexRoute
   '/girls/': typeof GirlsIndexRoute
   '/silk/': typeof SilkIndexRoute
+  '/winterBoys/': typeof WinterBoysIndexRoute
+  '/winterGirls/': typeof WinterGirlsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -175,16 +224,21 @@ export interface FileRoutesByTo {
   '/gdpr': typeof GdprRoute
   '/privacy': typeof PrivacyRoute
   '/sales-points': typeof SalesPointsRoute
+  '/winter': typeof WinterRoute
   '/accessories/$code': typeof AccessoriesCodeRoute
   '/boys/$code': typeof BoysCodeRoute
   '/communion/$code': typeof CommunionCodeRoute
   '/girls/$code': typeof GirlsCodeRoute
   '/silk/$code': typeof SilkCodeRoute
+  '/winterBoys/$code': typeof WinterBoysCodeRoute
+  '/winterGirls/$code': typeof WinterGirlsCodeRoute
   '/accessories': typeof AccessoriesIndexRoute
   '/boys': typeof BoysIndexRoute
   '/communion': typeof CommunionIndexRoute
   '/girls': typeof GirlsIndexRoute
   '/silk': typeof SilkIndexRoute
+  '/winterBoys': typeof WinterBoysIndexRoute
+  '/winterGirls': typeof WinterGirlsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -200,16 +254,23 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/sales-points': typeof SalesPointsRoute
   '/silk': typeof SilkRouteWithChildren
+  '/winter': typeof WinterRoute
+  '/winterBoys': typeof WinterBoysRouteWithChildren
+  '/winterGirls': typeof WinterGirlsRouteWithChildren
   '/accessories/$code': typeof AccessoriesCodeRoute
   '/boys/$code': typeof BoysCodeRoute
   '/communion/$code': typeof CommunionCodeRoute
   '/girls/$code': typeof GirlsCodeRoute
   '/silk/$code': typeof SilkCodeRoute
+  '/winterBoys/$code': typeof WinterBoysCodeRoute
+  '/winterGirls/$code': typeof WinterGirlsCodeRoute
   '/accessories/': typeof AccessoriesIndexRoute
   '/boys/': typeof BoysIndexRoute
   '/communion/': typeof CommunionIndexRoute
   '/girls/': typeof GirlsIndexRoute
   '/silk/': typeof SilkIndexRoute
+  '/winterBoys/': typeof WinterBoysIndexRoute
+  '/winterGirls/': typeof WinterGirlsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -226,16 +287,23 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/sales-points'
     | '/silk'
+    | '/winter'
+    | '/winterBoys'
+    | '/winterGirls'
     | '/accessories/$code'
     | '/boys/$code'
     | '/communion/$code'
     | '/girls/$code'
     | '/silk/$code'
+    | '/winterBoys/$code'
+    | '/winterGirls/$code'
     | '/accessories/'
     | '/boys/'
     | '/communion/'
     | '/girls/'
     | '/silk/'
+    | '/winterBoys/'
+    | '/winterGirls/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -245,16 +313,21 @@ export interface FileRouteTypes {
     | '/gdpr'
     | '/privacy'
     | '/sales-points'
+    | '/winter'
     | '/accessories/$code'
     | '/boys/$code'
     | '/communion/$code'
     | '/girls/$code'
     | '/silk/$code'
+    | '/winterBoys/$code'
+    | '/winterGirls/$code'
     | '/accessories'
     | '/boys'
     | '/communion'
     | '/girls'
     | '/silk'
+    | '/winterBoys'
+    | '/winterGirls'
   id:
     | '__root__'
     | '/'
@@ -269,16 +342,23 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/sales-points'
     | '/silk'
+    | '/winter'
+    | '/winterBoys'
+    | '/winterGirls'
     | '/accessories/$code'
     | '/boys/$code'
     | '/communion/$code'
     | '/girls/$code'
     | '/silk/$code'
+    | '/winterBoys/$code'
+    | '/winterGirls/$code'
     | '/accessories/'
     | '/boys/'
     | '/communion/'
     | '/girls/'
     | '/silk/'
+    | '/winterBoys/'
+    | '/winterGirls/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -294,6 +374,9 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   SalesPointsRoute: typeof SalesPointsRoute
   SilkRoute: typeof SilkRouteWithChildren
+  WinterRoute: typeof WinterRoute
+  WinterBoysRoute: typeof WinterBoysRouteWithChildren
+  WinterGirlsRoute: typeof WinterGirlsRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -382,6 +465,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SilkRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/winter': {
+      id: '/winter'
+      path: '/winter'
+      fullPath: '/winter'
+      preLoaderRoute: typeof WinterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/winterBoys': {
+      id: '/winterBoys'
+      path: '/winterBoys'
+      fullPath: '/winterBoys'
+      preLoaderRoute: typeof WinterBoysRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/winterGirls': {
+      id: '/winterGirls'
+      path: '/winterGirls'
+      fullPath: '/winterGirls'
+      preLoaderRoute: typeof WinterGirlsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/accessories/': {
       id: '/accessories/'
       path: '/'
@@ -452,6 +556,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SilkCodeRouteImport
       parentRoute: typeof SilkRoute
     }
+    '/winterBoys/': {
+      id: '/winterBoys/'
+      path: '/'
+      fullPath: '/winterBoys/'
+      preLoaderRoute: typeof WinterBoysIndexRouteImport
+      parentRoute: typeof WinterBoysRoute
+    }
+    '/winterBoys/$code': {
+      id: '/winterBoys/$code'
+      path: '/$code'
+      fullPath: '/winterBoys/$code'
+      preLoaderRoute: typeof WinterBoysCodeRouteImport
+      parentRoute: typeof WinterBoysRoute
+    }
+    '/winterGirls/': {
+      id: '/winterGirls/'
+      path: '/'
+      fullPath: '/winterGirls/'
+      preLoaderRoute: typeof WinterGirlsIndexRouteImport
+      parentRoute: typeof WinterGirlsRoute
+    }
+    '/winterGirls/$code': {
+      id: '/winterGirls/$code'
+      path: '/$code'
+      fullPath: '/winterGirls/$code'
+      preLoaderRoute: typeof WinterGirlsCodeRouteImport
+      parentRoute: typeof WinterGirlsRoute
+    }
   }
 }
 
@@ -519,6 +651,34 @@ const SilkRouteChildren: SilkRouteChildren = {
 
 const SilkRouteWithChildren = SilkRoute._addFileChildren(SilkRouteChildren)
 
+interface WinterBoysRouteChildren {
+  WinterBoysCodeRoute: typeof WinterBoysCodeRoute
+  WinterBoysIndexRoute: typeof WinterBoysIndexRoute
+}
+
+const WinterBoysRouteChildren: WinterBoysRouteChildren = {
+  WinterBoysCodeRoute: WinterBoysCodeRoute,
+  WinterBoysIndexRoute: WinterBoysIndexRoute,
+}
+
+const WinterBoysRouteWithChildren = WinterBoysRoute._addFileChildren(
+  WinterBoysRouteChildren,
+)
+
+interface WinterGirlsRouteChildren {
+  WinterGirlsCodeRoute: typeof WinterGirlsCodeRoute
+  WinterGirlsIndexRoute: typeof WinterGirlsIndexRoute
+}
+
+const WinterGirlsRouteChildren: WinterGirlsRouteChildren = {
+  WinterGirlsCodeRoute: WinterGirlsCodeRoute,
+  WinterGirlsIndexRoute: WinterGirlsIndexRoute,
+}
+
+const WinterGirlsRouteWithChildren = WinterGirlsRoute._addFileChildren(
+  WinterGirlsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AccessoriesRoute: AccessoriesRouteWithChildren,
@@ -532,6 +692,9 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   SalesPointsRoute: SalesPointsRoute,
   SilkRoute: SilkRouteWithChildren,
+  WinterRoute: WinterRoute,
+  WinterBoysRoute: WinterBoysRouteWithChildren,
+  WinterGirlsRoute: WinterGirlsRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
