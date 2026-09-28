@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dolce Bambini — Moments that last forever</title>
+<meta name="description" content="Handcrafted baptism & communion garments with romantic elegance. Dolce Bambini, since 1978.">
+<meta name="theme-color" content="#fdfaf5">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  /* Tokens mirror src/styles.css so this page matches the live site */
+  :root {
+    --background: oklch(0.995 0.005 80);
+    --foreground: oklch(0.28 0.03 280);
+    --card: oklch(1 0 0);
+    --primary: oklch(0.54 0.14 18);
+    --primary-foreground: oklch(0.99 0.005 80);
+    --muted: oklch(0.97 0.012 80);
+    --muted-foreground: oklch(0.5 0.02 280);
+    --border: oklch(0.93 0.015 60);
+    --blush: oklch(0.92 0.05 25);
+    --sky: oklch(0.93 0.04 230);
+    --ivory: oklch(0.98 0.012 85);
+    --gold: oklch(0.82 0.11 85);
+
+    --shadow-soft: 0 10px 40px -12px oklch(0.7 0.05 20 / 0.25);
+    --shadow-float: 0 30px 80px -30px oklch(0.6 0.08 250 / 0.3);
+    --gradient-hero: linear-gradient(135deg, oklch(0.96 0.03 25) 0%, oklch(0.97 0.018 85) 50%, oklch(0.94 0.035 230) 100%);
+
+    --font-display: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+    --font-sans: "Outfit", "Inter", system-ui, sans-serif;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 500; letter-spacing: -0.01em; margin: 0; }
+  p { margin: 0; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--primary);
+  }
+
+  /* ---------- NAV ---------- */
+  .nav {
+    position: fixed; inset: 0 0 auto 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    padding: 16px clamp(16px, 4vw, 48px);
+    background: oklch(0.995 0.005 80 / 0.72);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid oklch(0.93 0.015 60 / 0.7);
+  }
+  .brand { font-family: var(--font-display); font-size: 26px; font-weight: 500; letter-spacing: 0.01em; white-space: nowrap; }
+  .brand em { color: var(--primary); font-style: italic; }
+  .nav ul { display: flex; gap: clamp(14px, 2vw, 28px); list-style: none; margin: 0; padding: 0; }
+  .nav ul a {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: oklch(0.28 0.03 280 / 0.75);
+    transition: color .3s;
+  }
+  .nav ul a:hover, .nav ul a[aria-current] { color: var(--primary); }
+  @media (max-width: 1000px) { .nav ul { display: none; } }
+
+  /* ---------- BUTTONS ---------- */
+  .btn {
+    position: relative; overflow: hidden; isolation: isolate;
+    display: inline-flex; align-items: center; gap: 8px;
+    border-radius: 999px; padding: 13px 28px;
+    font-size: 14px; font-weight: 500; letter-spacing: 0.03em;
+    box-shadow: var(--shadow-soft);
+    transition: transform .4s var(--ease), background-color .3s;
+  }
+  .btn:hover { transform: scale(1.02); }
+  .btn-primary { background: var(--primary); color: var(--primary-foreground); }
+  .btn-primary::after {
+    content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+    background: linear-gradient(100deg, transparent 20%, rgba(255,255,255,.55) 50%, transparent 80%);
+    mix-blend-mode: overlay; transform: translateX(-120%) skewX(-18deg); opacity: 0;
+  }
+  .btn-primary:hover::after { opacity: 1; animation: shimmer 1.1s var(--ease) forwards; }
+  @keyframes shimmer { to { transform: translateX(220%) skewX(-18deg); } }
+  .btn-ghost { background: var(--card); border: 1px solid var(--border); }
+  .btn-ghost:hover { background: var(--muted); }
+
+  /* ---------- UNFOLD (scroll story) ---------- */
+  .unfold { position: relative; height: 520vh; background: var(--gradient-hero); }
+  .stage {
+    position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden;
+    display: grid; grid-template-columns: 1fr auto 1fr; grid-template-rows: minmax(0, 1fr); align-items: center;
+    gap: clamp(24px, 4vw, 72px);
+    padding: 84px clamp(16px, 5vw, 72px) 28px;
+  }
+  .blob { position: absolute; border-radius: 50%; filter: blur(64px); pointer-events: none; animation: float 6s ease-in-out infinite; }
+  .blob.rose { width: 520px; height: 520px; top: -140px; left: -140px; background: oklch(0.54 0.14 18 / 0.14); }
+  .blob.sky  { width: 600px; height: 600px; bottom: -180px; right: -120px; background: oklch(0.93 0.04 230 / 0.7); animation-delay: 1.5s; }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+  .fabric-col { position: relative; height: 100%; perspective: 1500px; perspective-origin: 50% 20%; }
+  .frame { position: absolute; left: 0; top: 0; width: 100%; transform-style: preserve-3d; will-change: transform; }
+
+  .rod {
+    position: absolute; left: -22px; right: -22px; top: 0; height: 9px; border-radius: 9px;
+    background: linear-gradient(180deg, oklch(0.93 0.06 88) 0%, var(--gold) 45%, oklch(0.66 0.1 75) 100%);
+    box-shadow: 0 3px 8px -2px oklch(0.55 0.08 70 / 0.45);
+    transform: translateZ(2px);
+  }
+  .rod::before, .rod::after {
+    content: ""; position: absolute; top: 50%; width: 17px; height: 17px; border-radius: 50%;
+    transform: translateY(-50%);
+    background: radial-gradient(circle at 35% 30%, oklch(0.96 0.05 90), var(--gold) 55%, oklch(0.62 0.1 72));
+    box-shadow: 0 2px 6px -1px oklch(0.55 0.08 70 / 0.5);
+  }
+  .rod::before { left: -10px; }
+  .rod::after { right: -10px; }
+
+  .strips { position: absolute; left: 0; top: 7px; width: 100%; transform-style: preserve-3d; }
+  .strip {
+    position: absolute; left: 0; top: 0; width: 100%;
+    transform-origin: 50% 0; backface-visibility: visible; will-change: transform;
+  }
+  .strip svg { display: block; width: 100%; height: 100%; overflow: visible; }
+  .shade { position: absolute; inset: 0; pointer-events: none; opacity: 0; }
+  .strip.up   .shade { background: linear-gradient(180deg, rgba(255,255,255,.0), rgba(255,255,255,.5)); }
+  .strip.down .shade { background: linear-gradient(180deg, oklch(0.45 0.08 20 / .30), oklch(0.45 0.08 20 / .06)); }
+
+  .fabric-shadow {
+    position: absolute; left: 8%; right: 8%; top: 12px; border-radius: 40%;
+    background: oklch(0.5 0.07 20 / 0.22); filter: blur(28px);
+    transform: translateZ(-40px); transform-origin: 50% 0;
+  }
+
+  .bow { position: absolute; left: -6px; right: -6px; top: 0; pointer-events: none; transform-origin: 50% 50%; transform-style: preserve-3d; }
+  .bow .band {
+    height: 13px; border-radius: 3px;
+    background: linear-gradient(180deg, #eab3b9, #d98791 55%, #c7717c);
+    box-shadow: 0 2px 6px -2px rgba(150, 70, 80, .5);
+  }
+  .bow svg { position: absolute; left: 50%; top: 50%; width: 110px; height: 76px; transform: translate(-50%, -46%); overflow: visible; }
+
+  /* captions */
+  .caps { position: relative; align-self: stretch; }
+  .cap {
+    position: absolute; top: 50%; max-width: 360px;
+    opacity: 0; transform: translateY(-50%); pointer-events: none;
+    will-change: opacity, transform;
+  }
+  .cap.on { pointer-events: auto; }
+  .caps.left .cap { right: 0; text-align: right; }
+  .caps.right .cap { left: 0; }
+  .cap h2 { font-size: clamp(34px, 3.4vw, 52px); line-height: 1.05; margin: 14px 0 16px; }
+  .cap p { color: oklch(0.28 0.03 280 / 0.72); font-size: 16.5px; line-height: 1.75; }
+  .cap .actions { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 12px; }
+  .caps.left .cap .actions { justify-content: flex-end; }
+  .cap ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+  .cap li { display: flex; gap: 12px; align-items: baseline; font-size: 15px; color: oklch(0.28 0.03 280 / 0.8); }
+  .cap li b { font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: 22px; color: var(--primary); min-width: 28px; }
+
+  .hero {
+    position: absolute; left: 50%; top: clamp(96px, 15vh, 150px); width: min(92vw, 760px);
+    text-align: center; transform: translateX(-50%); z-index: 3; will-change: opacity, transform;
+  }
+  .pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    border-radius: 999px; padding: 6px 16px;
+    background: oklch(1 0 0 / 0.8); border: 1px solid oklch(0.93 0.015 60 / 0.6);
+    backdrop-filter: blur(8px); box-shadow: var(--shadow-soft);
+    font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: oklch(0.28 0.03 280 / 0.75);
+  }
+  .pill svg { color: var(--primary); }
+  .hero h1 { margin-top: 22px; font-size: clamp(44px, 6.6vw, 88px); line-height: 1.02; }
+  .hero h1 em { color: var(--primary); }
+  .hero p { margin: 18px auto 0; max-width: 480px; font-size: 17px; color: oklch(0.28 0.03 280 / 0.7); }
+
+  .cue {
+    position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); z-index: 3;
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: oklch(0.28 0.03 280 / 0.6);
+  }
+  .cue i { width: 1px; height: 44px; background: linear-gradient(var(--primary), transparent); transform-origin: top; animation: drip 2.2s var(--ease) infinite; }
+  @keyframes drip { 0% { transform: scaleY(0); opacity: 1; } 70% { transform: scaleY(1); opacity: 1; } 100% { transform: scaleY(1); opacity: 0; } }
+
+  .thread { position: absolute; right: clamp(14px, 2vw, 28px); top: 32%; height: 36%; width: 1px; background: oklch(0.54 0.14 18 / 0.18); }
+  .thread span { position: absolute; inset: 0; background: var(--primary); transform-origin: top; transform: scaleY(0); }
+  .thread b { position: absolute; left: 50%; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); transform: translate(-50%, -50%); box-shadow: 0 0 0 3px oklch(0.82 0.11 85 / 0.25); }
+
+  @media (max-width: 899px) {
+    .stage { grid-template-columns: 1fr; grid-template-rows: 1fr 196px; gap: 18px; padding-top: 76px; padding-bottom: 20px; }
+    .fabric-col { justify-self: center; }
+    .caps { grid-row: 2; grid-column: 1; }
+    .caps.left .cap, .caps.right .cap { left: 0; right: 0; margin: 0 auto; text-align: center; top: 0; transform: none; max-width: 440px; }
+    .caps.left .cap .actions { justify-content: center; }
+    .cap h2 { font-size: 32px; margin: 8px 0 10px; }
+    .cap p { font-size: 15px; line-height: 1.65; }
+    .cap .actions { margin-top: 16px; }
+    .cap.desktop-only { display: none; }
+    .thread { display: none; }
+    .hero { top: 92px; }
+    .hero p { font-size: 15.5px; }
+  }
+
+  /* ---------- CONTENT SECTIONS ---------- */
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); }
+  .story { padding: 112px 0 96px; text-align: center; }
+  .story h2 { font-size: clamp(38px, 5vw, 56px); margin-top: 14px; }
+  .story p { margin: 24px auto 0; max-width: 720px; font-size: 18px; line-height: 1.8; color: oklch(0.28 0.03 280 / 0.7); }
+  .flourish { margin: 34px auto 0; width: 180px; color: oklch(0.54 0.14 18 / 0.55); }
+
+  .values { display: grid; gap: 24px; grid-template-columns: repeat(4, 1fr); padding-bottom: 104px; }
+  @media (max-width: 1000px) { .values { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px)  { .values { grid-template-columns: 1fr; } }
+  .value {
+    border-radius: 24px; background: var(--card); border: 1px solid oklch(0.93 0.015 60 / 0.6);
+    padding: 28px; box-shadow: var(--shadow-soft); transition: transform .5s var(--ease);
+  }
+  .value:hover { transform: translateY(-4px); }
+  .value .ico {
+    width: 48px; height: 48px; border-radius: 16px; display: grid; place-items: center; margin-bottom: 20px;
+    background: linear-gradient(135deg, oklch(0.54 0.14 18 / 0.2), oklch(0.93 0.04 230 / 0.6)); color: var(--primary);
+  }
+  .value h3 { font-size: 25px; margin-bottom: 8px; }
+  .value p { font-size: 14px; line-height: 1.7; color: var(--muted-foreground); }
+
+  .collections { padding-bottom: 120px; }
+  .collections header { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 40px; }
+  .collections header h2 { font-size: clamp(36px, 4.4vw, 52px); margin-top: 10px; }
+  .collections header a { color: var(--primary); font-size: 14px; }
+  .collections header a:hover { text-decoration: underline; }
+  .tiles > a { display: block; }
+  .tiles { display: grid; gap: 28px; grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 900px) { .tiles { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; } }
+  .tile {
+    position: relative; aspect-ratio: 3 / 4; border-radius: 28px; overflow: hidden;
+    border: 4px solid var(--card); box-shadow: var(--shadow-float);
+    background: linear-gradient(135deg, var(--blush), var(--ivory) 55%, var(--sky));
+  }
+  .tile img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+  .tile:hover img { transform: scale(1.04); }
+  .tile figcaption {
+    position: absolute; inset: auto 0 0 0; padding: 60px 24px 22px;
+    background: linear-gradient(transparent, oklch(0.28 0.03 280 / 0.55));
+    color: #fff; display: flex; align-items: end; justify-content: space-between;
+  }
+  .tile figcaption span { font-family: var(--font-display); font-size: 30px; line-height: 1; }
+  .tile figcaption small { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; opacity: .9; }
+
+  .hem { display: block; width: 100%; height: 34px; }
+  footer { background: var(--muted); padding: 40px 0 48px; text-align: center; }
+  footer .brand { font-size: 30px; }
+  footer p { margin-top: 8px; font-size: 13px; letter-spacing: 0.08em; color: var(--muted-foreground); }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .unfold { height: auto; }
+    .stage { position: relative; min-height: 100vh; }
+    .blob, .cue i { animation: none; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .btn-primary:hover::after { animation: none; opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Lace artwork: one symbol, sliced into fold strips by JS -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="clothG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffefb"/>
+      <stop offset=".5" stop-color="#fff9f4"/>
+      <stop offset="1" stop-color="#fcf3ee"/>
+    </linearGradient>
+    <linearGradient id="ribG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eab3b9"/>
+      <stop offset=".55" stop-color="#d98791"/>
+      <stop offset="1" stop-color="#c7717c"/>
+    </linearGradient>
+    <pattern id="weave" width="4" height="4" patternUnits="userSpaceOnUse">
+      <path d="M0 4L4 0" stroke="#ead8cf" stroke-width=".4" opacity=".7"/>
+    </pattern>
+    <filter id="depth" x="-3%" y="-3%" width="106%" height="106%">
+      <feDropShadow dx="0" dy="0.9" stdDeviation="0.7" flood-color="#9c7268" flood-opacity=".45"/>
+    </filter>
+    <mask id="laceMask" maskUnits="userSpaceOnUse" x="0" y="0" width="560" height="840"></mask>
+  </defs>
+  <symbol id="lace" viewBox="0 0 560 840"></symbol>
+</svg>
+
+<nav class="nav" aria-label="Main">
+  <a class="brand" href="/">Dolce <em>Bambini</em></a>
+  <ul>
+    <li><a href="/" aria-current="page">Home</a></li>
+    <li><a href="/boys">Boys</a></li>
+    <li><a href="/girls">Girls</a></li>
+    <li><a href="/winter">Winter</a></li>
+    <li><a href="/silk">Silk Collection</a></li>
+    <li><a href="/accessories">Accessories</a></li>
+    <li><a href="/communion">Communion</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section class="unfold" id="unfold">
+    <div class="stage" id="stage">
+      <div class="blob rose"></div>
+      <div class="blob sky"></div>
+
+      <div class="hero" id="hero">
+        <span class="pill">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.8L20 10l-5.8 1.9L12 18l-1.9-6.1L4 10l6.1-1.2z"/></svg>
+          Established 1978 · Collection 2026
+        </span>
+        <h1>Moments that<br>last <em>forever</em></h1>
+        <p>Handcrafted baptism &amp; communion garments with romantic elegance.</p>
+      </div>
+
+      <div class="caps left">
+        <div class="cap" data-in=".16" data-out=".40">
+          <div class="eyebrow">Broderie anglaise</div>
+          <h2>Stitched by hand, <em>with love</em></h2>
+          <p>Every garment is crafted by hand — carefully selected fabrics, delicate eyelet lace and impeccable tailoring in every detail.</p>
+        </div>
+        <div class="cap" data-in=".72" data-out="2">
+          <div class="eyebrow">Collection 2026</div>
+          <h2>Dressed for their <em>first</em> celebration</h2>
+          <div class="actions">
+            <a class="btn btn-primary" href="/girls">Shop Girls</a>
+            <a class="btn btn-ghost" href="/boys">Shop Boys</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="fabric-col" id="fabricCol">
+        <div class="frame" id="frame">
+          <div class="fabric-shadow" id="fabricShadow"></div>
+          <div class="strips" id="strips"></div>
+          <div class="rod"></div>
+          <div class="bow" id="bow">
+            <div class="band"></div>
+            <svg viewBox="-55 -38 110 76" aria-hidden="true">
+              <path d="M-4 0 C-26 -30 -54 -24 -48 -4 C-44 10 -18 8 -4 0Z" fill="url(#ribG)" stroke="#b9606c" stroke-width=".8"/>
+              <path d="M4 0 C26 -30 54 -24 48 -4 C44 10 18 8 4 0Z" fill="url(#ribG)" stroke="#b9606c" stroke-width=".8"/>
+              <path d="M-4 3 C-10 16 -18 28 -26 38 L-16 36 L-12 44 C-6 30 -2 16 0 5Z" fill="url(#ribG)" stroke="#b9606c" stroke-width=".8"/>
+              <path d="M4 3 C10 16 18 28 26 38 L16 36 L12 44 C6 30 2 16 0 5Z" fill="url(#ribG)" stroke="#b9606c" stroke-width=".8"/>
+              <rect x="-8" y="-7" width="16" height="14" rx="5" fill="#d98791" stroke="#b9606c" stroke-width=".8"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="caps right">
+        <div class="cap" data-in=".40" data-out=".66">
+          <div class="eyebrow">Since 1978 · Melbourne</div>
+          <h2>Four decades of <em>little moments</em></h2>
+          <p>For over 40 years we have designed handmade baptism garments that blend tradition with contemporary elegance.</p>
+        </div>
+        <div class="cap desktop-only" data-in=".78" data-out="2">
+          <ul>
+            <li><b>i.</b> Premium quality fabrics</li>
+            <li><b>ii.</b> Unique, timeless designs</li>
+            <li><b>iii.</b> New collections each season</li>
+            <li><b>iv.</b> Handmade with love</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cue" id="cue"><span>Scroll to unfold</span><i></i></div>
+      <div class="thread" aria-hidden="true"><span id="threadFill"></span><b id="threadBead"></b></div>
+    </div>
+  </section>
+
+  <section class="story wrap reveal">
+    <div class="eyebrow">Since 1978</div>
+    <h2>Our Story</h2>
+    <p>Founded in 1978 in Melbourne, Australia, Dolce Bambini brings over 40 years of experience designing and crafting handmade baptism garments that blend tradition with contemporary elegance.</p>
+    <svg class="flourish" viewBox="0 0 180 20" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+      <path d="M0 10 H70 M110 10 H180"/>
+      <circle cx="90" cy="10" r="4"/><circle cx="78" cy="10" r="1.6" fill="currentColor"/><circle cx="102" cy="10" r="1.6" fill="currentColor"/>
+    </svg>
+  </section>
+
+  <section class="wrap">
+    <div class="values">
+      <article class="value reveal">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M8.5 13.9 7 22l5-3 5 3-1.5-8.1"/></svg></div>
+        <h3>Premium Quality</h3>
+        <p>Carefully selected fabrics and impeccable tailoring.</p>
+      </article>
+      <article class="value reveal">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8L20 10l-5.8 1.9L12 18l-1.9-6.1L4 10l6.1-1.2z"/><path d="M19 17v4M17 19h4"/></svg></div>
+        <h3>Unique Designs</h3>
+        <p>Modern silhouettes with timeless, romantic elegance.</p>
+      </article>
+      <article class="value reveal">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 10 5-10 5L2 7z"/><path d="m2 12 10 5 10-5"/><path d="m2 17 10 5 10-5"/></svg></div>
+        <h3>New Collections</h3>
+        <p>Fresh collections released each season.</p>
+      </article>
+      <article class="value reveal">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12"/></svg></div>
+        <h3>Handmade</h3>
+        <p>Every garment crafted by hand with love.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="collections wrap">
+    <header class="reveal">
+      <div>
+        <div class="eyebrow">Collection 2026</div>
+        <h2>Discover the collections</h2>
+      </div>
+      <a href="/girls">View all →</a>
+    </header>
+    <div class="tiles">
+      <a href="/girls" class="reveal"><figure class="tile" style="margin:0">
+        <img src="src/assets/images/C11-4.webp" alt="Girls' christening dress" loading="lazy" onerror="this.remove()">
+        <figcaption><span>Girls</span><small>Explore</small></figcaption>
+      </figure></a>
+      <a href="/boys" class="reveal"><figure class="tile" style="margin:0">
+        <img src="src/assets/images/7101.webp" alt="Boys' christening suit" loading="lazy" onerror="this.remove()">
+        <figcaption><span>Boys</span><small>Explore</small></figcaption>
+      </figure></a>
+      <a href="/silk" class="reveal"><figure class="tile" style="margin:0">
+        <img src="src/assets/images/C6%20(2).webp" alt="Silk collection garment" loading="lazy" onerror="this.remove()">
+        <figcaption><span>Silk</span><small>Explore</small></figcaption>
+      </figure></a>
+    </div>
+  </section>
+</main>
+
+<svg class="hem" viewBox="0 0 1200 34" preserveAspectRatio="none" aria-hidden="true">
+  <defs>
+    <pattern id="hemP" width="40" height="34" patternUnits="userSpaceOnUse">
+      <path d="M0 0 H40 V14 A20 20 0 0 1 0 14 Z" fill="#f8f4ee"/>
+      <path d="M0 14 A20 20 0 0 0 40 14" fill="none" stroke="#dcc2b8" stroke-width="1.2"/>
+      <circle cx="20" cy="15" r="4" fill="#fefcf8" stroke="#dcc2b8" stroke-width="1.1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="34" fill="#fefcf8"/>
+  <rect width="1200" height="34" fill="url(#hemP)" transform="scale(1,-1) translate(0,-34)"/>
+</svg>
+<footer>
+  <div class="brand">Dolce <em>Bambini</em></div>
+  <p>Handmade christening &amp; communion wear · Since 1978</p>
+</footer>
+
+<script>
+(() => {
+  const VW = 560, VH = 840, N = 8, SH = VH / N;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- Build the broderie-anglaise lace ---------- */
+  const f = n => +n.toFixed(2);
+  const holes = [], satin = [], stems = [], over = [];
+
+  const circle = (x, y, r) => `<circle cx="${f(x)}" cy="${f(y)}" r="${r}"/>`;
+  const ellipse = (x, y, rx, ry, a) => `<ellipse cx="${f(x)}" cy="${f(y)}" rx="${rx}" ry="${ry}" transform="rotate(${f(a)} ${f(x)} ${f(y)})"/>`;
+  const leaf = (x, y, a, len, w) =>
+    `<path d="M0 0Q${len / 2} ${-w} ${len} 0Q${len / 2} ${w} 0 0Z" transform="translate(${f(x)} ${f(y)}) rotate(${f(a)})"/>`;
+  const polar = (cx, cy, r, deg) => [cx + r * Math.cos(deg * Math.PI / 180), cy + r * Math.sin(deg * Math.PI / 180)];
+
+  // Scalloped outline: straight top (hangs from the rod), small side scallops, deep hem scallops
+  const rs = 10;
+  const nB = Math.round((VW - 2 * rs) / 36), rb = (VW - 2 * rs) / (2 * nB);
+  const yb = VH - rb;
+  const nS = Math.round(yb / 20), seg = yb / nS;
+  let outline = `M${rs} 0H${VW - rs}`;
+  for (let k = 1; k <= nS; k++) outline += `A${f(seg / 2)} ${f(seg / 2)} 0 0 1 ${VW - rs} ${f(k * seg)}`;
+  for (let j = 1; j <= nB; j++) outline += `A${f(rb)} ${f(rb)} 0 0 1 ${f(VW - rs - j * 2 * rb)} ${f(yb)}`;
+  for (let k = nS - 1; k >= 0; k--) outline += `A${f(seg / 2)} ${f(seg / 2)} 0 0 1 ${rs} ${f(k * seg)}`;
+  outline += "Z";
+
+  // Top beading: ribbon threaded through slots
+  const slots = [];
+  for (let x = 38; x <= VW - 38; x += 24) slots.push(x);
+  slots.forEach((x, i) => {
+    holes.push(`<rect x="${x - 7}" y="30" width="14" height="8" rx="4"/>`);
+    if (i % 2 === 1 && i < slots.length - 1) over.push(`<rect x="${x + 6}" y="29" width="${24 - 12}" height="10" rx="1.5"/>`);
+  });
+  for (let x = 30; x <= VW - 30; x += 12) { holes.push(circle(x, 16, 1.5)); holes.push(circle(x + 6, 52, 1.5)); }
+  stems.push(`<path d="M${rs + 6} 7H${VW - rs - 6}" stroke-dasharray="3 3"/>`);
+  const wave = (y, amp, period, x0, x1) => {
+    let d = `M${x0} ${y}`;
+    for (let x = x0; x < x1; x += period) d += `q${period / 4} ${-amp} ${period / 2} 0t${period / 2} 0`;
+    return `<path d="${d}"/>`;
+  };
+  stems.push(wave(68, 5, 38, 40, VW - 60));
+
+  // Side eyelets + running stitch
+  for (let k = 0; k < nS; k++) {
+    const y = (k + 0.5) * seg;
+    if (y > 78 && y < yb - 40) { holes.push(circle(rs + 9, y, 2.4)); holes.push(circle(VW - rs - 9, y, 2.4)); }
+  }
+  stems.push(`<path d="M${rs + 18} 82V${f(yb - 90)}M${VW - rs - 18} 82V${f(yb - 90)}" stroke-dasharray="4 3"/>`);
+
+  // Hem: eyelet per scallop, leaf-pair band, wavy stem
+  for (let j = 0; j < nB; j++) {
+    const cx = rs + rb + j * 2 * rb;
+    holes.push(circle(cx, yb - 8, 4.4));
+    if (j < nB - 1) holes.push(circle(cx + rb, yb - 20, 1.6));
+  }
+  for (let x = 52; x <= VW - 52; x += 38) {
+    holes.push(ellipse(x - 6, yb - 50, 6.5, 2.6, -32));
+    holes.push(ellipse(x + 6, yb - 50, 6.5, 2.6, 32));
+    holes.push(circle(x, yb - 41, 1.8));
+  }
+  stems.push(wave(f(yb - 70), 5, 38, 40, VW - 60));
+
+  // Central medallion
+  const MX = VW / 2, MY = 440;
+  stems.push(`<circle cx="${MX}" cy="${MY}" r="132" stroke-dasharray="5 2.5"/>`);
+  stems.push(`<circle cx="${MX}" cy="${MY}" r="24"/>`);
+  for (let a = 0; a < 360; a += 22.5) {
+    const [x, y] = polar(MX, MY, 132, a);
+    satin.push(leaf(x, y, a + 90 + ((a / 22.5) % 2 ? 35 : -35), 17, 5.5));
+  }
+  for (let a = 0; a < 360; a += 22.5) holes.push(circle(...polar(MX, MY, 110, a + 11.25), 3));
+  for (let a = 0; a < 360; a += 45) {
+    holes.push(ellipse(...polar(MX, MY, 60, a), 24, 10, a));
+    holes.push(circle(...polar(MX, MY, 80, a + 22.5), 2.6));
+    satin.push(leaf(...polar(MX, MY, 88, a + 22.5), a + 22.5, 14, 4));
+  }
+  for (let a = 0; a < 360; a += 30) holes.push(circle(...polar(MX, MY, 34, a), 1.8));
+
+  // Scattered flowers and eyelet trios on a diamond lattice
+  let row = 0;
+  for (let y = 116; y < yb - 110; y += 62, row++) {
+    let idx = 0;
+    for (let x = 70 + (row % 2 ? 35 : 0); x <= VW - 70; x += 70, idx++) {
+      if (Math.hypot(x - MX, y - MY) < 168) continue;
+      if ((row + idx) % 2 === 0) {
+        for (let a = -90; a < 270; a += 72) holes.push(ellipse(...polar(x, y, 8.5, a), 7, 3.2, a));
+        satin.push(circle(x, y, 2.2));
+      } else {
+        for (let a = -90; a < 270; a += 120) holes.push(circle(...polar(x, y, 5, a), 2.4));
+        satin.push(leaf(x - 16, y + 2, 200, 9, 3));
+        satin.push(leaf(x + 16, y + 2, -20, 9, 3));
+      }
+    }
+  }
+
+  const H = holes.join("");
+  const STITCH = "#d6b8ad";
+  document.getElementById("laceMask").innerHTML = `<path d="${outline}" fill="#fff"/><g fill="#000">${H}</g>`;
+  document.getElementById("lace").innerHTML = `
+    <rect x="${rs}" y="28" width="${VW - 2 * rs}" height="12" fill="url(#ribG)"/>
+    <g filter="url(#depth)"><g mask="url(#laceMask)">
+      <rect width="${VW}" height="${VH}" fill="url(#clothG)"/>
+      <rect width="${VW}" height="${VH}" fill="url(#weave)"/>
+    </g></g>
+    <path d="${outline}" fill="none" stroke="${STITCH}" stroke-width="1.8"/>
+    <g fill="none" stroke="${STITCH}" stroke-width="1.3">${H}</g>
+    <g fill="none" stroke="${STITCH}" stroke-width="1.1" stroke-linecap="round">${stems.join("")}</g>
+    <g fill="#f5e6de" stroke="${STITCH}" stroke-width=".8">${satin.join("")}</g>
+    <g fill="url(#ribG)" stroke="#bf6b76" stroke-width=".5">${over.join("")}</g>
+    <text x="${MX}" y="${MY + 9}" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-style="italic" font-weight="500" font-size="26" fill="#b0525c" letter-spacing="1">DB</text>`;
+
+  /* ---------- Fold strips ---------- */
+  const stripsEl = document.getElementById("strips");
+  const strips = [];
+  for (let i = 0; i < N; i++) {
+    const el = document.createElement("div");
+    el.className = "strip " + (i % 2 ? "down" : "up");
+    el.innerHTML = `<svg viewBox="0 ${i * SH} ${VW} ${SH}" preserveAspectRatio="none" aria-hidden="true"><use href="#lace" width="${VW}" height="${VH}"/></svg><div class="shade"></div>`;
+    stripsEl.appendChild(el);
+    strips.push({ el, shade: el.lastChild, sign: i % 2 ? -1 : 1 });
+  }
+
+  /* ---------- Layout & scroll ---------- */
+  const section = document.getElementById("unfold");
+  const col = document.getElementById("fabricCol");
+  const frame = document.getElementById("frame");
+  const shadow = document.getElementById("fabricShadow");
+  const bow = document.getElementById("bow");
+  const hero = document.getElementById("hero");
+  const cue = document.getElementById("cue");
+  const threadFill = document.getElementById("threadFill");
+  const threadBead = document.getElementById("threadBead");
+  const caps = [...document.querySelectorAll(".cap")].map(el => ({ el, a: +el.dataset.in, b: +el.dataset.out }));
+
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const ease = t => 1 - Math.pow(1 - t, 3);
+  const smooth = t => t * t * (3 - 2 * t);
+
+  let fw = 0, fh = 0, sh = 0, areaH = 0;
+  function size() {
+    areaH = col.clientHeight;
+    const mobile = innerWidth < 900;
+    fw = Math.min(500, innerWidth * (mobile ? 0.72 : 0.34), (areaH - 24) / 1.5);
+    fw = Math.max(fw, 180);
+    fh = fw * 1.5; sh = fh / N;
+    col.style.width = fw + "px";
+    strips.forEach(s => (s.el.style.height = sh + 0.8 + "px"));
+  }
+
+  function progress() {
+    if (reduce) return 1;
+    const r = section.getBoundingClientRect();
+    return clamp(-r.top / (r.height - innerHeight));
+  }
+
+  function render(now) {
+    const p = progress();
+    const t = now / 1000;
+    const u = clamp((p - 0.04) / 0.78);
+
+    // Sequential unfold, top strip first; gentle breeze ripple once open
+    let y = 0, z = 0;
+    strips.forEach((s, i) => {
+      const start = (i / N) * 0.72;
+      const k = ease(clamp((u - start) / 0.28));
+      const fold = 86 * (1 - k);
+      const breeze = reduce ? 0 : 1.8 * k * Math.sin(t * 1.15 - i * 0.7);
+      const deg = s.sign * fold + breeze;
+      const rad = deg * Math.PI / 180;
+      s.el.style.transform = `translate3d(0,${f(y)}px,${f(z)}px) rotateX(${f(deg)}deg)`;
+      s.shade.style.opacity = f(Math.min(1, Math.abs(Math.sin(rad)) * 1.15));
+      y += sh * Math.cos(rad);
+      z += sh * Math.sin(rad);
+    });
+    const hp = y;
+
+    const drop = (1 - smooth(u)) * areaH * 0.14;
+    const offset = Math.max(0, (areaH - 7 - hp) / 2 + drop);
+    frame.style.transform = `translateY(${f(offset)}px)`;
+    shadow.style.height = f(hp + 10) + "px";
+    shadow.style.opacity = f(0.5 + 0.5 * u);
+
+    const bowOut = clamp(u / 0.08);
+    bow.style.opacity = f(1 - bowOut);
+    bow.style.transform = `translate3d(0,${f(7 + hp / 2 - 6.5 - bowOut * 30)}px,40px) scale(${f(1 - bowOut * 0.25)})`;
+
+    const heroO = 1 - smooth(clamp(p / 0.1));
+    hero.style.opacity = f(heroO);
+    hero.style.transform = `translate(-50%, ${f(-24 * (1 - heroO))}px)`;
+    hero.style.visibility = heroO < 0.01 ? "hidden" : "";
+    cue.style.opacity = f(1 - clamp(p / 0.04));
+
+    caps.forEach(c => {
+      const o = reduce ? (c.b > 1 ? 1 : 0) : smooth(clamp((p - c.a) / 0.05)) * (1 - smooth(clamp((p - (c.b - 0.05)) / 0.05)));
+      c.el.style.opacity = f(o);
+      c.el.classList.toggle("on", o > 0.5);
+      const mobile = innerWidth < 900;
+      c.el.style.transform = mobile ? `translateY(${f((1 - o) * 16)}px)` : `translateY(calc(-50% + ${f((1 - o) * 18)}px))`;
+    });
+
+    threadFill.style.transform = `scaleY(${f(p)})`;
+    threadBead.style.top = f(p * 100) + "%";
+  }
+
+  let running = false;
+  function loop(now) {
+    render(now);
+    if (running) requestAnimationFrame(loop);
+  }
+  new IntersectionObserver(([e]) => {
+    if (e.isIntersecting && !running) { running = true; requestAnimationFrame(loop); }
+    else if (!e.isIntersecting) running = false;
+  }).observe(section);
+
+  addEventListener("resize", () => { size(); render(performance.now()); });
+  size();
+  render(performance.now());
+  document.fonts && document.fonts.ready.then(() => { size(); render(performance.now()); });
+
+  /* ---------- Reveal-on-scroll for the sections below ---------- */
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+  }), { threshold: 0.15 });
+  document.querySelectorAll(".reveal").forEach((el, i) => {
+    el.style.transitionDelay = (i % 4) * 90 + "ms";
+    io.observe(el);
+  });
+})();
+</script>
+</body>
+</html>
