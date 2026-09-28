@@ -15,11 +15,11 @@ export function Header() {
     <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/75 border-b border-border/60">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="flex items-center justify-between h-24 md:h-28">
-          <Link to="/" className="group shrink-0 flex items-center leading-none" aria-label={t(T.brand)}>
+          <Link to="/" className="group shrink-0 flex items-center leading-none mr-6 lg:mr-10" aria-label={t(T.brand)}>
             <img
               src={logo}
               alt={t(T.brand)}
-              className="h-[4.5rem] md:h-[5.25rem] w-auto object-contain"
+              className="h-10 md:h-11 lg:h-12 w-auto object-contain"
             />
           </Link>
 

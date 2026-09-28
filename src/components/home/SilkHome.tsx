@@ -87,7 +87,7 @@ function SilkHomeScene({ active }: { active: boolean }) {
           </div>
           <h1 className="craft-title" aria-label={brand}>
             <span className="line ct-l">
-              <span>DOLCE </span>
+              <span>DOLCE</span>
             </span>
             <span className="line ct-r">
               <span>
