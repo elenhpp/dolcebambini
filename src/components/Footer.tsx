@@ -13,6 +13,13 @@ export function Footer() {
     es: "Política de Privacidad (RGPD)",
     pt: "Política de Privacidade (RGPD)",
   };
+  const termsLabel: Record<string, string> = {
+    el: "Όροι & Προϋποθέσεις",
+    en: "Terms & Conditions",
+    it: "Termini e Condizioni",
+    es: "Términos y Condiciones",
+    pt: "Termos e Condições",
+  };
   return (
     <footer className="mt-32 border-t border-border/60 bg-gradient-to-b from-background to-muted/40">
       <div className="mx-auto max-w-7xl px-5 lg:px-8 py-16 grid gap-12 md:grid-cols-4">
@@ -50,8 +57,9 @@ export function Footer() {
       <div className="border-t border-border/50">
         <div className="mx-auto max-w-7xl px-5 lg:px-8 py-5 text-xs text-muted-foreground flex flex-col md:flex-row justify-between gap-2">
           <span>© {new Date().getFullYear()} Dolce Bambini. {t(T.footer.rights)}</span>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
             <Link to="/gdpr" className="hover:text-primary transition-colors">{privacyLabel[lang] ?? privacyLabel.en}</Link>
+            <Link to="/terms" className="hover:text-primary transition-colors">{termsLabel[lang] ?? termsLabel.en}</Link>
             <span>{t(T.footer.designed)}</span>
           </div>
         </div>

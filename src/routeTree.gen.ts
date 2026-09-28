@@ -21,6 +21,7 @@ import { Route as GirlsRouteImport } from './routes/girls'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as SalesPointsRouteImport } from './routes/sales-points'
 import { Route as SilkRouteImport } from './routes/silk'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as WinterRouteImport } from './routes/winter'
 import { Route as WinterBoysRouteImport } from './routes/winterBoys'
 import { Route as WinterGirlsRouteImport } from './routes/winterGirls'
@@ -97,6 +98,11 @@ const SalesPointsRoute = SalesPointsRouteImport.update({
 const SilkRoute = SilkRouteImport.update({
   id: '/silk',
   path: '/silk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WinterRoute = WinterRouteImport.update({
@@ -198,6 +204,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/sales-points': typeof SalesPointsRoute
   '/silk': typeof SilkRouteWithChildren
+  '/terms': typeof TermsRoute
   '/winter': typeof WinterRoute
   '/winterBoys': typeof WinterBoysRouteWithChildren
   '/winterGirls': typeof WinterGirlsRouteWithChildren
@@ -224,6 +231,7 @@ export interface FileRoutesByTo {
   '/gdpr': typeof GdprRoute
   '/privacy': typeof PrivacyRoute
   '/sales-points': typeof SalesPointsRoute
+  '/terms': typeof TermsRoute
   '/winter': typeof WinterRoute
   '/accessories/$code': typeof AccessoriesCodeRoute
   '/boys/$code': typeof BoysCodeRoute
@@ -254,6 +262,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/sales-points': typeof SalesPointsRoute
   '/silk': typeof SilkRouteWithChildren
+  '/terms': typeof TermsRoute
   '/winter': typeof WinterRoute
   '/winterBoys': typeof WinterBoysRouteWithChildren
   '/winterGirls': typeof WinterGirlsRouteWithChildren
@@ -287,6 +296,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/sales-points'
     | '/silk'
+    | '/terms'
     | '/winter'
     | '/winterBoys'
     | '/winterGirls'
@@ -313,6 +323,7 @@ export interface FileRouteTypes {
     | '/gdpr'
     | '/privacy'
     | '/sales-points'
+    | '/terms'
     | '/winter'
     | '/accessories/$code'
     | '/boys/$code'
@@ -342,6 +353,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/sales-points'
     | '/silk'
+    | '/terms'
     | '/winter'
     | '/winterBoys'
     | '/winterGirls'
@@ -374,6 +386,7 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   SalesPointsRoute: typeof SalesPointsRoute
   SilkRoute: typeof SilkRouteWithChildren
+  TermsRoute: typeof TermsRoute
   WinterRoute: typeof WinterRoute
   WinterBoysRoute: typeof WinterBoysRouteWithChildren
   WinterGirlsRoute: typeof WinterGirlsRouteWithChildren
@@ -463,6 +476,13 @@ declare module '@tanstack/react-router' {
       path: '/silk'
       fullPath: '/silk'
       preLoaderRoute: typeof SilkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/winter': {
@@ -692,6 +712,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   SalesPointsRoute: SalesPointsRoute,
   SilkRoute: SilkRouteWithChildren,
+  TermsRoute: TermsRoute,
   WinterRoute: WinterRoute,
   WinterBoysRoute: WinterBoysRouteWithChildren,
   WinterGirlsRoute: WinterGirlsRouteWithChildren,
