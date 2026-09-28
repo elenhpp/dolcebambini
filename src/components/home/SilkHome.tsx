@@ -101,7 +101,6 @@ function SilkHomeScene({ active }: { active: boolean }) {
           <div className="craft-values">
             {values.map((v, i) => (
               <div key={v.t}>
-                <span className="n">{["I", "II", "III", "IV"][i]}</span>
                 <h3>{v.t}</h3>
                 <p>{v.d}</p>
               </div>
