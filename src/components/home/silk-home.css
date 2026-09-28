@@ -1,0 +1,203 @@
+/* Scroll-animated homepage (SilkHome.tsx). Everything is scoped to .silk-home. */
+
+html.lenis,
+html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+.silk-home {
+  --sh-display: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --sh-sans: "Outfit", "Inter", system-ui, sans-serif;
+  --gutter: clamp(16px, 4vw, 56px);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  /* slide under the sticky site header so the first scene fills the screen */
+  margin-top: -6rem;
+  font-family: var(--sh-sans);
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+@media (min-width: 768px) { .silk-home { margin-top: -7rem; } }
+
+.silk-home h1, .silk-home h2, .silk-home h3, .silk-home p { margin: 0; font-weight: 400; }
+.silk-home h1, .silk-home h2, .silk-home h3 { font-family: var(--sh-display); letter-spacing: -0.01em; }
+.silk-home em { font-style: italic; }
+.silk-home .rose { color: var(--primary); }
+.silk-home .eyebrow { font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--primary); font-weight: 400; }
+
+/* ---------- Silk canvas ---------- */
+.silk-home .silk-canvas { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+.silk-home.no-webgl .silk-canvas { display: none; }
+.silk-home.no-webgl {
+  background:
+    radial-gradient(60% 50% at 20% 10%, oklch(0.92 0.05 25 / .8), transparent 70%),
+    radial-gradient(50% 50% at 90% 90%, oklch(0.93 0.04 230 / .8), transparent 70%),
+    var(--background);
+  background-attachment: fixed;
+}
+.silk-home .sh-content { position: relative; z-index: 1; }
+
+/* Hide intro text until GSAP has set its start positions (auto-reveals if scripts never run) */
+.silk-home:not(.is-ready) .line > span,
+.silk-home:not(.is-ready) .fade-in,
+.silk-home:not(.is-ready) .craft-media,
+.silk-home:not(.is-ready) .craft-cue {
+  opacity: 0;
+  animation: sh-failsafe 0s 4s forwards;
+}
+@keyframes sh-failsafe { to { opacity: 1; } }
+
+/* ---------- Cursor ---------- */
+.silk-home .cursor, .silk-home .cursor-ring { position: fixed; left: 0; top: 0; z-index: 90; pointer-events: none; border-radius: 50%; opacity: 0; transition: opacity .4s; }
+.silk-home.has-pointer .cursor, .silk-home.has-pointer .cursor-ring { opacity: 1; }
+.silk-home .cursor { width: 6px; height: 6px; margin: -3px 0 0 -3px; background: var(--primary); }
+.silk-home .cursor-ring {
+  width: 40px; height: 40px; margin: -20px 0 0 -20px; border: 1px solid oklch(0.54 0.14 18 / .45);
+  display: grid; place-items: center; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: #fff;
+  transition: width .5s var(--ease), height .5s var(--ease), margin .5s var(--ease), background .5s, border-color .5s;
+}
+.silk-home .cursor-ring span { opacity: 0; transition: opacity .3s; }
+.silk-home .cursor-ring.view { width: 92px; height: 92px; margin: -46px 0 0 -46px; background: oklch(0.54 0.14 18 / .85); border-color: transparent; }
+.silk-home .cursor-ring.view span { opacity: 1; }
+.silk-home .cursor-ring.link { width: 64px; height: 64px; margin: -32px 0 0 -32px; background: oklch(0.54 0.14 18 / .08); }
+@media (hover: none), (pointer: coarse) { .silk-home .cursor, .silk-home .cursor-ring { display: none; } }
+
+/* ---------- Shared ---------- */
+.silk-home .line { display: block; overflow: hidden; padding-bottom: .06em; }
+.silk-home .line > span { display: block; will-change: transform; }
+.silk-home .btn {
+  display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 30px; border-radius: 999px;
+  font-size: 13px; letter-spacing: .14em; text-transform: uppercase; font-weight: 400;
+  box-shadow: var(--shadow-soft); transition: background .4s, color .4s;
+}
+.silk-home .btn-primary { background: var(--primary); color: var(--primary-foreground); }
+.silk-home .btn-primary:hover { background: oklch(0.48 0.14 18); }
+.silk-home .btn-ghost { background: oklch(1 0 0 / .7); border: 1px solid var(--border); backdrop-filter: blur(10px); }
+.silk-home .btn-ghost:hover { background: #fff; }
+
+.silk-home .scroll-cue { display: flex; align-items: center; gap: 12px; }
+.silk-home .scroll-cue i { width: 1px; height: 40px; background: oklch(0.28 0.03 280 / .2); position: relative; overflow: hidden; }
+.silk-home .scroll-cue i::after { content: ""; position: absolute; inset: 0; background: var(--primary); animation: sh-drip 2.4s var(--ease) infinite; }
+@keyframes sh-drip { 0% { transform: translateY(-100%); } 60%, 100% { transform: translateY(100%); } }
+
+/* ---------- 1. Opening ("Dolce | Bambini") ---------- */
+.silk-home .craft { position: relative; height: 100vh; height: 100svh; overflow: hidden; }
+.silk-home .craft-media { position: absolute; inset: 0; clip-path: inset(24% 36% 24% 36% round 28px); background: oklch(0.85 0.04 30); }
+.silk-home .craft-media img { width: 100%; height: 100%; object-fit: cover; }
+.silk-home .craft-shade { position: absolute; inset: 0; opacity: 0; background: linear-gradient(180deg, oklch(0.25 0.03 280 / .15), oklch(0.22 0.03 280 / .72)); }
+.silk-home .craft-title {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 30vw;
+  font-family: var(--sh-display); font-weight: 300; font-size: clamp(52px, 8.6vw, 150px); line-height: .9; letter-spacing: -0.02em;
+  pointer-events: none; white-space: nowrap;
+}
+.silk-home .craft-cue {
+  position: absolute; left: 50%; bottom: 28px; transform: translateX(-50%);
+  font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: oklch(0.28 0.03 280 / .7);
+}
+.silk-home .craft-values {
+  position: absolute; left: var(--gutter); right: var(--gutter); bottom: 7vh;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; color: #fff;
+}
+.silk-home .craft-values h3 { font-size: clamp(26px, 2.4vw, 36px); margin: 10px 0 6px; }
+.silk-home .craft-values p { font-size: 14px; opacity: .82; max-width: 260px; }
+.silk-home .craft-values .n { font-size: 11px; letter-spacing: .25em; opacity: .75; }
+.silk-home .craft-lead {
+  position: absolute; left: var(--gutter); top: max(16vh, 8.5rem); color: #fff; max-width: 620px;
+  font-family: var(--sh-display); font-size: clamp(38px, 5vw, 76px); line-height: 1; font-weight: 300;
+}
+@media (max-width: 800px) {
+  .silk-home .craft-media { clip-path: inset(31% 20% 29% 20% round 22px); }
+  .silk-home .craft-title { flex-direction: column; gap: 48vh; }
+  .silk-home .craft-values { grid-template-columns: 1fr 1fr; gap: 18px; }
+  .silk-home .craft-values p { display: none; }
+}
+
+/* ---------- 2. Categories (horizontal) ---------- */
+.silk-home .collections { height: 100vh; height: 100svh; overflow: hidden; display: flex; align-items: center; }
+.silk-home .track { display: flex; align-items: center; gap: clamp(24px, 4vw, 64px); padding: 0 var(--gutter); will-change: transform; }
+.silk-home .h-intro { flex: 0 0 min(440px, 82vw); padding-right: 2vw; }
+.silk-home .h-intro h2 { font-size: clamp(52px, 7vw, 116px); line-height: .9; font-weight: 300; margin: 16px 0 22px; }
+.silk-home .h-intro p { color: oklch(0.28 0.03 280 / .72); max-width: 340px; }
+.silk-home .card { flex: 0 0 auto; --h: min(62vh, 620px); width: calc(var(--h) * .75); }
+.silk-home .card .media {
+  position: relative; height: var(--h); border-radius: 26px; overflow: hidden;
+  background: linear-gradient(135deg, var(--blush), oklch(0.97 0.012 85) 55%, var(--sky));
+  box-shadow: 0 40px 80px -40px oklch(0.45 0.08 20 / .45);
+}
+.silk-home .card img { position: absolute; top: 0; left: -10%; width: 120%; max-width: none; height: 100%; object-fit: cover; transition: scale 1.2s var(--ease); }
+.silk-home .card:hover img { scale: 1.05; }
+.silk-home .card .meta { display: flex; justify-content: space-between; align-items: baseline; margin-top: 16px; gap: 12px; }
+.silk-home .card h3 { font-size: 32px; line-height: 1; }
+.silk-home .card .meta small { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted-foreground); text-align: right; }
+.silk-home .card .num { font-size: 11px; letter-spacing: .2em; color: var(--primary); }
+.silk-home .h-end { flex: 0 0 min(420px, 80vw); display: grid; gap: 6px; padding-right: 6vw; }
+.silk-home .h-end a {
+  font-family: var(--sh-display); font-size: clamp(36px, 4.4vw, 64px); line-height: 1.1;
+  display: flex; justify-content: space-between; border-bottom: 1px solid var(--border); padding: 10px 0; transition: color .4s;
+}
+.silk-home .h-end a:hover { color: var(--primary); }
+@media (max-width: 700px) { .silk-home .card { --h: 56vh; width: min(calc(56vh * .75), 76vw); } }
+
+/* ---------- 3. Hero ---------- */
+.silk-home .hero { position: relative; height: 100vh; height: 100svh; padding: 0 var(--gutter); display: flex; flex-direction: column; justify-content: center; }
+.silk-home .hero-title { font-size: clamp(64px, 13.5vw, 230px); line-height: .86; font-weight: 300; letter-spacing: -0.03em; }
+.silk-home .hero-title .l2 { padding-left: 14vw; }
+.silk-home .hero-title .l3 { text-align: right; }
+.silk-home .hero-meta {
+  position: absolute; left: var(--gutter); right: var(--gutter); bottom: 28px;
+  display: flex; justify-content: space-between; align-items: end; gap: 24px;
+  font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: oklch(0.28 0.03 280 / .7);
+}
+.silk-home .hero-meta p { max-width: 280px; line-height: 1.7; }
+@media (max-width: 700px) {
+  .silk-home .hero-meta .mid-meta { display: none; }
+  .silk-home .hero-title .l2 { padding-left: 8vw; }
+}
+
+/* ---------- 4. Statement ---------- */
+.silk-home .statement { height: 100vh; display: grid; place-items: center; padding: 0 var(--gutter); text-align: center; }
+.silk-home .statement .big { max-width: 1180px; margin-top: 22px; font-family: var(--sh-display); font-size: clamp(30px, 4.6vw, 74px); line-height: 1.12; }
+.silk-home .statement .w { opacity: .14; }
+
+/* ---------- 5. Years ---------- */
+.silk-home .years { height: 100vh; display: grid; place-items: center; align-content: center; text-align: center; padding: 0 var(--gutter); }
+.silk-home .year {
+  font-family: var(--sh-display); font-weight: 300; font-size: min(32vw, 50vh); line-height: .8; letter-spacing: -0.04em;
+  font-variant-numeric: lining-nums tabular-nums;
+  background: linear-gradient(110deg, oklch(0.54 0.14 18), oklch(0.78 0.09 40) 40%, oklch(0.82 0.11 85) 62%, oklch(0.72 0.06 240));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.silk-home .years .cap { margin-top: 30px; max-width: 520px; font-size: 17px; line-height: 1.75; color: oklch(0.28 0.03 280 / .75); }
+.silk-home .years .cap h2 { font-size: clamp(28px, 3vw, 42px); margin-bottom: 10px; color: var(--foreground); }
+
+/* ---------- 6. Marquee ---------- */
+.silk-home .marquee { padding: 16vh 0 10vh; overflow: hidden; }
+.silk-home .mq-row { display: flex; white-space: nowrap; font-family: var(--sh-display); font-weight: 300; font-size: clamp(56px, 9.5vw, 160px); line-height: 1.05; will-change: transform; }
+.silk-home .mq-row span { padding-right: .35em; }
+.silk-home .mq-row.outline { font-style: italic; color: transparent; -webkit-text-stroke: 1px oklch(0.54 0.14 18 / .6); }
+
+/* ---------- 7. Finale ---------- */
+.silk-home .finale { min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; padding: 14vh var(--gutter) 28px; }
+.silk-home .finale-top { text-align: center; }
+.silk-home .finale-top h2 { font-size: clamp(44px, 6.4vw, 104px); line-height: .95; font-weight: 300; margin: 18px auto 34px; max-width: 12ch; }
+.silk-home .finale-top .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.silk-home .foot { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; font-size: 13px; margin-top: 14vh; padding-top: 22px; border-top: 1px solid oklch(0.28 0.03 280 / .12); }
+.silk-home .foot h4 { font-family: var(--sh-sans); margin: 0 0 8px; font-weight: 400; font-size: 10px; letter-spacing: .3em; text-transform: uppercase; color: var(--primary); }
+.silk-home .foot a:hover { color: var(--primary); }
+.silk-home .foot p { color: oklch(0.28 0.03 280 / .75); }
+.silk-home .socials { display: flex; gap: 14px; margin-top: 8px; }
+@media (max-width: 800px) { .silk-home .foot { grid-template-columns: 1fr 1fr; } }
+.silk-home .wordmark {
+  margin-top: 5vh; font-family: var(--sh-display); font-weight: 300; font-size: 15.4vw; line-height: .78; letter-spacing: -0.04em;
+  white-space: nowrap; text-align: center; overflow: hidden; padding-bottom: .04em;
+}
+.silk-home .wordmark span { display: inline-block; }
+.silk-home .legal { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 20px; margin-top: 18px; font-size: 11px; letter-spacing: .1em; color: var(--muted-foreground); }
+.silk-home .legal nav { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.silk-home .legal a:hover { color: var(--primary); }
+
+@media (prefers-reduced-motion: reduce) {
+  .silk-home .scroll-cue i::after { animation: none; }
+}
