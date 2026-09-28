@@ -25,11 +25,11 @@ export const HOME = {
     pt: { pre: "As nossas ", em: "coleções", post: "" },
   } satisfies Tr<Emph>,
   collectionsBody: {
-    el: "Από τα βαπτιστικά φορέματα έως την πρώτη κοινωνία — όλα για τις πιο πολύτιμες μέρες τους.",
-    en: "From christening gowns to first communion — everything for their most treasured days.",
-    it: "Dagli abiti da battesimo alla prima comunione — tutto per i loro giorni più preziosi.",
-    es: "Desde los vestidos de bautizo hasta la primera comunión — todo para sus días más preciados.",
-    pt: "Dos vestidos de batizado à primeira comunhão — tudo para os seus dias mais preciosos.",
+    el: "Όλα για τις πιο πολύτιμες μέρες τους.",
+    en: "Everything for their most treasured days.",
+    it: "Tutto per i loro giorni più preziosi.",
+    es: "Todo para sus días más preciados.",
+    pt: "Tudo para os seus dias mais preciosos.",
   },
   categories: {
     girls: {
