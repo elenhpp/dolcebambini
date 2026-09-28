@@ -1,488 +1,1247 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dolce Bambini — Moments that last forever</title>
-<meta name="description" content="Handcrafted baptism & communion garments with romantic elegance. Dolce Bambini, since 1978.">
-<meta name="theme-color" content="#fbf7f2">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-<script>
-  document.documentElement.classList.add("js");
-  // Never leave visitors stuck behind the loader if a script fails to load
-  setTimeout(() => document.documentElement.classList.add("failsafe"), 7000);
-</script>
-<style>
-  /* Tokens mirror src/styles.css so this page matches the live site */
-  :root {
-    --background: oklch(0.985 0.008 75);
-    --foreground: oklch(0.28 0.03 280);
-    --card: oklch(1 0 0);
-    --primary: oklch(0.54 0.14 18);
-    --primary-foreground: oklch(0.99 0.005 80);
-    --muted-foreground: oklch(0.5 0.02 280);
-    --border: oklch(0.9 0.02 50);
-    --blush: oklch(0.92 0.05 25);
-    --sky: oklch(0.93 0.04 230);
-    --gold: oklch(0.82 0.11 85);
-    --shadow-soft: 0 10px 40px -12px oklch(0.7 0.05 20 / 0.25);
-    --font-display: "Cormorant Garamond", "Playfair Display", Georgia, serif;
-    --font-sans: "Outfit", "Inter", system-ui, sans-serif;
-    --gutter: clamp(16px, 4vw, 56px);
-    --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dolce Bambini — Moments that last forever</title>
+  <meta name="description"
+    content="Handcrafted baptism & communion garments with romantic elegance. Dolce Bambini, since 1978.">
+  <meta name="theme-color" content="#fbf7f2">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Outfit:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script>
+    document.documentElement.classList.add("js");
+    // Never leave visitors stuck behind the loader if a script fails to load
+    setTimeout(() => document.documentElement.classList.add("failsafe"), 7000);
+  </script>
+  <style>
+    /* Tokens mirror src/styles.css so this page matches the live site */
+    :root {
+      --background: oklch(0.985 0.008 75);
+      --foreground: oklch(0.28 0.03 280);
+      --card: oklch(1 0 0);
+      --primary: oklch(0.54 0.14 18);
+      --primary-foreground: oklch(0.99 0.005 80);
+      --muted-foreground: oklch(0.5 0.02 280);
+      --border: oklch(0.9 0.02 50);
+      --blush: oklch(0.92 0.05 25);
+      --sky: oklch(0.93 0.04 230);
+      --gold: oklch(0.82 0.11 85);
+      --shadow-soft: 0 10px 40px -12px oklch(0.7 0.05 20 / 0.25);
+      --font-display: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+      --font-sans: "Outfit", "Inter", system-ui, sans-serif;
+      --gutter: clamp(16px, 4vw, 56px);
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
 
-  *, *::before, *::after { box-sizing: border-box; }
-  html.lenis, html.lenis body { height: auto; }
-  .lenis.lenis-smooth { scroll-behavior: auto !important; }
-  body {
-    margin: 0; background: var(--background); color: var(--foreground);
-    font-family: var(--font-sans); font-weight: 300; line-height: 1.6;
-    -webkit-font-smoothing: antialiased; overflow-x: hidden;
-  }
-  h1, h2, h3, p { margin: 0; font-weight: 400; }
-  h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.01em; }
-  a { color: inherit; text-decoration: none; }
-  img { display: block; max-width: 100%; }
-  button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
-  em { font-style: italic; }
-  .rose { color: var(--primary); }
-  .eyebrow { font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--primary); font-weight: 400; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
 
-  /* ---------- Silk canvas ---------- */
-  #silk { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-  .no-webgl #silk { display: none; }
-  .no-webgl body {
-    background:
-      radial-gradient(60% 50% at 20% 10%, oklch(0.92 0.05 25 / .8), transparent 70%),
-      radial-gradient(50% 50% at 90% 90%, oklch(0.93 0.04 230 / .8), transparent 70%),
-      var(--background);
-    background-attachment: fixed;
-  }
-  main, footer { position: relative; z-index: 1; }
+    html.lenis,
+    html.lenis body {
+      height: auto;
+    }
 
-  /* ---------- Loader ---------- */
-  .loader { display: none; }
-  .js .loader {
-    position: fixed; inset: 0; z-index: 100; display: grid; place-items: center;
-    background: var(--background); clip-path: inset(0 0 0 0);
-  }
-  .failsafe .loader { display: none !important; }
-  .loader-inner { width: min(360px, 80vw); text-align: center; }
-  .loader-brand { font-family: var(--font-display); font-size: 40px; overflow: hidden; }
-  .loader-brand span { display: inline-block; }
-  .loader-line { height: 1px; background: oklch(0.54 0.14 18 / .15); margin: 18px 0 12px; }
-  .loader-line i { display: block; height: 100%; background: var(--primary); transform: scaleX(0); transform-origin: left; }
-  .loader-count { font-size: 11px; letter-spacing: .35em; color: var(--muted-foreground); font-variant-numeric: tabular-nums; }
+    .lenis.lenis-smooth {
+      scroll-behavior: auto !important;
+    }
 
-  /* ---------- Nav ---------- */
-  .nav {
-    position: fixed; inset: 0 0 auto 0; z-index: 50;
-    display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
-    padding: 22px var(--gutter); transition: color .5s var(--ease);
-  }
-  .nav.on-dark { color: #fff; }
-  .brand { font-family: var(--font-display); font-size: 26px; font-weight: 500; white-space: nowrap; }
-  .nav .mid { font-size: 10px; letter-spacing: .35em; text-transform: uppercase; opacity: .7; }
-  .nav .right { justify-self: end; display: flex; gap: 12px; align-items: center; }
-  .pill-btn {
-    display: inline-flex; align-items: center; gap: 10px; height: 42px; padding: 0 20px;
-    border-radius: 999px; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; font-weight: 400;
-    background: oklch(1 0 0 / .55); border: 1px solid oklch(0.9 0.02 50 / .8);
-    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-    transition: background .4s, color .4s, border-color .4s;
-  }
-  .nav.on-dark .pill-btn { background: oklch(1 0 0 / .14); border-color: oklch(1 0 0 / .35); }
-  .pill-btn .bars { width: 16px; display: grid; gap: 4px; }
-  .pill-btn .bars i { height: 1px; background: currentColor; transition: transform .5s var(--ease); }
-  .menu-open .pill-btn .bars i:first-child { transform: translateY(2.5px) rotate(45deg); }
-  .menu-open .pill-btn .bars i:last-child { transform: translateY(-2.5px) rotate(-45deg); }
-  @media (max-width: 700px) { .nav .mid, .nav .shop { display: none; } .nav { grid-template-columns: 1fr auto; } }
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--foreground);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
 
-  /* ---------- Menu overlay ---------- */
-  .menu {
-    position: fixed; inset: 0; z-index: 45; visibility: hidden;
-    background: linear-gradient(135deg, oklch(0.96 0.03 25), oklch(0.97 0.018 85) 50%, oklch(0.94 0.035 230));
-    clip-path: inset(0 0 100% 0);
-    display: grid; align-content: center; padding: 100px var(--gutter) 40px;
-  }
-  .menu ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
-  .menu li { overflow: hidden; }
-  .menu a {
-    display: inline-flex; align-items: baseline; gap: 18px;
-    font-family: var(--font-display); font-size: clamp(36px, 6.4vw, 84px); line-height: 1.08;
-    transition: color .4s, transform .6s var(--ease);
-  }
-  .menu a small { font-family: var(--font-sans); font-size: 11px; letter-spacing: .2em; color: var(--primary); }
-  .menu a:hover { color: var(--primary); transform: translateX(14px); }
-  .menu .menu-foot { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 8px 32px; font-size: 13px; color: var(--muted-foreground); }
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+      font-weight: 400;
+    }
 
-  /* ---------- Cursor ---------- */
-  .cursor, .cursor-ring { position: fixed; left: 0; top: 0; z-index: 90; pointer-events: none; border-radius: 50%; }
-  .cursor { width: 6px; height: 6px; margin: -3px 0 0 -3px; background: var(--primary); }
-  .cursor-ring {
-    width: 40px; height: 40px; margin: -20px 0 0 -20px; border: 1px solid oklch(0.54 0.14 18 / .45);
-    display: grid; place-items: center; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: #fff;
-    transition: width .5s var(--ease), height .5s var(--ease), margin .5s var(--ease), background .5s, border-color .5s;
-  }
-  .cursor-ring span { opacity: 0; transition: opacity .3s; }
-  .cursor-ring.view { width: 92px; height: 92px; margin: -46px 0 0 -46px; background: oklch(0.54 0.14 18 / .85); border-color: transparent; }
-  .cursor-ring.view span { opacity: 1; }
-  .cursor-ring.link { width: 64px; height: 64px; margin: -32px 0 0 -32px; background: oklch(0.54 0.14 18 / .08); }
-  @media (hover: none), (pointer: coarse) { .cursor, .cursor-ring { display: none; } }
+    h1,
+    h2,
+    h3 {
+      font-family: var(--font-display);
+      letter-spacing: -0.01em;
+    }
 
-  /* ---------- Shared ---------- */
-  .line { display: block; overflow: hidden; padding-bottom: .06em; }
-  .line > span { display: block; will-change: transform; }
-  .btn {
-    display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 30px; border-radius: 999px;
-    font-size: 13px; letter-spacing: .14em; text-transform: uppercase; font-weight: 400;
-    box-shadow: var(--shadow-soft); transition: background .4s, color .4s;
-  }
-  .btn-primary { background: var(--primary); color: var(--primary-foreground); }
-  .btn-primary:hover { background: oklch(0.48 0.14 18); }
-  .btn-ghost { background: oklch(1 0 0 / .7); border: 1px solid var(--border); backdrop-filter: blur(10px); }
-  .btn-ghost:hover { background: #fff; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-  /* ---------- 1. Hero ---------- */
-  .hero { position: relative; height: 100vh; height: 100svh; padding: 0 var(--gutter); display: flex; flex-direction: column; justify-content: center; }
-  .hero-title { font-size: clamp(64px, 13.5vw, 230px); line-height: .86; font-weight: 300; letter-spacing: -0.03em; }
-  .hero-title .l2 { padding-left: 14vw; }
-  .hero-title .l3 { text-align: right; }
-  .hero-meta {
-    position: absolute; left: var(--gutter); right: var(--gutter); bottom: 28px;
-    display: flex; justify-content: space-between; align-items: end; gap: 24px;
-    font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: oklch(0.28 0.03 280 / .7);
-  }
-  .hero-meta p { max-width: 280px; line-height: 1.7; }
-  .scroll-cue { display: flex; align-items: center; gap: 12px; }
-  .scroll-cue i { width: 1px; height: 40px; background: oklch(0.28 0.03 280 / .2); position: relative; overflow: hidden; }
-  .scroll-cue i::after { content: ""; position: absolute; inset: 0; background: var(--primary); animation: drip 2.4s var(--ease) infinite; }
-  @keyframes drip { 0% { transform: translateY(-100%); } 60%, 100% { transform: translateY(100%); } }
-  @media (max-width: 700px) { .hero-meta .mid-meta { display: none; } .hero-title .l2 { padding-left: 8vw; } }
+    img {
+      display: block;
+      max-width: 100%;
+    }
 
-  /* ---------- 2. Statement ---------- */
-  .statement { height: 100vh; display: grid; place-items: center; padding: 0 var(--gutter); text-align: center; }
-  .statement .big { max-width: 1180px; margin-top: 22px; font-family: var(--font-display); font-size: clamp(30px, 4.6vw, 74px); line-height: 1.12; }
-  .statement .w { opacity: .14; }
+    button {
+      font: inherit;
+      color: inherit;
+      background: none;
+      border: 0;
+      cursor: pointer;
+      padding: 0;
+    }
 
-  /* ---------- 3. Years ---------- */
-  .years { height: 100vh; display: grid; place-items: center; align-content: center; text-align: center; padding: 0 var(--gutter); }
-  .year {
-    font-family: var(--font-display); font-weight: 300; font-size: min(32vw, 50vh); line-height: .8; letter-spacing: -0.04em;
-    font-variant-numeric: lining-nums tabular-nums;
-    background: linear-gradient(110deg, oklch(0.54 0.14 18), oklch(0.78 0.09 40) 40%, oklch(0.82 0.11 85) 62%, oklch(0.72 0.06 240));
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-  }
-  .years .cap { margin-top: 30px; max-width: 520px; font-size: 17px; line-height: 1.75; color: oklch(0.28 0.03 280 / .75); }
-  .years .cap h2 { font-size: clamp(28px, 3vw, 42px); margin-bottom: 10px; color: var(--foreground); }
+    em {
+      font-style: italic;
+    }
 
-  /* ---------- 4. Collections (horizontal) ---------- */
-  .collections { height: 100vh; height: 100svh; overflow: hidden; display: flex; align-items: center; }
-  .track { display: flex; align-items: center; gap: clamp(24px, 4vw, 64px); padding: 0 var(--gutter); will-change: transform; }
-  .h-intro { flex: 0 0 min(440px, 82vw); padding-right: 2vw; }
-  .h-intro h2 { font-size: clamp(52px, 7vw, 116px); line-height: .9; font-weight: 300; margin: 16px 0 22px; }
-  .h-intro p { color: oklch(0.28 0.03 280 / .72); max-width: 340px; }
-  .card { flex: 0 0 auto; --h: min(62vh, 620px); width: calc(var(--h) * .75); }
-  .card .media {
-    position: relative; height: var(--h); border-radius: 26px; overflow: hidden;
-    background: linear-gradient(135deg, var(--blush), oklch(0.97 0.012 85) 55%, var(--sky));
-    box-shadow: 0 40px 80px -40px oklch(0.45 0.08 20 / .45);
-  }
-  .card img { position: absolute; top: 0; left: -10%; width: 120%; height: 100%; object-fit: cover; transition: scale 1.2s var(--ease); }
-  .card:hover img { scale: 1.05; }
-  .card .meta { display: flex; justify-content: space-between; align-items: baseline; margin-top: 16px; gap: 12px; }
-  .card h3 { font-size: 32px; line-height: 1; }
-  .card .meta small { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted-foreground); }
-  .card .num { font-size: 11px; letter-spacing: .2em; color: var(--primary); }
-  .h-end { flex: 0 0 min(420px, 80vw); display: grid; gap: 6px; padding-right: 6vw; }
-  .h-end a { font-family: var(--font-display); font-size: clamp(36px, 4.4vw, 64px); line-height: 1.1; display: flex; justify-content: space-between; border-bottom: 1px solid var(--border); padding: 10px 0; transition: color .4s; }
-  .h-end a:hover { color: var(--primary); }
-  @media (max-width: 700px) { .card { --h: 56vh; width: min(calc(56vh * .75), 76vw); } }
+    .rose {
+      color: var(--primary);
+    }
 
-  /* ---------- 5. Craft ---------- */
-  .craft { position: relative; height: 100vh; height: 100svh; overflow: hidden; }
-  .craft-media { position: absolute; inset: 0; clip-path: inset(24% 36% 24% 36% round 28px); background: oklch(0.85 0.04 30); }
-  .craft-media img { width: 100%; height: 100%; object-fit: cover; }
-  .craft-shade { position: absolute; inset: 0; opacity: 0; background: linear-gradient(180deg, oklch(0.25 0.03 280 / .15), oklch(0.22 0.03 280 / .72)); }
-  .craft-title {
-    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 30vw;
-    font-family: var(--font-display); font-weight: 300; font-size: clamp(52px, 8.6vw, 150px); line-height: .9; letter-spacing: -0.02em;
-    pointer-events: none; white-space: nowrap;
-  }
-  .craft-cue {
-    position: absolute; left: 50%; bottom: 28px; transform: translateX(-50%);
-    font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: oklch(0.28 0.03 280 / .7);
-  }
-  .craft-values {
-    position: absolute; left: var(--gutter); right: var(--gutter); bottom: 7vh;
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; color: #fff;
-  }
-  .craft-values h3 { font-size: clamp(26px, 2.4vw, 36px); margin: 10px 0 6px; }
-  .craft-values p { font-size: 14px; opacity: .82; max-width: 260px; }
-  .craft-values .n { font-size: 11px; letter-spacing: .25em; opacity: .75; }
-  .craft-lead { position: absolute; left: var(--gutter); top: 16vh; color: #fff; max-width: 620px; font-family: var(--font-display); font-size: clamp(38px, 5vw, 76px); line-height: 1; font-weight: 300; }
-  @media (max-width: 800px) {
-    .craft-media { clip-path: inset(28% 18% 28% 18% round 22px); }
-    .craft-title { flex-direction: column; gap: 42vh; }
-    .craft-values { grid-template-columns: 1fr 1fr; gap: 18px; }
-    .craft-values p { display: none; }
-  }
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--primary);
+      font-weight: 400;
+    }
 
-  /* ---------- 6. Marquee ---------- */
-  .marquee { padding: 16vh 0 10vh; overflow: hidden; }
-  .mq-row { display: flex; white-space: nowrap; font-family: var(--font-display); font-weight: 300; font-size: clamp(56px, 9.5vw, 160px); line-height: 1.05; will-change: transform; }
-  .mq-row span { padding-right: .35em; }
-  .mq-row.outline { font-style: italic; color: transparent; -webkit-text-stroke: 1px oklch(0.54 0.14 18 / .6); }
+    /* ---------- Silk canvas ---------- */
+    #silk {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
 
-  /* ---------- 7. Finale ---------- */
-  .finale { min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; padding: 14vh var(--gutter) 28px; }
-  .finale-top { text-align: center; }
-  .finale-top h2 { font-size: clamp(44px, 6.4vw, 104px); line-height: .95; font-weight: 300; margin: 18px auto 34px; max-width: 12ch; }
-  .finale-top .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-  .foot { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; font-size: 13px; margin-top: 14vh; padding-top: 22px; border-top: 1px solid oklch(0.28 0.03 280 / .12); }
-  .foot h4 { margin: 0 0 8px; font-weight: 400; font-size: 10px; letter-spacing: .3em; text-transform: uppercase; color: var(--primary); }
-  .foot a:hover { color: var(--primary); }
-  .foot p { color: oklch(0.28 0.03 280 / .75); }
-  @media (max-width: 800px) { .foot { grid-template-columns: 1fr 1fr; } }
-  .wordmark {
-    margin-top: 5vh; font-family: var(--font-display); font-weight: 300; font-size: 15.4vw; line-height: .78; letter-spacing: -0.04em;
-    white-space: nowrap; text-align: center; overflow: hidden; padding-bottom: .04em;
-  }
-  .wordmark span { display: inline-block; }
-  .legal { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: 18px; font-size: 11px; letter-spacing: .1em; color: var(--muted-foreground); }
+    .no-webgl #silk {
+      display: none;
+    }
 
-  @media (prefers-reduced-motion: reduce) {
-    .scroll-cue i::after { animation: none; }
-  }
-</style>
+    .no-webgl body {
+      background:
+        radial-gradient(60% 50% at 20% 10%, oklch(0.92 0.05 25 / .8), transparent 70%),
+        radial-gradient(50% 50% at 90% 90%, oklch(0.93 0.04 230 / .8), transparent 70%),
+        var(--background);
+      background-attachment: fixed;
+    }
+
+    main,
+    footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ---------- Loader ---------- */
+    .loader {
+      display: none;
+    }
+
+    .js .loader {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: grid;
+      place-items: center;
+      background: var(--background);
+      clip-path: inset(0 0 0 0);
+    }
+
+    .failsafe .loader {
+      display: none !important;
+    }
+
+    .loader-inner {
+      width: min(360px, 80vw);
+      text-align: center;
+    }
+
+    .loader-brand {
+      font-family: var(--font-display);
+      font-size: 40px;
+      overflow: hidden;
+    }
+
+    .loader-brand span {
+      display: inline-block;
+    }
+
+    .loader-line {
+      height: 1px;
+      background: oklch(0.54 0.14 18 / .15);
+      margin: 18px 0 12px;
+    }
+
+    .loader-line i {
+      display: block;
+      height: 100%;
+      background: var(--primary);
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+
+    .loader-count {
+      font-size: 11px;
+      letter-spacing: .35em;
+      color: var(--muted-foreground);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ---------- Nav ---------- */
+    .nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 50;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 22px var(--gutter);
+      transition: color .5s var(--ease);
+    }
+
+    .nav.on-dark {
+      color: #fff;
+    }
+
+    .brand {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .nav .mid {
+      font-size: 10px;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      opacity: .7;
+    }
+
+    .nav .right {
+      justify-self: end;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .pill-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      height: 42px;
+      padding: 0 20px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-weight: 400;
+      background: oklch(1 0 0 / .55);
+      border: 1px solid oklch(0.9 0.02 50 / .8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: background .4s, color .4s, border-color .4s;
+    }
+
+    .nav.on-dark .pill-btn {
+      background: oklch(1 0 0 / .14);
+      border-color: oklch(1 0 0 / .35);
+    }
+
+    .pill-btn .bars {
+      width: 16px;
+      display: grid;
+      gap: 4px;
+    }
+
+    .pill-btn .bars i {
+      height: 1px;
+      background: currentColor;
+      transition: transform .5s var(--ease);
+    }
+
+    .menu-open .pill-btn .bars i:first-child {
+      transform: translateY(2.5px) rotate(45deg);
+    }
+
+    .menu-open .pill-btn .bars i:last-child {
+      transform: translateY(-2.5px) rotate(-45deg);
+    }
+
+    @media (max-width: 700px) {
+
+      .nav .mid,
+      .nav .shop {
+        display: none;
+      }
+
+      .nav {
+        grid-template-columns: 1fr auto;
+      }
+    }
+
+    /* ---------- Menu overlay ---------- */
+    .menu {
+      position: fixed;
+      inset: 0;
+      z-index: 45;
+      visibility: hidden;
+      background: linear-gradient(135deg, oklch(0.96 0.03 25), oklch(0.97 0.018 85) 50%, oklch(0.94 0.035 230));
+      clip-path: inset(0 0 100% 0);
+      display: grid;
+      align-content: center;
+      padding: 100px var(--gutter) 40px;
+    }
+
+    .menu ol {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 2px;
+    }
+
+    .menu li {
+      overflow: hidden;
+    }
+
+    .menu a {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 18px;
+      font-family: var(--font-display);
+      font-size: clamp(36px, 6.4vw, 84px);
+      line-height: 1.08;
+      transition: color .4s, transform .6s var(--ease);
+    }
+
+    .menu a small {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      letter-spacing: .2em;
+      color: var(--primary);
+    }
+
+    .menu a:hover {
+      color: var(--primary);
+      transform: translateX(14px);
+    }
+
+    .menu .menu-foot {
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 32px;
+      font-size: 13px;
+      color: var(--muted-foreground);
+    }
+
+    /* ---------- Cursor ---------- */
+    .cursor,
+    .cursor-ring {
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 90;
+      pointer-events: none;
+      border-radius: 50%;
+    }
+
+    .cursor {
+      width: 6px;
+      height: 6px;
+      margin: -3px 0 0 -3px;
+      background: var(--primary);
+    }
+
+    .cursor-ring {
+      width: 40px;
+      height: 40px;
+      margin: -20px 0 0 -20px;
+      border: 1px solid oklch(0.54 0.14 18 / .45);
+      display: grid;
+      place-items: center;
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: #fff;
+      transition: width .5s var(--ease), height .5s var(--ease), margin .5s var(--ease), background .5s, border-color .5s;
+    }
+
+    .cursor-ring span {
+      opacity: 0;
+      transition: opacity .3s;
+    }
+
+    .cursor-ring.view {
+      width: 92px;
+      height: 92px;
+      margin: -46px 0 0 -46px;
+      background: oklch(0.54 0.14 18 / .85);
+      border-color: transparent;
+    }
+
+    .cursor-ring.view span {
+      opacity: 1;
+    }
+
+    .cursor-ring.link {
+      width: 64px;
+      height: 64px;
+      margin: -32px 0 0 -32px;
+      background: oklch(0.54 0.14 18 / .08);
+    }
+
+    @media (hover: none),
+    (pointer: coarse) {
+
+      .cursor,
+      .cursor-ring {
+        display: none;
+      }
+    }
+
+    /* ---------- Shared ---------- */
+    .line {
+      display: block;
+      overflow: hidden;
+      padding-bottom: .06em;
+    }
+
+    .line>span {
+      display: block;
+      will-change: transform;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      height: 52px;
+      padding: 0 30px;
+      border-radius: 999px;
+      font-size: 13px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-weight: 400;
+      box-shadow: var(--shadow-soft);
+      transition: background .4s, color .4s;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--primary-foreground);
+    }
+
+    .btn-primary:hover {
+      background: oklch(0.48 0.14 18);
+    }
+
+    .btn-ghost {
+      background: oklch(1 0 0 / .7);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-ghost:hover {
+      background: #fff;
+    }
+
+    /* ---------- 1. Hero ---------- */
+    .hero {
+      position: relative;
+      height: 100vh;
+      height: 100svh;
+      padding: 0 var(--gutter);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-title {
+      font-size: clamp(64px, 13.5vw, 230px);
+      line-height: .86;
+      font-weight: 300;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-title .l2 {
+      padding-left: 14vw;
+    }
+
+    .hero-title .l3 {
+      text-align: right;
+    }
+
+    .hero-meta {
+      position: absolute;
+      left: var(--gutter);
+      right: var(--gutter);
+      bottom: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: oklch(0.28 0.03 280 / .7);
+    }
+
+    .hero-meta p {
+      max-width: 280px;
+      line-height: 1.7;
+    }
+
+    .scroll-cue {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .scroll-cue i {
+      width: 1px;
+      height: 40px;
+      background: oklch(0.28 0.03 280 / .2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scroll-cue i::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--primary);
+      animation: drip 2.4s var(--ease) infinite;
+    }
+
+    @keyframes drip {
+      0% {
+        transform: translateY(-100%);
+      }
+
+      60%,
+      100% {
+        transform: translateY(100%);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .hero-meta .mid-meta {
+        display: none;
+      }
+
+      .hero-title .l2 {
+        padding-left: 8vw;
+      }
+    }
+
+    /* ---------- 2. Statement ---------- */
+    .statement {
+      height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 0 var(--gutter);
+      text-align: center;
+    }
+
+    .statement .big {
+      max-width: 1180px;
+      margin-top: 22px;
+      font-family: var(--font-display);
+      font-size: clamp(30px, 4.6vw, 74px);
+      line-height: 1.12;
+    }
+
+    .statement .w {
+      opacity: .14;
+    }
+
+    /* ---------- 3. Years ---------- */
+    .years {
+      height: 100vh;
+      display: grid;
+      place-items: center;
+      align-content: center;
+      text-align: center;
+      padding: 0 var(--gutter);
+    }
+
+    .year {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: min(32vw, 50vh);
+      line-height: .8;
+      letter-spacing: -0.04em;
+      font-variant-numeric: lining-nums tabular-nums;
+      background: linear-gradient(110deg, oklch(0.54 0.14 18), oklch(0.78 0.09 40) 40%, oklch(0.82 0.11 85) 62%, oklch(0.72 0.06 240));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .years .cap {
+      margin-top: 30px;
+      max-width: 520px;
+      font-size: 17px;
+      line-height: 1.75;
+      color: oklch(0.28 0.03 280 / .75);
+    }
+
+    .years .cap h2 {
+      font-size: clamp(28px, 3vw, 42px);
+      margin-bottom: 10px;
+      color: var(--foreground);
+    }
+
+    /* ---------- 4. Collections (horizontal) ---------- */
+    .collections {
+      height: 100vh;
+      height: 100svh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    .track {
+      display: flex;
+      align-items: center;
+      gap: clamp(24px, 4vw, 64px);
+      padding: 0 var(--gutter);
+      will-change: transform;
+    }
+
+    .h-intro {
+      flex: 0 0 min(440px, 82vw);
+      padding-right: 2vw;
+    }
+
+    .h-intro h2 {
+      font-size: clamp(52px, 7vw, 116px);
+      line-height: .9;
+      font-weight: 300;
+      margin: 16px 0 22px;
+    }
+
+    .h-intro p {
+      color: oklch(0.28 0.03 280 / .72);
+      max-width: 340px;
+    }
+
+    .card {
+      flex: 0 0 auto;
+      --h: min(62vh, 620px);
+      width: calc(var(--h) * .75);
+    }
+
+    .card .media {
+      position: relative;
+      height: var(--h);
+      border-radius: 26px;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--blush), oklch(0.97 0.012 85) 55%, var(--sky));
+      box-shadow: 0 40px 80px -40px oklch(0.45 0.08 20 / .45);
+    }
+
+    .card img {
+      position: absolute;
+      top: 0;
+      left: -10%;
+      width: 120%;
+      height: 100%;
+      object-fit: cover;
+      transition: scale 1.2s var(--ease);
+    }
+
+    .card:hover img {
+      scale: 1.05;
+    }
+
+    .card .meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-top: 16px;
+      gap: 12px;
+    }
+
+    .card h3 {
+      font-size: 32px;
+      line-height: 1;
+    }
+
+    .card .meta small {
+      font-size: 11px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--muted-foreground);
+    }
+
+    .card .num {
+      font-size: 11px;
+      letter-spacing: .2em;
+      color: var(--primary);
+    }
+
+    .h-end {
+      flex: 0 0 min(420px, 80vw);
+      display: grid;
+      gap: 6px;
+      padding-right: 6vw;
+    }
+
+    .h-end a {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 4.4vw, 64px);
+      line-height: 1.1;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      padding: 10px 0;
+      transition: color .4s;
+    }
+
+    .h-end a:hover {
+      color: var(--primary);
+    }
+
+    @media (max-width: 700px) {
+      .card {
+        --h: 56vh;
+        width: min(calc(56vh * .75), 76vw);
+      }
+    }
+
+    /* ---------- 5. Craft ---------- */
+    .craft {
+      position: relative;
+      height: 100vh;
+      height: 100svh;
+      overflow: hidden;
+    }
+
+    .craft-media {
+      position: absolute;
+      inset: 0;
+      clip-path: inset(24% 36% 24% 36% round 28px);
+      background: oklch(0.85 0.04 30);
+    }
+
+    .craft-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .craft-shade {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      background: linear-gradient(180deg, oklch(0.25 0.03 280 / .15), oklch(0.22 0.03 280 / .72));
+    }
+
+    .craft-title {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30vw;
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(52px, 8.6vw, 150px);
+      line-height: .9;
+      letter-spacing: -0.02em;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .craft-cue {
+      position: absolute;
+      left: 50%;
+      bottom: 28px;
+      transform: translateX(-50%);
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: oklch(0.28 0.03 280 / .7);
+    }
+
+    .craft-values {
+      position: absolute;
+      left: var(--gutter);
+      right: var(--gutter);
+      bottom: 7vh;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+      color: #fff;
+    }
+
+    .craft-values h3 {
+      font-size: clamp(26px, 2.4vw, 36px);
+      margin: 10px 0 6px;
+    }
+
+    .craft-values p {
+      font-size: 14px;
+      opacity: .82;
+      max-width: 260px;
+    }
+
+    .craft-values .n {
+      font-size: 11px;
+      letter-spacing: .25em;
+      opacity: .75;
+    }
+
+    .craft-lead {
+      position: absolute;
+      left: var(--gutter);
+      top: 16vh;
+      color: #fff;
+      max-width: 620px;
+      font-family: var(--font-display);
+      font-size: clamp(38px, 5vw, 76px);
+      line-height: 1;
+      font-weight: 300;
+    }
+
+    @media (max-width: 800px) {
+      .craft-media {
+        clip-path: inset(28% 18% 28% 18% round 22px);
+      }
+
+      .craft-title {
+        flex-direction: column;
+        gap: 42vh;
+      }
+
+      .craft-values {
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+
+      .craft-values p {
+        display: none;
+      }
+    }
+
+    /* ---------- 6. Marquee ---------- */
+    .marquee {
+      padding: 16vh 0 10vh;
+      overflow: hidden;
+    }
+
+    .mq-row {
+      display: flex;
+      white-space: nowrap;
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(56px, 9.5vw, 160px);
+      line-height: 1.05;
+      will-change: transform;
+    }
+
+    .mq-row span {
+      padding-right: .35em;
+    }
+
+    .mq-row.outline {
+      font-style: italic;
+      color: transparent;
+      -webkit-text-stroke: 1px oklch(0.54 0.14 18 / .6);
+    }
+
+    /* ---------- 7. Finale ---------- */
+    .finale {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 14vh var(--gutter) 28px;
+    }
+
+    .finale-top {
+      text-align: center;
+    }
+
+    .finale-top h2 {
+      font-size: clamp(44px, 6.4vw, 104px);
+      line-height: .95;
+      font-weight: 300;
+      margin: 18px auto 34px;
+      max-width: 12ch;
+    }
+
+    .finale-top .actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .foot {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      font-size: 13px;
+      margin-top: 14vh;
+      padding-top: 22px;
+      border-top: 1px solid oklch(0.28 0.03 280 / .12);
+    }
+
+    .foot h4 {
+      margin: 0 0 8px;
+      font-weight: 400;
+      font-size: 10px;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--primary);
+    }
+
+    .foot a:hover {
+      color: var(--primary);
+    }
+
+    .foot p {
+      color: oklch(0.28 0.03 280 / .75);
+    }
+
+    @media (max-width: 800px) {
+      .foot {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .wordmark {
+      margin-top: 5vh;
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: 15.4vw;
+      line-height: .78;
+      letter-spacing: -0.04em;
+      white-space: nowrap;
+      text-align: center;
+      overflow: hidden;
+      padding-bottom: .04em;
+    }
+
+    .wordmark span {
+      display: inline-block;
+    }
+
+    .legal {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+      font-size: 11px;
+      letter-spacing: .1em;
+      color: var(--muted-foreground);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-cue i::after {
+        animation: none;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<canvas id="silk" aria-hidden="true"></canvas>
+  <canvas id="silk" aria-hidden="true"></canvas>
 
-<div class="loader" id="loader" aria-hidden="true">
-  <div class="loader-inner">
-    <div class="loader-brand"><span>Dolce <em class="rose">Bambini</em></span></div>
-    <div class="loader-line"><i></i></div>
-    <div class="loader-count"><span id="count">000</span></div>
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader-inner">
+      <div class="loader-brand"><span>Dolce <em class="rose">Bambini</em></span></div>
+      <div class="loader-line"><i></i></div>
+      <div class="loader-count"><span id="count">000</span></div>
+    </div>
   </div>
-</div>
 
-<div class="cursor" aria-hidden="true"></div>
-<div class="cursor-ring" aria-hidden="true"><span>View</span></div>
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"><span>View</span></div>
 
-<header class="nav" id="nav">
-  <a class="brand magnetic" href="/">Dolce <em class="rose">Bambini</em></a>
-  <div class="mid">Est. 1978 · Collection 2026</div>
-  <div class="right">
-    <a class="pill-btn shop magnetic" href="/girls">Shop</a>
-    <button class="pill-btn magnetic" id="menuBtn" aria-expanded="false" aria-controls="menu">
-      <span class="bars"><i></i><i></i></span><span id="menuLabel">Menu</span>
-    </button>
-  </div>
-</header>
-
-<nav class="menu" id="menu" aria-label="Main">
-  <ol>
-    <li><a href="/girls"><small>01</small>Girls</a></li>
-    <li><a href="/boys"><small>02</small>Boys</a></li>
-    <li><a href="/winter"><small>03</small>Winter</a></li>
-    <li><a href="/silk"><small>04</small>Silk Collection</a></li>
-    <li><a href="/accessories"><small>05</small>Baptism Accessories</a></li>
-    <li><a href="/communion"><small>06</small>Communion</a></li>
-    <li><a href="/sales-points"><small>07</small>Sales Points</a></li>
-    <li><a href="/contact"><small>08</small>Contact</a></li>
-  </ol>
-  <div class="menu-foot">
-    <span>47 Dodekanisou St., Glyfada, Athens</span>
-    <a href="tel:+302109603035">+30 210 96 03 035</a>
-    <a href="mailto:info@dolcebambini.gr">info@dolcebambini.gr</a>
-  </div>
-</nav>
-
-<main>
-  <!-- 1. OPENING: photo opens up between "Dolce" and "Bambini" -->
-  <section class="craft" id="craft">
-    <div class="craft-media">
-      <img src="src/assets/images/7133-a.webp" alt="Detail of a handmade christening suit" onerror="this.remove()">
-      <div class="craft-shade"></div>
+  <header class="nav" id="nav">
+    <a class="brand magnetic" href="/">Dolce <em class="rose">Bambini</em></a>
+    <div class="mid">Est. 1978 · Collection 2026</div>
+    <div class="right">
+      <a class="pill-btn shop magnetic" href="/girls">Shop</a>
+      <button class="pill-btn magnetic" id="menuBtn" aria-expanded="false" aria-controls="menu">
+        <span class="bars"><i></i><i></i></span><span id="menuLabel">Menu</span>
+      </button>
     </div>
-    <h1 class="craft-title" aria-label="Dolce Bambini">
-      <span class="line ct-l"><span>Dolce</span></span>
-      <span class="line ct-r"><span><em class="rose">Bambini</em></span></span>
-    </h1>
-    <p class="craft-lead">Every stitch, <em>by hand.</em></p>
-    <div class="craft-values">
-      <div><span class="n">I</span><h3>Premium Quality</h3><p>Carefully selected fabrics and impeccable tailoring.</p></div>
-      <div><span class="n">II</span><h3>Unique Designs</h3><p>Modern silhouettes with timeless, romantic elegance.</p></div>
-      <div><span class="n">III</span><h3>New Collections</h3><p>Fresh collections released each season.</p></div>
-      <div><span class="n">IV</span><h3>Handmade</h3><p>Every garment crafted by hand with love.</p></div>
-    </div>
-    <div class="craft-cue scroll-cue"><span>Scroll</span><i></i></div>
-  </section>
+  </header>
 
-  <!-- 2. CATEGORIES (horizontal) -->
-  <section class="collections" id="collections">
-    <div class="track" id="track">
-      <div class="h-intro">
-        <div class="eyebrow">Collection 2026</div>
-        <h2>Our <em class="rose">collections</em></h2>
-        <p>From christening gowns to first communion — everything for their most treasured days.</p>
+  <nav class="menu" id="menu" aria-label="Main">
+    <ol>
+      <li><a href="/girls"><small>01</small>Girls</a></li>
+      <li><a href="/boys"><small>02</small>Boys</a></li>
+      <li><a href="/winter"><small>03</small>Winter</a></li>
+      <li><a href="/silk"><small>04</small>Silk Collection</a></li>
+      <li><a href="/accessories"><small>05</small>Baptism Accessories</a></li>
+      <li><a href="/communion"><small>06</small>Communion</a></li>
+      <li><a href="/sales-points"><small>07</small>Sales Points</a></li>
+      <li><a href="/contact"><small>08</small>Contact</a></li>
+    </ol>
+    <div class="menu-foot">
+      <span>47 Dodekanisou St., Glyfada, Athens</span>
+      <a href="tel:+302109603035">+30 210 96 03 035</a>
+      <a href="mailto:info@dolcebambini.gr">info@dolcebambini.gr</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- 1. OPENING: photo opens up between "Dolce" and "Bambini" -->
+    <section class="craft" id="craft">
+      <div class="craft-media">
+        <img src="src/assets/images/7133-a.webp" alt="Detail of a handmade christening suit" onerror="this.remove()">
+        <div class="craft-shade"></div>
       </div>
-      <a class="card" href="/girls" data-cursor="view">
-        <div class="media"><img src="src/assets/images/C11-4.webp" alt="Girls collection" onerror="this.remove()"></div>
-        <div class="meta"><div><span class="num">01</span><h3>Girls</h3></div><small>Gowns &amp; dresses</small></div>
-      </a>
-      <a class="card" href="/boys" data-cursor="view">
-        <div class="media"><img src="src/assets/images/7101.webp" alt="Boys collection" onerror="this.remove()"></div>
-        <div class="meta"><div><span class="num">02</span><h3>Boys</h3></div><small>Suits &amp; ensembles</small></div>
-      </a>
-      <a class="card" href="/winter" data-cursor="view">
-        <div class="media"><img src="src/assets/images/6057-1(5).webp" alt="Winter collection" onerror="this.remove()"></div>
-        <div class="meta"><div><span class="num">03</span><h3>Winter</h3></div><small>Boy &amp; girl</small></div>
-      </a>
-      <a class="card" href="/silk" data-cursor="view">
-        <div class="media"><img src="src/assets/images/C6%20(2).webp" alt="Silk collection" onerror="this.remove()"></div>
-        <div class="meta"><div><span class="num">04</span><h3>Silk Collection</h3></div><small>Luxury in silk</small></div>
-      </a>
-      <a class="card" href="/accessories" data-cursor="view">
-        <div class="media"><img src="src/assets/images/A24-1(8762).webp" alt="Baptism accessories" onerror="this.remove()"></div>
-        <div class="meta"><div><span class="num">05</span><h3>Accessories</h3></div><small>Sets &amp; complements</small></div>
-      </a>
-      <a class="card" href="/communion" data-cursor="view">
-        <div class="media"><img src="src/assets/images/C24(1).webp" alt="First communion collection" onerror="this.remove()"></div>
-        <div class="meta"><div><span class="num">06</span><h3>Communion</h3></div><small>First communion</small></div>
-      </a>
-      <div class="h-end">
-        <div class="eyebrow" style="margin-bottom:10px">Visit us</div>
-        <a href="/sales-points">Sales Points <span>→</span></a>
-        <a href="/contact">Contact <span>→</span></a>
+      <h1 class="craft-title" aria-label="Dolce Bambini">
+        <span class="line ct-l"><span>Dolce</span></span>
+        <span class="line ct-r"><span><em class="rose">Bambini</em></span></span>
+      </h1>
+      <p class="craft-lead">Every stitch, <em>by hand.</em></p>
+      <div class="craft-values">
+        <div><span class="n">I</span>
+          <h3>Premium Quality</h3>
+          <p>Carefully selected fabrics and impeccable tailoring.</p>
+        </div>
+        <div><span class="n">II</span>
+          <h3>Unique Designs</h3>
+          <p>Modern silhouettes with timeless, romantic elegance.</p>
+        </div>
+        <div><span class="n">III</span>
+          <h3>New Collections</h3>
+          <p>Fresh collections released each season.</p>
+        </div>
+        <div><span class="n">IV</span>
+          <h3>Handmade</h3>
+          <p>Every garment crafted by hand with love.</p>
+        </div>
       </div>
-    </div>
-  </section>
+      <div class="craft-cue scroll-cue"><span>Scroll</span><i></i></div>
+    </section>
 
-  <!-- 3. HERO -->
-  <section class="hero" id="hero">
-    <h2 class="hero-title" aria-label="Moments that last forever">
-      <span class="line l1"><span>Moments</span></span>
-      <span class="line l2"><span><em class="rose">that last</em></span></span>
-      <span class="line l3"><span>forever</span></span>
-    </h2>
-    <div class="hero-meta">
-      <p class="fade-in">Handcrafted baptism &amp; communion garments</p>
-      <p class="fade-in mid-meta">Since 1978</p>
-      <p class="fade-in">Collection 2026</p>
-    </div>
-  </section>
-
-  <!-- 4. STATEMENT -->
-  <section class="statement" id="statement">
-    <div>
-      <div class="eyebrow">Our philosophy</div>
-      <p class="big split-words">Some moments are too precious for anything ordinary. Since 1978 we have made the garments that carry them — <em class="rose">softly, slowly, stitch by stitch.</em></p>
-    </div>
-  </section>
-
-  <!-- 5. YEARS -->
-  <section class="years" id="years">
-    <div class="year" id="year">1978</div>
-    <div class="cap">
-      <h2>Four decades, <em class="rose">one thread</em></h2>
-      <p>Founded in Melbourne, Australia, Dolce Bambini brings over 40 years of handmade baptism garments that blend tradition with contemporary elegance.</p>
-    </div>
-  </section>
-
-
-  <!-- 6. MARQUEE -->
-  <section class="marquee" aria-hidden="true">
-    <div class="mq-row" data-dir="-1"><span>Handmade with love ✦ Baptism ✦ Communion ✦ Silk ✦</span><span>Handmade with love ✦ Baptism ✦ Communion ✦ Silk ✦</span></div>
-    <div class="mq-row outline" data-dir="1"><span>Little moments, forever treasured ✦ Since 1978 ✦</span><span>Little moments, forever treasured ✦ Since 1978 ✦</span></div>
-  </section>
-
-  <!-- 7. FINALE -->
-  <section class="finale" id="finale">
-    <div class="finale-top">
-      <div class="eyebrow reveal">Collection 2026</div>
-      <h2 class="reveal">Little moments, <em class="rose">forever</em> treasured.</h2>
-      <div class="actions reveal">
-        <a class="btn btn-primary magnetic" href="/girls">Shop Girls</a>
-        <a class="btn btn-ghost magnetic" href="/boys">Shop Boys</a>
-        <a class="btn btn-ghost magnetic" href="/sales-points">Find a store</a>
+    <!-- 2. CATEGORIES (horizontal) -->
+    <section class="collections" id="collections">
+      <div class="track" id="track">
+        <div class="h-intro">
+          <div class="eyebrow">Collection 2026</div>
+          <h2>Our <em class="rose">collections</em></h2>
+          <p>From christening gowns to first communion — everything for their most treasured days.</p>
+        </div>
+        <a class="card" href="/girls" data-cursor="view">
+          <div class="media"><img src="src/assets/images/C11-4.webp" alt="Girls collection" onerror="this.remove()">
+          </div>
+          <div class="meta">
+            <div><span class="num">01</span>
+              <h3>Girls</h3>
+            </div><small>Gowns &amp; dresses</small>
+          </div>
+        </a>
+        <a class="card" href="/boys" data-cursor="view">
+          <div class="media"><img src="src/assets/images/7101.webp" alt="Boys collection" onerror="this.remove()"></div>
+          <div class="meta">
+            <div><span class="num">02</span>
+              <h3>Boys</h3>
+            </div><small>Suits &amp; ensembles</small>
+          </div>
+        </a>
+        <a class="card" href="/winter" data-cursor="view">
+          <div class="media"><img src="src/assets/images/6057-1(5).webp" alt="Winter collection"
+              onerror="this.remove()"></div>
+          <div class="meta">
+            <div><span class="num">03</span>
+              <h3>Winter</h3>
+            </div><small>Boy &amp; girl</small>
+          </div>
+        </a>
+        <a class="card" href="/silk" data-cursor="view">
+          <div class="media"><img src="src/assets/images/C24 (1).webp" alt="Silk collection" onerror="this.remove()">
+          </div>
+          <div class="meta">
+            <div><span class="num">04</span>
+              <h3>Silk Collection</h3>
+            </div><small>Luxury in silk</small>
+          </div>
+        </a>
+        <a class="card" href="/accessories" data-cursor="view">
+          <div class="media"><img src="src/assets/images/A24-1(8762).webp" alt="Baptism accessories"
+              onerror="this.remove()"></div>
+          <div class="meta">
+            <div><span class="num">05</span>
+              <h3>Accessories</h3>
+            </div><small>Sets &amp; complements</small>
+          </div>
+        </a>
+        <a class="card" href="/communion" data-cursor="view">
+          <div class="media"><img src="src/assets/images/C24 (1).webp" alt="First communion collection"
+              onerror="this.remove()"></div>
+          <div class="meta">
+            <div><span class="num">06</span>
+              <h3>Communion</h3>
+            </div><small>First communion</small>
+          </div>
+        </a>
+        <div class="h-end">
+          <div class="eyebrow" style="margin-bottom:10px">Visit us</div>
+          <a href="/sales-points">Sales Points <span>→</span></a>
+          <a href="/contact">Contact <span>→</span></a>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div>
-      <div class="foot">
-        <div><h4>Flagship store</h4><p>47 Dodekanisou St.<br>Glyfada 165 62, Athens</p></div>
-        <div><h4>Contact</h4><p><a href="tel:+302109603035">+30 210 96 03 035</a><br><a href="mailto:info@dolcebambini.gr">info@dolcebambini.gr</a></p></div>
-        <div><h4>Collections</h4><p><a href="/girls">Girls</a> · <a href="/boys">Boys</a> · <a href="/silk">Silk</a><br><a href="/winter">Winter</a> · <a href="/communion">Communion</a></p></div>
-        <div><h4>Since 1978</h4><p>Handcrafted elegance since 1978.</p></div>
+    <!-- 3. HERO -->
+    <section class="hero" id="hero">
+      <h2 class="hero-title" aria-label="Moments that last forever">
+        <span class="line l1"><span>Moments</span></span>
+        <span class="line l2"><span><em class="rose">that last</em></span></span>
+        <span class="line l3"><span>forever</span></span>
+      </h2>
+      <div class="hero-meta">
+        <p class="fade-in">Handcrafted baptism &amp; communion garments</p>
+        <p class="fade-in mid-meta">Since 1978</p>
+        <p class="fade-in">Collection 2026</p>
       </div>
-      <div class="wordmark" id="wordmark" aria-label="Dolce Bambini">Dolce Bambini</div>
-      <div class="legal"><span>© 2026 Dolce Bambini. All rights reserved.</span><span>Designed with love</span></div>
-    </div>
-  </section>
-</main>
+    </section>
 
-<script type="module">
-const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-const finePointer = matchMedia("(hover: hover) and (pointer: fine)").matches;
-const $ = (s, r = document) => r.querySelector(s);
-const $$ = (s, r = document) => [...r.querySelectorAll(s)];
-const loaderEl = $("#loader");
+    <!-- 4. STATEMENT -->
+    <section class="statement" id="statement">
+      <div>
+        <div class="eyebrow">Our philosophy</div>
+        <p class="big split-words">Some moments are too precious for anything ordinary. Since 1978 we have made the
+          garments that carry them — <em class="rose">softly, slowly, stitch by stitch.</em></p>
+      </div>
+    </section>
 
-if (!window.gsap || !window.ScrollTrigger) {
-  loaderEl.remove();
-  throw new Error("GSAP failed to load — page shown without animation");
-}
-gsap.registerPlugin(ScrollTrigger);
-if ("scrollRestoration" in history) history.scrollRestoration = "manual";
-scrollTo(0, 0);
+    <!-- 5. YEARS -->
+    <section class="years" id="years">
+      <div class="year" id="year">1978</div>
+      <div class="cap">
+        <h2>Four decades, <em class="rose">one thread</em></h2>
+        <p>Founded in Melbourne, Australia, Dolce Bambini brings over 40 years of handmade baptism garments that blend
+          tradition with contemporary elegance.</p>
+      </div>
+    </section>
 
-/* ================= Smooth scroll ================= */
-let lenis = null;
-if (!reduce && window.Lenis) {
-  lenis = new Lenis({ lerp: 0.085, wheelMultiplier: 0.9 });
-  lenis.on("scroll", ScrollTrigger.update);
-  gsap.ticker.add(t => lenis.raf(t * 1000));
-  gsap.ticker.lagSmoothing(0);
-  lenis.stop();
-}
-let lastY = scrollY, velocity = 0;
-function scrollVelocity() {
-  if (lenis) return lenis.velocity || 0;
-  const v = scrollY - lastY; lastY = scrollY; return v;
-}
 
-/* ================= Silk (WebGL) =================
-   A single cloth mesh whose shape is driven by a handful of numbers (S).
-   Scroll tweens S between chapter keyframes; the shader turns it into
-   a billowing sheet, a twisting ribbon, and back again. */
-const K = {
-  open:   { spread: 1, w: 1.3,  h: 1.0, rh: 0.9,  x: 0,    y: 0.04,  rotX: -0.22, rotZ: -0.05, twist: 0,   amp: 0.9,  curve: 0,    tint: 0.05, alpha: 1 },
-  hero:  { spread: 1, w: 1.25, h: 0.9, rh: 0.9,  x: 0,    y: 0.16,  rotX: -0.28, rotZ: -0.07, twist: 0,   amp: 1,    curve: 0,    tint: 0,    alpha: 1 },
-  state:  { spread: 0, w: 1.9,  h: 0.9, rh: 0.95, x: 0,    y: 0.02,  rotX: 0,     rotZ: -0.3,  twist: 2.2, amp: 0.75, curve: 0.55, tint: 0.25, alpha: 1 },
-  years:  { spread: 0, w: 1.9,  h: 0.9, rh: 1.1,  x: 0,    y: -0.02, rotX: 0.1,   rotZ: 0.3,   twist: 3.4, amp: 0.8,  curve: 0.9,  tint: 0.45, alpha: 1 },
-  coll:   { spread: 0, w: 2.1,  h: 0.9, rh: 0.75, x: 0,    y: -0.36, rotX: 0,     rotZ: 0.02,  twist: 1.2, amp: 0.6,  curve: 0.35, tint: 0.85, alpha: 1 },
-  finale: { spread: 1, w: 1.3,  h: 0.85, rh: 0.9, x: 0,    y: -0.24, rotX: -0.35, rotZ: 0.05,  twist: 0,   amp: 0.8,  curve: 0,    tint: 0.1,  alpha: 1 },
-};
-const S = { ...K.open, y: -0.95, alpha: 0 };
+    <!-- 6. MARQUEE -->
+    <section class="marquee" aria-hidden="true">
+      <div class="mq-row" data-dir="-1"><span>Handmade with love ✦ Baptism ✦ Communion ✦ Silk ✦</span><span>Handmade
+          with love ✦ Baptism ✦ Communion ✦ Silk ✦</span></div>
+      <div class="mq-row outline" data-dir="1"><span>Little moments, forever treasured ✦ Since 1978 ✦</span><span>Little
+          moments, forever treasured ✦ Since 1978 ✦</span></div>
+    </section>
 
-const hex = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16) / 255);
-const PAL = {
-  a0: hex("#efcdc6"), b0: hex("#fbf2e9"),   // blush → ivory
-  a1: hex("#dde5ee"), b1: hex("#f9f3ec"),   // pale sky → ivory
-  sheen: hex("#e9b3a5"),
-};
-const mix3 = (a, b, t) => a.map((v, i) => v + (b[i] - v) * t);
+    <!-- 7. FINALE -->
+    <section class="finale" id="finale">
+      <div class="finale-top">
+        <div class="eyebrow reveal">Collection 2026</div>
+        <h2 class="reveal">Little moments, <em class="rose">forever</em> treasured.</h2>
+        <div class="actions reveal">
+          <a class="btn btn-primary magnetic" href="/girls">Shop Girls</a>
+          <a class="btn btn-ghost magnetic" href="/boys">Shop Boys</a>
+          <a class="btn btn-ghost magnetic" href="/sales-points">Find a store</a>
+        </div>
+      </div>
 
-const VERT = /* glsl */`
+      <div>
+        <div class="foot">
+          <div>
+            <h4>Flagship store</h4>
+            <p>47 Dodekanisou St.<br>Glyfada 165 62, Athens</p>
+          </div>
+          <div>
+            <h4>Contact</h4>
+            <p><a href="tel:+302109603035">+30 210 96 03 035</a><br><a
+                href="mailto:info@dolcebambini.gr">info@dolcebambini.gr</a></p>
+          </div>
+          <div>
+            <h4>Collections</h4>
+            <p><a href="/girls">Girls</a> · <a href="/boys">Boys</a> · <a href="/silk">Silk</a><br><a
+                href="/winter">Winter</a> · <a href="/communion">Communion</a></p>
+          </div>
+          <div>
+            <h4>Since 1978</h4>
+            <p>Handcrafted elegance since 1978.</p>
+          </div>
+        </div>
+        <div class="wordmark" id="wordmark" aria-label="Dolce Bambini">Dolce Bambini</div>
+        <div class="legal"><span>© 2026 Dolce Bambini. All rights reserved.</span><span>Designed with love</span></div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module">
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const finePointer = matchMedia("(hover: hover) and (pointer: fine)").matches;
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+    const loaderEl = $("#loader");
+
+    if (!window.gsap || !window.ScrollTrigger) {
+      loaderEl.remove();
+      throw new Error("GSAP failed to load — page shown without animation");
+    }
+    gsap.registerPlugin(ScrollTrigger);
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+    scrollTo(0, 0);
+
+    /* ================= Smooth scroll ================= */
+    let lenis = null;
+    if (!reduce && window.Lenis) {
+      lenis = new Lenis({ lerp: 0.085, wheelMultiplier: 0.9 });
+      lenis.on("scroll", ScrollTrigger.update);
+      gsap.ticker.add(t => lenis.raf(t * 1000));
+      gsap.ticker.lagSmoothing(0);
+      lenis.stop();
+    }
+    let lastY = scrollY, velocity = 0;
+    function scrollVelocity() {
+      if (lenis) return lenis.velocity || 0;
+      const v = scrollY - lastY; lastY = scrollY; return v;
+    }
+
+    /* ================= Silk (WebGL) =================
+       A single cloth mesh whose shape is driven by a handful of numbers (S).
+       Scroll tweens S between chapter keyframes; the shader turns it into
+       a billowing sheet, a twisting ribbon, and back again. */
+    const K = {
+      open: { spread: 1, w: 1.3, h: 1.0, rh: 0.9, x: 0, y: 0.04, rotX: -0.22, rotZ: -0.05, twist: 0, amp: 0.9, curve: 0, tint: 0.05, alpha: 1 },
+      hero: { spread: 1, w: 1.25, h: 0.9, rh: 0.9, x: 0, y: 0.16, rotX: -0.28, rotZ: -0.07, twist: 0, amp: 1, curve: 0, tint: 0, alpha: 1 },
+      state: { spread: 0, w: 1.9, h: 0.9, rh: 0.95, x: 0, y: 0.02, rotX: 0, rotZ: -0.3, twist: 2.2, amp: 0.75, curve: 0.55, tint: 0.25, alpha: 1 },
+      years: { spread: 0, w: 1.9, h: 0.9, rh: 1.1, x: 0, y: -0.02, rotX: 0.1, rotZ: 0.3, twist: 3.4, amp: 0.8, curve: 0.9, tint: 0.45, alpha: 1 },
+      coll: { spread: 0, w: 2.1, h: 0.9, rh: 0.75, x: 0, y: -0.36, rotX: 0, rotZ: 0.02, twist: 1.2, amp: 0.6, curve: 0.35, tint: 0.85, alpha: 1 },
+      finale: { spread: 1, w: 1.3, h: 0.85, rh: 0.9, x: 0, y: -0.24, rotX: -0.35, rotZ: 0.05, twist: 0, amp: 0.8, curve: 0, tint: 0.1, alpha: 1 },
+    };
+    const S = { ...K.open, y: -0.95, alpha: 0 };
+
+    const hex = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16) / 255);
+    const PAL = {
+      a0: hex("#efcdc6"), b0: hex("#fbf2e9"),   // blush → ivory
+      a1: hex("#dde5ee"), b1: hex("#f9f3ec"),   // pale sky → ivory
+      sheen: hex("#e9b3a5"),
+    };
+    const mix3 = (a, b, t) => a.map((v, i) => v + (b[i] - v) * t);
+
+    const VERT = /* glsl */`
   uniform float uTime, uSpread, uTwist, uAmp, uCurve, uRibbonH;
   uniform vec2 uSheet;
   uniform vec3 uMouse;
@@ -557,7 +1316,7 @@ const VERT = /* glsl */`
     gl_Position = projectionMatrix * viewMatrix * wp;
   }`;
 
-const FRAG = /* glsl */`
+    const FRAG = /* glsl */`
   uniform vec3 uColA, uColB, uSheen;
   uniform float uAlpha;
   varying vec2 vUv; varying vec3 vN; varying vec3 vT; varying vec3 vW; varying float vFold;
@@ -587,294 +1346,295 @@ const FRAG = /* glsl */`
     gl_FragColor = vec4(col, uAlpha);
   }`;
 
-let silk = null;
-async function initSilk() {
-  try {
-    const THREE = await import("https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js");
-    const canvas = $("#silk");
-    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: "high-performance" });
-    const small = innerWidth < 800;
-    renderer.setPixelRatio(Math.min(devicePixelRatio, small ? 1.5 : 2));
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
-    camera.position.z = 10;
-    const uniforms = {
-      uTime: { value: 0 }, uSpread: { value: 1 }, uTwist: { value: 0 }, uAmp: { value: 1 },
-      uCurve: { value: 0 }, uRibbonH: { value: 1 }, uSheet: { value: new THREE.Vector2(10, 6) },
-      uMouse: { value: new THREE.Vector3(0, 0, 0) }, uAlpha: { value: 0 },
-      uColA: { value: new THREE.Vector3(...PAL.a0) }, uColB: { value: new THREE.Vector3(...PAL.b0) },
-      uSheen: { value: new THREE.Vector3(...PAL.sheen) },
-    };
-    const geo = new THREE.PlaneGeometry(2, 2, small ? 150 : 240, small ? 90 : 150);
-    const mat = new THREE.ShaderMaterial({ uniforms, vertexShader: VERT, fragmentShader: FRAG, side: THREE.DoubleSide, transparent: true });
-    const mesh = new THREE.Mesh(geo, mat);
-    scene.add(mesh);
+    let silk = null;
+    async function initSilk() {
+      try {
+        const THREE = await import("https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js");
+        const canvas = $("#silk");
+        const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: "high-performance" });
+        const small = innerWidth < 800;
+        renderer.setPixelRatio(Math.min(devicePixelRatio, small ? 1.5 : 2));
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
+        camera.position.z = 10;
+        const uniforms = {
+          uTime: { value: 0 }, uSpread: { value: 1 }, uTwist: { value: 0 }, uAmp: { value: 1 },
+          uCurve: { value: 0 }, uRibbonH: { value: 1 }, uSheet: { value: new THREE.Vector2(10, 6) },
+          uMouse: { value: new THREE.Vector3(0, 0, 0) }, uAlpha: { value: 0 },
+          uColA: { value: new THREE.Vector3(...PAL.a0) }, uColB: { value: new THREE.Vector3(...PAL.b0) },
+          uSheen: { value: new THREE.Vector3(...PAL.sheen) },
+        };
+        const geo = new THREE.PlaneGeometry(2, 2, small ? 150 : 240, small ? 90 : 150);
+        const mat = new THREE.ShaderMaterial({ uniforms, vertexShader: VERT, fragmentShader: FRAG, side: THREE.DoubleSide, transparent: true });
+        const mesh = new THREE.Mesh(geo, mat);
+        scene.add(mesh);
 
-    let vw = 1, vh = 1;
-    const resize = () => {
-      renderer.setSize(innerWidth, innerHeight, false);
-      camera.aspect = innerWidth / innerHeight;
-      camera.updateProjectionMatrix();
-      vh = 2 * camera.position.z * Math.tan((camera.fov * Math.PI) / 360);
-      vw = vh * camera.aspect;
-    };
-    resize();
-    addEventListener("resize", resize);
+        let vw = 1, vh = 1;
+        const resize = () => {
+          renderer.setSize(innerWidth, innerHeight, false);
+          camera.aspect = innerWidth / innerHeight;
+          camera.updateProjectionMatrix();
+          vh = 2 * camera.position.z * Math.tan((camera.fov * Math.PI) / 360);
+          vw = vh * camera.aspect;
+        };
+        resize();
+        addEventListener("resize", resize);
 
-    const ray = new THREE.Raycaster(), ndc = new THREE.Vector2(), hit = new THREE.Vector3();
-    const plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
-    silk = { renderer, scene, camera, mesh, uniforms, ray, ndc, hit, plane, get vw() { return vw; }, get vh() { return vh; } };
-  } catch (err) {
-    console.warn("Silk disabled:", err);
-    document.documentElement.classList.add("no-webgl");
-  }
-}
+        const ray = new THREE.Raycaster(), ndc = new THREE.Vector2(), hit = new THREE.Vector3();
+        const plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
+        silk = { renderer, scene, camera, mesh, uniforms, ray, ndc, hit, plane, get vw() { return vw; }, get vh() { return vh; } };
+      } catch (err) {
+        console.warn("Silk disabled:", err);
+        document.documentElement.classList.add("no-webgl");
+      }
+    }
 
-/* Pointer state shared by silk + cursor */
-const pointer = { x: innerWidth / 2, y: innerHeight / 2, px: innerWidth / 2, py: innerHeight / 2, active: false, strength: 0 };
-addEventListener("pointermove", e => { pointer.x = e.clientX; pointer.y = e.clientY; pointer.active = true; }, { passive: true });
-document.documentElement.addEventListener("pointerleave", () => (pointer.active = false));
+    /* Pointer state shared by silk + cursor */
+    const pointer = { x: innerWidth / 2, y: innerHeight / 2, px: innerWidth / 2, py: innerHeight / 2, active: false, strength: 0 };
+    addEventListener("pointermove", e => { pointer.x = e.clientX; pointer.y = e.clientY; pointer.active = true; }, { passive: true });
+    document.documentElement.addEventListener("pointerleave", () => (pointer.active = false));
 
-let time = 0, flow = 1;
-gsap.ticker.add((_, dt) => {
-  const v = scrollVelocity();
-  velocity += (v - velocity) * 0.08;
-  if (!silk) return;
-  const { uniforms: u, mesh, camera, ray, ndc, hit, plane } = silk;
+    let time = 0, flow = 1;
+    gsap.ticker.add((_, dt) => {
+      const v = scrollVelocity();
+      velocity += (v - velocity) * 0.08;
+      if (!silk) return;
+      const { uniforms: u, mesh, camera, ray, ndc, hit, plane } = silk;
 
-  // scroll speed quickens the drift, then it settles back to calm
-  const targetFlow = 1 + Math.min(Math.abs(velocity) * 0.035, 2.2);
-  flow += (targetFlow - flow) * 0.05;
-  time += (dt / 1000) * (reduce ? 0.25 : flow);
+      // scroll speed quickens the drift, then it settles back to calm
+      const targetFlow = 1 + Math.min(Math.abs(velocity) * 0.035, 2.2);
+      flow += (targetFlow - flow) * 0.05;
+      time += (dt / 1000) * (reduce ? 0.25 : flow);
 
-  const speed = Math.hypot(pointer.x - pointer.px, pointer.y - pointer.py);
-  pointer.px = pointer.x; pointer.py = pointer.y;
-  const targetStr = reduce || !pointer.active ? 0 : Math.min(0.35 + speed * 0.02, 1);
-  pointer.strength += (targetStr - pointer.strength) * 0.04;
+      const speed = Math.hypot(pointer.x - pointer.px, pointer.y - pointer.py);
+      pointer.px = pointer.x; pointer.py = pointer.y;
+      const targetStr = reduce || !pointer.active ? 0 : Math.min(0.35 + speed * 0.02, 1);
+      pointer.strength += (targetStr - pointer.strength) * 0.04;
 
-  mesh.position.set(S.x * silk.vw, S.y * silk.vh, 0);
-  mesh.rotation.set(S.rotX, 0, S.rotZ);
-  mesh.updateMatrixWorld();
-  ndc.set((pointer.x / innerWidth) * 2 - 1, -(pointer.y / innerHeight) * 2 + 1);
-  ray.setFromCamera(ndc, camera);
-  if (ray.ray.intersectPlane(plane, hit)) {
-    mesh.worldToLocal(hit);
-    u.uMouse.value.set(hit.x, hit.y, pointer.strength);
-  }
+      mesh.position.set(S.x * silk.vw, S.y * silk.vh, 0);
+      mesh.rotation.set(S.rotX, 0, S.rotZ);
+      mesh.updateMatrixWorld();
+      ndc.set((pointer.x / innerWidth) * 2 - 1, -(pointer.y / innerHeight) * 2 + 1);
+      ray.setFromCamera(ndc, camera);
+      if (ray.ray.intersectPlane(plane, hit)) {
+        mesh.worldToLocal(hit);
+        u.uMouse.value.set(hit.x, hit.y, pointer.strength);
+      }
 
-  u.uTime.value = time;
-  u.uSpread.value = S.spread;
-  u.uTwist.value = S.twist;
-  u.uAmp.value = S.amp * (1 + Math.min(Math.abs(velocity) * 0.01, 0.35));
-  u.uCurve.value = S.curve;
-  u.uRibbonH.value = S.rh;
-  u.uSheet.value.set(Math.max(S.w * silk.vw, 7), S.h * silk.vh);
-  u.uAlpha.value = S.alpha;
-  u.uColA.value.set(...mix3(PAL.a0, PAL.a1, S.tint));
-  u.uColB.value.set(...mix3(PAL.b0, PAL.b1, S.tint));
-  silk.renderer.render(silk.scene, camera);
-});
+      u.uTime.value = time;
+      u.uSpread.value = S.spread;
+      u.uTwist.value = S.twist;
+      u.uAmp.value = S.amp * (1 + Math.min(Math.abs(velocity) * 0.01, 0.35));
+      u.uCurve.value = S.curve;
+      u.uRibbonH.value = S.rh;
+      u.uSheet.value.set(Math.max(S.w * silk.vw, 7), S.h * silk.vh);
+      u.uAlpha.value = S.alpha;
+      u.uColA.value.set(...mix3(PAL.a0, PAL.a1, S.tint));
+      u.uColB.value.set(...mix3(PAL.b0, PAL.b1, S.tint));
+      silk.renderer.render(silk.scene, camera);
+    });
 
-/* ================= Text helpers ================= */
-function splitWords(el) {
-  const walk = node => {
-    [...node.childNodes].forEach(n => {
-      if (n.nodeType === 3) {
-        const frag = document.createDocumentFragment();
-        n.textContent.split(/(\s+)/).forEach(part => {
-          if (!part) return;
-          if (/^\s+$/.test(part)) frag.append(part);
-          else { const s = document.createElement("span"); s.className = "w"; s.textContent = part; frag.append(s); }
+    /* ================= Text helpers ================= */
+    function splitWords(el) {
+      const walk = node => {
+        [...node.childNodes].forEach(n => {
+          if (n.nodeType === 3) {
+            const frag = document.createDocumentFragment();
+            n.textContent.split(/(\s+)/).forEach(part => {
+              if (!part) return;
+              if (/^\s+$/.test(part)) frag.append(part);
+              else { const s = document.createElement("span"); s.className = "w"; s.textContent = part; frag.append(s); }
+            });
+            n.replaceWith(frag);
+          } else if (n.nodeType === 1) walk(n);
         });
-        n.replaceWith(frag);
-      } else if (n.nodeType === 1) walk(n);
-    });
-  };
-  walk(el);
-  return $$(".w", el);
-}
-function splitLetters(el) {
-  const text = el.textContent; el.textContent = "";
-  return [...text].map(ch => { const s = document.createElement("span"); s.textContent = ch === " " ? " " : ch; el.append(s); return s; });
-}
+      };
+      walk(el);
+      return $$(".w", el);
+    }
+    function splitLetters(el) {
+      const text = el.textContent; el.textContent = "";
+      return [...text].map(ch => { const s = document.createElement("span"); s.textContent = ch === " " ? " " : ch; el.append(s); return s; });
+    }
 
-/* ================= Intro ================= */
-const openLines = $$(".craft-title .line > span");
-const heroLines = $$(".hero .line > span");
-gsap.set([...openLines, ...heroLines], { yPercent: 115 });
-gsap.set(".fade-in", { opacity: 0, y: 12 });
+    /* ================= Intro ================= */
+    const openLines = $$(".craft-title .line > span");
+    const heroLines = $$(".hero .line > span");
+    gsap.set([...openLines, ...heroLines], { yPercent: 115 });
+    gsap.set(".fade-in", { opacity: 0, y: 12 });
 
-function intro() {
-  const count = { v: 0 };
-  const tl = gsap.timeline({
-    onComplete: () => { loaderEl.remove(); lenis && lenis.start(); },
-  });
-  tl.from(".loader-brand span", { yPercent: 110, duration: 1, ease: "expo.out" })
-    .to(count, { v: 100, duration: reduce ? 0.4 : 1.5, ease: "power2.inOut", onUpdate: () => ($("#count").textContent = String(Math.round(count.v)).padStart(3, "0")) }, 0.1)
-    .to(".loader-line i", { scaleX: 1, duration: reduce ? 0.4 : 1.5, ease: "power2.inOut" }, 0.1)
-    .fromTo(loaderEl, { clipPath: "inset(0% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 100% 0%)", duration: 1.2, ease: "expo.inOut" })
-    .to(S, { y: K.open.y, alpha: 1, duration: 2.4, ease: "expo.out" }, "-=0.9")
-    .to(openLines, { yPercent: 0, duration: 1.4, stagger: 0.12, ease: "expo.out" }, "-=2.1")
-    .from(".craft-media", { opacity: 0, scale: 0.94, duration: 1.4, ease: "expo.out" }, "<0.1")
-    .from(".craft-cue", { opacity: 0, y: 12, duration: 1, ease: "power3.out" }, "-=1");
-}
+    function intro() {
+      const count = { v: 0 };
+      const tl = gsap.timeline({
+        onComplete: () => { loaderEl.remove(); lenis && lenis.start(); },
+      });
+      tl.from(".loader-brand span", { yPercent: 110, duration: 1, ease: "expo.out" })
+        .to(count, { v: 100, duration: reduce ? 0.4 : 1.5, ease: "power2.inOut", onUpdate: () => ($("#count").textContent = String(Math.round(count.v)).padStart(3, "0")) }, 0.1)
+        .to(".loader-line i", { scaleX: 1, duration: reduce ? 0.4 : 1.5, ease: "power2.inOut" }, 0.1)
+        .fromTo(loaderEl, { clipPath: "inset(0% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 100% 0%)", duration: 1.2, ease: "expo.inOut" })
+        .to(S, { y: K.open.y, alpha: 1, duration: 2.4, ease: "expo.out" }, "-=0.9")
+        .to(openLines, { yPercent: 0, duration: 1.4, stagger: 0.12, ease: "expo.out" }, "-=2.1")
+        .from(".craft-media", { opacity: 0, scale: 0.94, duration: 1.4, ease: "expo.out" }, "<0.1")
+        .from(".craft-cue", { opacity: 0, y: 12, duration: 1, ease: "power3.out" }, "-=1");
+    }
 
-/* ================= Chapters (created in page order) ================= */
-function chapters() {
-  // 1. Opening: the photo opens up between "Dolce" and "Bambini"
-  const nav = $("#nav");
-  gsap.timeline({
-    scrollTrigger: {
-      trigger: "#craft", start: "top top", end: "+=200%", pin: true, scrub: 1, invalidateOnRefresh: true,
-      onUpdate: self => nav.classList.toggle("on-dark", self.isActive && self.progress > 0.42),
-      onLeave: () => nav.classList.remove("on-dark"),
-      onLeaveBack: () => nav.classList.remove("on-dark"),
-    },
-  })
-    .fromTo(".craft-cue", { opacity: 1 }, { opacity: 0, duration: 0.1, immediateRender: false }, 0)
-    .fromTo(".craft-media",
-      { clipPath: () => (innerWidth < 800 ? "inset(28% 18% 28% 18% round 22px)" : "inset(24% 36% 24% 36% round 28px)") },
-      { clipPath: "inset(0% 0% 0% 0% round 0px)", duration: 1, ease: "power2.inOut" }, 0)
-    .fromTo(".craft-media img", { scale: 1.35 }, { scale: 1, duration: 1, ease: "power2.inOut" }, 0)
-    .to(".ct-l", { xPercent: -70, opacity: 0, duration: 0.7, ease: "power1.in" }, 0.05)
-    .to(".ct-r", { xPercent: 70, opacity: 0, duration: 0.7, ease: "power1.in" }, 0.05)
-    .to(".craft-shade", { opacity: 1, duration: 0.4 }, 0.85)
-    .fromTo(".craft-lead", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.4 }, 1)
-    .fromTo(".craft-values > div", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.12 }, 1.1)
-    .to({}, { duration: 0.3 });
+    /* ================= Chapters (created in page order) ================= */
+    function chapters() {
+      // 1. Opening: the photo opens up between "Dolce" and "Bambini"
+      const nav = $("#nav");
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: "#craft", start: "top top", end: "+=200%", pin: true, scrub: 1, invalidateOnRefresh: true,
+          onUpdate: self => nav.classList.toggle("on-dark", self.isActive && self.progress > 0.42),
+          onLeave: () => nav.classList.remove("on-dark"),
+          onLeaveBack: () => nav.classList.remove("on-dark"),
+        },
+      })
+        .fromTo(".craft-cue", { opacity: 1 }, { opacity: 0, duration: 0.1, immediateRender: false }, 0)
+        .fromTo(".craft-media",
+          { clipPath: () => (innerWidth < 800 ? "inset(28% 18% 28% 18% round 22px)" : "inset(24% 36% 24% 36% round 28px)") },
+          { clipPath: "inset(0% 0% 0% 0% round 0px)", duration: 1, ease: "power2.inOut" }, 0)
+        .fromTo(".craft-media img", { scale: 1.35 }, { scale: 1, duration: 1, ease: "power2.inOut" }, 0)
+        .to(".ct-l", { xPercent: -70, opacity: 0, duration: 0.7, ease: "power1.in" }, 0.05)
+        .to(".ct-r", { xPercent: 70, opacity: 0, duration: 0.7, ease: "power1.in" }, 0.05)
+        .to(".craft-shade", { opacity: 1, duration: 0.4 }, 0.85)
+        .fromTo(".craft-lead", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.4 }, 1)
+        .fromTo(".craft-values > div", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.12 }, 1.1)
+        .to({}, { duration: 0.3 });
 
-  // 2. Categories: horizontal travel with parallax inside each photo
-  const track = $("#track");
-  const dist = () => Math.max(0, track.scrollWidth - innerWidth);
-  const hTween = gsap.to(track, {
-    x: () => -dist(), ease: "none",
-    scrollTrigger: { trigger: "#collections", start: "top top", end: () => "+=" + dist(), pin: true, scrub: 1, invalidateOnRefresh: true },
-  });
-  $$(".card").forEach(card => {
-    gsap.fromTo($("img", card), { xPercent: -6 }, {
-      xPercent: 6, ease: "none",
-      scrollTrigger: { trigger: card, containerAnimation: hTween, start: "left right", end: "right left", scrub: true },
-    });
-    if (card.offsetLeft < innerWidth * 0.9) return; // already on screen when the section pins
-    gsap.from(card, {
-      yPercent: 12, rotate: 2, opacity: 0, ease: "power2.out",
-      scrollTrigger: { trigger: card, containerAnimation: hTween, start: "left 95%", end: "left 55%", scrub: true },
-    });
-  });
+      // 2. Categories: horizontal travel with parallax inside each photo
+      const track = $("#track");
+      const dist = () => Math.max(0, track.scrollWidth - innerWidth);
+      const hTween = gsap.to(track, {
+        x: () => -dist(), ease: "none",
+        scrollTrigger: { trigger: "#collections", start: "top top", end: () => "+=" + dist(), pin: true, scrub: 1, invalidateOnRefresh: true },
+      });
+      $$(".card").forEach(card => {
+        gsap.fromTo($("img", card), { xPercent: -6 }, {
+          xPercent: 6, ease: "none",
+          scrollTrigger: { trigger: card, containerAnimation: hTween, start: "left right", end: "right left", scrub: true },
+        });
+        if (card.offsetLeft < innerWidth * 0.9) return; // already on screen when the section pins
+        gsap.from(card, {
+          yPercent: 12, rotate: 2, opacity: 0, ease: "power2.out",
+          scrollTrigger: { trigger: card, containerAnimation: hTween, start: "left 95%", end: "left 55%", scrub: true },
+        });
+      });
 
-  // 3. Hero: lines rise in on arrival, then drift apart as you leave
-  gsap.timeline({ scrollTrigger: { trigger: "#hero", start: "top 70%", toggleActions: "play none none none" } })
-    .to(heroLines, { yPercent: 0, duration: 1.4, stagger: 0.1, ease: "expo.out" })
-    .to(".fade-in", { opacity: 1, y: 0, duration: 1, stagger: 0.08, ease: "power3.out" }, "-=1");
-  gsap.timeline({ scrollTrigger: { trigger: "#hero", start: "top top", end: "bottom top", scrub: true } })
-    .to(".hero .l1", { xPercent: -14, opacity: 0.2, ease: "none" }, 0)
-    .to(".hero .l2", { yPercent: -40, opacity: 0.2, ease: "none" }, 0)
-    .to(".hero .l3", { xPercent: 14, opacity: 0.2, ease: "none" }, 0)
-    .to(".hero-meta", { opacity: 0, ease: "none" }, 0);
+      // 3. Hero: lines rise in on arrival, then drift apart as you leave
+      gsap.timeline({ scrollTrigger: { trigger: "#hero", start: "top 70%", toggleActions: "play none none none" } })
+        .to(heroLines, { yPercent: 0, duration: 1.4, stagger: 0.1, ease: "expo.out" })
+        .to(".fade-in", { opacity: 1, y: 0, duration: 1, stagger: 0.08, ease: "power3.out" }, "-=1");
+      gsap.timeline({ scrollTrigger: { trigger: "#hero", start: "top top", end: "bottom top", scrub: true } })
+        .to(".hero .l1", { xPercent: -14, opacity: 0.2, ease: "none" }, 0)
+        .to(".hero .l2", { yPercent: -40, opacity: 0.2, ease: "none" }, 0)
+        .to(".hero .l3", { xPercent: 14, opacity: 0.2, ease: "none" }, 0)
+        .to(".hero-meta", { opacity: 0, ease: "none" }, 0);
 
-  // 4. Statement: words light up one by one
-  const words = splitWords($(".split-words"));
-  gsap.to(words, {
-    opacity: 1, ease: "none", stagger: 0.1,
-    scrollTrigger: { trigger: "#statement", start: "top top", end: "+=170%", pin: true, scrub: true },
-  });
+      // 4. Statement: words light up one by one
+      const words = splitWords($(".split-words"));
+      gsap.to(words, {
+        opacity: 1, ease: "none", stagger: 0.1,
+        scrollTrigger: { trigger: "#statement", start: "top top", end: "+=170%", pin: true, scrub: true },
+      });
 
-  // 5. Years: count 1978 → 2026
-  const yr = { v: 1978 };
-  gsap.timeline({ scrollTrigger: { trigger: "#years", start: "top top", end: "+=140%", pin: true, scrub: true } })
-    .fromTo("#year", { scale: 0.86, opacity: 0.4 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power2.out" }, 0)
-    .to(yr, { v: 2026, duration: 1, ease: "power1.inOut", onUpdate: () => ($("#year").textContent = Math.round(yr.v)) }, 0)
-    .fromTo("#years .cap", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.3 }, 0.55);
+      // 5. Years: count 1978 → 2026
+      const yr = { v: 1978 };
+      gsap.timeline({ scrollTrigger: { trigger: "#years", start: "top top", end: "+=140%", pin: true, scrub: true } })
+        .fromTo("#year", { scale: 0.86, opacity: 0.4 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power2.out" }, 0)
+        .to(yr, { v: 2026, duration: 1, ease: "power1.inOut", onUpdate: () => ($("#year").textContent = Math.round(yr.v)) }, 0)
+        .fromTo("#years .cap", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.3 }, 0.55);
 
-  // 6. Marquee: drifts on its own, speeds up with the scroll
-  $$(".mq-row").forEach(row => {
-    const dir = +row.dataset.dir;
-    let x = dir > 0 ? -row.scrollWidth / 2 : 0;
-    gsap.ticker.add(() => {
-      const half = row.scrollWidth / 2;
-      x += dir * (reduce ? 0.15 : 0.6 + Math.min(Math.abs(velocity) * 0.25, 14));
-      if (x <= -half) x += half;
-      if (x > 0) x -= half;
-      row.style.transform = `translate3d(${x}px,0,0)`;
-    });
-  });
+      // 6. Marquee: drifts on its own, speeds up with the scroll
+      $$(".mq-row").forEach(row => {
+        const dir = +row.dataset.dir;
+        let x = dir > 0 ? -row.scrollWidth / 2 : 0;
+        gsap.ticker.add(() => {
+          const half = row.scrollWidth / 2;
+          x += dir * (reduce ? 0.15 : 0.6 + Math.min(Math.abs(velocity) * 0.25, 14));
+          if (x <= -half) x += half;
+          if (x > 0) x -= half;
+          row.style.transform = `translate3d(${x}px,0,0)`;
+        });
+      });
 
-  // Finale reveals
-  $$(".finale .reveal").forEach((el, i) =>
-    gsap.from(el, { y: 50, opacity: 0, duration: 1.3, ease: "expo.out", delay: i * 0.08, scrollTrigger: { trigger: el, start: "top 88%" } })
-  );
-  const letters = splitLetters($("#wordmark"));
-  gsap.from(letters, { yPercent: 110, duration: 1.4, ease: "expo.out", stagger: 0.035, scrollTrigger: { trigger: "#wordmark", start: "top 95%" } });
+      // Finale reveals
+      $$(".finale .reveal").forEach((el, i) =>
+        gsap.from(el, { y: 50, opacity: 0, duration: 1.3, ease: "expo.out", delay: i * 0.08, scrollTrigger: { trigger: el, start: "top 88%" } })
+      );
+      const letters = splitLetters($("#wordmark"));
+      gsap.from(letters, { yPercent: 110, duration: 1.4, ease: "expo.out", stagger: 0.035, scrollTrigger: { trigger: "#wordmark", start: "top 95%" } });
 
-  // Silk choreography between chapters
-  const steps = [
-    ["open", "coll", { trigger: "#collections", start: "top bottom", end: "top top" }],
-    ["coll", "hero", { trigger: "#hero", start: "top bottom", end: "top top" }],
-    ["hero", "state", { trigger: "#statement", start: "top bottom", end: "top top" }],
-    ["state", "years", { trigger: "#years", start: "top bottom", end: "top top" }],
-    ["years", "finale", { trigger: ".marquee", start: "top bottom", endTrigger: "#finale", end: "top 20%" }],
-  ];
-  steps.forEach(([a, b, st]) =>
-    gsap.fromTo(S, { ...K[a] }, { ...K[b], ease: "power1.inOut", immediateRender: false, scrollTrigger: { ...st, scrub: 1.4 } })
-  );
-}
+      // Silk choreography between chapters
+      const steps = [
+        ["open", "coll", { trigger: "#collections", start: "top bottom", end: "top top" }],
+        ["coll", "hero", { trigger: "#hero", start: "top bottom", end: "top top" }],
+        ["hero", "state", { trigger: "#statement", start: "top bottom", end: "top top" }],
+        ["state", "years", { trigger: "#years", start: "top bottom", end: "top top" }],
+        ["years", "finale", { trigger: ".marquee", start: "top bottom", endTrigger: "#finale", end: "top 20%" }],
+      ];
+      steps.forEach(([a, b, st]) =>
+        gsap.fromTo(S, { ...K[a] }, { ...K[b], ease: "power1.inOut", immediateRender: false, scrollTrigger: { ...st, scrub: 1.4 } })
+      );
+    }
 
-/* ================= Menu ================= */
-function menu() {
-  const btn = $("#menuBtn"), el = $("#menu"), label = $("#menuLabel");
-  let open = false;
-  const links = $$("#menu li a");
-  const tl = gsap.timeline({ paused: true })
-    .set(el, { visibility: "visible" })
-    .fromTo(el, { clipPath: "inset(0% 0% 100% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1, ease: "expo.inOut" })
-    .from(links, { yPercent: 110, duration: 1, stagger: 0.05, ease: "expo.out" }, "-=0.45")
-    .from(".menu-foot", { opacity: 0, y: 12, duration: 0.6 }, "-=0.7");
-  const toggle = force => {
-    open = force ?? !open;
-    document.body.classList.toggle("menu-open", open);
-    btn.setAttribute("aria-expanded", open);
-    label.textContent = open ? "Close" : "Menu";
-    $("#nav").classList.remove("on-dark");
-    if (open) { tl.timeScale(1).play(); lenis && lenis.stop(); }
-    else { tl.timeScale(1.6).reverse(); lenis && lenis.start(); }
-  };
-  btn.addEventListener("click", () => toggle());
-  addEventListener("keydown", e => e.key === "Escape" && open && toggle(false));
-}
+    /* ================= Menu ================= */
+    function menu() {
+      const btn = $("#menuBtn"), el = $("#menu"), label = $("#menuLabel");
+      let open = false;
+      const links = $$("#menu li a");
+      const tl = gsap.timeline({ paused: true })
+        .set(el, { visibility: "visible" })
+        .fromTo(el, { clipPath: "inset(0% 0% 100% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1, ease: "expo.inOut" })
+        .from(links, { yPercent: 110, duration: 1, stagger: 0.05, ease: "expo.out" }, "-=0.45")
+        .from(".menu-foot", { opacity: 0, y: 12, duration: 0.6 }, "-=0.7");
+      const toggle = force => {
+        open = force ?? !open;
+        document.body.classList.toggle("menu-open", open);
+        btn.setAttribute("aria-expanded", open);
+        label.textContent = open ? "Close" : "Menu";
+        $("#nav").classList.remove("on-dark");
+        if (open) { tl.timeScale(1).play(); lenis && lenis.stop(); }
+        else { tl.timeScale(1.6).reverse(); lenis && lenis.start(); }
+      };
+      btn.addEventListener("click", () => toggle());
+      addEventListener("keydown", e => e.key === "Escape" && open && toggle(false));
+    }
 
-/* ================= Cursor + magnetic ================= */
-function cursor() {
-  if (!finePointer) return;
-  const dot = $(".cursor"), ring = $(".cursor-ring");
-  const dx = gsap.quickTo(dot, "x", { duration: 0.12 }), dy = gsap.quickTo(dot, "y", { duration: 0.12 });
-  const rx = gsap.quickTo(ring, "x", { duration: 0.55, ease: "power3" }), ry = gsap.quickTo(ring, "y", { duration: 0.55, ease: "power3" });
-  addEventListener("pointermove", e => { dx(e.clientX); dy(e.clientY); rx(e.clientX); ry(e.clientY); });
-  document.addEventListener("pointerover", e => {
-    const t = e.target.closest("[data-cursor], a, button");
-    ring.classList.toggle("view", !!t && t.dataset.cursor === "view");
-    ring.classList.toggle("link", !!t && t.dataset.cursor !== "view");
-  });
+    /* ================= Cursor + magnetic ================= */
+    function cursor() {
+      if (!finePointer) return;
+      const dot = $(".cursor"), ring = $(".cursor-ring");
+      const dx = gsap.quickTo(dot, "x", { duration: 0.12 }), dy = gsap.quickTo(dot, "y", { duration: 0.12 });
+      const rx = gsap.quickTo(ring, "x", { duration: 0.55, ease: "power3" }), ry = gsap.quickTo(ring, "y", { duration: 0.55, ease: "power3" });
+      addEventListener("pointermove", e => { dx(e.clientX); dy(e.clientY); rx(e.clientX); ry(e.clientY); });
+      document.addEventListener("pointerover", e => {
+        const t = e.target.closest("[data-cursor], a, button");
+        ring.classList.toggle("view", !!t && t.dataset.cursor === "view");
+        ring.classList.toggle("link", !!t && t.dataset.cursor !== "view");
+      });
 
-  $$(".magnetic").forEach(el => {
-    const mx = gsap.quickTo(el, "x", { duration: 0.6, ease: "power3" }), my = gsap.quickTo(el, "y", { duration: 0.6, ease: "power3" });
-    el.addEventListener("pointermove", e => {
-      const r = el.getBoundingClientRect();
-      mx((e.clientX - r.left - r.width / 2) * 0.3);
-      my((e.clientY - r.top - r.height / 2) * 0.3);
-    });
-    el.addEventListener("pointerleave", () => { mx(0); my(0); });
-  });
-}
+      $$(".magnetic").forEach(el => {
+        const mx = gsap.quickTo(el, "x", { duration: 0.6, ease: "power3" }), my = gsap.quickTo(el, "y", { duration: 0.6, ease: "power3" });
+        el.addEventListener("pointermove", e => {
+          const r = el.getBoundingClientRect();
+          mx((e.clientX - r.left - r.width / 2) * 0.3);
+          my((e.clientY - r.top - r.height / 2) * 0.3);
+        });
+        el.addEventListener("pointerleave", () => { mx(0); my(0); });
+      });
+    }
 
-/* ================= Boot ================= */
-chapters();
-menu();
-cursor();
-const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
-await Promise.race([Promise.all([fontsReady, initSilk()]), new Promise(r => setTimeout(r, 3500))]);
-ScrollTrigger.refresh();
-intro();
-addEventListener("load", () => ScrollTrigger.refresh());
-</script>
+    /* ================= Boot ================= */
+    chapters();
+    menu();
+    cursor();
+    const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
+    await Promise.race([Promise.all([fontsReady, initSilk()]), new Promise(r => setTimeout(r, 3500))]);
+    ScrollTrigger.refresh();
+    intro();
+    addEventListener("load", () => ScrollTrigger.refresh());
+  </script>
 </body>
+
 </html>
