@@ -16,11 +16,6 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-  <script>
-    document.documentElement.classList.add("js");
-    // Never leave visitors stuck behind the loader if a script fails to load
-    setTimeout(() => document.documentElement.classList.add("failsafe"), 7000);
-  </script>
   <style>
     /* Tokens mirror src/styles.css so this page matches the live site */
     :root {
@@ -145,60 +140,6 @@
       z-index: 1;
     }
 
-    /* ---------- Loader ---------- */
-    .loader {
-      display: none;
-    }
-
-    .js .loader {
-      position: fixed;
-      inset: 0;
-      z-index: 100;
-      display: grid;
-      place-items: center;
-      background: var(--background);
-      clip-path: inset(0 0 0 0);
-    }
-
-    .failsafe .loader {
-      display: none !important;
-    }
-
-    .loader-inner {
-      width: min(360px, 80vw);
-      text-align: center;
-    }
-
-    .loader-brand {
-      font-family: var(--font-display);
-      font-size: 40px;
-      overflow: hidden;
-    }
-
-    .loader-brand span {
-      display: inline-block;
-    }
-
-    .loader-line {
-      height: 1px;
-      background: oklch(0.54 0.14 18 / .15);
-      margin: 18px 0 12px;
-    }
-
-    .loader-line i {
-      display: block;
-      height: 100%;
-      background: var(--primary);
-      transform: scaleX(0);
-      transform-origin: left;
-    }
-
-    .loader-count {
-      font-size: 11px;
-      letter-spacing: .35em;
-      color: var(--muted-foreground);
-      font-variant-numeric: tabular-nums;
-    }
 
     /* ---------- Nav ---------- */
     .nav {
@@ -966,14 +907,6 @@
 
   <canvas id="silk" aria-hidden="true"></canvas>
 
-  <div class="loader" id="loader" aria-hidden="true">
-    <div class="loader-inner">
-      <div class="loader-brand"><span>Dolce <em class="rose">Bambini</em></span></div>
-      <div class="loader-line"><i></i></div>
-      <div class="loader-count"><span id="count">000</span></div>
-    </div>
-  </div>
-
   <div class="cursor" aria-hidden="true"></div>
   <div class="cursor-ring" aria-hidden="true"><span>View</span></div>
 
@@ -1194,10 +1127,7 @@
     const finePointer = matchMedia("(hover: hover) and (pointer: fine)").matches;
     const $ = (s, r = document) => r.querySelector(s);
     const $$ = (s, r = document) => [...r.querySelectorAll(s)];
-    const loaderEl = $("#loader");
-
     if (!window.gsap || !window.ScrollTrigger) {
-      loaderEl.remove();
       throw new Error("GSAP failed to load — page shown without animation");
     }
     gsap.registerPlugin(ScrollTrigger);
@@ -1464,16 +1394,10 @@
     gsap.set(".fade-in", { opacity: 0, y: 12 });
 
     function intro() {
-      const count = { v: 0 };
-      const tl = gsap.timeline({
-        onComplete: () => { loaderEl.remove(); lenis && lenis.start(); },
-      });
-      tl.from(".loader-brand span", { yPercent: 110, duration: 1, ease: "expo.out" })
-        .to(count, { v: 100, duration: reduce ? 0.4 : 1.5, ease: "power2.inOut", onUpdate: () => ($("#count").textContent = String(Math.round(count.v)).padStart(3, "0")) }, 0.1)
-        .to(".loader-line i", { scaleX: 1, duration: reduce ? 0.4 : 1.5, ease: "power2.inOut" }, 0.1)
-        .fromTo(loaderEl, { clipPath: "inset(0% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 100% 0%)", duration: 1.2, ease: "expo.inOut" })
-        .to(S, { y: K.open.y, alpha: 1, duration: 2.4, ease: "expo.out" }, "-=0.9")
-        .to(openLines, { yPercent: 0, duration: 1.4, stagger: 0.12, ease: "expo.out" }, "-=2.1")
+      lenis && lenis.start();
+      gsap.timeline()
+        .to(S, { y: K.open.y, alpha: 1, duration: 2.4, ease: "expo.out" })
+        .to(openLines, { yPercent: 0, duration: 1.4, stagger: 0.12, ease: "expo.out" }, 0.1)
         .from(".craft-media", { opacity: 0, scale: 0.94, duration: 1.4, ease: "expo.out" }, "<0.1")
         .from(".craft-cue", { opacity: 0, y: 12, duration: 1, ease: "power3.out" }, "-=1");
     }
@@ -1630,7 +1554,7 @@
     menu();
     cursor();
     const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
-    await Promise.race([Promise.all([fontsReady, initSilk()]), new Promise(r => setTimeout(r, 3500))]);
+    await Promise.race([Promise.all([fontsReady, initSilk()]), new Promise(r => setTimeout(r, 1200))]);
     ScrollTrigger.refresh();
     intro();
     addEventListener("load", () => ScrollTrigger.refresh());
