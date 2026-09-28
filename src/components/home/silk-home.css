@@ -43,7 +43,9 @@ html.lenis body { height: auto; }
 .silk-home:not(.is-ready) .line > span,
 .silk-home:not(.is-ready) .fade-in,
 .silk-home:not(.is-ready) .craft-media,
-.silk-home:not(.is-ready) .craft-cue {
+.silk-home:not(.is-ready) .craft-cue,
+.silk-home:not(.is-ready) .craft-lead,
+.silk-home:not(.is-ready) .craft-values {
   opacity: 0;
   animation: sh-failsafe 0s 4s forwards;
 }

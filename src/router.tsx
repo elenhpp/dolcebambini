@@ -8,7 +8,8 @@ export const getRouter = () => {
   const router = createRouter({
     routeTree,
     context: { queryClient },
-    scrollRestoration: true,
+    // The homepage is a scroll animation that always starts from the top
+    scrollRestoration: ({ location }) => location.pathname !== "/",
     defaultPreloadStaleTime: 0,
   });
 

@@ -210,7 +210,7 @@ const VERT = /* glsl */ `
 
 const FRAG = /* glsl */ `
   uniform vec3 uColA, uColB, uSheen;
-  uniform float uAlpha;
+
   varying vec2 vUv; varying vec3 vN; varying vec3 vT; varying vec3 vW; varying float vFold;
   void main(){
     vec3 N = normalize(vN); if (!gl_FrontFacing) N = -N;
@@ -235,7 +235,7 @@ const FRAG = /* glsl */ `
     col += uSheen * fr * 0.22;
     col *= 0.93 + 0.07 * smoothstep(-0.6, 0.6, vFold);
     col += sin(vUv.x * 1600.0) * sin(vUv.y * 1100.0) * 0.006;
-    gl_FragColor = vec4(col, uAlpha);
+    gl_FragColor = vec4(col, 1.0);
   }`;
 
 /** Returns null when WebGL is unavailable; the page then falls back to a CSS gradient. */
@@ -262,7 +262,7 @@ export async function createSilk(canvas: HTMLCanvasElement): Promise<Silk | null
       uRibbonH: { value: 1 },
       uSheet: { value: new THREE.Vector2(10, 6) },
       uMouse: { value: new THREE.Vector3(0, 0, 0) },
-      uAlpha: { value: 0 },
+
       uColA: { value: new THREE.Vector3(...PAL.a0) },
       uColB: { value: new THREE.Vector3(...PAL.b0) },
       uSheen: { value: new THREE.Vector3(...PAL.sheen) },
@@ -313,7 +313,8 @@ export async function createSilk(canvas: HTMLCanvasElement): Promise<Silk | null
       u.uCurve.value = S.curve;
       u.uRibbonH.value = S.rh;
       u.uSheet.value.set(Math.max(S.w * vw, 7), S.h * vh);
-      u.uAlpha.value = S.alpha;
+      // fade in via CSS: blending a translucent WebGL layer tints the page on some GPUs
+      canvas.style.opacity = String(S.alpha);
       u.uColA.value.set(...mix3(PAL.a0, PAL.a1, S.tint));
       u.uColB.value.set(...mix3(PAL.b0, PAL.b1, S.tint));
       renderer.render(scene, camera);

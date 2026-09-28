@@ -26,10 +26,11 @@ const CATEGORIES = [
   { key: "communion", to: "/communion", img: c24Img },
 ] as const;
 
-/** Remount the whole scene when the language changes so every animation re-binds to the new text. */
+/** Remount the whole scene when the language changes so every animation re-binds to the new text.
+    Animations only start once the saved language is known, so the opening never plays in the wrong language. */
 export function SilkHome() {
-  const { lang } = useLang();
-  return <SilkHomeScene key={lang} />;
+  const { lang, ready } = useLang();
+  return <SilkHomeScene key={lang} active={ready} />;
 }
 
 function Emph({ v }: { v: { pre: string; em: string; post: string } }) {
@@ -56,12 +57,12 @@ function Words({ text }: { text: string }) {
   );
 }
 
-function SilkHomeScene() {
+function SilkHomeScene({ active }: { active: boolean }) {
   const { t } = useLang();
   const root = useRef<HTMLDivElement>(null);
   const canvas = useRef<HTMLCanvasElement>(null);
 
-  useEffect(() => startSilkHomeAnimations(root.current!, canvas.current!), []);
+  useEffect(() => (active ? startSilkHomeAnimations(root.current!, canvas.current!) : undefined), [active]);
 
   const hero = t(HOME.heroLines);
   const statement = t(HOME.statement);
