@@ -81,7 +81,7 @@ export function ProductDetail({ category, code }: { category: string; code: stri
               key={mainImage}
               src={mainImage}
               alt={`${title} — ${t(T.copy.photo)} ${active + 1}/${count}`}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
               onError={(e) => {
                 (e.currentTarget as HTMLImageElement).style.opacity = "0.4";
               }}
@@ -127,7 +127,7 @@ export function ProductDetail({ category, code }: { category: string; code: stri
                   }`}
                   aria-label={`${t(T.copy.photo)} ${i + 1}`}
                 >
-                  <img src={src} alt="" loading="lazy" className="w-full h-full object-cover" />
+                  <img src={src} alt="" loading="lazy" className="w-full h-full object-contain" />
                 </button>
               ))}
             </div>
