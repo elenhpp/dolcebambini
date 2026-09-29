@@ -3743,6 +3743,24 @@ export const PRODUCTS: Record<string, Product[]> = {
       },
     },
     {
+      code: "9756-1",
+      image: "src/assets/images/9756-1 (1).webp",
+      title: {
+        el: "Φόρεμα 9756-1",
+        en: "Dress 9756-1",
+        it: "Abito 9756-1",
+        es: "Vestido 9756-1",
+        pt: "Vestido 9756-1",
+      },
+      desc: {
+        el: "Κομψό φόρεμα με μανίκι από εξαιρετικής ποιότητας κεντημένης δαντέλας με παγιέτες. Διακοσμημένο στη μέση με μία ζώνη από πέρλες και στρας. Είναι ένα φόρεμα ειδικά σχεδιασμένο για εντυπωσιακές εμφανίσεις. Επενδυμένο εσωτερικά με 100% βαμβακερή φόδρα.",
+        en: "Elegant dress with sleeves, made from exceptionally high-quality embroidered lace with sequins. Decorated at the waist with a belt of pearls and rhinestones. It is a dress specially designed for impressive appearances. The interior is lined with 100% cotton lining.",
+        it: "Abito elegante con maniche, realizzato da pizzo ricamato di eccezionale qualità con pietre brillanti. Decorato alla vita con una cintura di perle e cristalli. È un abito specialmente progettato per apparizioni impressionanti. L'interno è foderato con una fodera 100% cotone.",
+        es: "Vestido elegante con mangas, hecho de encaje bordado de alta calidad con piedras brillantes. Decorado en la cintura con una cinturilla de perlas y piedras. Es un vestido especialmente diseñado para apariciones impresionantes. El interior está forrado con un forro 100% de algodón.",
+        pt: "Vestido elegante com mangas, feito de renda bordada de qualidade excepcional com pedras brilhantes. Decorado na cintura com uma faixa de pérolas e cristais. É um vestido especialmente projetado para aparências impressionantes. O interior é forrado com forro 100% algodão.",
+      },
+    },
+    {
       code: "9779-1",
       image: "src/assets/images/9779-1 (1).webp",
       title: {
