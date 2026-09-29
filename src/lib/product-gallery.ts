@@ -13,40 +13,9 @@ const LOCAL = import.meta.glob("../assets/images/*", {
 const IMG_EXT = /\.(webp|jpe?g|png)$/i;
 const PREFIX = "../assets/images/";
 
-/**
- * Second copies of a photo already in the same gallery, left out so each shot
- * appears once. The product's main `image` is never listed here.
- */
-const DUPLICATES = new Set([
-  // Wide landscape originals whose portrait crop ("-a"/"-b") is the shown shot.
-  // The 3:4 frame centre-crops them, so they looked identical to that crop.
-  "7102.webp",
-  "7108.webp",
-  "7119-a.webp",
-  "7123.webp",
-  "7124.webp",
-  "7126.webp",
-  "7129.webp",
-  "7131.webp",
-  "7133.webp",
-  // The same shot without the headband/accessory (or outfit variant) that the
-  // main photo already shows.
-  "7008.webp",
-  "7012.webp",
-  "7017.webp",
-  "7018-1.webp",
-  "7020-1.webp",
-  "7020-8outfit.webp",
-  "7021.webp",
-  "7025.webp",
-  "9761-N.webp",
-  // Same shot as "C18 (2)".
-  "C18 (3).webp",
-]);
-
 const LOCAL_FILES = Object.keys(LOCAL)
   .map((k) => k.slice(PREFIX.length))
-  .filter((f) => IMG_EXT.test(f) && !DUPLICATES.has(f))
+  .filter((f) => IMG_EXT.test(f))
   .sort((a, b) => a.localeCompare(b, "en"));
 
 /**
