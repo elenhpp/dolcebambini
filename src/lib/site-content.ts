@@ -2528,6 +2528,60 @@ export const PRODUCTS: Record<string, Product[]> = {
       },
     },
     {
+      code: "9753-1",
+      image: "src/assets/images/9753-1 (1).webp",
+      title: {
+        el: "Φόρεμα 9753-1",
+        en: "Dress 9753-1",
+        it: "Abito 9753-1",
+        es: "Vestido 9753-1",
+        pt: "Vestido 9753-1",
+      },
+      desc: {
+        el: "Εντυπωσιακό ασύμμετρο φόρεμα με μανίκι. Το πάνω μέρος αποτελείται από δαντέλα με γεωμετρικά σχήματα και λουλούδια. Στο πίσω μέρος του φορέματος υπάρχει μία αποσπώμενη μακριά ουρά από δαντέλα καθώς και ένας ασορτί διπλός τούλινος φιόγκος. Ιδανικό για τις πιο ξεχωριστές εμφανίσεις της μικρής σας πριγκίπισσας. Το εσωτερικό του είναι επενδυμένο με φόδρα 100% βαμβακερή.",
+        en: "Impressive asymmetrical dress with sleeves. The upper part is made of lace with geometric shapes and flowers. At the back of the dress, there is a detachable long lace train, as well as a matching double tulle bow.Ideal for your little princess’s most special appearances. The interior is lined with 100% cotton lining.",
+        it: "Imponente abito asimmetrico con maniche. La parte superiore è realizzata in pizzo con forme geometriche e fiori. Sul retro dell’abito è presente una lunga coda rimovibile in pizzo, oltre a un doppio fiocco in tulle coordinato. Ideale per le occasioni più speciali della vostra piccola principessa. L’interno è foderato con una fodera 100% cotone.",
+        es: "Impresionante vestido asimétrico con mangas. La parte superior está confeccionada en encaje con formas geométricas y flores. En la parte trasera del vestido hay una larga cola desmontable de encaje, así como un lazo doble de tul a juego. Ideal para las apariciones más especiales de su pequeña princesa. El interior está forrado con un forro 100% de algodón.",
+        pt: "Impressionante vestido assimétrico com mangas. A parte superior é confeccionada em renda com formas geométricas e flores. Na parte de trás do vestido, há uma longa cauda removível de renda, bem como um laço duplo de tule a condizer. Ideal para as ocasiões mais especiais da sua pequena princesa. O interior é forrado com forro 100% algodão.",
+      },
+    },
+    {
+      code: "9779-1",
+      image: "src/assets/images/9779-1 (1).webp",
+      title: {
+        el: "Φόρεμα 9779-1",
+        en: "Dress 9779-1",
+        it: "Abito 9779-1",
+        es: "Vestido 9779-1",
+        pt: "Vestido 9779-1",
+      },
+      desc: {
+        el: "Εντυπωσιακό φόρεμα από γκλίτερ τούλι με μανίκι. Στο φόρεμα υπάρχει απλικαρισμένο χειροποίητο οργαντινένιο λουλούδι και στο πίσω μέρος μία αποσπώμενη μακριά ουρά με βολάν από τούλι. Ένα φόρεμα υψηλής ραπτικής και ειδικών περιστάσεων. Εσωτερικά είναι επενδυμένο με 100% βαμβακερή φόδρα.",
+        en: "Impressive dress made of glitter tulle with sleeves. The dress features an appliquéd handmade organza flower and, at the back, a detachable long train with tulle ruffles. A haute couture dress for special occasions. The interior is lined with 100% cotton lining.",
+        it: "Imponente abito in tulle glitterato con maniche. L’abito presenta un fiore in organza applicato e realizzato a mano e, sul retro, una lunga coda rimovibile con volant in tulle. Un abito di alta moda per occasioni speciali. L’interno è foderato con una fodera 100% cotone.",
+        es: "Impresionante vestido de tul con purpurina y mangas. El vestido presenta una flor de organza hecha a mano aplicada y, en la parte trasera, una larga cola desmontable con volantes de tul. Un vestido de alta costura para ocasiones especiales. El interior está forrado con un forro 100% de algodón.",
+        pt: "Impressionante vestido de tule com glitter e mangas. O vestido apresenta uma flor de organza artesanal aplicada e, na parte de trás, uma longa cauda removível com folhos de tule. Um vestido de alta-costura para ocasiões especiais. O interior é forrado com forro 100% algodão.",
+      },
+    },
+    {
+      code: "9779-8",
+      image: "src/assets/images/9779-8 (1).webp",
+      title: {
+        el: "Φόρεμα 9779-8",
+        en: "Dress 9779-8",
+        it: "Abito 9779-8",
+        es: "Vestido 9779-8",
+        pt: "Vestido 9779-8",
+      },
+      desc: {
+        el: "Εντυπωσιακό φόρεμα από γκλίτερ τούλι με μανίκι. Στο φόρεμα υπάρχει απλικαρισμένο χειροποίητο οργαντινένιο λουλούδι και στο πίσω μέρος μία αποσπώμενη μακριά ουρά με βολάν από τούλι. Ένα φόρεμα υψηλής ραπτικής και ειδικών περιστάσεων. Εσωτερικά είναι επενδυμένο με 100% βαμβακερή φόδρα.",
+        en: "Impressive dress made of glitter tulle with sleeves. The dress features an appliquéd handmade organza flower and, at the back, a detachable long train with tulle ruffles. A haute couture dress for special occasions. The interior is lined with 100% cotton lining.",
+        it: "Imponente abito in tulle glitterato con maniche. L’abito presenta un fiore in organza applicato e realizzato a mano e, sul retro, una lunga coda rimovibile con volant in tulle. Un abito di alta moda per occasioni speciali. L’interno è foderato con una fodera 100% cotone.",
+        es: "Impresionante vestido de tul con purpurina y mangas. El vestido presenta una flor de organza hecha a mano aplicada y, en la parte trasera, una larga cola desmontable con volantes de tul. Un vestido de alta costura para ocasiones especiales. El interior está forrado con un forro 100% de algodón.",
+        pt: "Impressionante vestido de tule com glitter e mangas. O vestido apresenta uma flor de organza artesanal aplicada e, na parte de trás, uma longa cauda removível com folhos de tule. Um vestido de alta-costura para ocasiões especiais. O interior é forrado com forro 100% algodão.",
+      },
+    },
+    {
       code: "544-1",
       image: "src/assets/images/544-1.jpg",
       title: {
@@ -2561,24 +2615,6 @@ export const PRODUCTS: Record<string, Product[]> = {
         it: "Romantico abito in leggero pizzo francese che forma discreti bouquet di fiori. In vita è ornato con fiori coordinati fatti a mano in tonalità rosa antico e avorio. Sulle maniche sono presenti fiocchi pois coordinati. Colori: avorio e rosa antico.",
         es: "Romántico vestido de ligero encaje francés que forma discretos ramilletes de flores. En la cintura está adornado con flores a juego hechas a mano en tonos rosa palo y marfil. En las mangas hay lazos a juego de lunares. Colores: marfil y rosa palo.",
         pt: "Romântico vestido em renda francesa leve que forma discretos ramos de flores. Na cintura é adornado com flores a condizer feitas à mão em tons rosa-velho e marfim. Nas mangas há laços poá a condizer. Cores: marfim e rosa-velho.",
-      },
-    },
-    {
-      code: "6057-1",
-      image: "src/assets/images/6057-1.jpg",
-      title: {
-        el: "Φόρεμα 6057-1",
-        en: "Dress 6057-1",
-        it: "Abito 6057-1",
-        es: "Vestido 6057-1",
-        pt: "Vestido 6057-1",
-      },
-      desc: {
-        el: "Εντυπωσιακό φόρεμα από εξαιρετικής ποιότητας οργάντζα με άνιση φούστα με βολάν που δημιουργεί πριγκιπική αίσθηση. Το μπούστο είναι διακοσμημένο με μια δαντέλα κεντημένη από πέρλες και παγιέτες. Στο πίσω μέρος ο διπλός φιόγκος ολοκληρώνει την αριστοκρατική όψη. Χρώματα: Ιβουάρ.",
-        en: "Striking dress in high-quality organza with an uneven ruffled skirt that creates a princess-like feel. The bodice is adorned with lace embroidered with pearls and sequins. At the back, the double bow completes the aristocratic look. Colors: ivory.",
-        it: "Abito d'effetto in organza di alta qualità con gonna asimmetrica con volant che crea una sensazione da principessa. Il bustier è ornato con un pizzo ricamato con perle e paillettes. Sul retro, il doppio fiocco completa l'aspetto aristocratico. Colori: avorio.",
-        es: "Llamativo vestido de organza de alta calidad con falda asimétrica de volantes que crea una sensación de princesa. El cuerpo está adornado con encaje bordado con perlas y lentejuelas. En la espalda, el doble lazo completa la imagen aristocrática. Colores: marfil.",
-        pt: "Vestido marcante em organza de alta qualidade, com saia assimétrica de folhos que cria uma sensação de princesa. O corpete é adornado com renda bordada com pérolas e lantejoulas. Atrás, o duplo laço completa o aspeto aristocrático. Cores: marfim.",
       },
     },
     {
@@ -3693,15 +3729,6 @@ export const PRODUCTS: Record<string, Product[]> = {
       desc: {
         el: "Μάλλινη καπαρντίνα σε μπλε απόχρωση, με κουκούλα και ξύλινα κουμπιά.",
         en: "Wool duffle coat in navy, with a hood and toggle buttons.",
-      },
-    },
-    {
-      code: "8510W",
-      image: "src/assets/images/8510W.webp",
-      title: { el: "Σετ 8510W", en: "Set 8510W", it: "Set 8510W", es: "Conjunto 8510W", pt: "Conjunto 8510W" },
-      desc: {
-        el: "Γιλέκο, πουκάμισο και παντελόνι με τιράντες, με ασορτί καπαρντίνα σε καφέ απόχρωση.",
-        en: "Vest, shirt and suspender trousers, with a coordinating brown duffle coat.",
       },
     },
     {

@@ -9,105 +9,40 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as AccessoriesRouteImport } from './routes/accessories'
-import { Route as AdminRouteImport } from './routes/admin'
-import { Route as AuthRouteImport } from './routes/auth'
-import { Route as BoysRouteImport } from './routes/boys'
-import { Route as CommunionRouteImport } from './routes/communion'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as GdprRouteImport } from './routes/gdpr'
-import { Route as GirlsRouteImport } from './routes/girls'
-import { Route as PrivacyRouteImport } from './routes/privacy'
-import { Route as SalesPointsRouteImport } from './routes/sales-points'
-import { Route as SilkRouteImport } from './routes/silk'
-import { Route as TermsRouteImport } from './routes/terms'
-import { Route as WinterRouteImport } from './routes/winter'
-import { Route as WinterBoysRouteImport } from './routes/winterBoys'
 import { Route as WinterGirlsRouteImport } from './routes/winterGirls'
-import { Route as AccessoriesIndexRouteImport } from './routes/accessories.index'
-import { Route as AccessoriesCodeRouteImport } from './routes/accessories.$code'
-import { Route as BoysIndexRouteImport } from './routes/boys.index'
-import { Route as BoysCodeRouteImport } from './routes/boys.$code'
-import { Route as CommunionIndexRouteImport } from './routes/communion.index'
-import { Route as CommunionCodeRouteImport } from './routes/communion.$code'
-import { Route as GirlsIndexRouteImport } from './routes/girls.index'
-import { Route as GirlsCodeRouteImport } from './routes/girls.$code'
-import { Route as SilkIndexRouteImport } from './routes/silk.index'
-import { Route as SilkCodeRouteImport } from './routes/silk.$code'
-import { Route as WinterBoysIndexRouteImport } from './routes/winterBoys.index'
-import { Route as WinterBoysCodeRouteImport } from './routes/winterBoys.$code'
+import { Route as WinterBoysRouteImport } from './routes/winterBoys'
+import { Route as WinterRouteImport } from './routes/winter'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as SilkRouteImport } from './routes/silk'
+import { Route as SalesPointsRouteImport } from './routes/sales-points'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as GirlsRouteImport } from './routes/girls'
+import { Route as GdprRouteImport } from './routes/gdpr'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CommunionRouteImport } from './routes/communion'
+import { Route as BoysRouteImport } from './routes/boys'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as AccessoriesRouteImport } from './routes/accessories'
+import { Route as IndexRouteImport } from './routes/index'
 import { Route as WinterGirlsIndexRouteImport } from './routes/winterGirls.index'
+import { Route as WinterBoysIndexRouteImport } from './routes/winterBoys.index'
+import { Route as SilkIndexRouteImport } from './routes/silk.index'
+import { Route as GirlsIndexRouteImport } from './routes/girls.index'
+import { Route as CommunionIndexRouteImport } from './routes/communion.index'
+import { Route as BoysIndexRouteImport } from './routes/boys.index'
+import { Route as AccessoriesIndexRouteImport } from './routes/accessories.index'
 import { Route as WinterGirlsCodeRouteImport } from './routes/winterGirls.$code'
+import { Route as WinterBoysCodeRouteImport } from './routes/winterBoys.$code'
+import { Route as SilkCodeRouteImport } from './routes/silk.$code'
+import { Route as GirlsCodeRouteImport } from './routes/girls.$code'
+import { Route as CommunionCodeRouteImport } from './routes/communion.$code'
+import { Route as BoysCodeRouteImport } from './routes/boys.$code'
+import { Route as AccessoriesCodeRouteImport } from './routes/accessories.$code'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AccessoriesRoute = AccessoriesRouteImport.update({
-  id: '/accessories',
-  path: '/accessories',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminRoute = AdminRouteImport.update({
-  id: '/admin',
-  path: '/admin',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthRoute = AuthRouteImport.update({
-  id: '/auth',
-  path: '/auth',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BoysRoute = BoysRouteImport.update({
-  id: '/boys',
-  path: '/boys',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CommunionRoute = CommunionRouteImport.update({
-  id: '/communion',
-  path: '/communion',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GdprRoute = GdprRouteImport.update({
-  id: '/gdpr',
-  path: '/gdpr',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GirlsRoute = GirlsRouteImport.update({
-  id: '/girls',
-  path: '/girls',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PrivacyRoute = PrivacyRouteImport.update({
-  id: '/privacy',
-  path: '/privacy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SalesPointsRoute = SalesPointsRouteImport.update({
-  id: '/sales-points',
-  path: '/sales-points',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SilkRoute = SilkRouteImport.update({
-  id: '/silk',
-  path: '/silk',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TermsRoute = TermsRouteImport.update({
-  id: '/terms',
-  path: '/terms',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const WinterRoute = WinterRouteImport.update({
-  id: '/winter',
-  path: '/winter',
+const WinterGirlsRoute = WinterGirlsRouteImport.update({
+  id: '/winterGirls',
+  path: '/winterGirls',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WinterBoysRoute = WinterBoysRouteImport.update({
@@ -115,80 +50,145 @@ const WinterBoysRoute = WinterBoysRouteImport.update({
   path: '/winterBoys',
   getParentRoute: () => rootRouteImport,
 } as any)
-const WinterGirlsRoute = WinterGirlsRouteImport.update({
-  id: '/winterGirls',
-  path: '/winterGirls',
+const WinterRoute = WinterRouteImport.update({
+  id: '/winter',
+  path: '/winter',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AccessoriesIndexRoute = AccessoriesIndexRouteImport.update({
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SilkRoute = SilkRouteImport.update({
+  id: '/silk',
+  path: '/silk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SalesPointsRoute = SalesPointsRouteImport.update({
+  id: '/sales-points',
+  path: '/sales-points',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GirlsRoute = GirlsRouteImport.update({
+  id: '/girls',
+  path: '/girls',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GdprRoute = GdprRouteImport.update({
+  id: '/gdpr',
+  path: '/gdpr',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunionRoute = CommunionRouteImport.update({
+  id: '/communion',
+  path: '/communion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BoysRoute = BoysRouteImport.update({
+  id: '/boys',
+  path: '/boys',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccessoriesRoute = AccessoriesRouteImport.update({
+  id: '/accessories',
+  path: '/accessories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => AccessoriesRoute,
-} as any)
-const AccessoriesCodeRoute = AccessoriesCodeRouteImport.update({
-  id: '/$code',
-  path: '/$code',
-  getParentRoute: () => AccessoriesRoute,
-} as any)
-const BoysIndexRoute = BoysIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => BoysRoute,
-} as any)
-const BoysCodeRoute = BoysCodeRouteImport.update({
-  id: '/$code',
-  path: '/$code',
-  getParentRoute: () => BoysRoute,
-} as any)
-const CommunionIndexRoute = CommunionIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => CommunionRoute,
-} as any)
-const CommunionCodeRoute = CommunionCodeRouteImport.update({
-  id: '/$code',
-  path: '/$code',
-  getParentRoute: () => CommunionRoute,
-} as any)
-const GirlsIndexRoute = GirlsIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => GirlsRoute,
-} as any)
-const GirlsCodeRoute = GirlsCodeRouteImport.update({
-  id: '/$code',
-  path: '/$code',
-  getParentRoute: () => GirlsRoute,
-} as any)
-const SilkIndexRoute = SilkIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => SilkRoute,
-} as any)
-const SilkCodeRoute = SilkCodeRouteImport.update({
-  id: '/$code',
-  path: '/$code',
-  getParentRoute: () => SilkRoute,
-} as any)
-const WinterBoysIndexRoute = WinterBoysIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => WinterBoysRoute,
-} as any)
-const WinterBoysCodeRoute = WinterBoysCodeRouteImport.update({
-  id: '/$code',
-  path: '/$code',
-  getParentRoute: () => WinterBoysRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
 const WinterGirlsIndexRoute = WinterGirlsIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => WinterGirlsRoute,
 } as any)
+const WinterBoysIndexRoute = WinterBoysIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => WinterBoysRoute,
+} as any)
+const SilkIndexRoute = SilkIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => SilkRoute,
+} as any)
+const GirlsIndexRoute = GirlsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => GirlsRoute,
+} as any)
+const CommunionIndexRoute = CommunionIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => CommunionRoute,
+} as any)
+const BoysIndexRoute = BoysIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => BoysRoute,
+} as any)
+const AccessoriesIndexRoute = AccessoriesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AccessoriesRoute,
+} as any)
 const WinterGirlsCodeRoute = WinterGirlsCodeRouteImport.update({
   id: '/$code',
   path: '/$code',
   getParentRoute: () => WinterGirlsRoute,
+} as any)
+const WinterBoysCodeRoute = WinterBoysCodeRouteImport.update({
+  id: '/$code',
+  path: '/$code',
+  getParentRoute: () => WinterBoysRoute,
+} as any)
+const SilkCodeRoute = SilkCodeRouteImport.update({
+  id: '/$code',
+  path: '/$code',
+  getParentRoute: () => SilkRoute,
+} as any)
+const GirlsCodeRoute = GirlsCodeRouteImport.update({
+  id: '/$code',
+  path: '/$code',
+  getParentRoute: () => GirlsRoute,
+} as any)
+const CommunionCodeRoute = CommunionCodeRouteImport.update({
+  id: '/$code',
+  path: '/$code',
+  getParentRoute: () => CommunionRoute,
+} as any)
+const BoysCodeRoute = BoysCodeRouteImport.update({
+  id: '/$code',
+  path: '/$code',
+  getParentRoute: () => BoysRoute,
+} as any)
+const AccessoriesCodeRoute = AccessoriesCodeRouteImport.update({
+  id: '/$code',
+  path: '/$code',
+  getParentRoute: () => AccessoriesRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -394,102 +394,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/accessories': {
-      id: '/accessories'
-      path: '/accessories'
-      fullPath: '/accessories'
-      preLoaderRoute: typeof AccessoriesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/admin': {
-      id: '/admin'
-      path: '/admin'
-      fullPath: '/admin'
-      preLoaderRoute: typeof AdminRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/auth': {
-      id: '/auth'
-      path: '/auth'
-      fullPath: '/auth'
-      preLoaderRoute: typeof AuthRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/boys': {
-      id: '/boys'
-      path: '/boys'
-      fullPath: '/boys'
-      preLoaderRoute: typeof BoysRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/communion': {
-      id: '/communion'
-      path: '/communion'
-      fullPath: '/communion'
-      preLoaderRoute: typeof CommunionRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/gdpr': {
-      id: '/gdpr'
-      path: '/gdpr'
-      fullPath: '/gdpr'
-      preLoaderRoute: typeof GdprRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/girls': {
-      id: '/girls'
-      path: '/girls'
-      fullPath: '/girls'
-      preLoaderRoute: typeof GirlsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/privacy': {
-      id: '/privacy'
-      path: '/privacy'
-      fullPath: '/privacy'
-      preLoaderRoute: typeof PrivacyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sales-points': {
-      id: '/sales-points'
-      path: '/sales-points'
-      fullPath: '/sales-points'
-      preLoaderRoute: typeof SalesPointsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/silk': {
-      id: '/silk'
-      path: '/silk'
-      fullPath: '/silk'
-      preLoaderRoute: typeof SilkRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/terms': {
-      id: '/terms'
-      path: '/terms'
-      fullPath: '/terms'
-      preLoaderRoute: typeof TermsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/winter': {
-      id: '/winter'
-      path: '/winter'
-      fullPath: '/winter'
-      preLoaderRoute: typeof WinterRouteImport
+    '/winterGirls': {
+      id: '/winterGirls'
+      path: '/winterGirls'
+      fullPath: '/winterGirls'
+      preLoaderRoute: typeof WinterGirlsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/winterBoys': {
@@ -499,96 +408,103 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WinterBoysRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/winterGirls': {
-      id: '/winterGirls'
-      path: '/winterGirls'
-      fullPath: '/winterGirls'
-      preLoaderRoute: typeof WinterGirlsRouteImport
+    '/winter': {
+      id: '/winter'
+      path: '/winter'
+      fullPath: '/winter'
+      preLoaderRoute: typeof WinterRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/accessories/': {
-      id: '/accessories/'
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/silk': {
+      id: '/silk'
+      path: '/silk'
+      fullPath: '/silk'
+      preLoaderRoute: typeof SilkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sales-points': {
+      id: '/sales-points'
+      path: '/sales-points'
+      fullPath: '/sales-points'
+      preLoaderRoute: typeof SalesPointsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/girls': {
+      id: '/girls'
+      path: '/girls'
+      fullPath: '/girls'
+      preLoaderRoute: typeof GirlsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gdpr': {
+      id: '/gdpr'
+      path: '/gdpr'
+      fullPath: '/gdpr'
+      preLoaderRoute: typeof GdprRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/communion': {
+      id: '/communion'
+      path: '/communion'
+      fullPath: '/communion'
+      preLoaderRoute: typeof CommunionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/boys': {
+      id: '/boys'
+      path: '/boys'
+      fullPath: '/boys'
+      preLoaderRoute: typeof BoysRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/accessories': {
+      id: '/accessories'
+      path: '/accessories'
+      fullPath: '/accessories'
+      preLoaderRoute: typeof AccessoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/': {
+      id: '/'
       path: '/'
-      fullPath: '/accessories/'
-      preLoaderRoute: typeof AccessoriesIndexRouteImport
-      parentRoute: typeof AccessoriesRoute
-    }
-    '/accessories/$code': {
-      id: '/accessories/$code'
-      path: '/$code'
-      fullPath: '/accessories/$code'
-      preLoaderRoute: typeof AccessoriesCodeRouteImport
-      parentRoute: typeof AccessoriesRoute
-    }
-    '/boys/': {
-      id: '/boys/'
-      path: '/'
-      fullPath: '/boys/'
-      preLoaderRoute: typeof BoysIndexRouteImport
-      parentRoute: typeof BoysRoute
-    }
-    '/boys/$code': {
-      id: '/boys/$code'
-      path: '/$code'
-      fullPath: '/boys/$code'
-      preLoaderRoute: typeof BoysCodeRouteImport
-      parentRoute: typeof BoysRoute
-    }
-    '/communion/': {
-      id: '/communion/'
-      path: '/'
-      fullPath: '/communion/'
-      preLoaderRoute: typeof CommunionIndexRouteImport
-      parentRoute: typeof CommunionRoute
-    }
-    '/communion/$code': {
-      id: '/communion/$code'
-      path: '/$code'
-      fullPath: '/communion/$code'
-      preLoaderRoute: typeof CommunionCodeRouteImport
-      parentRoute: typeof CommunionRoute
-    }
-    '/girls/': {
-      id: '/girls/'
-      path: '/'
-      fullPath: '/girls/'
-      preLoaderRoute: typeof GirlsIndexRouteImport
-      parentRoute: typeof GirlsRoute
-    }
-    '/girls/$code': {
-      id: '/girls/$code'
-      path: '/$code'
-      fullPath: '/girls/$code'
-      preLoaderRoute: typeof GirlsCodeRouteImport
-      parentRoute: typeof GirlsRoute
-    }
-    '/silk/': {
-      id: '/silk/'
-      path: '/'
-      fullPath: '/silk/'
-      preLoaderRoute: typeof SilkIndexRouteImport
-      parentRoute: typeof SilkRoute
-    }
-    '/silk/$code': {
-      id: '/silk/$code'
-      path: '/$code'
-      fullPath: '/silk/$code'
-      preLoaderRoute: typeof SilkCodeRouteImport
-      parentRoute: typeof SilkRoute
-    }
-    '/winterBoys/': {
-      id: '/winterBoys/'
-      path: '/'
-      fullPath: '/winterBoys/'
-      preLoaderRoute: typeof WinterBoysIndexRouteImport
-      parentRoute: typeof WinterBoysRoute
-    }
-    '/winterBoys/$code': {
-      id: '/winterBoys/$code'
-      path: '/$code'
-      fullPath: '/winterBoys/$code'
-      preLoaderRoute: typeof WinterBoysCodeRouteImport
-      parentRoute: typeof WinterBoysRoute
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/winterGirls/': {
       id: '/winterGirls/'
@@ -597,12 +513,96 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WinterGirlsIndexRouteImport
       parentRoute: typeof WinterGirlsRoute
     }
+    '/winterBoys/': {
+      id: '/winterBoys/'
+      path: '/'
+      fullPath: '/winterBoys/'
+      preLoaderRoute: typeof WinterBoysIndexRouteImport
+      parentRoute: typeof WinterBoysRoute
+    }
+    '/silk/': {
+      id: '/silk/'
+      path: '/'
+      fullPath: '/silk/'
+      preLoaderRoute: typeof SilkIndexRouteImport
+      parentRoute: typeof SilkRoute
+    }
+    '/girls/': {
+      id: '/girls/'
+      path: '/'
+      fullPath: '/girls/'
+      preLoaderRoute: typeof GirlsIndexRouteImport
+      parentRoute: typeof GirlsRoute
+    }
+    '/communion/': {
+      id: '/communion/'
+      path: '/'
+      fullPath: '/communion/'
+      preLoaderRoute: typeof CommunionIndexRouteImport
+      parentRoute: typeof CommunionRoute
+    }
+    '/boys/': {
+      id: '/boys/'
+      path: '/'
+      fullPath: '/boys/'
+      preLoaderRoute: typeof BoysIndexRouteImport
+      parentRoute: typeof BoysRoute
+    }
+    '/accessories/': {
+      id: '/accessories/'
+      path: '/'
+      fullPath: '/accessories/'
+      preLoaderRoute: typeof AccessoriesIndexRouteImport
+      parentRoute: typeof AccessoriesRoute
+    }
     '/winterGirls/$code': {
       id: '/winterGirls/$code'
       path: '/$code'
       fullPath: '/winterGirls/$code'
       preLoaderRoute: typeof WinterGirlsCodeRouteImport
       parentRoute: typeof WinterGirlsRoute
+    }
+    '/winterBoys/$code': {
+      id: '/winterBoys/$code'
+      path: '/$code'
+      fullPath: '/winterBoys/$code'
+      preLoaderRoute: typeof WinterBoysCodeRouteImport
+      parentRoute: typeof WinterBoysRoute
+    }
+    '/silk/$code': {
+      id: '/silk/$code'
+      path: '/$code'
+      fullPath: '/silk/$code'
+      preLoaderRoute: typeof SilkCodeRouteImport
+      parentRoute: typeof SilkRoute
+    }
+    '/girls/$code': {
+      id: '/girls/$code'
+      path: '/$code'
+      fullPath: '/girls/$code'
+      preLoaderRoute: typeof GirlsCodeRouteImport
+      parentRoute: typeof GirlsRoute
+    }
+    '/communion/$code': {
+      id: '/communion/$code'
+      path: '/$code'
+      fullPath: '/communion/$code'
+      preLoaderRoute: typeof CommunionCodeRouteImport
+      parentRoute: typeof CommunionRoute
+    }
+    '/boys/$code': {
+      id: '/boys/$code'
+      path: '/$code'
+      fullPath: '/boys/$code'
+      preLoaderRoute: typeof BoysCodeRouteImport
+      parentRoute: typeof BoysRoute
+    }
+    '/accessories/$code': {
+      id: '/accessories/$code'
+      path: '/$code'
+      fullPath: '/accessories/$code'
+      preLoaderRoute: typeof AccessoriesCodeRouteImport
+      parentRoute: typeof AccessoriesRoute
     }
   }
 }
