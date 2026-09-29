@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
-import { Instagram, Facebook } from "lucide-react";
+import { Instagram, Facebook, Download } from "lucide-react";
 import { useLang } from "@/lib/lang";
 import { T, CONTACT } from "@/lib/site-content";
 import { HOME } from "@/lib/home-content";
@@ -16,6 +16,8 @@ import winterImg from "@/assets/images/6057-1(5).webp";
 // Silk and Communion currently share this photo
 import c24Img from "@/assets/images/C24 (1).webp";
 import accessoriesImg from "@/assets/images/A24-1(8762).webp";
+
+const sizeChartPdfUrl = "/size-chart.pdf";
 
 const CATEGORIES = [
   { key: "girls", to: "/girls", img: girlsImg },
@@ -234,6 +236,47 @@ function SilkHomeScene({ active }: { active: boolean }) {
                   {t(HOME.findStore)}
                 </Link>
               </Magnetic>
+            </div>
+          </div>
+
+          {/* Size chart */}
+          <div className="mx-auto mt-24 w-full max-w-7xl">
+            <div className="relative rounded-3xl bg-gradient-to-br from-blush/60 via-card to-sky/40 border border-border/60 p-6 lg:p-8 float-shadow overflow-hidden">
+              <div className="grid gap-8 lg:grid-cols-[1.1fr_1.4fr] lg:items-center">
+                <div>
+                  <div className="text-[11px] tracking-[0.35em] uppercase text-primary mb-3">{t(T.sizeChart)}</div>
+                  <h2 className="font-display text-4xl md:text-5xl tracking-tight">{t(T.copy.perfectSize)}</h2>
+                  <p className="mt-4 text-foreground/70 max-w-xl leading-relaxed">{t(T.sizeChartBody)}</p>
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    <a
+                      href={sizeChartPdfUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      download
+                      className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-6 py-3 text-sm font-medium tracking-wide soft-shadow hover:scale-[1.02] transition-transform"
+                    >
+                      <Download size={16} /> {t(T.sizeChartCta)}
+                    </a>
+                    <a
+                      href={sizeChartPdfUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center rounded-full border border-border bg-card px-6 py-3 text-sm font-medium tracking-wide soft-shadow hover:bg-muted transition-colors"
+                    >
+                      Open full PDF
+                    </a>
+                  </div>
+                </div>
+
+                <div className="overflow-hidden rounded-2xl border border-border/70 bg-white/70 shadow-sm">
+                  <iframe
+                    src={sizeChartPdfUrl}
+                    title={t(T.sizeChart)}
+                    className="h-[420px] w-full bg-white"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
             </div>
           </div>
 

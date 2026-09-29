@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { T } from "@/lib/site-content";
 import { useLang } from "@/lib/lang";
 import featuredBoys from "@/assets/images/8529W.webp";
-import featuredGirls from "@/assets/images/6057-1(1).webp";
+import featuredGirls from "@/assets/images/6059-1(1).webp";
 
 function Page() {
   const { t } = useLang();
