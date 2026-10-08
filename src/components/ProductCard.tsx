@@ -1,5 +1,5 @@
 import type { Product } from "@/lib/site-content";
-import { T, resolveImage } from "@/lib/site-content";
+import { T, descSummary, resolveImage } from "@/lib/site-content";
 
 import { useLang } from "@/lib/lang";
 import { useOverrides, mergeTr } from "@/lib/product-overrides";
@@ -42,7 +42,7 @@ export function ProductCard({ product, index = 0, category }: { product: Product
         <h3 className="font-display text-xl leading-tight text-foreground">{title}</h3>
         {mergedDesc && (
           <p className="mt-2 text-sm text-muted-foreground line-clamp-3">
-            {t(mergedDesc)}
+            {descSummary(t(mergedDesc))}
           </p>
         )}
         <div className="mt-4 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.18em] uppercase text-primary">

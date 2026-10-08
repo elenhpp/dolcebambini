@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { PRODUCTS, T, resolveImage, type Product } from "@/lib/site-content";
+import { PRODUCTS, T, parseDescSections, resolveImage, type Product } from "@/lib/site-content";
 import { galleryFor } from "@/lib/product-gallery";
 import { useLang } from "@/lib/lang";
 import { useOverrides, mergeTr } from "@/lib/product-overrides";
@@ -140,7 +140,20 @@ export function ProductDetail({ category, code }: { category: string; code: stri
           </div>
           <h1 className="font-display text-4xl md:text-5xl tracking-tight mb-5">{title}</h1>
           {shortDesc && (
-            <p className="text-base text-muted-foreground leading-relaxed mb-6">{shortDesc}</p>
+            <div className="space-y-5 mb-6">
+              {parseDescSections(shortDesc).map((s, i) => (
+                <div key={i}>
+                  {s.heading && (
+                    <h2 className="text-[11px] font-semibold tracking-[0.25em] uppercase text-foreground mb-2">
+                      {s.heading}
+                    </h2>
+                  )}
+                  <p className="text-base text-muted-foreground leading-relaxed whitespace-pre-line">
+                    {s.body}
+                  </p>
+                </div>
+              ))}
+            </div>
           )}
           {longDesc && (
             <div className="prose prose-neutral max-w-none text-sm leading-relaxed whitespace-pre-line text-foreground/90">
