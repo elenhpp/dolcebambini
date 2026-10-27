@@ -9,7 +9,7 @@ import { T, CONTACT } from "@/lib/site-content";
 import { HOME } from "@/lib/home-content";
 import { createSilk, KEYFRAMES as K, type Silk, type SilkState } from "./silk";
 
-import openingImg from "@/assets/images/7017b.webp";
+import openingImg from "@/assets/images/C9703 (9).webp";
 import girlsImg from "@/assets/images/C11-4.webp";
 import boysImg from "@/assets/images/7101.webp";
 import winterImg from "@/assets/images/6057-1(5).webp";
